@@ -131,7 +131,7 @@ export default function Home() {
 
         <section className="intel-workspace">
           <div className="workspace-topline">
-            <div><span>AI MARKET PULSE / 中文版</span><h1>今天的 AI 市场，先看这几件事</h1></div>
+            <div><span>AI MARKET PULSE / 中文版</span><h1>今天的 AI 市场，先看这几件事</h1><a href="./briefings/latest.html" style={{color:"#80b8ff",fontSize:"14px"}}>阅读科技财经早报 →</a></div>
             <div className="desk-metrics"><span><small>采集信号</small><b>{dashboard.stats.rawSignals}</b><em>真实抓取</em></span><span><small>聚合事件</small><b>{dashboard.stats.events}</b><em>去重后</em></span><span><small>中国相关</small><b>{dashboard.stats.chinaRatio}%</b><em>动态计算</em></span><span><small>高影响</small><b>{dashboard.stats.highImpact}</b><em className="warn">需关注</em></span></div>
           </div>
 
