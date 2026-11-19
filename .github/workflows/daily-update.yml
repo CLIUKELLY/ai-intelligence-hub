@@ -1,0 +1,75 @@
+name: Daily AI market pulse
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '15 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Collect and analyze news
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-6.2-sol' }}
+        run: npm run update:news
+
+      - name: Save the new data snapshot
+        run: |
+          if git diff --quiet -- data/dashboard.json; then
+            echo "No data changes"
+          else
+            git config user.name "ai-market-pulse-bot"
+            git config user.email "actions@users.noreply.github.com"
+            git add data/dashboard.json
+            git commit -m "data: refresh daily AI market pulse"
+            git push
+          fi
+
+      - name: Build static site
+        env:
+          GITHUB_PAGES: 'true'
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: npm run build:pages
+
+      - name: Disable Jekyll processing
+        run: touch dist/client/.nojekyll
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/client
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

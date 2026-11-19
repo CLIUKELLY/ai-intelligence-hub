@@ -1,0 +1,11 @@
+[
+  { "name": "OpenAI News", "url": "https://openai.com/news/rss.xml", "kind": "rss", "tier": 3, "region": "全球", "category": "模型" },
+  { "name": "Google AI", "url": "https://blog.google/technology/ai/rss/", "kind": "rss", "tier": 3, "region": "全球", "category": "产品" },
+  { "name": "Google DeepMind", "url": "https://deepmind.google/blog/rss.xml", "kind": "rss", "tier": 3, "region": "全球", "category": "研究" },
+  { "name": "Microsoft AI", "url": "https://blogs.microsoft.com/ai/feed/", "kind": "rss", "tier": 3, "region": "全球", "category": "产品" },
+  { "name": "NVIDIA Blog", "url": "https://blogs.nvidia.com/feed/", "kind": "rss", "tier": 3, "region": "全球", "category": "算力" },
+  { "name": "Hugging Face", "url": "https://huggingface.co/blog/feed.xml", "kind": "rss", "tier": 2, "region": "全球", "category": "开源" },
+  { "name": "DeepSeek Releases", "url": "https://github.com/deepseek-ai/DeepSeek-V3/releases.atom", "kind": "atom", "tier": 3, "region": "中国", "category": "中国AI" },
+  { "name": "Qwen Releases", "url": "https://github.com/QwenLM/Qwen3/releases.atom", "kind": "atom", "tier": 3, "region": "中国", "category": "中国AI" },
+  { "name": "OpenAI Node Releases", "url": "https://github.com/openai/openai-node/releases.atom", "kind": "atom", "tier": 3, "region": "全球", "category": "AI Coding" }
+]

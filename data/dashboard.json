@@ -1,0 +1,595 @@
+{
+  "generatedAt": "2026-11-19T03:47:32.053Z",
+  "mode": "公开源自动聚合",
+  "stats": {
+    "rawSignals": 16,
+    "events": 15,
+    "chinaRatio": 0,
+    "highImpact": 2
+  },
+  "sourceHealth": {
+    "attempted": 9,
+    "healthy": 5,
+    "officialHealthy": 5,
+    "failed": [
+      "NVIDIA Blog",
+      "Microsoft AI",
+      "Google AI",
+      "Hugging Face"
+    ]
+  },
+  "brief": {
+    "title": "今天优先关注：模型、AI Coding、模型",
+    "bullets": [
+      "Introducing Gemini 4 Neon：模型能力、成本和可用性变化会直接影响企业选型与产品边界。",
+      "Introducing GPT-6.2 Astra and Sol：开发工具正从辅助补全走向可交付完整任务的 Agent 工作流。",
+      "Introducing OpenAI for Chile：模型能力、成本和可用性变化会直接影响企业选型与产品边界。"
+    ],
+    "confidence": 82
+  },
+  "trends": [
+    {
+      "name": "OpenAI",
+      "value": 762,
+      "label": "领涨",
+      "bars": [
+        28,
+        35,
+        31,
+        46,
+        52,
+        61,
+        57
+      ]
+    },
+    {
+      "name": "GPT",
+      "value": 354,
+      "label": "升温",
+      "bars": [
+        28,
+        35,
+        31,
+        46,
+        52,
+        61,
+        89
+      ]
+    },
+    {
+      "name": "AI",
+      "value": 289,
+      "label": "升温",
+      "bars": [
+        28,
+        35,
+        31,
+        46,
+        52,
+        61,
+        64
+      ]
+    },
+    {
+      "name": "模型",
+      "value": 225,
+      "label": "升温",
+      "bars": [
+        28,
+        35,
+        31,
+        46,
+        52,
+        61,
+        80
+      ]
+    }
+  ],
+  "platformBoards": [
+    {
+      "name": "中国 AI",
+      "source": "按真实事件热度计算",
+      "items": []
+    },
+    {
+      "name": "模型与产品",
+      "source": "按真实事件热度计算",
+      "items": [
+        {
+          "title": "Introducing Gemini 4 Neon",
+          "score": 87
+        },
+        {
+          "title": "Introducing OpenAI for Chile",
+          "score": 76
+        },
+        {
+          "title": "LVMH’s Media Division announces strategic partnership with OpenAI",
+          "score": 74
+        }
+      ]
+    },
+    {
+      "name": "开发者与开源",
+      "source": "按真实事件热度计算",
+      "items": [
+        {
+          "title": "Introducing GPT-6.2 Astra and Sol",
+          "score": 78
+        }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": 1630996668,
+      "title": "Introducing Gemini 4 Neon",
+      "titleEn": "Introducing Gemini 4 Neon",
+      "summary": "来自 Google DeepMind 的最新动态，打开原文查看完整信息。",
+      "why": "模型能力、成本和可用性变化会直接影响企业选型与产品边界。",
+      "source": "Google DeepMind",
+      "sources": [
+        "Google DeepMind"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Google DeepMind",
+          "url": "https://deepmind.google/blog/introducing-gemini-4-neon/",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-18T21:35:43.000Z",
+      "time": "6 小时前",
+      "hours": 6,
+      "category": "模型",
+      "region": "全球",
+      "impact": "高影响",
+      "score": 87,
+      "url": "https://deepmind.google/blog/introducing-gemini-4-neon/",
+      "tags": [
+        "Gemini",
+        "模型"
+      ],
+      "rank": 1
+    },
+    {
+      "id": 681376090,
+      "title": "Introducing GPT-6.2 Astra and Sol",
+      "titleEn": "Introducing GPT-6.2 Astra and Sol",
+      "summary": "Introducing GPT‑6.2 Astra and Sol, with better professional outputs, coding, computer use, and efficiency at lower cost across ChatGPT Work, Codex, and the API.",
+      "why": "开发工具正从辅助补全走向可交付完整任务的 Agent 工作流。",
+      "source": "OpenAI News",
+      "sources": [
+        "OpenAI News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "OpenAI News",
+          "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-17T17:45:00.000Z",
+      "time": "1 天前",
+      "hours": 34,
+      "category": "AI Coding",
+      "region": "全球",
+      "impact": "高影响",
+      "score": 78,
+      "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol",
+      "tags": [
+        "GPT",
+        "Coding",
+        "AI Coding"
+      ],
+      "rank": 2
+    },
+    {
+      "id": 2560026416,
+      "title": "Introducing OpenAI for Chile",
+      "titleEn": "Introducing OpenAI for Chile",
+      "summary": "OpenAI and the Government of Chile are partnering to support responsible AI adoption, build public-sector skills and help local startups develop AI applications.",
+      "why": "模型能力、成本和可用性变化会直接影响企业选型与产品边界。",
+      "source": "OpenAI News",
+      "sources": [
+        "OpenAI News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "OpenAI News",
+          "url": "https://openai.com/index/introducing-openai-for-chile",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-17T00:00:00.000Z",
+      "time": "2 天前",
+      "hours": 52,
+      "category": "模型",
+      "region": "全球",
+      "impact": "关注",
+      "score": 76,
+      "url": "https://openai.com/index/introducing-openai-for-chile",
+      "tags": [
+        "OpenAI",
+        "AI"
+      ],
+      "rank": 3
+    },
+    {
+      "id": 1369855108,
+      "title": "LVMH’s Media Division announces strategic partnership with OpenAI",
+      "titleEn": "LVMH’s Media Division announces strategic partnership with OpenAI",
+      "summary": "LVMH’s Media Division and OpenAI announce a partnership to support journalism with AI and make its publications more accessible through ChatGPT.",
+      "why": "模型能力、成本和可用性变化会直接影响企业选型与产品边界。",
+      "source": "OpenAI News",
+      "sources": [
+        "OpenAI News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "OpenAI News",
+          "url": "https://openai.com/index/lvmh-media-division-partnership",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-16T09:00:00.000Z",
+      "time": "2 天前",
+      "hours": 67,
+      "category": "模型",
+      "region": "全球",
+      "impact": "关注",
+      "score": 74,
+      "url": "https://openai.com/index/lvmh-media-division-partnership",
+      "tags": [
+        "OpenAI",
+        "GPT",
+        "模型"
+      ],
+      "rank": 4
+    },
+    {
+      "id": 1589849519,
+      "title": "The King’s Trust and OpenAI launch £1m partnership",
+      "titleEn": "The King’s Trust and OpenAI launch £1m partnership",
+      "summary": "The King’s Trust and OpenAI launch a £1m partnership to help up to 25,000 young people across the UK build practical AI skills for work.",
+      "why": "模型能力、成本和可用性变化会直接影响企业选型与产品边界。",
+      "source": "OpenAI News",
+      "sources": [
+        "OpenAI News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "OpenAI News",
+          "url": "https://openai.com/index/the-kings-trust-and-openai",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-16T00:00:00.000Z",
+      "time": "3 天前",
+      "hours": 76,
+      "category": "模型",
+      "region": "全球",
+      "impact": "关注",
+      "score": 73,
+      "url": "https://openai.com/index/the-kings-trust-and-openai",
+      "tags": [
+        "OpenAI",
+        "AI"
+      ],
+      "rank": 5
+    },
+    {
+      "id": 3373206608,
+      "title": "The Silent Consensus",
+      "titleEn": "The Silent Consensus",
+      "summary": "Dean Ball, Head of Strategic Futures at OpenAI, examines how more capable AI could reshape society and how people can retain control of their institutions.",
+      "why": "模型能力、成本和可用性变化会直接影响企业选型与产品边界。",
+      "source": "OpenAI News",
+      "sources": [
+        "OpenAI News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "OpenAI News",
+          "url": "https://openai.com/index/the-silent-consensus",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-18T10:00:00.000Z",
+      "time": "18 小时前",
+      "hours": 18,
+      "category": "模型",
+      "region": "全球",
+      "impact": "关注",
+      "score": 72,
+      "url": "https://openai.com/index/the-silent-consensus",
+      "tags": [
+        "OpenAI",
+        "AI"
+      ],
+      "rank": 6
+    },
+    {
+      "id": 105423974,
+      "title": "Research acceleration: The jagged frontier",
+      "titleEn": "Research acceleration: The jagged frontier",
+      "summary": "OpenAI measures how coding agents are accelerating AI research, where their performance remains uneven, and what this signals about recursive self-improvement.",
+      "why": "研究进展可能改变下一代模型能力、评测方法和落地速度。",
+      "source": "OpenAI News",
+      "sources": [
+        "OpenAI News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "OpenAI News",
+          "url": "https://openai.com/index/research-acceleration-jagged-frontier",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-18T08:00:00.000Z",
+      "time": "20 小时前",
+      "hours": 20,
+      "category": "研究",
+      "region": "全球",
+      "impact": "关注",
+      "score": 72,
+      "url": "https://openai.com/index/research-acceleration-jagged-frontier",
+      "tags": [
+        "OpenAI",
+        "Agent",
+        "Coding"
+      ],
+      "rank": 7
+    },
+    {
+      "id": 3187589702,
+      "title": "Managing frontier AI risk: From training to deployment",
+      "titleEn": "Managing frontier AI risk: From training to deployment",
+      "summary": "OpenAI explains how it manages frontier AI risk from training through deployment with model alignment, sandboxing, blocking safeguards, and monitoring.",
+      "why": "安全能力与治理要求正在成为模型进入企业和监管场景的门槛。",
+      "source": "OpenAI News",
+      "sources": [
+        "OpenAI News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "OpenAI News",
+          "url": "https://openai.com/index/managing-frontier-ai-risk",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-18T06:00:00.000Z",
+      "time": "22 小时前",
+      "hours": 22,
+      "category": "安全",
+      "region": "全球",
+      "impact": "关注",
+      "score": 71,
+      "url": "https://openai.com/index/managing-frontier-ai-risk",
+      "tags": [
+        "OpenAI",
+        "安全"
+      ],
+      "rank": 8
+    },
+    {
+      "id": 2463104589,
+      "title": "Advancing chip design with OpenAI models",
+      "titleEn": "Advancing chip design with OpenAI models",
+      "summary": "OpenAI models optimized circuits used in Jalapeño silicon and improved RISC‑V core designs, showing progress in AI-assisted chip design with GPT‑6 Astra.",
+      "why": "推理成本和基础设施供给决定 AI 产品能否规模化进入生产环境。",
+      "source": "OpenAI News",
+      "sources": [
+        "OpenAI News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "OpenAI News",
+          "url": "https://openai.com/index/advancing-chip-design-with-our-models",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-18T00:00:00.000Z",
+      "time": "1 天前",
+      "hours": 28,
+      "category": "算力",
+      "region": "全球",
+      "impact": "关注",
+      "score": 71,
+      "url": "https://openai.com/index/advancing-chip-design-with-our-models",
+      "tags": [
+        "OpenAI",
+        "GPT",
+        "算力"
+      ],
+      "rank": 9
+    },
+    {
+      "id": 1234971815,
+      "title": "Strengthening NATO and allied cyber defenses with AI",
+      "titleEn": "Strengthening NATO and allied cyber defenses with AI",
+      "summary": "How OpenAI is working with NATO and allied cyber agencies to help trusted defenders find vulnerabilities, test fixes and protect essential systems.",
+      "why": "模型能力、成本和可用性变化会直接影响企业选型与产品边界。",
+      "source": "OpenAI News",
+      "sources": [
+        "OpenAI News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "OpenAI News",
+          "url": "https://openai.com/index/strengthening-nato-allied-cyber-defences-ai",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-17T00:00:00.000Z",
+      "time": "2 天前",
+      "hours": 52,
+      "category": "模型",
+      "region": "全球",
+      "impact": "关注",
+      "score": 68,
+      "url": "https://openai.com/index/strengthening-nato-allied-cyber-defences-ai",
+      "tags": [
+        "OpenAI",
+        "AI"
+      ],
+      "rank": 10
+    },
+    {
+      "id": 2770493163,
+      "title": "Broadening access to AI for scientists",
+      "titleEn": "Broadening access to AI for scientists",
+      "summary": "We’re expanding our ChatGPT for Academic Researchers program to offer 200,000 researchers worldwide free access to our frontier models.",
+      "why": "研究进展可能改变下一代模型能力、评测方法和落地速度。",
+      "source": "OpenAI News",
+      "sources": [
+        "OpenAI News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "OpenAI News",
+          "url": "https://openai.com/index/expanding-chatgpt-for-academic-researchers",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-16T17:00:00.000Z",
+      "time": "2 天前",
+      "hours": 59,
+      "category": "研究",
+      "region": "全球",
+      "impact": "关注",
+      "score": 67,
+      "url": "https://openai.com/index/expanding-chatgpt-for-academic-researchers",
+      "tags": [
+        "GPT",
+        "研究"
+      ],
+      "rank": 11
+    },
+    {
+      "id": 1826832089,
+      "title": "Our first phase of embedded assessments",
+      "titleEn": "Our first phase of embedded assessments",
+      "summary": "OpenAI begins embedded assessments with Apollo Research, METR, and Transluce, and Goodfire to independently evaluate model alignment, safeguards, and monitoring systems.",
+      "why": "研究进展可能改变下一代模型能力、评测方法和落地速度。",
+      "source": "OpenAI News",
+      "sources": [
+        "OpenAI News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "OpenAI News",
+          "url": "https://openai.com/index/our-first-phase-of-embedded-assessments",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-16T08:00:00.000Z",
+      "time": "2 天前",
+      "hours": 68,
+      "category": "研究",
+      "region": "全球",
+      "impact": "关注",
+      "score": 66,
+      "url": "https://openai.com/index/our-first-phase-of-embedded-assessments",
+      "tags": [
+        "OpenAI",
+        "研究"
+      ],
+      "rank": 12
+    },
+    {
+      "id": 147800032,
+      "title": "A step toward defining the Standard Model on a lattice",
+      "titleEn": "A step toward defining the Standard Model on a lattice",
+      "summary": "Explore a candidate nonperturbative lattice definition of the Standard Model and how GPT-6 Astra helped turn the idea into a detailed proof.",
+      "why": "模型能力、成本和可用性变化会直接影响企业选型与产品边界。",
+      "source": "OpenAI News",
+      "sources": [
+        "OpenAI News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "OpenAI News",
+          "url": "https://openai.com/index/step-toward-defining-the-standard-model",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-15T22:00:01.000Z",
+      "time": "3 天前",
+      "hours": 78,
+      "category": "模型",
+      "region": "全球",
+      "impact": "关注",
+      "score": 64,
+      "url": "https://openai.com/index/step-toward-defining-the-standard-model",
+      "tags": [
+        "GPT",
+        "模型"
+      ],
+      "rank": 13
+    },
+    {
+      "id": 2806894236,
+      "title": "Our new blog for science",
+      "titleEn": "Our new blog for science",
+      "summary": "The OpenAI science blog shares new findings, practical methods, and firsthand accounts from researchers using AI to advance scientific discovery.",
+      "why": "研究进展可能改变下一代模型能力、评测方法和落地速度。",
+      "source": "OpenAI News",
+      "sources": [
+        "OpenAI News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "OpenAI News",
+          "url": "https://openai.com/index/our-new-blog-for-science",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-15T22:00:00.000Z",
+      "time": "3 天前",
+      "hours": 78,
+      "category": "研究",
+      "region": "全球",
+      "impact": "关注",
+      "score": 64,
+      "url": "https://openai.com/index/our-new-blog-for-science",
+      "tags": [
+        "OpenAI",
+        "研究"
+      ],
+      "rank": 14
+    },
+    {
+      "id": 3380239973,
+      "title": "How Amplitude ships product improvements in 1–2 days with OpenAI",
+      "titleEn": "How Amplitude ships product improvements in 1–2 days with OpenAI",
+      "summary": "Built primarily on OpenAI models, Amplitude’s proactive product agent, Wave, identifies what to build, helps teams ship changes with coding agents, and measures the impact.",
+      "why": "模型能力、成本和可用性变化会直接影响企业选型与产品边界。",
+      "source": "OpenAI News",
+      "sources": [
+        "OpenAI News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "OpenAI News",
+          "url": "https://openai.com/business/customer-stories/amplitude",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-12T20:00:00.000Z",
+      "time": "6 天前",
+      "hours": 152,
+      "category": "模型",
+      "region": "全球",
+      "impact": "关注",
+      "score": 55,
+      "url": "https://openai.com/business/customer-stories/amplitude",
+      "tags": [
+        "OpenAI",
+        "Agent",
+        "Coding"
+      ],
+      "rank": 15
+    }
+  ]
+}
