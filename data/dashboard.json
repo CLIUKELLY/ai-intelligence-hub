@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-19T03:57:05.421Z",
+  "generatedAt": "2026-11-19T07:09:53.665Z",
   "mode": "公开源自动聚合",
   "stats": {
     "rawSignals": 37,
     "events": 24,
     "chinaRatio": 0,
-    "highImpact": 2
+    "highImpact": 1
   },
   "sourceHealth": {
     "attempted": 9,
@@ -27,7 +27,7 @@
   "trends": [
     {
       "name": "OpenAI",
-      "value": 643,
+      "value": 635,
       "label": "领涨",
       "bars": [
         28,
@@ -36,12 +36,12 @@
         46,
         52,
         61,
-        58
+        90
       ]
     },
     {
       "name": "AI",
-      "value": 423,
+      "value": 418,
       "label": "升温",
       "bars": [
         28,
@@ -50,12 +50,12 @@
         46,
         52,
         61,
-        78
+        73
       ]
     },
     {
       "name": "Agent",
-      "value": 422,
+      "value": 418,
       "label": "升温",
       "bars": [
         28,
@@ -64,12 +64,12 @@
         46,
         52,
         61,
-        77
+        73
       ]
     },
     {
       "name": "算力",
-      "value": 416,
+      "value": 411,
       "label": "升温",
       "bars": [
         28,
@@ -78,7 +78,7 @@
         46,
         52,
         61,
-        71
+        66
       ]
     }
   ],
@@ -98,11 +98,11 @@
         },
         {
           "title": "Introducing OpenAI for Chile",
-          "score": 76
+          "score": 75
         },
         {
           "title": "LVMH’s Media Division announces strategic partnership with OpenAI",
-          "score": 74
+          "score": 73
         }
       ]
     },
@@ -112,15 +112,15 @@
       "items": [
         {
           "title": "Introducing GPT-6.2 Astra and Sol",
-          "score": 78
+          "score": 77
         },
         {
           "title": "The Gemini app is now available on lower-memory Android devices.",
-          "score": 73
+          "score": 72
         },
         {
           "title": "Put Gemini to work for you",
-          "score": 70
+          "score": 69
         }
       ]
     }
@@ -144,8 +144,8 @@
         }
       ],
       "publishedAt": "2026-11-18T21:35:43.000Z",
-      "time": "6 小时前",
-      "hours": 6,
+      "time": "10 小时前",
+      "hours": 10,
       "category": "模型",
       "region": "全球",
       "impact": "高影响",
@@ -176,11 +176,11 @@
       ],
       "publishedAt": "2026-11-17T17:45:00.000Z",
       "time": "1 天前",
-      "hours": 34,
+      "hours": 37,
       "category": "AI Coding",
       "region": "全球",
-      "impact": "高影响",
-      "score": 78,
+      "impact": "关注",
+      "score": 77,
       "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol",
       "tags": [
         "GPT",
@@ -208,11 +208,11 @@
       ],
       "publishedAt": "2026-11-17T00:00:00.000Z",
       "time": "2 天前",
-      "hours": 52,
+      "hours": 55,
       "category": "模型",
       "region": "全球",
       "impact": "关注",
-      "score": 76,
+      "score": 75,
       "url": "https://openai.com/index/introducing-openai-for-chile",
       "tags": [
         "OpenAI",
@@ -239,11 +239,11 @@
       ],
       "publishedAt": "2026-11-16T16:00:01.000Z",
       "time": "2 天前",
-      "hours": 60,
+      "hours": 63,
       "category": "算力",
       "region": "全球",
       "impact": "关注",
-      "score": 75,
+      "score": 74,
       "url": "https://blogs.nvidia.com/blog/rubin-hpc/",
       "tags": [
         "Agent",
@@ -271,11 +271,11 @@
       ],
       "publishedAt": "2026-11-16T09:00:00.000Z",
       "time": "2 天前",
-      "hours": 67,
+      "hours": 70,
       "category": "模型",
       "region": "全球",
       "impact": "关注",
-      "score": 74,
+      "score": 73,
       "url": "https://openai.com/index/lvmh-media-division-partnership",
       "tags": [
         "OpenAI",
@@ -302,18 +302,49 @@
         }
       ],
       "publishedAt": "2026-11-18T17:00:00.000Z",
-      "time": "11 小时前",
-      "hours": 11,
+      "time": "14 小时前",
+      "hours": 14,
       "category": "AI Coding",
       "region": "全球",
       "impact": "关注",
-      "score": 73,
+      "score": 72,
       "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-lower-memory-devices/",
       "tags": [
         "Gemini",
         "AI Coding"
       ],
       "rank": 6
+    },
+    {
+      "id": 953473281,
+      "title": "NVIDIA RTX Spark Compact Desktops Out Now",
+      "titleEn": "NVIDIA RTX Spark Compact Desktops Out Now",
+      "summary": "New NVIDIA RTX Spark compact desktops from ASUS, Dell and MSI are available today, bringing local AI agents, image and video generation, and model fine-tuning to a dedicated Windows PC. With up to 128GB of unified memory and NVIDIA’s AI software stack, these systems provide room for larger local models alongside RTX-accelerated creative and development […]",
+      "why": "模型能力、成本和可用性变化会直接影响企业选型与产品边界。",
+      "source": "NVIDIA Blog",
+      "sources": [
+        "NVIDIA Blog"
+      ],
+      "sourceLinks": [
+        {
+          "name": "NVIDIA Blog",
+          "url": "https://blogs.nvidia.com/blog/rtx-spark-desktop-local-ai-available-now/",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-18T14:00:31.000Z",
+      "time": "17 小时前",
+      "hours": 17,
+      "category": "模型",
+      "region": "全球",
+      "impact": "关注",
+      "score": 72,
+      "url": "https://blogs.nvidia.com/blog/rtx-spark-desktop-local-ai-available-now/",
+      "tags": [
+        "Agent",
+        "模型"
+      ],
+      "rank": 7
     },
     {
       "id": 1589849519,
@@ -334,46 +365,15 @@
       ],
       "publishedAt": "2026-11-16T00:00:00.000Z",
       "time": "3 天前",
-      "hours": 76,
-      "category": "模型",
-      "region": "全球",
-      "impact": "关注",
-      "score": 73,
-      "url": "https://openai.com/index/the-kings-trust-and-openai",
-      "tags": [
-        "OpenAI",
-        "AI"
-      ],
-      "rank": 7
-    },
-    {
-      "id": 953473281,
-      "title": "NVIDIA RTX Spark Compact Desktops Out Now",
-      "titleEn": "NVIDIA RTX Spark Compact Desktops Out Now",
-      "summary": "New NVIDIA RTX Spark compact desktops from ASUS, Dell and MSI are available today, bringing local AI agents, image and video generation, and model fine-tuning to a dedicated Windows PC. With up to 128GB of unified memory and NVIDIA’s AI software stack, these systems provide room for larger local models alongside RTX-accelerated creative and development […]",
-      "why": "模型能力、成本和可用性变化会直接影响企业选型与产品边界。",
-      "source": "NVIDIA Blog",
-      "sources": [
-        "NVIDIA Blog"
-      ],
-      "sourceLinks": [
-        {
-          "name": "NVIDIA Blog",
-          "url": "https://blogs.nvidia.com/blog/rtx-spark-desktop-local-ai-available-now/",
-          "tier": 3
-        }
-      ],
-      "publishedAt": "2026-11-18T14:00:31.000Z",
-      "time": "14 小时前",
-      "hours": 14,
+      "hours": 79,
       "category": "模型",
       "region": "全球",
       "impact": "关注",
       "score": 72,
-      "url": "https://blogs.nvidia.com/blog/rtx-spark-desktop-local-ai-available-now/",
+      "url": "https://openai.com/index/the-kings-trust-and-openai",
       "tags": [
-        "Agent",
-        "模型"
+        "OpenAI",
+        "AI"
       ],
       "rank": 8
     },
@@ -395,12 +395,12 @@
         }
       ],
       "publishedAt": "2026-11-18T10:00:00.000Z",
-      "time": "18 小时前",
-      "hours": 18,
+      "time": "21 小时前",
+      "hours": 21,
       "category": "模型",
       "region": "全球",
       "impact": "关注",
-      "score": 72,
+      "score": 71,
       "url": "https://openai.com/index/the-silent-consensus",
       "tags": [
         "OpenAI",
@@ -426,12 +426,12 @@
         }
       ],
       "publishedAt": "2026-11-18T08:00:00.000Z",
-      "time": "20 小时前",
-      "hours": 20,
+      "time": "23 小时前",
+      "hours": 23,
       "category": "研究",
       "region": "全球",
       "impact": "关注",
-      "score": 72,
+      "score": 71,
       "url": "https://openai.com/index/research-acceleration-jagged-frontier",
       "tags": [
         "OpenAI",
@@ -458,8 +458,8 @@
         }
       ],
       "publishedAt": "2026-11-18T06:00:00.000Z",
-      "time": "22 小时前",
-      "hours": 22,
+      "time": "1 天前",
+      "hours": 25,
       "category": "安全",
       "region": "全球",
       "impact": "关注",
@@ -490,11 +490,11 @@
       ],
       "publishedAt": "2026-11-18T00:00:00.000Z",
       "time": "1 天前",
-      "hours": 28,
+      "hours": 31,
       "category": "算力",
       "region": "全球",
       "impact": "关注",
-      "score": 71,
+      "score": 70,
       "url": "https://openai.com/index/advancing-chip-design-with-our-models",
       "tags": [
         "OpenAI",
@@ -522,11 +522,11 @@
       ],
       "publishedAt": "2026-11-17T17:00:00.000Z",
       "time": "1 天前",
-      "hours": 35,
+      "hours": 38,
       "category": "AI Coding",
       "region": "全球",
       "impact": "关注",
-      "score": 70,
+      "score": 69,
       "url": "https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/",
       "tags": [
         "Gemini",
@@ -553,7 +553,7 @@
       ],
       "publishedAt": "2026-11-17T14:00:10.000Z",
       "time": "1 天前",
-      "hours": 38,
+      "hours": 41,
       "category": "算力",
       "region": "全球",
       "impact": "关注",
@@ -585,11 +585,11 @@
       ],
       "publishedAt": "2026-11-17T00:00:00.000Z",
       "time": "2 天前",
-      "hours": 52,
+      "hours": 55,
       "category": "模型",
       "region": "全球",
       "impact": "关注",
-      "score": 68,
+      "score": 67,
       "url": "https://openai.com/index/strengthening-nato-allied-cyber-defences-ai",
       "tags": [
         "OpenAI",
@@ -616,7 +616,7 @@
       ],
       "publishedAt": "2026-11-16T23:00:05.000Z",
       "time": "2 天前",
-      "hours": 53,
+      "hours": 56,
       "category": "研究",
       "region": "全球",
       "impact": "关注",
@@ -646,7 +646,7 @@
       ],
       "publishedAt": "2026-11-16T20:00:37.000Z",
       "time": "2 天前",
-      "hours": 56,
+      "hours": 59,
       "category": "算力",
       "region": "全球",
       "impact": "关注",
@@ -676,11 +676,11 @@
       ],
       "publishedAt": "2026-11-16T17:00:00.000Z",
       "time": "2 天前",
-      "hours": 59,
+      "hours": 62,
       "category": "研究",
       "region": "全球",
       "impact": "关注",
-      "score": 67,
+      "score": 66,
       "url": "https://openai.com/index/expanding-chatgpt-for-academic-researchers",
       "tags": [
         "GPT",
@@ -707,11 +707,11 @@
       ],
       "publishedAt": "2026-11-16T16:00:51.000Z",
       "time": "2 天前",
-      "hours": 60,
+      "hours": 63,
       "category": "算力",
       "region": "全球",
       "impact": "关注",
-      "score": 67,
+      "score": 66,
       "url": "https://blogs.nvidia.com/blog/lambda-photonics/",
       "tags": [
         "GPU",
@@ -738,11 +738,11 @@
       ],
       "publishedAt": "2026-11-16T16:00:47.000Z",
       "time": "2 天前",
-      "hours": 60,
+      "hours": 63,
       "category": "算力",
       "region": "全球",
       "impact": "关注",
-      "score": 67,
+      "score": 66,
       "url": "https://blogs.nvidia.com/blog/slurm-quantum-computing-supercomputing/",
       "tags": [
         "AI"
@@ -768,11 +768,11 @@
       ],
       "publishedAt": "2026-11-16T16:00:25.000Z",
       "time": "2 天前",
-      "hours": 60,
+      "hours": 63,
       "category": "算力",
       "region": "全球",
       "impact": "关注",
-      "score": 67,
+      "score": 66,
       "url": "https://blogs.nvidia.com/blog/mlperf-training-endpoints-vera-rubin/",
       "tags": [
         "Agent",
@@ -799,11 +799,11 @@
       ],
       "publishedAt": "2026-11-16T16:00:16.000Z",
       "time": "2 天前",
-      "hours": 60,
+      "hours": 63,
       "category": "研究",
       "region": "全球",
       "impact": "关注",
-      "score": 67,
+      "score": 66,
       "url": "https://blogs.nvidia.com/blog/cuda-x-libraries-agents-accelerate-scientific-discovery/",
       "tags": [
         "Agent",
@@ -830,11 +830,11 @@
       ],
       "publishedAt": "2026-11-16T16:00:11.000Z",
       "time": "2 天前",
-      "hours": 60,
+      "hours": 63,
       "category": "算力",
       "region": "全球",
       "impact": "关注",
-      "score": 67,
+      "score": 66,
       "url": "https://blogs.nvidia.com/blog/20-years-cuda/",
       "tags": [
         "GPU",
@@ -861,11 +861,11 @@
       ],
       "publishedAt": "2026-11-16T08:00:00.000Z",
       "time": "2 天前",
-      "hours": 68,
+      "hours": 71,
       "category": "研究",
       "region": "全球",
       "impact": "关注",
-      "score": 66,
+      "score": 65,
       "url": "https://openai.com/index/our-first-phase-of-embedded-assessments",
       "tags": [
         "OpenAI",
