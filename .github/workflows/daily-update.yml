@@ -1,16 +1,12 @@
-name: Daily AI market pulse
+name: Validate and deploy AI market pulse
 
 on:
   push:
     branches: [main]
-    paths-ignore:
-      - 'data/dashboard.json'
-  schedule:
-    - cron: '15 0 * * *'
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -19,7 +15,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  update-and-deploy:
+  validate-and-deploy:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -37,23 +33,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Collect and analyze news
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-6.2-sol' }}
-        run: npm run update:news
-
-      - name: Save the new data snapshot
-        run: |
-          if git diff --quiet -- data/dashboard.json; then
-            echo "No data changes"
-          else
-            git config user.name "ai-market-pulse-bot"
-            git config user.email "actions@users.noreply.github.com"
-            git add data/dashboard.json
-            git commit -m "data: refresh daily AI market pulse"
-            git push
-          fi
+      - name: Validate dashboard data
+        run: npm run validate:data
 
       - name: Build static site
         env:

@@ -1,5 +1,12 @@
 {
-  "generatedAt": "2026-11-19T07:56:31.040Z",
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-19T08:11:00.008Z",
+  "contentUpdatedAt": "2026-11-19T07:13:48.390Z",
+  "status": {
+    "state": "stale",
+    "lastSuccessfulAt": "2026-11-19T07:13:48.390Z",
+    "note": "等待每日研究任务生成首份 V2 快照"
+  },
   "mode": "公开源自动聚合",
   "stats": {
     "rawSignals": 37,
@@ -21,110 +28,8 @@
       "Introducing Gemini 4 Neon：模型能力、成本和可用性变化会直接影响企业选型与产品边界。",
       "Introducing GPT-6.2 Astra and Sol：开发工具正从辅助补全走向可交付完整任务的 Agent 工作流。",
       "Introducing OpenAI for Chile：模型能力、成本和可用性变化会直接影响企业选型与产品边界。"
-    ],
-    "confidence": 82
+    ]
   },
-  "trends": [
-    {
-      "name": "OpenAI",
-      "value": 635,
-      "label": "领涨",
-      "bars": [
-        28,
-        35,
-        31,
-        46,
-        52,
-        61,
-        90
-      ]
-    },
-    {
-      "name": "AI",
-      "value": 418,
-      "label": "升温",
-      "bars": [
-        28,
-        35,
-        31,
-        46,
-        52,
-        61,
-        73
-      ]
-    },
-    {
-      "name": "Agent",
-      "value": 418,
-      "label": "升温",
-      "bars": [
-        28,
-        35,
-        31,
-        46,
-        52,
-        61,
-        73
-      ]
-    },
-    {
-      "name": "算力",
-      "value": 411,
-      "label": "升温",
-      "bars": [
-        28,
-        35,
-        31,
-        46,
-        52,
-        61,
-        66
-      ]
-    }
-  ],
-  "platformBoards": [
-    {
-      "name": "中国 AI",
-      "source": "按真实事件热度计算",
-      "items": []
-    },
-    {
-      "name": "模型与产品",
-      "source": "按真实事件热度计算",
-      "items": [
-        {
-          "title": "Introducing Gemini 4 Neon",
-          "score": 87
-        },
-        {
-          "title": "Introducing OpenAI for Chile",
-          "score": 75
-        },
-        {
-          "title": "LVMH’s Media Division announces strategic partnership with OpenAI",
-          "score": 73
-        }
-      ]
-    },
-    {
-      "name": "开发者与开源",
-      "source": "按真实事件热度计算",
-      "items": [
-        {
-          "title": "Introducing GPT-6.2 Astra and Sol",
-          "score": 77
-        },
-        {
-          "title": "The Gemini app is now available on lower-memory Android devices.",
-          "score": 72
-        },
-        {
-          "title": "Put Gemini to work for you",
-          "score": 69
-        }
-      ]
-    }
-  ],
   "items": [
     {
       "id": 1630996668,
@@ -144,8 +49,6 @@
         }
       ],
       "publishedAt": "2026-11-18T21:35:43.000Z",
-      "time": "10 小时前",
-      "hours": 10,
       "category": "模型",
       "region": "全球",
       "impact": "高影响",
@@ -175,8 +78,6 @@
         }
       ],
       "publishedAt": "2026-11-17T17:45:00.000Z",
-      "time": "1 天前",
-      "hours": 38,
       "category": "AI Coding",
       "region": "全球",
       "impact": "关注",
@@ -207,8 +108,6 @@
         }
       ],
       "publishedAt": "2026-11-17T00:00:00.000Z",
-      "time": "2 天前",
-      "hours": 56,
       "category": "模型",
       "region": "全球",
       "impact": "关注",
@@ -238,8 +137,6 @@
         }
       ],
       "publishedAt": "2026-11-16T16:00:01.000Z",
-      "time": "2 天前",
-      "hours": 64,
       "category": "算力",
       "region": "全球",
       "impact": "关注",
@@ -270,8 +167,6 @@
         }
       ],
       "publishedAt": "2026-11-16T09:00:00.000Z",
-      "time": "2 天前",
-      "hours": 71,
       "category": "模型",
       "region": "全球",
       "impact": "关注",
@@ -302,8 +197,6 @@
         }
       ],
       "publishedAt": "2026-11-18T17:00:00.000Z",
-      "time": "15 小时前",
-      "hours": 15,
       "category": "AI Coding",
       "region": "全球",
       "impact": "关注",
@@ -333,8 +226,6 @@
         }
       ],
       "publishedAt": "2026-11-18T14:00:31.000Z",
-      "time": "18 小时前",
-      "hours": 18,
       "category": "模型",
       "region": "全球",
       "impact": "关注",
@@ -364,8 +255,6 @@
         }
       ],
       "publishedAt": "2026-11-16T00:00:00.000Z",
-      "time": "3 天前",
-      "hours": 80,
       "category": "模型",
       "region": "全球",
       "impact": "关注",
@@ -395,8 +284,6 @@
         }
       ],
       "publishedAt": "2026-11-18T10:00:00.000Z",
-      "time": "22 小时前",
-      "hours": 22,
       "category": "模型",
       "region": "全球",
       "impact": "关注",
@@ -426,8 +313,6 @@
         }
       ],
       "publishedAt": "2026-11-18T08:00:00.000Z",
-      "time": "1 天前",
-      "hours": 24,
       "category": "研究",
       "region": "全球",
       "impact": "关注",
@@ -458,8 +343,6 @@
         }
       ],
       "publishedAt": "2026-11-18T06:00:00.000Z",
-      "time": "1 天前",
-      "hours": 26,
       "category": "安全",
       "region": "全球",
       "impact": "关注",
@@ -489,8 +372,6 @@
         }
       ],
       "publishedAt": "2026-11-18T00:00:00.000Z",
-      "time": "1 天前",
-      "hours": 32,
       "category": "算力",
       "region": "全球",
       "impact": "关注",
@@ -521,8 +402,6 @@
         }
       ],
       "publishedAt": "2026-11-17T17:00:00.000Z",
-      "time": "1 天前",
-      "hours": 39,
       "category": "AI Coding",
       "region": "全球",
       "impact": "关注",
@@ -552,8 +431,6 @@
         }
       ],
       "publishedAt": "2026-11-17T14:00:10.000Z",
-      "time": "1 天前",
-      "hours": 42,
       "category": "算力",
       "region": "全球",
       "impact": "关注",
@@ -584,8 +461,6 @@
         }
       ],
       "publishedAt": "2026-11-17T00:00:00.000Z",
-      "time": "2 天前",
-      "hours": 56,
       "category": "模型",
       "region": "全球",
       "impact": "关注",
@@ -615,8 +490,6 @@
         }
       ],
       "publishedAt": "2026-11-16T23:00:05.000Z",
-      "time": "2 天前",
-      "hours": 57,
       "category": "研究",
       "region": "全球",
       "impact": "关注",
@@ -645,8 +518,6 @@
         }
       ],
       "publishedAt": "2026-11-16T20:00:37.000Z",
-      "time": "2 天前",
-      "hours": 60,
       "category": "算力",
       "region": "全球",
       "impact": "关注",
@@ -675,8 +546,6 @@
         }
       ],
       "publishedAt": "2026-11-16T17:00:00.000Z",
-      "time": "2 天前",
-      "hours": 63,
       "category": "研究",
       "region": "全球",
       "impact": "关注",
@@ -706,8 +575,6 @@
         }
       ],
       "publishedAt": "2026-11-16T16:00:51.000Z",
-      "time": "2 天前",
-      "hours": 64,
       "category": "算力",
       "region": "全球",
       "impact": "关注",
@@ -737,8 +604,6 @@
         }
       ],
       "publishedAt": "2026-11-16T16:00:47.000Z",
-      "time": "2 天前",
-      "hours": 64,
       "category": "算力",
       "region": "全球",
       "impact": "关注",
@@ -767,8 +632,6 @@
         }
       ],
       "publishedAt": "2026-11-16T16:00:25.000Z",
-      "time": "2 天前",
-      "hours": 64,
       "category": "算力",
       "region": "全球",
       "impact": "关注",
@@ -798,8 +661,6 @@
         }
       ],
       "publishedAt": "2026-11-16T16:00:16.000Z",
-      "time": "2 天前",
-      "hours": 64,
       "category": "研究",
       "region": "全球",
       "impact": "关注",
@@ -829,8 +690,6 @@
         }
       ],
       "publishedAt": "2026-11-16T16:00:11.000Z",
-      "time": "2 天前",
-      "hours": 64,
       "category": "算力",
       "region": "全球",
       "impact": "关注",
@@ -860,8 +719,6 @@
         }
       ],
       "publishedAt": "2026-11-16T08:00:00.000Z",
-      "time": "3 天前",
-      "hours": 72,
       "category": "研究",
       "region": "全球",
       "impact": "关注",

@@ -4,7 +4,7 @@ import process from 'node:process';
 
 const root = process.cwd();
 const sources = JSON.parse(await fs.readFile(path.join(root, 'config/sources.json'), 'utf8'));
-const outputPath = path.join(root, 'data/dashboard.json');
+const outputPath = path.join(root, process.env.DASHBOARD_OUTPUT || 'data/dashboard.json');
 const previous = await readJson(outputPath, null);
 const now = new Date();
 const cutoff = now.getTime() - 7 * 24 * 60 * 60 * 1000;

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AI Market Pulse Dashboard V2",
+  "type": "object",
+  "required": ["schemaVersion", "generatedAt", "contentUpdatedAt", "status", "mode", "stats", "sourceHealth", "brief", "items"],
+  "properties": {
+    "schemaVersion": { "const": 2 },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "contentUpdatedAt": { "type": "string", "format": "date-time" },
+    "status": {
+      "type": "object",
+      "required": ["state", "lastSuccessfulAt"],
+      "properties": {
+        "state": { "enum": ["fresh", "stale", "failed"] },
+        "lastSuccessfulAt": { "type": "string", "format": "date-time" },
+        "note": { "type": "string" }
+      }
+    },
+    "mode": { "type": "string", "minLength": 1 },
+    "stats": { "type": "object" },
+    "sourceHealth": { "type": "object" },
+    "brief": {
+      "type": "object",
+      "required": ["title", "bullets"],
+      "properties": {
+        "title": { "type": "string", "minLength": 6 },
+        "bullets": { "type": "array", "minItems": 3, "maxItems": 5, "items": { "type": "string", "minLength": 12 } }
+      }
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 24,
+      "items": {
+        "type": "object",
+        "required": ["title", "titleEn", "summary", "why", "source", "sourceLinks", "publishedAt", "category", "region", "impact", "score", "tags"],
+        "properties": {
+          "title": { "type": "string", "minLength": 4 },
+          "titleEn": { "type": "string", "minLength": 4 },
+          "summary": { "type": "string", "minLength": 20 },
+          "why": { "type": "string", "minLength": 15 },
+          "source": { "type": "string" },
+          "publishedAt": { "type": "string", "format": "date-time" },
+          "category": { "enum": ["中国AI", "模型", "AI Coding", "算力", "研究", "产品", "资本", "安全", "开源"] },
+          "region": { "enum": ["中国", "全球"] },
+          "impact": { "enum": ["突发", "高影响", "关注"] },
+          "score": { "type": "integer", "minimum": 0, "maximum": 99 },
+          "tags": { "type": "array", "maxItems": 4, "items": { "type": "string" } },
+          "sourceLinks": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 5,
+            "items": {
+              "type": "object",
+              "required": ["name", "url", "tier"],
+              "properties": {
+                "name": { "type": "string" },
+                "url": { "type": "string", "format": "uri" },
+                "tier": { "enum": [1, 2, 3] }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
