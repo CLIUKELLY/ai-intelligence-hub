@@ -1,39 +1,41 @@
 # AI Intelligence Hub · Market Pulse
 
-A Chinese-first AI market intelligence dashboard. It collects public first-party feeds, groups similar events, calculates real dashboard metrics, preserves source links, and can optionally use the OpenAI Responses API for daily web research, Chinese summaries, and impact analysis.
+A Chinese-first AI market intelligence dashboard. A scheduled Codex research task produces one cited daily snapshot; deterministic scripts validate and normalize the data; GitHub Actions only builds and publishes the site.
 
-## Core pipeline
+## Daily pipeline
 
-1. Fetch configured RSS and Atom sources from `config/sources.json`.
-2. Normalize titles, timestamps, summaries, source tier, and region.
-3. De-duplicate URLs and cluster similar titles with deterministic token similarity.
-4. Calculate event impact, trend scores, source health, and dashboard totals.
-5. If `OPENAI_API_KEY` is available, run one daily Responses API research job with web search and structured output.
-6. Write the reproducible snapshot to `data/dashboard.json` and build a static site.
+1. The local scheduled research task searches the previous 24 hours and checks official sources, GitHub releases, research organizations, reliable media, and Chinese-market coverage.
+2. It writes candidates to `data/dashboard.draft.json`, never directly over the last successful snapshot.
+3. `npm run prepare:data` validates URLs, timestamps, categories, source tiers, and required editorial fields, then calculates deterministic totals and promotes the draft.
+4. `npm run publish:data` performs a second validation and atomically commits only `data/dashboard.json` through the GitHub API.
+5. `.github/workflows/daily-update.yml` validates the committed snapshot, builds the static export, and deploys GitHub Pages.
 
-The pipeline still works without an OpenAI key. In that mode it publishes the feed-derived results and deterministic analysis.
+The scheduled task uses the signed-in desktop Codex environment rather than an API key. The computer must be on and the ChatGPT desktop app must be running at the scheduled time.
+
+RSS and Atom ingestion remains available as an explicit manual fallback in `.github/workflows/manual-rss-fallback.yml`. It is not allowed to compete with the scheduled research task for daily writes.
 
 ## Local use
 
 ```bash
 npm ci
-npm run update:news
+npm run validate:data
 npm run dev
 ```
 
-Optional AI enrichment:
+Prepare a reviewed draft:
 
 ```bash
-OPENAI_API_KEY=your_key npm run update:news
+npm run prepare:data
+npm run publish:data
 ```
 
-Never commit API keys. For GitHub Actions, add `OPENAI_API_KEY` as a repository Actions secret.
+The publishing command uses the existing authenticated GitHub CLI session. Never put GitHub tokens or private context in the public JSON.
 
 ## GitHub Pages
 
-The workflow in `.github/workflows/daily-update.yml` runs every day at 08:15 Asia/Shanghai, updates the committed data snapshot, builds the static export, and deploys `dist/client` to GitHub Pages. It can also be run manually.
+The workflow in `.github/workflows/daily-update.yml` runs on changes to `main`, validates `data/dashboard.json`, builds the static export, and deploys `dist/client` to GitHub Pages. It can also be run manually.
 
-Set the repository Pages source to **GitHub Actions**. The default model is `gpt-6.2-sol`; override it with a repository variable named `OPENAI_MODEL`.
+Set the repository Pages source to **GitHub Actions**.
 
 ## Trust model
 
@@ -42,3 +44,5 @@ Set the repository Pages source to **GitHub Actions**. The default model is `gpt
 - Tier 1: community discovery signal
 
 Multiple articles are not treated as independent confirmation when they resolve to the same canonical source. Every displayed source remains clickable so readers can inspect the evidence.
+
+High-impact stories should have two independent sources whenever possible. Missing or invalid evidence fails validation; unchanged research does not create a new commit; failed research preserves the last successful public snapshot.
