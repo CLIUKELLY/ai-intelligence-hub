@@ -1,135 +1,115 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-19T09:06:39Z",
-  "contentUpdatedAt": "2026-11-19T09:06:39Z",
+  "generatedAt": "2026-11-19T23:44:03Z",
+  "contentUpdatedAt": "2026-11-19T23:44:03Z",
   "status": {
     "state": "fresh",
-    "lastSuccessfulAt": "2026-11-19T09:06:39Z",
+    "lastSuccessfulAt": "2026-11-19T23:44:03Z",
     "note": "已完成 GPT 联网研究与 GitHub 数据快照；日常写入不使用 RSS。"
   },
   "mode": "GPT 联网研究（非RSS）",
   "stats": {
-    "researchedSignals": 24,
-    "verifiedEvents": 4,
-    "chinaRatio": 0,
+    "researchedSignals": 21,
+    "verifiedEvents": 3,
+    "chinaRatio": 33,
     "highImpact": 2,
     "researchWindowHours": 24
   },
   "sourceHealth": {
     "method": "GPT 联网研究",
-    "attempted": 24,
-    "healthy": 24,
-    "officialHealthy": 4,
+    "attempted": 21,
+    "healthy": 21,
+    "officialHealthy": 3,
     "failed": [],
     "rssUsed": false
   },
   "brief": {
-    "title": "今天优先关注：资本、世界模型与本地算力",
+    "title": "今天优先关注：Agent 工厂、云边协同与中国模型出海",
     "bullets": [
-      "Anthropic 以每股 83 美元定价 IPO、拟以 ANT 在纳斯达克交易；资本市场开始直接给前沿模型公司的增长与算力承诺定价。",
-      "Google 将 Genie 4 先向符合条件的 AI Ultra 用户开放；可交互世界模型正在从研究演示走向受控产品化与机器人仿真入口。",
-      "NVIDIA 推出搭载最高 128GB 统一内存的 RTX Spark 紧凑桌面设备，本地 Agent、生成与微调工作负载的硬件边界继续下探。",
-      "OpenAI 公开 Codex 沙箱的权限边界与网络控制设计；企业落地代码 Agent 时，隔离和最小权限已成为产品能力的一部分。"
+      "OpenAI 披露了以 Codex 驱动的“Performance Factory”：任务状态、派发循环、独立审查和人工合并构成可运行的生产级 Agent 工作流。",
+      "NVIDIA 与 Microsoft 把加速计算扩展到 Azure、工业系统与 Windows PC，企业 AI 的竞争正在从单点模型转向跨云、边缘和终端的全栈交付。",
+      "阿里云在香港推出 Qwen4-Max 的能力增强并推进视频模型合作；中国模型的区域生态、行业集成和内容生产场景仍在同步扩张。"
     ]
   },
   "items": [
     {
-      "title": "Anthropic 完成 IPO 定价",
-      "titleEn": "Anthropic prices initial public offering",
-      "summary": "Anthropic 宣布其 A 类普通股 IPO 定价为每股 83 美元，发行规模为 9.8 亿股；公司称股票预计于 11 月 19 日以代码 ANT 在纳斯达克全球精选市场开始交易。",
-      "why": "这把前沿模型公司的收入增长、算力资本开支与企业需求放到公开市场持续定价，值得跟踪其估值、锁定期及同业资本开支预期。",
-      "source": "Anthropic",
-      "sourceLinks": [
-        {
-          "name": "Anthropic 官方公告",
-          "url": "https://www.anthropic.com/news/anthropic-prices-initial-public-offering",
-          "tier": 1
-        }
-      ],
-      "publishedAt": "2026-11-18T22:00:00Z",
-      "category": "资本",
-      "region": "全球",
-      "impact": "高影响",
-      "score": 95,
-      "tags": [
-        "Anthropic",
-        "IPO",
-        "资本市场"
-      ]
-    },
-    {
-      "title": "Google 将 Genie 4 开放至 Project Genie",
-      "titleEn": "Genie 4 is now available",
-      "summary": "Google DeepMind 表示，Genie 4 已在 Project Genie 向符合条件的 Google AI Ultra 订阅者开放；该模型可通过自然语言实时改变环境、事件、镜头与音频，并先以受控范围收集反馈。",
-      "why": "世界模型把视频生成推进到可交互的仿真环境，未来可能成为机器人训练、空间设计、教育和创意工作流的基础能力。",
-      "source": "Google DeepMind",
-      "sourceLinks": [
-        {
-          "name": "Google DeepMind 官方页面",
-          "url": "https://deepmind.google/models/genie/",
-          "tier": 1
-        }
-      ],
-      "publishedAt": "2026-11-18T18:13:00Z",
-      "category": "产品",
-      "region": "全球",
-      "impact": "高影响",
-      "score": 90,
-      "tags": [
-        "Google DeepMind",
-        "Genie 4",
-        "世界模型",
-        "机器人"
-      ]
-    },
-    {
-      "title": "NVIDIA RTX Spark 紧凑型桌面设备上市",
-      "titleEn": "NVIDIA RTX Spark Compact Desktops Out Now",
-      "summary": "NVIDIA 宣布华硕、戴尔和微星的 RTX Spark 紧凑型桌面设备开售，面向本地 AI Agent、图像与视频生成及模型微调；设备最高配备 128GB 统一内存与 NVIDIA AI 软件栈。",
-      "why": "当高内存本地工作站进入更紧凑形态，隐私敏感场景的原型开发、离线推理与小型微调会获得更低的部署门槛。",
-      "source": "NVIDIA Blog",
-      "sourceLinks": [
-        {
-          "name": "NVIDIA 官方博客",
-          "url": "https://blogs.nvidia.com/blog/rtx-spark-desktop-local-ai-available-now/",
-          "tier": 1
-        }
-      ],
-      "publishedAt": "2026-11-18T14:00:31Z",
-      "category": "算力",
-      "region": "全球",
-      "impact": "关注",
-      "score": 82,
-      "tags": [
-        "NVIDIA",
-        "本地AI",
-        "GPU",
-        "Agent"
-      ]
-    },
-    {
-      "title": "OpenAI 公开 Codex 沙箱设计",
-      "titleEn": "Inside the Codex sandbox",
-      "summary": "OpenAI 发布 Codex 沙箱工程说明，解释命令执行的边界选择、网络权限、配置分层与 Linux、macOS、Windows 实现，强调由用户控制可执行操作的限制。",
-      "why": "代码 Agent 从“能否写代码”转向“能否在受控环境中执行”；沙箱、网络白名单和授权边界是企业采用时必须纳入架构的控制面。",
+      "title": "OpenAI 展示 Codex 驱动的 Performance Factory",
+      "titleEn": "How OpenAI’s Performance Factory keeps ChatGPT fast",
+      "summary": "OpenAI 介绍一个在云端运行的 Agent 工作流：性能告警触发任务后，Codex 负责排查、提出修复方案和验证恢复；工程师在关键判断与合并环节保持审核。该系统在三个多月内跟踪超过 1,700 次调查，并定位 600 多个案例根因。",
+      "why": "它给出了从“单个 AI Coding 助手”升级为“可运营的 Agent 工厂”的具体范式：显式状态机、外部任务记录、对抗式复核、工具失败监控和人类审批缺一不可。",
       "source": "OpenAI",
       "sourceLinks": [
         {
           "name": "OpenAI 工程文章",
-          "url": "https://openai.com/index/inside-the-codex-sandbox/",
+          "url": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast/",
           "tier": 1
         }
       ],
-      "publishedAt": "2026-11-18T12:00:00Z",
+      "publishedAt": "2026-11-19T00:00:00Z",
       "category": "AI Coding",
       "region": "全球",
-      "impact": "关注",
-      "score": 78,
+      "impact": "高影响",
+      "score": 92,
       "tags": [
         "OpenAI",
         "Codex",
-        "沙箱",
-        "AI Coding"
+        "Agent Workflow",
+        "SRE"
+      ]
+    },
+    {
+      "title": "NVIDIA 与 Microsoft 扩展从 Azure 到 Windows PC 的 AI 协同",
+      "titleEn": "NVIDIA and Microsoft Expand Accelerated Computing From Azure to Windows PCs",
+      "summary": "两家公司宣布扩展全栈协作，覆盖基于 NVIDIA Vera Rubin NVL72 的 Azure 虚拟机、Microsoft Foundry 中的 NVIDIA 开放模型与定制能力，以及工业系统和 Windows PC 的边缘部署选项。",
+      "why": "企业部署的重点正从“选择一个模型”转为跨云、边缘与终端的一体化交付；这会影响工业 AI 的算力采购、模型托管和数据就近处理架构。",
+      "source": "NVIDIA",
+      "sourceLinks": [
+        {
+          "name": "NVIDIA Newsroom",
+          "url": "https://nvidianews.nvidia.com/",
+          "tier": 1
+        },
+        {
+          "name": "AI Daily Journal 报道",
+          "url": "https://aidailyjournal.com/en/n/2026/11/19/nvidia-and-microsoft-expand-accelerated-computing-from-azure-to-windows-pcs/",
+          "tier": 2
+        }
+      ],
+      "publishedAt": "2026-11-19T00:00:00Z",
+      "category": "算力",
+      "region": "全球",
+      "impact": "高影响",
+      "score": 88,
+      "tags": [
+        "NVIDIA",
+        "Microsoft",
+        "Azure",
+        "边缘AI"
+      ]
+    },
+    {
+      "title": "阿里云在香港发布 Qwen4-Max 增强与视频模型合作",
+      "titleEn": "Alibaba Cloud Unveils New AI Initiatives at Hong Kong Summit",
+      "summary": "阿里云在香港峰会公布 Qwen4-Max 的能力增强，并与美亚娱乐合作，将阿里视频生成模型接入其影视 IP、平台与导演创作流程，支持香港影视行业的 AI 应用。",
+      "why": "这不是单纯模型发布，而是把模型能力嵌进区域生态和具体内容行业；对中国模型的出海路径而言，行业伙伴、分发渠道与本地内容资产同样关键。",
+      "source": "Alibaba Cloud",
+      "sourceLinks": [
+        {
+          "name": "Alibaba Cloud 官方博客",
+          "url": "https://www.alibabacloud.com/blog/alibaba-cloud-unveils-new-ai-initiatives-at-hong-kong-summit-to-advance-the-city%E2%80%99s-ai-ecosystem_603792",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-19T00:00:00Z",
+      "category": "中国AI",
+      "region": "中国",
+      "impact": "关注",
+      "score": 80,
+      "tags": [
+        "阿里云",
+        "Qwen",
+        "视频生成",
+        "出海"
       ]
     }
   ]
