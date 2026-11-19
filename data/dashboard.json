@@ -1,734 +1,136 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-19T08:11:00.008Z",
-  "contentUpdatedAt": "2026-11-19T07:13:48.390Z",
+  "generatedAt": "2026-11-19T09:06:39Z",
+  "contentUpdatedAt": "2026-11-19T09:06:39Z",
   "status": {
-    "state": "stale",
-    "lastSuccessfulAt": "2026-11-19T07:13:48.390Z",
-    "note": "等待每日研究任务生成首份 V2 快照"
+    "state": "fresh",
+    "lastSuccessfulAt": "2026-11-19T09:06:39Z",
+    "note": "已完成 GPT 联网研究与 GitHub 数据快照；日常写入不使用 RSS。"
   },
-  "mode": "公开源自动聚合",
+  "mode": "GPT 联网研究（非RSS）",
   "stats": {
-    "rawSignals": 37,
-    "events": 24,
+    "researchedSignals": 24,
+    "verifiedEvents": 4,
     "chinaRatio": 0,
-    "highImpact": 1
+    "highImpact": 2,
+    "researchWindowHours": 24
   },
   "sourceHealth": {
-    "attempted": 9,
-    "healthy": 8,
-    "officialHealthy": 7,
-    "failed": [
-      "Microsoft AI"
-    ]
+    "method": "GPT 联网研究",
+    "attempted": 24,
+    "healthy": 24,
+    "officialHealthy": 4,
+    "failed": [],
+    "rssUsed": false
   },
   "brief": {
-    "title": "今天优先关注：模型、AI Coding、模型",
+    "title": "今天优先关注：资本、世界模型与本地算力",
     "bullets": [
-      "Introducing Gemini 4 Neon：模型能力、成本和可用性变化会直接影响企业选型与产品边界。",
-      "Introducing GPT-6.2 Astra and Sol：开发工具正从辅助补全走向可交付完整任务的 Agent 工作流。",
-      "Introducing OpenAI for Chile：模型能力、成本和可用性变化会直接影响企业选型与产品边界。"
+      "Anthropic 以每股 83 美元定价 IPO、拟以 ANT 在纳斯达克交易；资本市场开始直接给前沿模型公司的增长与算力承诺定价。",
+      "Google 将 Genie 4 先向符合条件的 AI Ultra 用户开放；可交互世界模型正在从研究演示走向受控产品化与机器人仿真入口。",
+      "NVIDIA 推出搭载最高 128GB 统一内存的 RTX Spark 紧凑桌面设备，本地 Agent、生成与微调工作负载的硬件边界继续下探。",
+      "OpenAI 公开 Codex 沙箱的权限边界与网络控制设计；企业落地代码 Agent 时，隔离和最小权限已成为产品能力的一部分。"
     ]
   },
   "items": [
     {
-      "id": 1630996668,
-      "title": "Introducing Gemini 4 Neon",
-      "titleEn": "Introducing Gemini 4 Neon",
-      "summary": "来自 Google DeepMind 的最新动态，打开原文查看完整信息。",
-      "why": "模型能力、成本和可用性变化会直接影响企业选型与产品边界。",
-      "source": "Google DeepMind",
-      "sources": [
-        "Google DeepMind"
-      ],
+      "title": "Anthropic 完成 IPO 定价",
+      "titleEn": "Anthropic prices initial public offering",
+      "summary": "Anthropic 宣布其 A 类普通股 IPO 定价为每股 83 美元，发行规模为 9.8 亿股；公司称股票预计于 11 月 19 日以代码 ANT 在纳斯达克全球精选市场开始交易。",
+      "why": "这把前沿模型公司的收入增长、算力资本开支与企业需求放到公开市场持续定价，值得跟踪其估值、锁定期及同业资本开支预期。",
+      "source": "Anthropic",
       "sourceLinks": [
         {
-          "name": "Google DeepMind",
-          "url": "https://deepmind.google/blog/introducing-gemini-4-neon/",
-          "tier": 3
+          "name": "Anthropic 官方公告",
+          "url": "https://www.anthropic.com/news/anthropic-prices-initial-public-offering",
+          "tier": 1
         }
       ],
-      "publishedAt": "2026-11-18T21:35:43.000Z",
-      "category": "模型",
+      "publishedAt": "2026-11-18T22:00:00Z",
+      "category": "资本",
       "region": "全球",
       "impact": "高影响",
-      "score": 87,
-      "url": "https://deepmind.google/blog/introducing-gemini-4-neon/",
+      "score": 95,
       "tags": [
-        "Gemini",
-        "模型"
-      ],
-      "rank": 1
+        "Anthropic",
+        "IPO",
+        "资本市场"
+      ]
     },
     {
-      "id": 681376090,
-      "title": "Introducing GPT-6.2 Astra and Sol",
-      "titleEn": "Introducing GPT-6.2 Astra and Sol",
-      "summary": "Introducing GPT‑6.2 Astra and Sol, with better professional outputs, coding, computer use, and efficiency at lower cost across ChatGPT Work, Codex, and the API.",
-      "why": "开发工具正从辅助补全走向可交付完整任务的 Agent 工作流。",
-      "source": "OpenAI News",
-      "sources": [
-        "OpenAI News"
-      ],
+      "title": "Google 将 Genie 4 开放至 Project Genie",
+      "titleEn": "Genie 4 is now available",
+      "summary": "Google DeepMind 表示，Genie 4 已在 Project Genie 向符合条件的 Google AI Ultra 订阅者开放；该模型可通过自然语言实时改变环境、事件、镜头与音频，并先以受控范围收集反馈。",
+      "why": "世界模型把视频生成推进到可交互的仿真环境，未来可能成为机器人训练、空间设计、教育和创意工作流的基础能力。",
+      "source": "Google DeepMind",
       "sourceLinks": [
         {
-          "name": "OpenAI News",
-          "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol",
-          "tier": 3
+          "name": "Google DeepMind 官方页面",
+          "url": "https://deepmind.google/models/genie/",
+          "tier": 1
         }
       ],
-      "publishedAt": "2026-11-17T17:45:00.000Z",
-      "category": "AI Coding",
+      "publishedAt": "2026-11-18T18:13:00Z",
+      "category": "产品",
       "region": "全球",
-      "impact": "关注",
-      "score": 77,
-      "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol",
+      "impact": "高影响",
+      "score": 90,
       "tags": [
-        "GPT",
-        "Coding",
-        "AI Coding"
-      ],
-      "rank": 2
+        "Google DeepMind",
+        "Genie 4",
+        "世界模型",
+        "机器人"
+      ]
     },
     {
-      "id": 2560026416,
-      "title": "Introducing OpenAI for Chile",
-      "titleEn": "Introducing OpenAI for Chile",
-      "summary": "OpenAI and the Government of Chile are partnering to support responsible AI adoption, build public-sector skills and help local startups develop AI applications.",
-      "why": "模型能力、成本和可用性变化会直接影响企业选型与产品边界。",
-      "source": "OpenAI News",
-      "sources": [
-        "OpenAI News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "OpenAI News",
-          "url": "https://openai.com/index/introducing-openai-for-chile",
-          "tier": 3
-        }
-      ],
-      "publishedAt": "2026-11-17T00:00:00.000Z",
-      "category": "模型",
-      "region": "全球",
-      "impact": "关注",
-      "score": 75,
-      "url": "https://openai.com/index/introducing-openai-for-chile",
-      "tags": [
-        "OpenAI",
-        "AI"
-      ],
-      "rank": 3
-    },
-    {
-      "id": 2673996218,
-      "title": "NVIDIA Announces Rubin HPC — A New GPU to Accelerate Agents for Science, Engineering and Analytics",
-      "titleEn": "NVIDIA Announces Rubin HPC — A New GPU to Accelerate Agents for Science, Engineering and Analytics",
-      "summary": "Announced today at SC26, NVIDIA Rubin HPC is a new GPU in the NVIDIA Vera Rubin platform designed to accelerate simulation and data processing for science, engineering and analytics workflows. As agents help scientists and engineers explore more candidate materials, molecules and designs, they rely on simulations to test those ideas and guide their next […]",
-      "why": "推理成本和基础设施供给决定 AI 产品能否规模化进入生产环境。",
-      "source": "NVIDIA Blog",
-      "sources": [
-        "NVIDIA Blog"
-      ],
-      "sourceLinks": [
-        {
-          "name": "NVIDIA Blog",
-          "url": "https://blogs.nvidia.com/blog/rubin-hpc/",
-          "tier": 3
-        }
-      ],
-      "publishedAt": "2026-11-16T16:00:01.000Z",
-      "category": "算力",
-      "region": "全球",
-      "impact": "关注",
-      "score": 74,
-      "url": "https://blogs.nvidia.com/blog/rubin-hpc/",
-      "tags": [
-        "Agent",
-        "GPU",
-        "算力"
-      ],
-      "rank": 4
-    },
-    {
-      "id": 1369855108,
-      "title": "LVMH’s Media Division announces strategic partnership with OpenAI",
-      "titleEn": "LVMH’s Media Division announces strategic partnership with OpenAI",
-      "summary": "LVMH’s Media Division and OpenAI announce a partnership to support journalism with AI and make its publications more accessible through ChatGPT.",
-      "why": "模型能力、成本和可用性变化会直接影响企业选型与产品边界。",
-      "source": "OpenAI News",
-      "sources": [
-        "OpenAI News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "OpenAI News",
-          "url": "https://openai.com/index/lvmh-media-division-partnership",
-          "tier": 3
-        }
-      ],
-      "publishedAt": "2026-11-16T09:00:00.000Z",
-      "category": "模型",
-      "region": "全球",
-      "impact": "关注",
-      "score": 73,
-      "url": "https://openai.com/index/lvmh-media-division-partnership",
-      "tags": [
-        "OpenAI",
-        "GPT",
-        "模型"
-      ],
-      "rank": 5
-    },
-    {
-      "id": 355740124,
-      "title": "The Gemini app is now available on lower-memory Android devices.",
-      "titleEn": "The Gemini app is now available on lower-memory Android devices.",
-      "summary": "<img src=\"https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Gemini_app_Android_social_share.max-600x600.format-webp.webp\">The Google Gemini app now supports lower-memory Android devices. Access Gemini Live and custom image creation on your phone. Download the app today.",
-      "why": "开发工具正从辅助补全走向可交付完整任务的 Agent 工作流。",
-      "source": "Google AI",
-      "sources": [
-        "Google AI"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Google AI",
-          "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-lower-memory-devices/",
-          "tier": 3
-        }
-      ],
-      "publishedAt": "2026-11-18T17:00:00.000Z",
-      "category": "AI Coding",
-      "region": "全球",
-      "impact": "关注",
-      "score": 72,
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-lower-memory-devices/",
-      "tags": [
-        "Gemini",
-        "AI Coding"
-      ],
-      "rank": 6
-    },
-    {
-      "id": 953473281,
-      "title": "NVIDIA RTX Spark Compact Desktops Out Now",
+      "title": "NVIDIA RTX Spark 紧凑型桌面设备上市",
       "titleEn": "NVIDIA RTX Spark Compact Desktops Out Now",
-      "summary": "New NVIDIA RTX Spark compact desktops from ASUS, Dell and MSI are available today, bringing local AI agents, image and video generation, and model fine-tuning to a dedicated Windows PC. With up to 128GB of unified memory and NVIDIA’s AI software stack, these systems provide room for larger local models alongside RTX-accelerated creative and development […]",
-      "why": "模型能力、成本和可用性变化会直接影响企业选型与产品边界。",
+      "summary": "NVIDIA 宣布华硕、戴尔和微星的 RTX Spark 紧凑型桌面设备开售，面向本地 AI Agent、图像与视频生成及模型微调；设备最高配备 128GB 统一内存与 NVIDIA AI 软件栈。",
+      "why": "当高内存本地工作站进入更紧凑形态，隐私敏感场景的原型开发、离线推理与小型微调会获得更低的部署门槛。",
       "source": "NVIDIA Blog",
-      "sources": [
-        "NVIDIA Blog"
-      ],
       "sourceLinks": [
         {
-          "name": "NVIDIA Blog",
+          "name": "NVIDIA 官方博客",
           "url": "https://blogs.nvidia.com/blog/rtx-spark-desktop-local-ai-available-now/",
-          "tier": 3
+          "tier": 1
         }
       ],
-      "publishedAt": "2026-11-18T14:00:31.000Z",
-      "category": "模型",
-      "region": "全球",
-      "impact": "关注",
-      "score": 72,
-      "url": "https://blogs.nvidia.com/blog/rtx-spark-desktop-local-ai-available-now/",
-      "tags": [
-        "Agent",
-        "模型"
-      ],
-      "rank": 7
-    },
-    {
-      "id": 1589849519,
-      "title": "The King’s Trust and OpenAI launch £1m partnership",
-      "titleEn": "The King’s Trust and OpenAI launch £1m partnership",
-      "summary": "The King’s Trust and OpenAI launch a £1m partnership to help up to 25,000 young people across the UK build practical AI skills for work.",
-      "why": "模型能力、成本和可用性变化会直接影响企业选型与产品边界。",
-      "source": "OpenAI News",
-      "sources": [
-        "OpenAI News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "OpenAI News",
-          "url": "https://openai.com/index/the-kings-trust-and-openai",
-          "tier": 3
-        }
-      ],
-      "publishedAt": "2026-11-16T00:00:00.000Z",
-      "category": "模型",
-      "region": "全球",
-      "impact": "关注",
-      "score": 72,
-      "url": "https://openai.com/index/the-kings-trust-and-openai",
-      "tags": [
-        "OpenAI",
-        "AI"
-      ],
-      "rank": 8
-    },
-    {
-      "id": 3373206608,
-      "title": "The Silent Consensus",
-      "titleEn": "The Silent Consensus",
-      "summary": "Dean Ball, Head of Strategic Futures at OpenAI, examines how more capable AI could reshape society and how people can retain control of their institutions.",
-      "why": "模型能力、成本和可用性变化会直接影响企业选型与产品边界。",
-      "source": "OpenAI News",
-      "sources": [
-        "OpenAI News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "OpenAI News",
-          "url": "https://openai.com/index/the-silent-consensus",
-          "tier": 3
-        }
-      ],
-      "publishedAt": "2026-11-18T10:00:00.000Z",
-      "category": "模型",
-      "region": "全球",
-      "impact": "关注",
-      "score": 71,
-      "url": "https://openai.com/index/the-silent-consensus",
-      "tags": [
-        "OpenAI",
-        "AI"
-      ],
-      "rank": 9
-    },
-    {
-      "id": 105423974,
-      "title": "Research acceleration: The jagged frontier",
-      "titleEn": "Research acceleration: The jagged frontier",
-      "summary": "OpenAI measures how coding agents are accelerating AI research, where their performance remains uneven, and what this signals about recursive self-improvement.",
-      "why": "研究进展可能改变下一代模型能力、评测方法和落地速度。",
-      "source": "OpenAI News",
-      "sources": [
-        "OpenAI News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "OpenAI News",
-          "url": "https://openai.com/index/research-acceleration-jagged-frontier",
-          "tier": 3
-        }
-      ],
-      "publishedAt": "2026-11-18T08:00:00.000Z",
-      "category": "研究",
-      "region": "全球",
-      "impact": "关注",
-      "score": 71,
-      "url": "https://openai.com/index/research-acceleration-jagged-frontier",
-      "tags": [
-        "OpenAI",
-        "Agent",
-        "Coding"
-      ],
-      "rank": 10
-    },
-    {
-      "id": 3187589702,
-      "title": "Managing frontier AI risk: From training to deployment",
-      "titleEn": "Managing frontier AI risk: From training to deployment",
-      "summary": "OpenAI explains how it manages frontier AI risk from training through deployment with model alignment, sandboxing, blocking safeguards, and monitoring.",
-      "why": "安全能力与治理要求正在成为模型进入企业和监管场景的门槛。",
-      "source": "OpenAI News",
-      "sources": [
-        "OpenAI News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "OpenAI News",
-          "url": "https://openai.com/index/managing-frontier-ai-risk",
-          "tier": 3
-        }
-      ],
-      "publishedAt": "2026-11-18T06:00:00.000Z",
-      "category": "安全",
-      "region": "全球",
-      "impact": "关注",
-      "score": 71,
-      "url": "https://openai.com/index/managing-frontier-ai-risk",
-      "tags": [
-        "OpenAI",
-        "安全"
-      ],
-      "rank": 11
-    },
-    {
-      "id": 2463104589,
-      "title": "Advancing chip design with OpenAI models",
-      "titleEn": "Advancing chip design with OpenAI models",
-      "summary": "OpenAI models optimized circuits used in Jalapeño silicon and improved RISC‑V core designs, showing progress in AI-assisted chip design with GPT‑6 Astra.",
-      "why": "推理成本和基础设施供给决定 AI 产品能否规模化进入生产环境。",
-      "source": "OpenAI News",
-      "sources": [
-        "OpenAI News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "OpenAI News",
-          "url": "https://openai.com/index/advancing-chip-design-with-our-models",
-          "tier": 3
-        }
-      ],
-      "publishedAt": "2026-11-18T00:00:00.000Z",
+      "publishedAt": "2026-11-18T14:00:31Z",
       "category": "算力",
       "region": "全球",
       "impact": "关注",
-      "score": 70,
-      "url": "https://openai.com/index/advancing-chip-design-with-our-models",
+      "score": 82,
       "tags": [
-        "OpenAI",
-        "GPT",
-        "算力"
-      ],
-      "rank": 12
+        "NVIDIA",
+        "本地AI",
+        "GPU",
+        "Agent"
+      ]
     },
     {
-      "id": 2337744505,
-      "title": "Put Gemini to work for you",
-      "titleEn": "Put Gemini to work for you",
-      "summary": "<img src=\"https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Hero_2784_x_1566.max-600x600.format-webp.webp\">Tasks in Gemini is now free of charge in six countries, with new features starting in the U.S. and deeper Google Workspace integration to get things done on your behalf.",
-      "why": "开发工具正从辅助补全走向可交付完整任务的 Agent 工作流。",
-      "source": "Google AI",
-      "sources": [
-        "Google AI"
-      ],
+      "title": "OpenAI 公开 Codex 沙箱设计",
+      "titleEn": "Inside the Codex sandbox",
+      "summary": "OpenAI 发布 Codex 沙箱工程说明，解释命令执行的边界选择、网络权限、配置分层与 Linux、macOS、Windows 实现，强调由用户控制可执行操作的限制。",
+      "why": "代码 Agent 从“能否写代码”转向“能否在受控环境中执行”；沙箱、网络白名单和授权边界是企业采用时必须纳入架构的控制面。",
+      "source": "OpenAI",
       "sourceLinks": [
         {
-          "name": "Google AI",
-          "url": "https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/",
-          "tier": 3
+          "name": "OpenAI 工程文章",
+          "url": "https://openai.com/index/inside-the-codex-sandbox/",
+          "tier": 1
         }
       ],
-      "publishedAt": "2026-11-17T17:00:00.000Z",
+      "publishedAt": "2026-11-18T12:00:00Z",
       "category": "AI Coding",
       "region": "全球",
       "impact": "关注",
-      "score": 69,
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/",
+      "score": 78,
       "tags": [
-        "Gemini",
+        "OpenAI",
+        "Codex",
+        "沙箱",
         "AI Coding"
-      ],
-      "rank": 13
-    },
-    {
-      "id": 4030771887,
-      "title": "Ian Buck Kicks Off NVIDIA’s Week at SC26 as Science Enters the Age of Agents",
-      "titleEn": "Ian Buck Kicks Off NVIDIA’s Week at SC26 as Science Enters the Age of Agents",
-      "summary": "NVIDIA’s Ian Buck kicked off the company’s week at SC26 in Chicago on Monday with new tools for AI agents, software that can plan experiments, run code and check results on researchers’ own systems. In NVIDIA’s special address, Buck announced Nemotron for Science, the Rubin HPC GPU and an expanded Vera CPU platform for high-performance […]",
-      "why": "推理成本和基础设施供给决定 AI 产品能否规模化进入生产环境。",
-      "source": "NVIDIA Blog",
-      "sources": [
-        "NVIDIA Blog"
-      ],
-      "sourceLinks": [
-        {
-          "name": "NVIDIA Blog",
-          "url": "https://blogs.nvidia.com/blog/ian-buck-sc26/",
-          "tier": 3
-        }
-      ],
-      "publishedAt": "2026-11-17T14:00:10.000Z",
-      "category": "算力",
-      "region": "全球",
-      "impact": "关注",
-      "score": 69,
-      "url": "https://blogs.nvidia.com/blog/ian-buck-sc26/",
-      "tags": [
-        "Agent",
-        "GPU",
-        "算力"
-      ],
-      "rank": 14
-    },
-    {
-      "id": 1234971815,
-      "title": "Strengthening NATO and allied cyber defenses with AI",
-      "titleEn": "Strengthening NATO and allied cyber defenses with AI",
-      "summary": "How OpenAI is working with NATO and allied cyber agencies to help trusted defenders find vulnerabilities, test fixes and protect essential systems.",
-      "why": "模型能力、成本和可用性变化会直接影响企业选型与产品边界。",
-      "source": "OpenAI News",
-      "sources": [
-        "OpenAI News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "OpenAI News",
-          "url": "https://openai.com/index/strengthening-nato-allied-cyber-defences-ai",
-          "tier": 3
-        }
-      ],
-      "publishedAt": "2026-11-17T00:00:00.000Z",
-      "category": "模型",
-      "region": "全球",
-      "impact": "关注",
-      "score": 67,
-      "url": "https://openai.com/index/strengthening-nato-allied-cyber-defences-ai",
-      "tags": [
-        "OpenAI",
-        "AI"
-      ],
-      "rank": 15
-    },
-    {
-      "id": 4236655328,
-      "title": "NVIDIA DGX Spark Developer Kit Turns a Desk Into a Supercomputing Lab",
-      "titleEn": "NVIDIA DGX Spark Developer Kit Turns a Desk Into a Supercomputing Lab",
-      "summary": "At SC26, an annual supercomputing conference taking place this week in Chicago, NVIDIA is introducing the DGX Spark HPC Developer Kit for researchers, academics and developers. The kit is a four-node cluster of NVIDIA DGX Spark systems, each connected directly to its two neighbors in a ring, with an NVIDIA HPC SDK installation playbook coming […]",
-      "why": "研究进展可能改变下一代模型能力、评测方法和落地速度。",
-      "source": "NVIDIA Blog",
-      "sources": [
-        "NVIDIA Blog"
-      ],
-      "sourceLinks": [
-        {
-          "name": "NVIDIA Blog",
-          "url": "https://blogs.nvidia.com/blog/dgx-spark-hpc-developer-kit-sc26/",
-          "tier": 3
-        }
-      ],
-      "publishedAt": "2026-11-16T23:00:05.000Z",
-      "category": "研究",
-      "region": "全球",
-      "impact": "关注",
-      "score": 67,
-      "url": "https://blogs.nvidia.com/blog/dgx-spark-hpc-developer-kit-sc26/",
-      "tags": [
-        "研究"
-      ],
-      "rank": 16
-    },
-    {
-      "id": 497350344,
-      "title": "How the World’s Most Advanced AI Infrastructure Supply Chain Invents the Future",
-      "titleEn": "How the World’s Most Advanced AI Infrastructure Supply Chain Invents the Future",
-      "summary": "Deb Shoquist leads operations at NVIDIA, overseeing the supply chain and manufacturing behind its AI platforms. That description sums up the job, but it doesn’t begin to encompass what Shoquist has made possible over decades. Shoquist, her team and their global network of manufacturing partners enable NVIDIA to introduce world-leading technologies year-round. Much of the […]",
-      "why": "推理成本和基础设施供给决定 AI 产品能否规模化进入生产环境。",
-      "source": "NVIDIA Blog",
-      "sources": [
-        "NVIDIA Blog"
-      ],
-      "sourceLinks": [
-        {
-          "name": "NVIDIA Blog",
-          "url": "https://blogs.nvidia.com/blog/ai-infrastructure-supply-chain/",
-          "tier": 3
-        }
-      ],
-      "publishedAt": "2026-11-16T20:00:37.000Z",
-      "category": "算力",
-      "region": "全球",
-      "impact": "关注",
-      "score": 67,
-      "url": "https://blogs.nvidia.com/blog/ai-infrastructure-supply-chain/",
-      "tags": [
-        "AI"
-      ],
-      "rank": 17
-    },
-    {
-      "id": 2770493163,
-      "title": "Broadening access to AI for scientists",
-      "titleEn": "Broadening access to AI for scientists",
-      "summary": "We’re expanding our ChatGPT for Academic Researchers program to offer 200,000 researchers worldwide free access to our frontier models.",
-      "why": "研究进展可能改变下一代模型能力、评测方法和落地速度。",
-      "source": "OpenAI News",
-      "sources": [
-        "OpenAI News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "OpenAI News",
-          "url": "https://openai.com/index/expanding-chatgpt-for-academic-researchers",
-          "tier": 3
-        }
-      ],
-      "publishedAt": "2026-11-16T17:00:00.000Z",
-      "category": "研究",
-      "region": "全球",
-      "impact": "关注",
-      "score": 66,
-      "url": "https://openai.com/index/expanding-chatgpt-for-academic-researchers",
-      "tags": [
-        "GPT",
-        "研究"
-      ],
-      "rank": 18
-    },
-    {
-      "id": 4250279425,
-      "title": "Lambda Boosts AI Factory Resiliency and Efficiency With NVIDIA Photonics",
-      "titleEn": "Lambda Boosts AI Factory Resiliency and Efficiency With NVIDIA Photonics",
-      "summary": "To train an AI model, thousands of GPUs have to work together, requiring a network that’s fast, efficient and resilient. Lambda is tackling the network piece of the puzzle with NVIDIA Photonics co-packaged optics (CPO) switches. The cloud provider is using the switches to connect NVIDIA GB300 NVL72 racks with more than 10,000 GPUs, delivering […]",
-      "why": "推理成本和基础设施供给决定 AI 产品能否规模化进入生产环境。",
-      "source": "NVIDIA Blog",
-      "sources": [
-        "NVIDIA Blog"
-      ],
-      "sourceLinks": [
-        {
-          "name": "NVIDIA Blog",
-          "url": "https://blogs.nvidia.com/blog/lambda-photonics/",
-          "tier": 3
-        }
-      ],
-      "publishedAt": "2026-11-16T16:00:51.000Z",
-      "category": "算力",
-      "region": "全球",
-      "impact": "关注",
-      "score": 66,
-      "url": "https://blogs.nvidia.com/blog/lambda-photonics/",
-      "tags": [
-        "GPU",
-        "算力"
-      ],
-      "rank": 19
-    },
-    {
-      "id": 3483915618,
-      "title": "NVIDIA Expands Slurm to Bring Quantum Computing Into Supercomputing",
-      "titleEn": "NVIDIA Expands Slurm to Bring Quantum Computing Into Supercomputing",
-      "summary": "Quantum processor deployments at supercomputing centers have grown nearly sevenfold over the past five years, with nearly 30 supercomputing centers around the world now in the process of deploying over 50 quantum processors. Many of these centers use Slurm to run scientific supercomputing workloads, so expanding its support for quantum processors builds on familiar workflows […]",
-      "why": "推理成本和基础设施供给决定 AI 产品能否规模化进入生产环境。",
-      "source": "NVIDIA Blog",
-      "sources": [
-        "NVIDIA Blog"
-      ],
-      "sourceLinks": [
-        {
-          "name": "NVIDIA Blog",
-          "url": "https://blogs.nvidia.com/blog/slurm-quantum-computing-supercomputing/",
-          "tier": 3
-        }
-      ],
-      "publishedAt": "2026-11-16T16:00:47.000Z",
-      "category": "算力",
-      "region": "全球",
-      "impact": "关注",
-      "score": 66,
-      "url": "https://blogs.nvidia.com/blog/slurm-quantum-computing-supercomputing/",
-      "tags": [
-        "AI"
-      ],
-      "rank": 20
-    },
-    {
-      "id": 561894278,
-      "title": "NVIDIA Sweeps MLPerf Training and Endpoints as Vera Rubin Debuts With Leading Performance",
-      "titleEn": "NVIDIA Sweeps MLPerf Training and Endpoints as Vera Rubin Debuts With Leading Performance",
-      "summary": "In its MLPerf benchmarks debut, with results released today, the NVIDIA Vera Rubin platform delivers leading performance across training, post-training and agentic inference. NVIDIA swept every MLPerf Training v6.1 benchmark and, in its first MLPerf Endpoints submission, delivered more than 10x generational gains in throughput per watt for agentic AI — measuring how much agentic […]",
-      "why": "推理成本和基础设施供给决定 AI 产品能否规模化进入生产环境。",
-      "source": "NVIDIA Blog",
-      "sources": [
-        "NVIDIA Blog"
-      ],
-      "sourceLinks": [
-        {
-          "name": "NVIDIA Blog",
-          "url": "https://blogs.nvidia.com/blog/mlperf-training-endpoints-vera-rubin/",
-          "tier": 3
-        }
-      ],
-      "publishedAt": "2026-11-16T16:00:25.000Z",
-      "category": "算力",
-      "region": "全球",
-      "impact": "关注",
-      "score": 66,
-      "url": "https://blogs.nvidia.com/blog/mlperf-training-endpoints-vera-rubin/",
-      "tags": [
-        "Agent",
-        "算力"
-      ],
-      "rank": 21
-    },
-    {
-      "id": 1889636094,
-      "title": "NVIDIA CUDA-X Libraries Give Agents the Tools to Accelerate Scientific Discovery",
-      "titleEn": "NVIDIA CUDA-X Libraries Give Agents the Tools to Accelerate Scientific Discovery",
-      "summary": "With expanded NVIDIA CUDA-X libraries, including cuPhoton, cuPotential and cuSpa, researchers can sift through vast amounts of data to accelerate research, from astrophysics and materials science to single-cell biology. The speedups are helping scientists analyze larger datasets and model more complex systems. The new libraries give AI agents the tools to help researchers make discoveries […]",
-      "why": "研究进展可能改变下一代模型能力、评测方法和落地速度。",
-      "source": "NVIDIA Blog",
-      "sources": [
-        "NVIDIA Blog"
-      ],
-      "sourceLinks": [
-        {
-          "name": "NVIDIA Blog",
-          "url": "https://blogs.nvidia.com/blog/cuda-x-libraries-agents-accelerate-scientific-discovery/",
-          "tier": 3
-        }
-      ],
-      "publishedAt": "2026-11-16T16:00:16.000Z",
-      "category": "研究",
-      "region": "全球",
-      "impact": "关注",
-      "score": 66,
-      "url": "https://blogs.nvidia.com/blog/cuda-x-libraries-agents-accelerate-scientific-discovery/",
-      "tags": [
-        "Agent",
-        "研究"
-      ],
-      "rank": 22
-    },
-    {
-      "id": 1863861349,
-      "title": "CUDA at 20: How the Platform Transformed Scientific Computing",
-      "titleEn": "CUDA at 20: How the Platform Transformed Scientific Computing",
-      "summary": "This week at SC26, NVIDIA is marking two decades of CUDA by honoring the researchers, developers and engineers who helped make GPU computing a foundation for modern science and AI. CUDA’s 20th anniversary presents an occasion to reflect across computing eras, from the people who wrote the very first CUDA programs to the AI developers […]",
-      "why": "推理成本和基础设施供给决定 AI 产品能否规模化进入生产环境。",
-      "source": "NVIDIA Blog",
-      "sources": [
-        "NVIDIA Blog"
-      ],
-      "sourceLinks": [
-        {
-          "name": "NVIDIA Blog",
-          "url": "https://blogs.nvidia.com/blog/20-years-cuda/",
-          "tier": 3
-        }
-      ],
-      "publishedAt": "2026-11-16T16:00:11.000Z",
-      "category": "算力",
-      "region": "全球",
-      "impact": "关注",
-      "score": 66,
-      "url": "https://blogs.nvidia.com/blog/20-years-cuda/",
-      "tags": [
-        "GPU",
-        "算力"
-      ],
-      "rank": 23
-    },
-    {
-      "id": 1826832089,
-      "title": "Our first phase of embedded assessments",
-      "titleEn": "Our first phase of embedded assessments",
-      "summary": "OpenAI begins embedded assessments with Apollo Research, METR, and Transluce, and Goodfire to independently evaluate model alignment, safeguards, and monitoring systems.",
-      "why": "研究进展可能改变下一代模型能力、评测方法和落地速度。",
-      "source": "OpenAI News",
-      "sources": [
-        "OpenAI News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "OpenAI News",
-          "url": "https://openai.com/index/our-first-phase-of-embedded-assessments",
-          "tier": 3
-        }
-      ],
-      "publishedAt": "2026-11-16T08:00:00.000Z",
-      "category": "研究",
-      "region": "全球",
-      "impact": "关注",
-      "score": 65,
-      "url": "https://openai.com/index/our-first-phase-of-embedded-assessments",
-      "tags": [
-        "OpenAI",
-        "研究"
-      ],
-      "rank": 24
+      ]
     }
   ]
 }
