@@ -1,21 +1,18 @@
 {
-  "generatedAt": "2026-11-19T03:47:32.053Z",
+  "generatedAt": "2026-11-19T03:57:05.421Z",
   "mode": "公开源自动聚合",
   "stats": {
-    "rawSignals": 16,
-    "events": 15,
+    "rawSignals": 37,
+    "events": 24,
     "chinaRatio": 0,
     "highImpact": 2
   },
   "sourceHealth": {
     "attempted": 9,
-    "healthy": 5,
-    "officialHealthy": 5,
+    "healthy": 8,
+    "officialHealthy": 7,
     "failed": [
-      "NVIDIA Blog",
-      "Microsoft AI",
-      "Google AI",
-      "Hugging Face"
+      "Microsoft AI"
     ]
   },
   "brief": {
@@ -30,7 +27,7 @@
   "trends": [
     {
       "name": "OpenAI",
-      "value": 762,
+      "value": 643,
       "label": "领涨",
       "bars": [
         28,
@@ -39,26 +36,12 @@
         46,
         52,
         61,
-        57
-      ]
-    },
-    {
-      "name": "GPT",
-      "value": 354,
-      "label": "升温",
-      "bars": [
-        28,
-        35,
-        31,
-        46,
-        52,
-        61,
-        89
+        58
       ]
     },
     {
       "name": "AI",
-      "value": 289,
+      "value": 423,
       "label": "升温",
       "bars": [
         28,
@@ -67,12 +50,12 @@
         46,
         52,
         61,
-        64
+        78
       ]
     },
     {
-      "name": "模型",
-      "value": 225,
+      "name": "Agent",
+      "value": 422,
       "label": "升温",
       "bars": [
         28,
@@ -81,7 +64,21 @@
         46,
         52,
         61,
-        80
+        77
+      ]
+    },
+    {
+      "name": "算力",
+      "value": 416,
+      "label": "升温",
+      "bars": [
+        28,
+        35,
+        31,
+        46,
+        52,
+        61,
+        71
       ]
     }
   ],
@@ -116,6 +113,14 @@
         {
           "title": "Introducing GPT-6.2 Astra and Sol",
           "score": 78
+        },
+        {
+          "title": "The Gemini app is now available on lower-memory Android devices.",
+          "score": 73
+        },
+        {
+          "title": "Put Gemini to work for you",
+          "score": 70
         }
       ]
     }
@@ -216,6 +221,38 @@
       "rank": 3
     },
     {
+      "id": 2673996218,
+      "title": "NVIDIA Announces Rubin HPC — A New GPU to Accelerate Agents for Science, Engineering and Analytics",
+      "titleEn": "NVIDIA Announces Rubin HPC — A New GPU to Accelerate Agents for Science, Engineering and Analytics",
+      "summary": "Announced today at SC26, NVIDIA Rubin HPC is a new GPU in the NVIDIA Vera Rubin platform designed to accelerate simulation and data processing for science, engineering and analytics workflows. As agents help scientists and engineers explore more candidate materials, molecules and designs, they rely on simulations to test those ideas and guide their next […]",
+      "why": "推理成本和基础设施供给决定 AI 产品能否规模化进入生产环境。",
+      "source": "NVIDIA Blog",
+      "sources": [
+        "NVIDIA Blog"
+      ],
+      "sourceLinks": [
+        {
+          "name": "NVIDIA Blog",
+          "url": "https://blogs.nvidia.com/blog/rubin-hpc/",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-16T16:00:01.000Z",
+      "time": "2 天前",
+      "hours": 60,
+      "category": "算力",
+      "region": "全球",
+      "impact": "关注",
+      "score": 75,
+      "url": "https://blogs.nvidia.com/blog/rubin-hpc/",
+      "tags": [
+        "Agent",
+        "GPU",
+        "算力"
+      ],
+      "rank": 4
+    },
+    {
       "id": 1369855108,
       "title": "LVMH’s Media Division announces strategic partnership with OpenAI",
       "titleEn": "LVMH’s Media Division announces strategic partnership with OpenAI",
@@ -245,7 +282,38 @@
         "GPT",
         "模型"
       ],
-      "rank": 4
+      "rank": 5
+    },
+    {
+      "id": 355740124,
+      "title": "The Gemini app is now available on lower-memory Android devices.",
+      "titleEn": "The Gemini app is now available on lower-memory Android devices.",
+      "summary": "<img src=\"https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Gemini_app_Android_social_share.max-600x600.format-webp.webp\">The Google Gemini app now supports lower-memory Android devices. Access Gemini Live and custom image creation on your phone. Download the app today.",
+      "why": "开发工具正从辅助补全走向可交付完整任务的 Agent 工作流。",
+      "source": "Google AI",
+      "sources": [
+        "Google AI"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Google AI",
+          "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-lower-memory-devices/",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-18T17:00:00.000Z",
+      "time": "11 小时前",
+      "hours": 11,
+      "category": "AI Coding",
+      "region": "全球",
+      "impact": "关注",
+      "score": 73,
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-lower-memory-devices/",
+      "tags": [
+        "Gemini",
+        "AI Coding"
+      ],
+      "rank": 6
     },
     {
       "id": 1589849519,
@@ -276,7 +344,38 @@
         "OpenAI",
         "AI"
       ],
-      "rank": 5
+      "rank": 7
+    },
+    {
+      "id": 953473281,
+      "title": "NVIDIA RTX Spark Compact Desktops Out Now",
+      "titleEn": "NVIDIA RTX Spark Compact Desktops Out Now",
+      "summary": "New NVIDIA RTX Spark compact desktops from ASUS, Dell and MSI are available today, bringing local AI agents, image and video generation, and model fine-tuning to a dedicated Windows PC. With up to 128GB of unified memory and NVIDIA’s AI software stack, these systems provide room for larger local models alongside RTX-accelerated creative and development […]",
+      "why": "模型能力、成本和可用性变化会直接影响企业选型与产品边界。",
+      "source": "NVIDIA Blog",
+      "sources": [
+        "NVIDIA Blog"
+      ],
+      "sourceLinks": [
+        {
+          "name": "NVIDIA Blog",
+          "url": "https://blogs.nvidia.com/blog/rtx-spark-desktop-local-ai-available-now/",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-18T14:00:31.000Z",
+      "time": "14 小时前",
+      "hours": 14,
+      "category": "模型",
+      "region": "全球",
+      "impact": "关注",
+      "score": 72,
+      "url": "https://blogs.nvidia.com/blog/rtx-spark-desktop-local-ai-available-now/",
+      "tags": [
+        "Agent",
+        "模型"
+      ],
+      "rank": 8
     },
     {
       "id": 3373206608,
@@ -307,7 +406,7 @@
         "OpenAI",
         "AI"
       ],
-      "rank": 6
+      "rank": 9
     },
     {
       "id": 105423974,
@@ -339,7 +438,7 @@
         "Agent",
         "Coding"
       ],
-      "rank": 7
+      "rank": 10
     },
     {
       "id": 3187589702,
@@ -370,7 +469,7 @@
         "OpenAI",
         "安全"
       ],
-      "rank": 8
+      "rank": 11
     },
     {
       "id": 2463104589,
@@ -402,7 +501,70 @@
         "GPT",
         "算力"
       ],
-      "rank": 9
+      "rank": 12
+    },
+    {
+      "id": 2337744505,
+      "title": "Put Gemini to work for you",
+      "titleEn": "Put Gemini to work for you",
+      "summary": "<img src=\"https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Hero_2784_x_1566.max-600x600.format-webp.webp\">Tasks in Gemini is now free of charge in six countries, with new features starting in the U.S. and deeper Google Workspace integration to get things done on your behalf.",
+      "why": "开发工具正从辅助补全走向可交付完整任务的 Agent 工作流。",
+      "source": "Google AI",
+      "sources": [
+        "Google AI"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Google AI",
+          "url": "https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-17T17:00:00.000Z",
+      "time": "1 天前",
+      "hours": 35,
+      "category": "AI Coding",
+      "region": "全球",
+      "impact": "关注",
+      "score": 70,
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/",
+      "tags": [
+        "Gemini",
+        "AI Coding"
+      ],
+      "rank": 13
+    },
+    {
+      "id": 4030771887,
+      "title": "Ian Buck Kicks Off NVIDIA’s Week at SC26 as Science Enters the Age of Agents",
+      "titleEn": "Ian Buck Kicks Off NVIDIA’s Week at SC26 as Science Enters the Age of Agents",
+      "summary": "NVIDIA’s Ian Buck kicked off the company’s week at SC26 in Chicago on Monday with new tools for AI agents, software that can plan experiments, run code and check results on researchers’ own systems. In NVIDIA’s special address, Buck announced Nemotron for Science, the Rubin HPC GPU and an expanded Vera CPU platform for high-performance […]",
+      "why": "推理成本和基础设施供给决定 AI 产品能否规模化进入生产环境。",
+      "source": "NVIDIA Blog",
+      "sources": [
+        "NVIDIA Blog"
+      ],
+      "sourceLinks": [
+        {
+          "name": "NVIDIA Blog",
+          "url": "https://blogs.nvidia.com/blog/ian-buck-sc26/",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-17T14:00:10.000Z",
+      "time": "1 天前",
+      "hours": 38,
+      "category": "算力",
+      "region": "全球",
+      "impact": "关注",
+      "score": 69,
+      "url": "https://blogs.nvidia.com/blog/ian-buck-sc26/",
+      "tags": [
+        "Agent",
+        "GPU",
+        "算力"
+      ],
+      "rank": 14
     },
     {
       "id": 1234971815,
@@ -433,7 +595,67 @@
         "OpenAI",
         "AI"
       ],
-      "rank": 10
+      "rank": 15
+    },
+    {
+      "id": 4236655328,
+      "title": "NVIDIA DGX Spark Developer Kit Turns a Desk Into a Supercomputing Lab",
+      "titleEn": "NVIDIA DGX Spark Developer Kit Turns a Desk Into a Supercomputing Lab",
+      "summary": "At SC26, an annual supercomputing conference taking place this week in Chicago, NVIDIA is introducing the DGX Spark HPC Developer Kit for researchers, academics and developers. The kit is a four-node cluster of NVIDIA DGX Spark systems, each connected directly to its two neighbors in a ring, with an NVIDIA HPC SDK installation playbook coming […]",
+      "why": "研究进展可能改变下一代模型能力、评测方法和落地速度。",
+      "source": "NVIDIA Blog",
+      "sources": [
+        "NVIDIA Blog"
+      ],
+      "sourceLinks": [
+        {
+          "name": "NVIDIA Blog",
+          "url": "https://blogs.nvidia.com/blog/dgx-spark-hpc-developer-kit-sc26/",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-16T23:00:05.000Z",
+      "time": "2 天前",
+      "hours": 53,
+      "category": "研究",
+      "region": "全球",
+      "impact": "关注",
+      "score": 67,
+      "url": "https://blogs.nvidia.com/blog/dgx-spark-hpc-developer-kit-sc26/",
+      "tags": [
+        "研究"
+      ],
+      "rank": 16
+    },
+    {
+      "id": 497350344,
+      "title": "How the World’s Most Advanced AI Infrastructure Supply Chain Invents the Future",
+      "titleEn": "How the World’s Most Advanced AI Infrastructure Supply Chain Invents the Future",
+      "summary": "Deb Shoquist leads operations at NVIDIA, overseeing the supply chain and manufacturing behind its AI platforms. That description sums up the job, but it doesn’t begin to encompass what Shoquist has made possible over decades. Shoquist, her team and their global network of manufacturing partners enable NVIDIA to introduce world-leading technologies year-round. Much of the […]",
+      "why": "推理成本和基础设施供给决定 AI 产品能否规模化进入生产环境。",
+      "source": "NVIDIA Blog",
+      "sources": [
+        "NVIDIA Blog"
+      ],
+      "sourceLinks": [
+        {
+          "name": "NVIDIA Blog",
+          "url": "https://blogs.nvidia.com/blog/ai-infrastructure-supply-chain/",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-16T20:00:37.000Z",
+      "time": "2 天前",
+      "hours": 56,
+      "category": "算力",
+      "region": "全球",
+      "impact": "关注",
+      "score": 67,
+      "url": "https://blogs.nvidia.com/blog/ai-infrastructure-supply-chain/",
+      "tags": [
+        "AI"
+      ],
+      "rank": 17
     },
     {
       "id": 2770493163,
@@ -464,7 +686,161 @@
         "GPT",
         "研究"
       ],
-      "rank": 11
+      "rank": 18
+    },
+    {
+      "id": 4250279425,
+      "title": "Lambda Boosts AI Factory Resiliency and Efficiency With NVIDIA Photonics",
+      "titleEn": "Lambda Boosts AI Factory Resiliency and Efficiency With NVIDIA Photonics",
+      "summary": "To train an AI model, thousands of GPUs have to work together, requiring a network that’s fast, efficient and resilient. Lambda is tackling the network piece of the puzzle with NVIDIA Photonics co-packaged optics (CPO) switches. The cloud provider is using the switches to connect NVIDIA GB300 NVL72 racks with more than 10,000 GPUs, delivering […]",
+      "why": "推理成本和基础设施供给决定 AI 产品能否规模化进入生产环境。",
+      "source": "NVIDIA Blog",
+      "sources": [
+        "NVIDIA Blog"
+      ],
+      "sourceLinks": [
+        {
+          "name": "NVIDIA Blog",
+          "url": "https://blogs.nvidia.com/blog/lambda-photonics/",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-16T16:00:51.000Z",
+      "time": "2 天前",
+      "hours": 60,
+      "category": "算力",
+      "region": "全球",
+      "impact": "关注",
+      "score": 67,
+      "url": "https://blogs.nvidia.com/blog/lambda-photonics/",
+      "tags": [
+        "GPU",
+        "算力"
+      ],
+      "rank": 19
+    },
+    {
+      "id": 3483915618,
+      "title": "NVIDIA Expands Slurm to Bring Quantum Computing Into Supercomputing",
+      "titleEn": "NVIDIA Expands Slurm to Bring Quantum Computing Into Supercomputing",
+      "summary": "Quantum processor deployments at supercomputing centers have grown nearly sevenfold over the past five years, with nearly 30 supercomputing centers around the world now in the process of deploying over 50 quantum processors. Many of these centers use Slurm to run scientific supercomputing workloads, so expanding its support for quantum processors builds on familiar workflows […]",
+      "why": "推理成本和基础设施供给决定 AI 产品能否规模化进入生产环境。",
+      "source": "NVIDIA Blog",
+      "sources": [
+        "NVIDIA Blog"
+      ],
+      "sourceLinks": [
+        {
+          "name": "NVIDIA Blog",
+          "url": "https://blogs.nvidia.com/blog/slurm-quantum-computing-supercomputing/",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-16T16:00:47.000Z",
+      "time": "2 天前",
+      "hours": 60,
+      "category": "算力",
+      "region": "全球",
+      "impact": "关注",
+      "score": 67,
+      "url": "https://blogs.nvidia.com/blog/slurm-quantum-computing-supercomputing/",
+      "tags": [
+        "AI"
+      ],
+      "rank": 20
+    },
+    {
+      "id": 561894278,
+      "title": "NVIDIA Sweeps MLPerf Training and Endpoints as Vera Rubin Debuts With Leading Performance",
+      "titleEn": "NVIDIA Sweeps MLPerf Training and Endpoints as Vera Rubin Debuts With Leading Performance",
+      "summary": "In its MLPerf benchmarks debut, with results released today, the NVIDIA Vera Rubin platform delivers leading performance across training, post-training and agentic inference. NVIDIA swept every MLPerf Training v6.1 benchmark and, in its first MLPerf Endpoints submission, delivered more than 10x generational gains in throughput per watt for agentic AI — measuring how much agentic […]",
+      "why": "推理成本和基础设施供给决定 AI 产品能否规模化进入生产环境。",
+      "source": "NVIDIA Blog",
+      "sources": [
+        "NVIDIA Blog"
+      ],
+      "sourceLinks": [
+        {
+          "name": "NVIDIA Blog",
+          "url": "https://blogs.nvidia.com/blog/mlperf-training-endpoints-vera-rubin/",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-16T16:00:25.000Z",
+      "time": "2 天前",
+      "hours": 60,
+      "category": "算力",
+      "region": "全球",
+      "impact": "关注",
+      "score": 67,
+      "url": "https://blogs.nvidia.com/blog/mlperf-training-endpoints-vera-rubin/",
+      "tags": [
+        "Agent",
+        "算力"
+      ],
+      "rank": 21
+    },
+    {
+      "id": 1889636094,
+      "title": "NVIDIA CUDA-X Libraries Give Agents the Tools to Accelerate Scientific Discovery",
+      "titleEn": "NVIDIA CUDA-X Libraries Give Agents the Tools to Accelerate Scientific Discovery",
+      "summary": "With expanded NVIDIA CUDA-X libraries, including cuPhoton, cuPotential and cuSpa, researchers can sift through vast amounts of data to accelerate research, from astrophysics and materials science to single-cell biology. The speedups are helping scientists analyze larger datasets and model more complex systems. The new libraries give AI agents the tools to help researchers make discoveries […]",
+      "why": "研究进展可能改变下一代模型能力、评测方法和落地速度。",
+      "source": "NVIDIA Blog",
+      "sources": [
+        "NVIDIA Blog"
+      ],
+      "sourceLinks": [
+        {
+          "name": "NVIDIA Blog",
+          "url": "https://blogs.nvidia.com/blog/cuda-x-libraries-agents-accelerate-scientific-discovery/",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-16T16:00:16.000Z",
+      "time": "2 天前",
+      "hours": 60,
+      "category": "研究",
+      "region": "全球",
+      "impact": "关注",
+      "score": 67,
+      "url": "https://blogs.nvidia.com/blog/cuda-x-libraries-agents-accelerate-scientific-discovery/",
+      "tags": [
+        "Agent",
+        "研究"
+      ],
+      "rank": 22
+    },
+    {
+      "id": 1863861349,
+      "title": "CUDA at 20: How the Platform Transformed Scientific Computing",
+      "titleEn": "CUDA at 20: How the Platform Transformed Scientific Computing",
+      "summary": "This week at SC26, NVIDIA is marking two decades of CUDA by honoring the researchers, developers and engineers who helped make GPU computing a foundation for modern science and AI. CUDA’s 20th anniversary presents an occasion to reflect across computing eras, from the people who wrote the very first CUDA programs to the AI developers […]",
+      "why": "推理成本和基础设施供给决定 AI 产品能否规模化进入生产环境。",
+      "source": "NVIDIA Blog",
+      "sources": [
+        "NVIDIA Blog"
+      ],
+      "sourceLinks": [
+        {
+          "name": "NVIDIA Blog",
+          "url": "https://blogs.nvidia.com/blog/20-years-cuda/",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-16T16:00:11.000Z",
+      "time": "2 天前",
+      "hours": 60,
+      "category": "算力",
+      "region": "全球",
+      "impact": "关注",
+      "score": 67,
+      "url": "https://blogs.nvidia.com/blog/20-years-cuda/",
+      "tags": [
+        "GPU",
+        "算力"
+      ],
+      "rank": 23
     },
     {
       "id": 1826832089,
@@ -495,101 +871,7 @@
         "OpenAI",
         "研究"
       ],
-      "rank": 12
-    },
-    {
-      "id": 147800032,
-      "title": "A step toward defining the Standard Model on a lattice",
-      "titleEn": "A step toward defining the Standard Model on a lattice",
-      "summary": "Explore a candidate nonperturbative lattice definition of the Standard Model and how GPT-6 Astra helped turn the idea into a detailed proof.",
-      "why": "模型能力、成本和可用性变化会直接影响企业选型与产品边界。",
-      "source": "OpenAI News",
-      "sources": [
-        "OpenAI News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "OpenAI News",
-          "url": "https://openai.com/index/step-toward-defining-the-standard-model",
-          "tier": 3
-        }
-      ],
-      "publishedAt": "2026-11-15T22:00:01.000Z",
-      "time": "3 天前",
-      "hours": 78,
-      "category": "模型",
-      "region": "全球",
-      "impact": "关注",
-      "score": 64,
-      "url": "https://openai.com/index/step-toward-defining-the-standard-model",
-      "tags": [
-        "GPT",
-        "模型"
-      ],
-      "rank": 13
-    },
-    {
-      "id": 2806894236,
-      "title": "Our new blog for science",
-      "titleEn": "Our new blog for science",
-      "summary": "The OpenAI science blog shares new findings, practical methods, and firsthand accounts from researchers using AI to advance scientific discovery.",
-      "why": "研究进展可能改变下一代模型能力、评测方法和落地速度。",
-      "source": "OpenAI News",
-      "sources": [
-        "OpenAI News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "OpenAI News",
-          "url": "https://openai.com/index/our-new-blog-for-science",
-          "tier": 3
-        }
-      ],
-      "publishedAt": "2026-11-15T22:00:00.000Z",
-      "time": "3 天前",
-      "hours": 78,
-      "category": "研究",
-      "region": "全球",
-      "impact": "关注",
-      "score": 64,
-      "url": "https://openai.com/index/our-new-blog-for-science",
-      "tags": [
-        "OpenAI",
-        "研究"
-      ],
-      "rank": 14
-    },
-    {
-      "id": 3380239973,
-      "title": "How Amplitude ships product improvements in 1–2 days with OpenAI",
-      "titleEn": "How Amplitude ships product improvements in 1–2 days with OpenAI",
-      "summary": "Built primarily on OpenAI models, Amplitude’s proactive product agent, Wave, identifies what to build, helps teams ship changes with coding agents, and measures the impact.",
-      "why": "模型能力、成本和可用性变化会直接影响企业选型与产品边界。",
-      "source": "OpenAI News",
-      "sources": [
-        "OpenAI News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "OpenAI News",
-          "url": "https://openai.com/business/customer-stories/amplitude",
-          "tier": 3
-        }
-      ],
-      "publishedAt": "2026-11-12T20:00:00.000Z",
-      "time": "6 天前",
-      "hours": 152,
-      "category": "模型",
-      "region": "全球",
-      "impact": "关注",
-      "score": 55,
-      "url": "https://openai.com/business/customer-stories/amplitude",
-      "tags": [
-        "OpenAI",
-        "Agent",
-        "Coding"
-      ],
-      "rank": 15
+      "rank": 24
     }
   ]
 }
