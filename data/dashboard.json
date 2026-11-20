@@ -1,116 +1,321 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-19T23:44:03Z",
-  "contentUpdatedAt": "2026-11-19T23:44:03Z",
+  "generatedAt": "2026-11-20T00:18:26.000Z",
+  "contentUpdatedAt": "2026-11-20T00:18:26.000Z",
   "status": {
     "state": "fresh",
-    "lastSuccessfulAt": "2026-11-19T23:44:03Z",
+    "lastSuccessfulAt": "2026-11-20T00:18:26.000Z",
     "note": "已完成 GPT 联网研究与 GitHub 数据快照；日常写入不使用 RSS。"
   },
   "mode": "GPT 联网研究（非RSS）",
   "stats": {
-    "researchedSignals": 21,
-    "verifiedEvents": 3,
-    "chinaRatio": 33,
-    "highImpact": 2,
-    "researchWindowHours": 24
+    "rawSignals": 13,
+    "events": 9,
+    "chinaRatio": 11,
+    "highImpact": 0
   },
   "sourceHealth": {
-    "method": "GPT 联网研究",
-    "attempted": 21,
-    "healthy": 21,
-    "officialHealthy": 3,
-    "failed": [],
-    "rssUsed": false
+    "attempted": 13,
+    "healthy": 12,
+    "officialHealthy": 12,
+    "failed": [
+      "AI Daily Journal：页面抓取被禁用，未用于事实核验。"
+    ]
   },
   "brief": {
-    "title": "今天优先关注：Agent 工厂、云边协同与中国模型出海",
+    "title": "今天优先关注：生产级 Agent、云边推理与 Qwen4-Max 出海",
     "bullets": [
-      "OpenAI 披露了以 Codex 驱动的“Performance Factory”：任务状态、派发循环、独立审查和人工合并构成可运行的生产级 Agent 工作流。",
-      "NVIDIA 与 Microsoft 把加速计算扩展到 Azure、工业系统与 Windows PC，企业 AI 的竞争正在从单点模型转向跨云、边缘和终端的全栈交付。",
-      "阿里云在香港推出 Qwen4-Max 的能力增强并推进视频模型合作；中国模型的区域生态、行业集成和内容生产场景仍在同步扩张。"
+      "OpenAI 的 Performance Factory 展示了可长期运行的 Codex 工作流：报警触发、Agent 排查、独立复核和人工合并都被编入状态化流程。",
+      "NVIDIA 与 Microsoft 将模型、算力和部署延伸到 Azure、工业现场与 Windows PC；企业 AI 正从模型选型进入全栈落地竞赛。",
+      "AWS 同日补齐多区域推理、端点优化、训练可观测性和长时无服务器执行，云厂商把 AI 的运维能力产品化。",
+      "阿里云围绕 Qwen4-Max 同步推进香港与马来西亚生态，模型能力、当地算力和行业伙伴正在绑定交付。"
     ]
   },
   "items": [
     {
-      "title": "OpenAI 展示 Codex 驱动的 Performance Factory",
+      "id": 3636787553,
+      "title": "OpenAI 展示 Codex 驱动的性能 Agent 工厂",
       "titleEn": "How OpenAI’s Performance Factory keeps ChatGPT fast",
-      "summary": "OpenAI 介绍一个在云端运行的 Agent 工作流：性能告警触发任务后，Codex 负责排查、提出修复方案和验证恢复；工程师在关键判断与合并环节保持审核。该系统在三个多月内跟踪超过 1,700 次调查，并定位 600 多个案例根因。",
-      "why": "它给出了从“单个 AI Coding 助手”升级为“可运营的 Agent 工厂”的具体范式：显式状态机、外部任务记录、对抗式复核、工具失败监控和人类审批缺一不可。",
+      "summary": "OpenAI 披露其在云端运行的 Performance Factory：性能告警触发后，Codex 完成排查、提出修复和验证恢复，工程师审核关键决策与合并。",
+      "why": "它提供了生产级 Agent 运营范式：状态机、跨会话任务记录、独立复核与人工审批共同构成可靠闭环。",
       "source": "OpenAI",
+      "sources": [
+        "OpenAI"
+      ],
       "sourceLinks": [
         {
-          "name": "OpenAI 工程文章",
+          "name": "OpenAI",
           "url": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast/",
-          "tier": 1
+          "tier": 3
         }
       ],
-      "publishedAt": "2026-11-19T00:00:00Z",
+      "publishedAt": "2026-11-19T00:00:00.000Z",
       "category": "AI Coding",
       "region": "全球",
-      "impact": "高影响",
+      "impact": "关注",
       "score": 92,
+      "url": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast/",
       "tags": [
         "OpenAI",
         "Codex",
         "Agent Workflow",
         "SRE"
-      ]
+      ],
+      "rank": 1
     },
     {
-      "title": "NVIDIA 与 Microsoft 扩展从 Azure 到 Windows PC 的 AI 协同",
+      "id": 2177847865,
+      "title": "NVIDIA 与 Microsoft 扩展云到边缘的 AI 栈",
       "titleEn": "NVIDIA and Microsoft Expand Accelerated Computing From Azure to Windows PCs",
-      "summary": "两家公司宣布扩展全栈协作，覆盖基于 NVIDIA Vera Rubin NVL72 的 Azure 虚拟机、Microsoft Foundry 中的 NVIDIA 开放模型与定制能力，以及工业系统和 Windows PC 的边缘部署选项。",
-      "why": "企业部署的重点正从“选择一个模型”转为跨云、边缘与终端的一体化交付；这会影响工业 AI 的算力采购、模型托管和数据就近处理架构。",
+      "summary": "NVIDIA 宣布与 Microsoft 扩展协作，覆盖 Azure 上的 Vera Rubin 系统、Microsoft Foundry 的模型定制，以及 Azure Local、工业与 Windows PC 端部署。",
+      "why": "企业 AI 的竞争正从单一模型转向云、边缘、终端与数据治理的全栈交付，对工业部署架构更直接。",
       "source": "NVIDIA",
+      "sources": [
+        "NVIDIA"
+      ],
       "sourceLinks": [
         {
-          "name": "NVIDIA Newsroom",
-          "url": "https://nvidianews.nvidia.com/",
-          "tier": 1
-        },
-        {
-          "name": "AI Daily Journal 报道",
-          "url": "https://aidailyjournal.com/en/n/2026/11/19/nvidia-and-microsoft-expand-accelerated-computing-from-azure-to-windows-pcs/",
-          "tier": 2
+          "name": "NVIDIA",
+          "url": "https://blogs.nvidia.com/blog/microsoft-ignite-accelerated-computing-azure-windows-pcs/",
+          "tier": 3
         }
       ],
-      "publishedAt": "2026-11-19T00:00:00Z",
+      "publishedAt": "2026-11-19T00:00:00.000Z",
       "category": "算力",
       "region": "全球",
-      "impact": "高影响",
-      "score": 88,
+      "impact": "关注",
+      "score": 89,
+      "url": "https://blogs.nvidia.com/blog/microsoft-ignite-accelerated-computing-azure-windows-pcs/",
       "tags": [
         "NVIDIA",
         "Microsoft",
         "Azure",
         "边缘AI"
-      ]
+      ],
+      "rank": 2
     },
     {
-      "title": "阿里云在香港发布 Qwen4-Max 增强与视频模型合作",
-      "titleEn": "Alibaba Cloud Unveils New AI Initiatives at Hong Kong Summit",
-      "summary": "阿里云在香港峰会公布 Qwen4-Max 的能力增强，并与美亚娱乐合作，将阿里视频生成模型接入其影视 IP、平台与导演创作流程，支持香港影视行业的 AI 应用。",
-      "why": "这不是单纯模型发布，而是把模型能力嵌进区域生态和具体内容行业；对中国模型的出海路径而言，行业伙伴、分发渠道与本地内容资产同样关键。",
+      "id": 3248149539,
+      "title": "阿里云发布 Qwen4-Max 并推进东南亚生态",
+      "titleEn": "Alibaba Cloud Unveils New AI Initiatives at Hong Kong Summit to Advance the City’s AI Ecosystem",
+      "summary": "阿里云在香港与马来西亚活动中发布 Qwen4-Max；官方称其具备原生视觉和百万 token 上下文，并宣布当地人才、行业合作与云基础设施扩张。",
+      "why": "同一模型发布与区域云、伙伴和行业应用绑定，说明中国模型出海的可持续性取决于交付生态，而非单一榜单成绩。",
       "source": "Alibaba Cloud",
+      "sources": [
+        "Alibaba Cloud Hong Kong",
+        "Alibaba Cloud Malaysia"
+      ],
       "sourceLinks": [
         {
-          "name": "Alibaba Cloud 官方博客",
+          "name": "Alibaba Cloud Hong Kong",
           "url": "https://www.alibabacloud.com/blog/alibaba-cloud-unveils-new-ai-initiatives-at-hong-kong-summit-to-advance-the-city%E2%80%99s-ai-ecosystem_603792",
-          "tier": 1
+          "tier": 3
+        },
+        {
+          "name": "Alibaba Cloud Malaysia",
+          "url": "https://www.alibabacloud.com/blog/alibaba-cloud-advances-ai-adoption-in-malaysia-with-nationwide-youth-contest-and-industry-collaborations_603793",
+          "tier": 3
         }
       ],
-      "publishedAt": "2026-11-19T00:00:00Z",
+      "publishedAt": "2026-11-19T00:00:00.000Z",
       "category": "中国AI",
       "region": "中国",
       "impact": "关注",
-      "score": 80,
+      "score": 86,
+      "url": "https://www.alibabacloud.com/blog/alibaba-cloud-unveils-new-ai-initiatives-at-hong-kong-summit-to-advance-the-city%E2%80%99s-ai-ecosystem_603792",
       "tags": [
         "阿里云",
-        "Qwen",
-        "视频生成",
+        "Qwen4-Max",
+        "东南亚",
         "出海"
-      ]
+      ],
+      "rank": 3
+    },
+    {
+      "id": 2331097513,
+      "title": "SageMaker 推出跨区域推理路由",
+      "titleEn": "Keep inference running through regional capacity shortfalls with cross-Region inference routing in Amazon SageMaker AI",
+      "summary": "AWS 发布 SageMaker 跨区域推理路由：一个调用入口可在多个区域或账户的既有 endpoint 与 inference component 间路由，并在本地容量不足时转移新请求。",
+      "why": "生产推理的可用性不再完全由单一区域 GPU 供给决定；这对高可用模型服务和灾备设计是直接的平台能力提升。",
+      "source": "AWS",
+      "sources": [
+        "AWS"
+      ],
+      "sourceLinks": [
+        {
+          "name": "AWS",
+          "url": "https://aws.amazon.com/blogs/machine-learning/keep-inference-running-through-regional-capacity-shortfalls-with-cross-region-inference-routing-in-amazon-sagemaker-ai/",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-19T00:00:00.000Z",
+      "category": "算力",
+      "region": "全球",
+      "impact": "关注",
+      "score": 85,
+      "url": "https://aws.amazon.com/blogs/machine-learning/keep-inference-running-through-regional-capacity-shortfalls-with-cross-region-inference-routing-in-amazon-sagemaker-ai/",
+      "tags": [
+        "AWS",
+        "SageMaker",
+        "推理",
+        "高可用"
+      ],
+      "rank": 4
+    },
+    {
+      "id": 1875041669,
+      "title": "SageMaker 自动发现推理延迟与闲置 GPU",
+      "titleEn": "Amazon SageMaker AI now detects latency drift, idle GPUs, and missed optimizations on your inference endpoints",
+      "summary": "AWS 宣布 SageMaker 对符合条件的 vLLM GPU 推理 endpoint 默认监测延迟漂移、闲置容量和配置缺口，并把发现导入 Studio 的基准测试流程；生产端点不会被自动修改。",
+      "why": "把运行后优化从人工巡检变为“观测—通知—基准—决策”的闭环，适合需要控制成本和稳定性的企业推理服务。",
+      "source": "AWS",
+      "sources": [
+        "AWS"
+      ],
+      "sourceLinks": [
+        {
+          "name": "AWS",
+          "url": "https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-ai-now-detects-latency-drift-idle-gpus-and-missed-optimizations-on-your-inference-endpoints/",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-19T00:00:00.000Z",
+      "category": "产品",
+      "region": "全球",
+      "impact": "关注",
+      "score": 83,
+      "url": "https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-ai-now-detects-latency-drift-idle-gpus-and-missed-optimizations-on-your-inference-endpoints/",
+      "tags": [
+        "AWS",
+        "SageMaker",
+        "推理优化",
+        "GPU"
+      ],
+      "rank": 5
+    },
+    {
+      "id": 1080720566,
+      "title": "SageMaker HyperPod 增强训练基础设施可观测性",
+      "titleEn": "Introducing enhanced infrastructure observability in Amazon SageMaker HyperPod",
+      "summary": "AWS 为 SageMaker HyperPod 发布增强可观测性，可在 EKS 与 Slurm 训练中识别异常 GPU、ECC/XID 错误、网络吞吐下降与过热等问题。",
+      "why": "大规模训练的浪费常来自定位故障而非发现故障；更细粒度的遥测能减少昂贵集群的无效 GPU 小时。",
+      "source": "AWS",
+      "sources": [
+        "AWS"
+      ],
+      "sourceLinks": [
+        {
+          "name": "AWS",
+          "url": "https://aws.amazon.com/blogs/machine-learning/introducing-enhanced-observability-in-amazon-sagemaker-hyperpod-to-diagnose-gpu-training-issues/",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-19T00:00:00.000Z",
+      "category": "算力",
+      "region": "全球",
+      "impact": "关注",
+      "score": 80,
+      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-enhanced-observability-in-amazon-sagemaker-hyperpod-to-diagnose-gpu-training-issues/",
+      "tags": [
+        "AWS",
+        "HyperPod",
+        "GPU",
+        "可观测性"
+      ],
+      "rank": 6
+    },
+    {
+      "id": 1098711981,
+      "title": "AWS 将实时语音推理模型引入 JumpStart",
+      "titleEn": "PolyAI Dialog-RSN-1 is now on Amazon SageMaker JumpStart",
+      "summary": "PolyAI Dialog-RSN-1 已可通过 AWS Marketplace 和 SageMaker JumpStart 部署，面向能听取实时通话、推理并响应的对话 Agent；推理运行在客户自身 AWS 环境。",
+      "why": "实时语音 Agent 的关键差异从模型演示转向企业可部署性、VPC 边界与 IAM 管理，这降低了进入客服等受监管场景的门槛。",
+      "source": "AWS",
+      "sources": [
+        "AWS"
+      ],
+      "sourceLinks": [
+        {
+          "name": "AWS",
+          "url": "https://aws.amazon.com/blogs/machine-learning/polyai-dialog-rsn-1-is-now-on-amazon-sagemaker-jumpstart/",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-19T00:00:00.000Z",
+      "category": "产品",
+      "region": "全球",
+      "impact": "关注",
+      "score": 78,
+      "url": "https://aws.amazon.com/blogs/machine-learning/polyai-dialog-rsn-1-is-now-on-amazon-sagemaker-jumpstart/",
+      "tags": [
+        "AWS",
+        "PolyAI",
+        "语音Agent",
+        "SageMaker"
+      ],
+      "rank": 7
+    },
+    {
+      "id": 2236239695,
+      "title": "Aurora 支持将 Agent 原型数据库迁入 VPC",
+      "titleEn": "From instant Aurora PostgreSQL databases to production-ready in your VPC",
+      "summary": "AWS 为 Aurora PostgreSQL express configuration 增加 VPC 网络能力，可通过一次修改把现有集群迁入 VPC，同时保留数据与 endpoint。",
+      "why": "允许 AI coding 或 Agent 原型使用的数据库更平滑地进入私有网络与合规环境，减少从 PoC 到生产的迁移摩擦。",
+      "source": "AWS",
+      "sources": [
+        "AWS"
+      ],
+      "sourceLinks": [
+        {
+          "name": "AWS",
+          "url": "https://aws.amazon.com/blogs/database/from-instant-aurora-postgresql-databases-to-production-ready-in-your-vpc/",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-19T00:00:00.000Z",
+      "category": "产品",
+      "region": "全球",
+      "impact": "关注",
+      "score": 74,
+      "url": "https://aws.amazon.com/blogs/database/from-instant-aurora-postgresql-databases-to-production-ready-in-your-vpc/",
+      "tags": [
+        "AWS",
+        "Aurora",
+        "VPC",
+        "AI Agent"
+      ],
+      "rank": 8
+    },
+    {
+      "id": 3906363714,
+      "title": "AWS Lambda 将按需事件函数最长运行时间增至 30 分钟",
+      "titleEn": "Announcing 30-minute timeout for on-demand AWS Lambda Event Functions",
+      "summary": "AWS 把按需 Lambda Event Functions 的最长运行时间从 15 分钟增至 30 分钟，并明确覆盖 AI 推理等工作负载。",
+      "why": "更长的无服务器执行窗口可承载较长的推理与编排步骤，但会同时提高并发、重试和连接管理要求。",
+      "source": "AWS",
+      "sources": [
+        "AWS"
+      ],
+      "sourceLinks": [
+        {
+          "name": "AWS",
+          "url": "https://aws.amazon.com/blogs/compute/announcing-30-minute-timeout-for-on-demand-aws-lambda-event-functions/",
+          "tier": 3
+        }
+      ],
+      "publishedAt": "2026-11-19T00:00:00.000Z",
+      "category": "产品",
+      "region": "全球",
+      "impact": "关注",
+      "score": 72,
+      "url": "https://aws.amazon.com/blogs/compute/announcing-30-minute-timeout-for-on-demand-aws-lambda-event-functions/",
+      "tags": [
+        "AWS",
+        "Lambda",
+        "推理",
+        "Serverless"
+      ],
+      "rank": 9
     }
   ]
 }
