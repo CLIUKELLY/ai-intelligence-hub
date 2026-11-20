@@ -1,35 +1,71 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-20T02:20:51.000Z",
-  "contentUpdatedAt": "2026-11-20T02:20:51.000Z",
+  "generatedAt": "2026-11-20T23:47:11.511Z",
+  "contentUpdatedAt": "2026-11-20T23:47:11.511Z",
   "status": {
     "state": "fresh",
-    "lastSuccessfulAt": "2026-11-20T02:20:51.000Z",
+    "lastSuccessfulAt": "2026-11-20T23:47:11.511Z",
     "note": "已完成 GPT 联网研究、7天滚动数据合并与 GitHub 数据快照；日常写入不使用 RSS。"
   },
   "mode": "GPT 联网研究 · 7天滚动数据 · 非RSS",
   "stats": {
-    "rawSignals": 34,
-    "events": 13,
-    "chinaRatio": 8,
-    "highImpact": 2
+    "rawSignals": 32,
+    "events": 16,
+    "chinaRatio": 6,
+    "highImpact": 4
   },
   "sourceHealth": {
-    "attempted": 6,
-    "healthy": 6,
-    "officialHealthy": 6,
+    "attempted": 3,
+    "healthy": 3,
+    "officialHealthy": 3,
     "failed": []
   },
   "brief": {
-    "title": "今天重点：Agent 从工具调用走向端侧执行与安全治理",
+    "title": "今日重点：AI 资本、企业 Copilot 与科研评测同步推进",
     "bullets": [
-      "Google 同时推进工具按需检索、世界模型 API 与 Mac 端 computer use，Agent 的上下文管理、交互能力和执行边界被拆成独立产品层。",
-      "OpenAI 的 Codex 性能工厂与 Google Tool Retrieval 都指向同一趋势：生产 Agent 需要状态、工具治理与可观测工作流，而非一次性对话。",
-      "NVIDIA、AWS 与 Microsoft 的更新显示，企业 AI 的竞争重心正向高可用推理、云边部署和 Agent 权限治理延伸。",
-      "中国侧仍以阿里云 Qwen4-Max 的海外生态推进为本轮主要信号，后续应观察 API 可用范围和第三方复现。"
+      "Anthropic 完成 IPO 并同步引入多家云与芯片伙伴的私募资金，前沿模型竞争与基础设施资本绑定进一步加深。",
+      "Microsoft 将 GPT‑6.2 Sol 与 Astra 铺入 Copilot 的多个工作入口，企业采用将更看重权限、任务适配与实际成本。",
+      "OpenAI 的 MedChemBench 把药物化学推理拆解为可追溯评测任务，同时明确它不等同于现实药物发现能力。",
+      "滚动数据仍显示 Agent 的工具治理、端侧执行与云端推理可观测性正在从功能更新走向生产部署环节。"
     ]
   },
   "items": [
+    {
+      "id": 3906363719,
+      "title": "Anthropic 完成 IPO 并引入 260 亿美元同步私募",
+      "titleEn": "Anthropic announces closing of initial public offering, including full exercise of underwriters’ option to purchase additional shares, and closing of concurrent private placement",
+      "summary": "Anthropic 宣布完成首次公开募股：1,127,000,000 股 A 类普通股按每股 83 美元发行；公司称自身获得约 916 亿美元毛收入，并与 AMD、Broadcom、Google、Micron、Microsoft、NVIDIA 和 TSMC 完成约 260 亿美元的同步私募。",
+      "change": "从拟上市和定价阶段进入已交易、资金到位的公开公司阶段，并同步引入云与芯片产业链战略投资者。",
+      "why": "这笔融资把前沿模型公司与其算力、云和芯片供应链的资本关系进一步绑定；公开市场也将能更直接跟踪其研发投入、商业化和基础设施承诺。",
+      "watch": "观察募资资金的实际投向、战略投资者合作是否转化为供给或产品优先权，以及上市后的定期披露如何呈现收入与算力投入。",
+      "verification": "官方一手",
+      "source": "Anthropic",
+      "sources": [
+        "Anthropic"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Anthropic",
+          "url": "https://www.anthropic.com/news/ipo-close",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-20T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-20T23:47:11.511Z",
+      "category": "资本",
+      "region": "全球",
+      "impact": "突发",
+      "score": 98,
+      "url": "https://www.anthropic.com/news/ipo-close",
+      "tags": [
+        "Anthropic",
+        "IPO",
+        "AI资本",
+        "算力生态"
+      ],
+      "rank": 1
+    },
     {
       "id": 3636787553,
       "title": "OpenAI 展示 Codex 驱动的性能 Agent 工厂",
@@ -59,7 +95,7 @@
         "Agent Workflow",
         "SRE"
       ],
-      "rank": 1,
+      "rank": 2,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从单次编码辅助转为状态化、可派发、带独立复核的持久 Agent 运维流程。",
@@ -100,7 +136,7 @@
         "Agent",
         "Tool Retrieval"
       ],
-      "rank": 2
+      "rank": 3
     },
     {
       "id": 2177847865,
@@ -131,7 +167,7 @@
         "Azure",
         "边缘AI"
       ],
-      "rank": 3,
+      "rank": 4,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从云侧加速计算扩展到 Azure Local、工业边缘与 Windows PC 的统一部署栈。",
@@ -172,7 +208,43 @@
         "世界模型",
         "Gemini API"
       ],
-      "rank": 4
+      "rank": 5
+    },
+    {
+      "id": 3906363720,
+      "title": "Microsoft Copilot 上线 GPT‑6.2 Sol 与 Astra",
+      "titleEn": "Available today: OpenAI’s GPT-6.2 Sol and GPT-6.2 Astra in Microsoft Copilot",
+      "summary": "Microsoft 宣布 GPT‑6.2 Sol 在全球逐步进入符合条件的 Copilot Chat、Cowork、Studio 及 Excel、PowerPoint、Word；GPT‑6.2 Astra 面向全球 Cowork 和 Studio，并向 Frontier 用户逐步扩展至部分其他 Copilot 体验。",
+      "change": "从单一工作流中的模型选择，扩展为按任务复杂度、产品入口和组织权限分层部署 Sol 与 Astra。",
+      "why": "Microsoft 把最新模型能力嵌入办公和企业 Agent 入口，影响的不只是聊天质量，还包括知识工作自动化的采购、权限治理与生产落地节奏。",
+      "watch": "观察各地区与许可层级的实际开放范围、Work IQ 权限边界，以及企业用户在长任务中对速度、成本和可靠性的反馈。",
+      "verification": "官方一手",
+      "source": "Microsoft",
+      "sources": [
+        "Microsoft"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Microsoft",
+          "url": "https://techcommunity.microsoft.com/blog/microsoft-copilot-blog/available-today-openais-gpt-6-2-sol-and-gpt-6-2-astra-in-microsoft-copilot/4574229",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-20T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-20T23:47:11.511Z",
+      "category": "产品",
+      "region": "全球",
+      "impact": "高影响",
+      "score": 88,
+      "url": "https://techcommunity.microsoft.com/blog/microsoft-copilot-blog/available-today-openais-gpt-6-2-sol-and-gpt-6-2-astra-in-microsoft-copilot/4574229",
+      "tags": [
+        "Microsoft",
+        "Copilot",
+        "OpenAI",
+        "GPT-6.2"
+      ],
+      "rank": 6
     },
     {
       "id": 3248149539,
@@ -209,7 +281,7 @@
         "东南亚",
         "出海"
       ],
-      "rank": 5,
+      "rank": 7,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从单一模型披露扩展为模型、区域云容量、人才项目和行业伙伴同步推进。",
@@ -245,7 +317,7 @@
         "推理",
         "高可用"
       ],
-      "rank": 6,
+      "rank": 8,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从团队自建跨区域容灾逻辑转为 SageMaker 可管理的跨区域推理路由资源。",
@@ -286,7 +358,7 @@
         "Computer Use",
         "Mac"
       ],
-      "rank": 7
+      "rank": 9
     },
     {
       "id": 1875041669,
@@ -317,7 +389,7 @@
         "推理优化",
         "GPU"
       ],
-      "rank": 8,
+      "rank": 10,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从人工巡检端点配置转为自动发现延迟漂移、闲置 GPU 与优化缺口。",
@@ -358,7 +430,43 @@
         "可观测性",
         "治理"
       ],
-      "rank": 9
+      "rank": 11
+    },
+    {
+      "id": 3906363721,
+      "title": "OpenAI 发布药物化学推理基准 MedChemBench",
+      "titleEn": "Can AI help scientists identify promising drug candidates?",
+      "summary": "OpenAI 发布 MedChemBench，基于 117 篇论文与专利整理出 99 道药物化学问题和 761 个分子结构，用于评估模型在化学证据检索、结构推理和候选判断上的能力；其报告称 GPT‑6.2 Astra 在 xhigh 设置下获得 84.5% 的可得分分数。",
+      "change": "从以通用科学问答展示模型能力，转向用可追溯文献、分子结构和多步判断构成的公开药物化学评测任务。",
+      "why": "它为科研团队比较模型在真实专业推理中的边界提供了更具体的测试框架，但 OpenAI 也明确说明该基准不能证明模型已经具备现实药物发现能力。",
+      "watch": "观察是否发布可复现实验材料、独立团队能否验证结果，以及模型在未见化学空间、工具调用和专家审阅下的表现。",
+      "verification": "官方一手",
+      "source": "OpenAI",
+      "sources": [
+        "OpenAI"
+      ],
+      "sourceLinks": [
+        {
+          "name": "OpenAI",
+          "url": "https://openai.com/index/introducing-medchembench/",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-20T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-20T23:47:11.511Z",
+      "category": "研究",
+      "region": "全球",
+      "impact": "关注",
+      "score": 81,
+      "url": "https://openai.com/index/introducing-medchembench/",
+      "tags": [
+        "OpenAI",
+        "MedChemBench",
+        "药物化学",
+        "评测"
+      ],
+      "rank": 12
     },
     {
       "id": 1080720566,
@@ -389,7 +497,7 @@
         "GPU",
         "可观测性"
       ],
-      "rank": 10,
+      "rank": 13,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从多工具拼接排障转为集群级 GPU、网络与训练任务的联合基础设施诊断。",
@@ -425,7 +533,7 @@
         "语音Agent",
         "SageMaker"
       ],
-      "rank": 11,
+      "rank": 14,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从供应商托管的对话模型扩展到可在客户 AWS 账户内部署的 JumpStart 选项。",
@@ -461,7 +569,7 @@
         "VPC",
         "AI Agent"
       ],
-      "rank": 12,
+      "rank": 15,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从原型数据库需要重建迁移变为可保留数据与 endpoint 并迁入私有 VPC。",
@@ -497,7 +605,7 @@
         "推理",
         "Serverless"
       ],
-      "rank": 13,
+      "rank": 16,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从最长十五分钟的按需事件函数执行窗口扩展至三十分钟。",
