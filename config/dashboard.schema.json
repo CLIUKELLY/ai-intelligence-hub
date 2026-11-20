@@ -68,7 +68,7 @@
           "publishedAt": { "type": "string", "format": "date-time" },
           "publishedPrecision": { "enum": ["datetime", "date"] },
           "firstSeenAt": { "type": "string", "format": "date-time" },
-          "category": { "enum": ["中国AI", "模型", "AI Coding", "算力", "研究", "产品", "资本", "安全", "开源"] },
+          "category": { "enum": ["本地AI", "模型", "AI Coding", "算力", "研究", "产品", "资本", "安全", "开源"] },
           "region": { "enum": ["中国", "全球"] },
           "impact": { "enum": ["突发", "高影响", "关注"] },
           "score": { "type": "integer", "minimum": 0, "maximum": 99 },
