@@ -31,6 +31,7 @@ type NewsItem = {
   id: number; title: string; titleEn: string; summary: string; why: string; source: string;
   sources: string[]; publishedAt: string; category: string; region: Region;
   impact: Impact; score: number; url: string; tags: string[];
+  firstSeenAt?: string; publishedPrecision?: 'datetime' | 'date';
   sourceLinks: { name: string; url: string; tier: number }[];
 };
 
@@ -49,14 +50,22 @@ type DashboardData = {
 const dashboard = dashboardJson as unknown as DashboardData;
 const news = dashboard.items;
 const dateFormatter = new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Shanghai', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false });
+const dateOnlyFormatter = new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Shanghai', month: '2-digit', day: '2-digit' });
 const updatedAt = dateFormatter.format(new Date(dashboard.contentUpdatedAt || dashboard.generatedAt));
 
 function itemAgeHours(item: NewsItem, clock: number) {
-  return Math.max(0, (clock - new Date(item.publishedAt).getTime()) / 3600000);
+  const timestamp = new Date(item.firstSeenAt || dashboard.contentUpdatedAt || dashboard.generatedAt || item.publishedAt).getTime();
+  return Number.isFinite(timestamp) ? Math.max(0, (clock - timestamp) / 3600000) : Number.POSITIVE_INFINITY;
+}
+
+function publishedAgeHours(item: NewsItem, clock: number) {
+  const timestamp = new Date(item.publishedAt).getTime();
+  return Number.isFinite(timestamp) ? Math.max(0, (clock - timestamp) / 3600000) : Number.POSITIVE_INFINITY;
 }
 
 function relativeTime(item: NewsItem, clock: number) {
-  const hours = itemAgeHours(item, clock);
+  if (item.publishedPrecision === 'date') return dateOnlyFormatter.format(new Date(item.publishedAt));
+  const hours = publishedAgeHours(item, clock);
   if (hours < 1) return '刚刚';
   if (hours < 24) return `${Math.floor(hours)} 小时前`;
   const days = Math.floor(hours / 24);
@@ -72,7 +81,7 @@ export default function Home() {
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState('全部情报');
   const [region, setRegion] = useState<'全部' | Region>('全部');
-  const [range, setRange] = useState(72);
+  const [range, setRange] = useState(24);
   const [sort, setSort] = useState<'影响力' | '最新' | '来源数'>('影响力');
   const [bilingual, setBilingual] = useState(false);
   const [bookmarks, setBookmarks] = useState<number[]>([]);
@@ -85,44 +94,59 @@ export default function Home() {
     return () => window.clearInterval(timer);
   }, []);
 
-  const computedStats = useMemo(() => {
-    const highImpact = news.filter((item) => item.impact === '突发' || item.impact === '高影响').length;
-    const china = news.filter((item) => item.region === '中国').length;
-    return { events: news.length, highImpact, chinaRatio: news.length ? Math.round(china / news.length * 100) : 0 };
+  useEffect(() => {
+    let saved: number[] = [];
+    try {
+      const parsed = JSON.parse(window.localStorage.getItem('aihub-bookmarks') || '[]');
+      if (Array.isArray(parsed)) saved = parsed.filter(Number.isInteger);
+    } catch {}
+    const timer = window.setTimeout(() => setBookmarks(saved), 0);
+    return () => window.clearTimeout(timer);
   }, []);
+
+  const rangeNews = useMemo(() => news.filter((item) => itemAgeHours(item, clock) <= range), [clock, range]);
+
+  const computedStats = useMemo(() => {
+    const highImpact = rangeNews.filter((item) => item.impact === '突发' || item.impact === '高影响').length;
+    const china = rangeNews.filter((item) => item.region === '中国').length;
+    return { events: rangeNews.length, highImpact, chinaRatio: rangeNews.length ? Math.round(china / rangeNews.length * 100) : 0 };
+  }, [rangeNews]);
 
   const snapshotAge = Math.max(0, (clock - new Date(dashboard.contentUpdatedAt || dashboard.generatedAt).getTime()) / 3600000);
   const isStale = dashboard.status?.state === 'stale' || dashboard.status?.state === 'failed' || snapshotAge > 36;
 
   const topics = useMemo(() => {
     const scores = new Map<string, { count: number; score: number }>();
-    for (const item of news) for (const tag of item.tags) {
+    for (const item of rangeNews) for (const tag of item.tags) {
       const current = scores.get(tag) || { count: 0, score: 0 };
       scores.set(tag, { count: current.count + 1, score: current.score + item.score });
     }
     return [...scores.entries()].sort((a, b) => b[1].score - a[1].score).slice(0, 5);
-  }, []);
+  }, [rangeNews]);
 
-  const chinaItems = useMemo(() => news.filter((item) => item.region === '中国').slice(0, 3), []);
+  const chinaItems = useMemo(() => rangeNews.filter((item) => item.region === '中国').slice(0, 3), [rangeNews]);
   const topicBoards = useMemo(() => [
-    ['中国 AI', news.filter((item) => item.region === '中国').slice(0, 3)],
-    ['模型与产品', news.filter((item) => ['模型', '产品'].includes(item.category)).slice(0, 3)],
-    ['开发者与基础设施', news.filter((item) => ['AI Coding', '开源', '算力'].includes(item.category)).slice(0, 3)],
-  ].filter(([, items]) => (items as NewsItem[]).length > 0) as [string, NewsItem[]][], []);
+    ['中国 AI', rangeNews.filter((item) => item.region === '中国').slice(0, 3)],
+    ['模型与产品', rangeNews.filter((item) => ['模型', '产品'].includes(item.category)).slice(0, 3)],
+    ['开发者与基础设施', rangeNews.filter((item) => ['AI Coding', '开源', '算力'].includes(item.category)).slice(0, 3)],
+  ].filter(([, items]) => (items as NewsItem[]).length > 0) as [string, NewsItem[]][], [rangeNews]);
 
   const filtered = useMemo(() => {
     const normalized = query.trim().toLowerCase();
-    return news.filter((item) => {
+    return rangeNews.filter((item) => {
       const categoryMatch = category === '全部情报' || item.category === category;
       const regionMatch = region === '全部' || item.region === region;
-      const rangeMatch = itemAgeHours(item, clock) <= range;
       const queryMatch = !normalized || `${item.title} ${item.titleEn} ${item.summary} ${item.source} ${item.tags.join(' ')}`.toLowerCase().includes(normalized);
-      return categoryMatch && regionMatch && rangeMatch && queryMatch;
-    }).sort((a, b) => sort === '最新' ? itemAgeHours(a, clock) - itemAgeHours(b, clock) : sort === '来源数' ? b.sources.length - a.sources.length : b.score - a.score);
-  }, [category, clock, query, range, region, sort]);
+      return categoryMatch && regionMatch && queryMatch;
+    }).sort((a, b) => sort === '最新' ? publishedAgeHours(a, clock) - publishedAgeHours(b, clock) : sort === '来源数' ? b.sources.length - a.sources.length : b.score - a.score);
+  }, [category, clock, query, rangeNews, region, sort]);
 
-  const categoryCount = (label: string) => label === '全部情报' ? news.length : news.filter((item) => item.category === label).length;
-  const toggleBookmark = (id: number) => setBookmarks((items) => items.includes(id) ? items.filter((item) => item !== id) : [...items, id]);
+  const categoryCount = (label: string) => label === '全部情报' ? rangeNews.length : rangeNews.filter((item) => item.category === label).length;
+  const toggleBookmark = (id: number) => setBookmarks((items) => {
+    const next = items.includes(id) ? items.filter((item) => item !== id) : [...items, id];
+    try { window.localStorage.setItem('aihub-bookmarks', JSON.stringify(next)); } catch {}
+    return next;
+  });
 
   useEffect(() => {
     const shortcut = (event: KeyboardEvent) => {
@@ -161,7 +185,7 @@ export default function Home() {
         <div className={`system-state ${isStale ? 'stale' : ''}`}><span><i /> {isStale ? '数据待更新' : '研究已更新'}</span><span>内容时间 {updatedAt}</span><button aria-label="高影响事件"><Bell size={16} /><em>{computedStats.highImpact}</em></button><button className="mobile-toggle" aria-label="打开频道" onClick={() => setMobileOpen(!mobileOpen)}>{mobileOpen ? <X size={18} /> : <Menu size={18} />}</button></div>
       </header>
 
-      <div className="news-ticker"><span><Radio size={13} /> 最新信号</span><div>{news.slice(0, 4).map((item, index) => <span key={item.id}>{index === 0 ? <b>{item.title}</b> : item.title}{index < Math.min(news.length, 4) - 1 && <i />}</span>)}</div></div>
+      <div className="news-ticker"><span><Radio size={13} /> 最新信号</span><div>{rangeNews.slice(0, 4).map((item, index) => <span key={item.id}>{index === 0 ? <b>{item.title}</b> : item.title}{index < Math.min(rangeNews.length, 4) - 1 && <i />}</span>)}</div></div>
 
       <div className="cockpit" id="top">
         <aside className={`channel-rail ${mobileOpen ? 'open' : ''}`}>
@@ -181,14 +205,14 @@ export default function Home() {
           </div>
 
           <div className="signal-strip">
-            {news.slice(0, 3).map((item, index) => <div className={`signal-card ${index === 0 ? 'hot' : ''}`} key={item.id}><span>{index === 0 && <Flame size={14} />}{index === 0 ? '今日焦点' : item.category}</span><b>{item.title}</b><small>{item.sources.length} 个来源 · 影响力 {item.score}</small></div>)}
+            {rangeNews.slice(0, 3).map((item, index) => <div className={`signal-card ${index === 0 ? 'hot' : ''}`} key={item.id}><span>{index === 0 && <Flame size={14} />}{index === 0 ? '今日焦点' : item.category}</span><b>{item.title}</b><small>{item.sources.length} 个来源 · 影响力 {item.score}</small></div>)}
           </div>
 
           <div className="control-bar">
             <div className="control-group"><span>时间</span>{[[24, '24小时'], [72, '3天'], [168, '7天']].map(([value, label]) => <button key={value} className={range === value ? 'active' : ''} onClick={() => setRange(Number(value))}>{label}</button>)}</div>
             <div className="control-group"><span>排序</span>{(['影响力', '最新', '来源数'] as const).map((item) => <button key={item} className={sort === item ? 'active' : ''} onClick={() => setSort(item)}>{item}</button>)}</div>
             <button className={`language-toggle ${bilingual ? 'active' : ''}`} onClick={() => setBilingual(!bilingual)}><Languages size={13} /> {bilingual ? '双语' : '仅中文'}</button>
-            <button className="refresh-button" title="每日自动更新"><RefreshCw size={13} /> {updatedAt} 更新</button>
+            <span className="refresh-button" title="每日自动更新"><RefreshCw size={13} /> {updatedAt} 更新</span>
           </div>
 
           <div className="desk-grid">
@@ -208,7 +232,7 @@ export default function Home() {
             </section>
 
             <aside className="briefing-stack">
-              <section className="briefing-card primary-brief"><div className="panel-head"><div><h2>今日三分钟</h2><span>{dashboard.mode}</span></div><span className="verified"><Circle size={7} fill="currentColor" /> {dashboard.sourceHealth.healthy} 源有效</span></div><h3>{dashboard.brief.title}</h3><ol>{dashboard.brief.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ol><div className="brief-footer"><span>约 3 分钟读完</span><span>{news.filter((item) => item.sourceLinks.length > 1).length} 条多源核验</span></div></section>
+              <section className="briefing-card primary-brief"><div className="panel-head"><div><h2>今日三分钟</h2><span>{dashboard.mode}</span></div><span className="verified"><Circle size={7} fill="currentColor" /> {dashboard.sourceHealth.healthy} 源有效</span></div><h3>{dashboard.brief.title}</h3><ol>{dashboard.brief.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ol><div className="brief-footer"><span>约 3 分钟读完</span><span>{rangeNews.filter((item) => item.sourceLinks.length > 1).length} 条多源核验</span></div></section>
 
               <section className="briefing-card"><div className="panel-head"><div><h2>关注主题</h2><span>按真实事件标签汇总</span></div><TrendingUp size={15} /></div><div className="trend-list">{topics.map(([name, value], index) => <div key={name}><span className="trend-rank">{index + 1}</span><p><b>{name}</b><small>{value.count} 个事件</small></p><em>{value.score}</em></div>)}</div></section>
 

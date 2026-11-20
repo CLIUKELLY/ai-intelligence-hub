@@ -17,8 +17,28 @@
       }
     },
     "mode": { "type": "string", "minLength": 1 },
-    "stats": { "type": "object" },
-    "sourceHealth": { "type": "object" },
+    "stats": {
+      "type": "object",
+      "required": ["rawSignals", "events", "chinaRatio", "highImpact"],
+      "properties": {
+        "rawSignals": { "type": "integer", "minimum": 0 },
+        "events": { "type": "integer", "minimum": 1, "maximum": 80 },
+        "chinaRatio": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "highImpact": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "sourceHealth": {
+      "type": "object",
+      "required": ["attempted", "healthy", "officialHealthy", "failed"],
+      "properties": {
+        "attempted": { "type": "integer", "minimum": 0 },
+        "healthy": { "type": "integer", "minimum": 0 },
+        "officialHealthy": { "type": "integer", "minimum": 0 },
+        "failed": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
     "brief": {
       "type": "object",
       "required": ["title", "bullets"],
@@ -30,21 +50,27 @@
     "items": {
       "type": "array",
       "minItems": 1,
-      "maxItems": 24,
+      "maxItems": 80,
       "items": {
         "type": "object",
-        "required": ["title", "titleEn", "summary", "why", "source", "sourceLinks", "publishedAt", "category", "region", "impact", "score", "tags"],
+        "required": ["id", "title", "titleEn", "summary", "why", "source", "sources", "sourceLinks", "publishedAt", "category", "region", "impact", "score", "url", "tags", "rank"],
         "properties": {
+          "id": { "type": "integer", "minimum": 1 },
           "title": { "type": "string", "minLength": 4 },
           "titleEn": { "type": "string", "minLength": 4 },
           "summary": { "type": "string", "minLength": 20 },
           "why": { "type": "string", "minLength": 15 },
           "source": { "type": "string" },
+          "sources": { "type": "array", "minItems": 1, "items": { "type": "string" } },
           "publishedAt": { "type": "string", "format": "date-time" },
+          "publishedPrecision": { "enum": ["datetime", "date"] },
+          "firstSeenAt": { "type": "string", "format": "date-time" },
           "category": { "enum": ["中国AI", "模型", "AI Coding", "算力", "研究", "产品", "资本", "安全", "开源"] },
           "region": { "enum": ["中国", "全球"] },
           "impact": { "enum": ["突发", "高影响", "关注"] },
           "score": { "type": "integer", "minimum": 0, "maximum": 99 },
+          "url": { "type": "string", "format": "uri" },
+          "rank": { "type": "integer", "minimum": 1, "maximum": 80 },
           "tags": { "type": "array", "maxItems": 4, "items": { "type": "string" } },
           "sourceLinks": {
             "type": "array",
