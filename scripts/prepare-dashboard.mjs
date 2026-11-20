@@ -52,6 +52,8 @@ const items = input.items.map((item, index) => {
   const titleEn = requiredString(item.titleEn || title, `items[${index}].titleEn`, 4);
   const summary = requiredString(item.summary, `items[${index}].summary`, 20);
   const why = requiredString(item.why, `items[${index}].why`, 15);
+  const change = typeof item.change === 'string' && item.change.trim().length >= 12 ? item.change.trim() : null;
+  const watch = typeof item.watch === 'string' && item.watch.trim().length >= 12 ? item.watch.trim() : null;
   const publishedAt = validDate(item.publishedAt, `items[${index}].publishedAt`);
   const firstSeenAt = validDate(item.firstSeenAt || firstSeenFallback, `items[${index}].firstSeenAt`);
   const publishedPrecision = ['datetime', 'date'].includes(item.publishedPrecision)
@@ -73,6 +75,10 @@ const items = input.items.map((item, index) => {
 
   if (/打开原文|暂无|placeholder|待补充/i.test(summary)) warnings.push(`${title} 的摘要仍像占位内容`);
   if (sourceLinks.length === 1 && ['突发', '高影响'].includes(item.impact)) warnings.push(`${title} 是高影响事件，但只有一个来源`);
+  const officialSources = sourceLinks.filter((source) => source.tier === 1).length;
+  const verification = ['多源核验', '官方一手', '单一来源'].includes(item.verification)
+    ? item.verification
+    : sourceLinks.length > 1 ? '多源核验' : officialSources ? '官方一手' : '单一来源';
 
   return {
     id: Number.isInteger(item.id) ? item.id : stableId(primaryUrl),
@@ -80,6 +86,9 @@ const items = input.items.map((item, index) => {
     titleEn,
     summary,
     why,
+    ...(change ? { change } : {}),
+    ...(watch ? { watch } : {}),
+    verification,
     source: requiredString(item.source || sourceLinks[0].name, `items[${index}].source`),
     sources: [...new Set(sourceLinks.map((source) => source.name))],
     sourceLinks,

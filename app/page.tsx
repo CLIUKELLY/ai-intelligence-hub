@@ -30,8 +30,9 @@ type Region = '中国' | '全球';
 type NewsItem = {
   id: number; title: string; titleEn: string; summary: string; why: string; source: string;
   sources: string[]; publishedAt: string; category: string; region: Region;
-  impact: Impact; score: number; url: string; tags: string[];
+  impact: Impact; score: number; rank: number; url: string; tags: string[];
   firstSeenAt?: string; publishedPrecision?: 'datetime' | 'date';
+  change?: string; watch?: string; verification?: string;
   sourceLinks: { name: string; url: string; tier: number }[];
 };
 
@@ -51,7 +52,17 @@ const dashboard = dashboardJson as unknown as DashboardData;
 const news = dashboard.items;
 const dateFormatter = new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Shanghai', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false });
 const dateOnlyFormatter = new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Shanghai', month: '2-digit', day: '2-digit' });
+const dayKeyFormatter = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit' });
 const updatedAt = dateFormatter.format(new Date(dashboard.contentUpdatedAt || dashboard.generatedAt));
+
+const companyMatchers = [
+  ['OpenAI', ['openai', 'codex', 'chatgpt']], ['Anthropic', ['anthropic', 'claude']],
+  ['Google', ['google', 'deepmind', 'gemini']], ['Microsoft', ['microsoft', '微软']],
+  ['NVIDIA', ['nvidia', '英伟达']], ['Meta', ['meta', 'llama']], ['AWS', ['aws', 'amazon']],
+  ['阿里 / Qwen', ['阿里', 'qwen', '通义']], ['DeepSeek', ['deepseek']],
+  ['百度', ['百度', 'baidu', '文心']], ['腾讯', ['腾讯', 'tencent', '混元']],
+  ['字节跳动', ['字节', 'bytedance', '豆包', '火山引擎']], ['智谱', ['智谱', 'zhipu', 'glm']],
+] as const;
 
 function itemAgeHours(item: NewsItem, clock: number) {
   const timestamp = new Date(item.firstSeenAt || dashboard.contentUpdatedAt || dashboard.generatedAt || item.publishedAt).getTime();
@@ -125,6 +136,32 @@ export default function Home() {
   }, [rangeNews]);
 
   const chinaItems = useMemo(() => rangeNews.filter((item) => item.region === '中国').slice(0, 3), [rangeNews]);
+  const topFive = useMemo(() => [...rangeNews].sort((a, b) => a.rank - b.rank || b.score - a.score).slice(0, 5), [rangeNews]);
+  const sevenDayNews = useMemo(() => news.filter((item) => itemAgeHours(item, clock) <= 168), [clock]);
+  const sevenDayTrend = useMemo(() => {
+    const days = Array.from({ length: 7 }, (_, offset) => {
+      const date = new Date(clock - (6 - offset) * 86400000);
+      return { key: dayKeyFormatter.format(date), label: dateOnlyFormatter.format(date), count: 0 };
+    });
+    const buckets = new Map(days.map((day) => [day.key, day]));
+    for (const item of sevenDayNews) {
+      const seenAt = new Date(item.firstSeenAt || dashboard.contentUpdatedAt || dashboard.generatedAt);
+      const bucket = buckets.get(dayKeyFormatter.format(seenAt));
+      if (bucket) bucket.count += 1;
+    }
+    return days;
+  }, [clock, sevenDayNews]);
+  const trendPeak = Math.max(1, ...sevenDayTrend.map((day) => day.count));
+  const companySignals = useMemo(() => companyMatchers.map(([name, aliases]) => {
+    const matches = (item: NewsItem) => {
+      const haystack = `${item.title} ${item.titleEn} ${item.source} ${item.sources.join(' ')} ${item.tags.join(' ')}`.toLowerCase();
+      return aliases.some((alias) => haystack.includes(alias));
+    };
+    const day = news.filter((item) => itemAgeHours(item, clock) <= 24 && matches(item)).length;
+    const week = sevenDayNews.filter(matches).length;
+    return { name, day, week };
+  }).filter((item) => item.week > 0).sort((a, b) => b.week - a.week || b.day - a.day).slice(0, 7), [clock, sevenDayNews]);
+  const coverage = useMemo(() => channels.slice(1).map(([label]) => ({ label, count: sevenDayNews.filter((item) => item.category === label).length })).filter((item) => item.count > 0).sort((a, b) => b.count - a.count), [sevenDayNews]);
   const topicBoards = useMemo(() => [
     ['中国 AI', rangeNews.filter((item) => item.region === '中国').slice(0, 3)],
     ['模型与产品', rangeNews.filter((item) => ['模型', '产品'].includes(item.category)).slice(0, 3)],
@@ -204,9 +241,10 @@ export default function Home() {
             <div className="desk-metrics"><span><small>扫描线索</small><b>{dashboard.stats.rawSignals}</b><em>本轮研究</em></span><span><small>聚合事件</small><b>{computedStats.events}</b><em>去重后</em></span><span><small>中国相关</small><b>{computedStats.chinaRatio}%</b><em>按事件计算</em></span><span><small>高影响</small><b>{computedStats.highImpact}</b><em className="warn">需关注</em></span></div>
           </div>
 
-          <div className="signal-strip">
-            {rangeNews.slice(0, 3).map((item, index) => <div className={`signal-card ${index === 0 ? 'hot' : ''}`} key={item.id}><span>{index === 0 && <Flame size={14} />}{index === 0 ? '今日焦点' : item.category}</span><b>{item.title}</b><small>{item.sources.length} 个来源 · 影响力 {item.score}</small></div>)}
-          </div>
+          <section className="top-five-section">
+            <div className="section-inline-head"><div><span>EDITOR&apos;S PICKS</span><h2>今日 Top 5</h2></div><small>按影响力、时效与信源质量综合排序</small></div>
+            <div className="top-five-grid">{topFive.map((item, index) => <a className={`top-five-card ${index === 0 ? 'hot' : ''}`} href={item.url} target="_blank" rel="noreferrer" key={item.id}><em>{String(index + 1).padStart(2, '0')}</em><span><b>{item.title}</b><small>{item.category} · {item.sources.length} 源 · {item.score}</small></span></a>)}</div>
+          </section>
 
           <div className="control-bar">
             <div className="control-group"><span>时间</span>{[[24, '24小时'], [72, '3天'], [168, '7天']].map(([value, label]) => <button key={value} className={range === value ? 'active' : ''} onClick={() => setRange(Number(value))}>{label}</button>)}</div>
@@ -224,8 +262,9 @@ export default function Home() {
                   <div className="news-meta"><span className={`impact impact-${item.impact}`}>{item.impact}</span><span>{item.region}</span><span>{item.category}</span><span><Clock3 size={11} /> {relativeTime(item, clock)}</span></div>
                   <h3>{item.title}</h3>{bilingual && <h4>{item.titleEn}</h4>}
                   <p>{item.summary}</p>
+                  {(item.change || item.watch) && <div className="research-lines">{item.change && <span><b>发生了什么变化</b>{item.change}</span>}{item.watch && <span><b>下一步观察</b>{item.watch}</span>}</div>}
                   <div className="why-line"><b>为什么重要</b><span>{item.why}</span></div>
-                  <div className="source-line"><span>{item.sources.length} 个来源</span>{item.sourceLinks.slice(0, 4).map((source) => <a href={source.url} target="_blank" rel="noreferrer" key={source.url}>{source.name}{source.tier === 3 ? ' · 一手' : ''}</a>)}{item.tags.slice(0, 2).map((tag) => <i key={tag}>#{tag}</i>)}</div>
+                  <div className="source-line"><span>{item.verification || `${item.sources.length} 个来源`}</span>{item.sourceLinks.slice(0, 4).map((source) => <a href={source.url} target="_blank" rel="noreferrer" key={source.url}>{source.name}{source.tier === 1 ? ' · 官方' : ''}</a>)}{item.tags.slice(0, 2).map((tag) => <i key={tag}>#{tag}</i>)}</div>
                 </div>
                 <div className="news-actions"><button onClick={() => toggleBookmark(item.id)} aria-label={bookmarks.includes(item.id) ? '取消收藏' : '收藏'}>{bookmarks.includes(item.id) ? <BookmarkCheck size={15} /> : <Bookmark size={15} />}</button><a href={item.url} target="_blank" rel="noreferrer" aria-label={`打开来源：${item.title}`}><ExternalLink size={15} /></a></div>
               </article>)}</div> : <div className="empty-result"><Search size={22} /><b>没有匹配的情报</b><span>扩大时间范围、清空搜索或切换频道</span><button onClick={() => { setQuery(''); setCategory('全部情报'); setRegion('全部'); setRange(168); }}>重置筛选</button></div>}
@@ -239,6 +278,15 @@ export default function Home() {
               <section className="briefing-card china-watch"><div className="panel-head"><div><h2>中国 AI 观察</h2><span>本轮实际收录的本土信号</span></div><Sparkles size={15} /></div>{chinaItems.length ? <div className="watch-list">{chinaItems.map((item, index) => <a href={item.url} target="_blank" rel="noreferrer" key={item.id}><span className={`watch-dot ${index === 0 ? 'red' : index === 1 ? 'blue' : 'amber'}`} /><p><b>{item.title}</b><small>{item.source} · {relativeTime(item, clock)}</small></p><ExternalLink size={14} /></a>)}</div> : <div className="watch-empty">本轮没有通过核验的中国 AI 事件，不用占位内容补齐。</div>}</section>
             </aside>
           </div>
+
+          <section className="market-depth-section">
+            <div className="section-heading"><div><span>MARKET DEPTH</span><h2>7天市场结构</h2></div><small>全部指标由滚动事件数据实时计算</small></div>
+            <div className="market-depth-grid">
+              <article className="company-matrix"><header><div><b>重点公司矩阵</b><span>24小时 / 7天事件数</span></div><Landmark size={15} /></header><div className="matrix-head"><span>公司</span><span>24H</span><span>7D</span><span>动量</span></div>{companySignals.length ? companySignals.map((company) => <div className="matrix-row" key={company.name}><b>{company.name}</b><span>{company.day}</span><span>{company.week}</span><em className={company.day > 0 ? 'rising' : ''}>{company.day > 0 ? '活跃' : '平稳'}</em></div>) : <p className="depth-empty">7天内暂无可归属的公司事件</p>}</article>
+              <article className="seven-day-chart"><header><div><b>事件密度</b><span>按首次收录时间计算</span></div><TrendingUp size={15} /></header><div className="bar-chart">{sevenDayTrend.map((day) => <div key={day.key}><span><i style={{ height: `${Math.max(5, day.count / trendPeak * 100)}%` }} /></span><b>{day.count}</b><small>{day.label}</small></div>)}</div></article>
+              <article className="coverage-card"><header><div><b>情报篮子</b><span>近7天真实分类覆盖</span></div><Globe2 size={15} /></header><div className="coverage-list">{coverage.map((item) => <div key={item.label}><span>{item.label}</span><i><b style={{ width: `${item.count / Math.max(1, sevenDayNews.length) * 100}%` }} /></i><em>{item.count}</em></div>)}</div></article>
+            </div>
+          </section>
 
           <section className="platform-section">
             <div className="section-heading"><div><span>事件覆盖</span><h2>本轮研究覆盖的重点议题</h2></div><small>仅基于已核验事件，不模拟平台热度</small></div>
