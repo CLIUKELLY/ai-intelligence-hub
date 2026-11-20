@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import dashboardJson from '@/data/dashboard.json';
+import focusProfileJson from '@/config/focus-profile.json';
 
 export const dynamic = 'force-static';
 
@@ -48,7 +49,14 @@ type DashboardData = {
   items: NewsItem[];
 };
 
+type FocusProfile = {
+  reader: { displayName?: string; language: string; timezone: string; dailyItemTarget: number };
+  priorities: { name: string; weight: number; keywords: string[] }[];
+  companies: { highPriority: string[]; watch: string[] };
+};
+
 const dashboard = dashboardJson as unknown as DashboardData;
+const focusProfile = focusProfileJson as FocusProfile;
 const news = dashboard.items;
 const dateFormatter = new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Shanghai', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false });
 const dateOnlyFormatter = new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Shanghai', month: '2-digit', day: '2-digit' });
@@ -83,8 +91,16 @@ function relativeTime(item: NewsItem, clock: number) {
   return days < 7 ? `${days} 天前` : dateFormatter.format(new Date(item.publishedAt));
 }
 
+function focusMatches(item: NewsItem) {
+  const haystack = `${item.title} ${item.titleEn} ${item.summary} ${item.why} ${item.source} ${item.sources.join(' ')} ${item.tags.join(' ')}`.toLowerCase();
+  return focusProfile.priorities
+    .filter((priority) => priority.keywords.some((keyword) => haystack.includes(keyword.toLowerCase())))
+    .sort((a, b) => b.weight - a.weight)
+    .slice(0, 2);
+}
+
 const channels = [
-  ['全部情报', Newspaper], ['本地AI', Sparkles], ['模型', Zap], ['AI Coding', Code2],
+  ['全部情报', Newspaper], ['中国AI', Sparkles], ['模型', Zap], ['AI Coding', Code2],
   ['算力', Cpu], ['研究', FlaskConical], ['产品', Globe2], ['资本', Landmark], ['安全', ShieldCheck], ['开源', Globe2],
 ] as const;
 
@@ -163,7 +179,7 @@ export default function Home() {
   }).filter((item) => item.week > 0).sort((a, b) => b.week - a.week || b.day - a.day).slice(0, 7), [clock, sevenDayNews]);
   const coverage = useMemo(() => channels.slice(1).map(([label]) => ({ label, count: sevenDayNews.filter((item) => item.category === label).length })).filter((item) => item.count > 0).sort((a, b) => b.count - a.count), [sevenDayNews]);
   const topicBoards = useMemo(() => [
-    ['本地 AI', rangeNews.filter((item) => item.region === '中国').slice(0, 3)],
+    ['中国 AI', rangeNews.filter((item) => item.region === '中国').slice(0, 3)],
     ['模型与产品', rangeNews.filter((item) => ['模型', '产品'].includes(item.category)).slice(0, 3)],
     ['开发者与基础设施', rangeNews.filter((item) => ['AI Coding', '开源', '算力'].includes(item.category)).slice(0, 3)],
   ].filter(([, items]) => (items as NewsItem[]).length > 0) as [string, NewsItem[]][], [rangeNews]);
@@ -222,7 +238,7 @@ export default function Home() {
         <div className={`system-state ${isStale ? 'stale' : ''}`}><span><i /> {isStale ? '等待下一次研究' : `Updated ${updatedAt}`}</span><button className="mobile-toggle" aria-label="打开频道" onClick={() => setMobileOpen(!mobileOpen)}>{mobileOpen ? <X size={18} /> : <Menu size={18} />}</button></div>
       </header>
 
-      <div className="signal-context"><span>RESEARCH WORKSPACE</span><p>经核验的 AI 市场、产品与技术信号 · 每日自动更新</p><b>{rangeNews.length} SIGNALS</b></div>
+      <div className="news-ticker"><span>今日信号</span><div>{rangeNews.slice(0, 4).map((item, index) => <span key={item.id}>{index === 0 ? <b>{item.title}</b> : item.title}{index < Math.min(rangeNews.length, 4) - 1 && <i />}</span>)}</div></div>
 
       <div className="cockpit" id="top">
         <aside className={`channel-rail ${mobileOpen ? 'open' : ''}`}>
@@ -237,12 +253,12 @@ export default function Home() {
 
         <section className="intel-workspace">
           <div className="workspace-topline">
-            <div><span>AI INTELLIGENCE WORKSPACE / 中文版</span><h1>市场决策信号与行动观察</h1><p>从已核验事件中识别影响产品、技术与部署判断的变化。</p></div>
+            <div><span>PERSONALIZED AI INTELLIGENCE / 中文版</span><h1>今天的 AI 市场，先看这几件事</h1><p>按你的关注方向整理，聚焦真正影响判断的变化。</p></div>
             <div className="desk-metrics"><span><small>扫描线索</small><b>{dashboard.stats.rawSignals}</b><em>本轮研究</em></span><span><small>聚合事件</small><b>{computedStats.events}</b><em>去重后</em></span><span><small>中国相关</small><b>{computedStats.chinaRatio}%</b><em>按事件计算</em></span><span><small>高影响</small><b>{computedStats.highImpact}</b><em className="warn">需关注</em></span></div>
           </div>
 
           <section className="top-five-section">
-            <div className="section-inline-head"><div><span>TOP SIGNALS</span><h2>今天真正值得看的变化</h2></div><small>按相关性、影响力与证据质量排序</small></div>
+            <div className="section-inline-head"><div><span>重点速览</span><h2>今天真正值得看的变化</h2></div><small>按相关性、影响力与证据质量排序</small></div>
             <div className="top-five-grid">{topFive.map((item, index) => <a className={`top-five-card ${index === 0 ? 'hot' : ''}`} href={item.url} target="_blank" rel="noreferrer" key={item.id}><em>{String(index + 1).padStart(2, '0')}</em><span><b>{item.title}</b>{index === 0 && <p>{item.summary}</p>}<small>{item.category} · {item.verification || `${item.sources.length} 源`} · {item.score}</small></span></a>)}</div>
           </section>
 
@@ -255,11 +271,12 @@ export default function Home() {
 
           <div className="desk-grid">
             <section className="feed-panel">
-              <div className="panel-head"><div><h2>信号档案</h2><span>{filtered.length} 个事件 · 相似报道已合并</span></div><span className="method-badge">事件合并 + 证据分级</span></div>
+              <div className="panel-head"><div><h2>聚合情报流</h2><span>{filtered.length} 个事件 · 相似报道已合并</span></div><span className="method-badge">去重 + 交叉信源</span></div>
               {filtered.length > 0 ? <div className="news-feed">{filtered.map((item, index) => <article className={`news-row ${index === 0 ? 'lead' : ''}`} key={item.id}>
                 <div className="news-rank"><span>{String(index + 1).padStart(2, '0')}</span><b>{item.score}</b></div>
                 <div className="news-body">
                   <div className="news-meta"><span className={`impact impact-${item.impact}`}>{item.impact}</span><span>{item.region}</span><span>{item.category}</span><span><Clock3 size={11} /> {relativeTime(item, clock)}</span></div>
+                  {focusMatches(item).length > 0 && <div className="relevance-line"><b>与你相关</b>{focusMatches(item).map((match) => <span key={match.name}>{match.name}</span>)}</div>}
                   <h3>{item.title}</h3>{bilingual && <h4>{item.titleEn}</h4>}
                   <p>{item.summary}</p>
                   {(item.change || item.watch) && <div className="research-lines">{item.change && <span><b>发生了什么变化</b>{item.change}</span>}{item.watch && <span><b>下一步观察</b>{item.watch}</span>}</div>}
@@ -271,13 +288,13 @@ export default function Home() {
             </section>
 
             <aside className="briefing-stack">
-              <section className="briefing-card primary-brief"><div className="panel-head"><div><h2>What Matters</h2><span>AI-assisted editorial view</span></div><span className="verified"><Circle size={7} fill="currentColor" /> {dashboard.sourceHealth.healthy} 源有效</span></div><h3>{dashboard.brief.title}</h3><ol>{dashboard.brief.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ol><div className="brief-footer"><span>约 3 分钟读完</span><span>{rangeNews.filter((item) => item.sourceLinks.length > 1).length} 条多源核验</span></div></section>
+              <section className="briefing-card primary-brief"><div className="panel-head"><div><h2>今日判断</h2><span>基于本轮研究生成</span></div><span className="verified"><Circle size={7} fill="currentColor" /> {dashboard.sourceHealth.healthy} 源有效</span></div><h3>{dashboard.brief.title}</h3><ol>{dashboard.brief.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ol><div className="brief-footer"><span>约 3 分钟读完</span><span>{rangeNews.filter((item) => item.sourceLinks.length > 1).length} 条多源核验</span></div></section>
 
-              
+              <section className="briefing-card focus-profile-card"><div className="panel-head"><div><h2>关注画像</h2><span>透明、可修改的个性化依据</span></div><small>{focusProfile.priorities.length} 个关注方向</small></div><div className="focus-priority-list">{focusProfile.priorities.map((priority) => <div key={priority.name}><span>{priority.name}</span><i><b style={{ width: `${priority.weight * 10}%` }} /></i><em>{priority.weight}</em></div>)}</div></section>
 
               <section className="briefing-card"><div className="panel-head"><div><h2>关注主题</h2><span>按真实事件标签汇总</span></div><TrendingUp size={15} /></div><div className="trend-list">{topics.map(([name, value], index) => <div key={name}><span className="trend-rank">{index + 1}</span><p><b>{name}</b><small>{value.count} 个事件</small></p><em>{value.score}</em></div>)}</div></section>
 
-              <section className="briefing-card china-watch"><div className="panel-head"><div><h2>本地 AI 观察</h2><span>本轮实际收录的本地相关信号</span></div><Sparkles size={15} /></div>{chinaItems.length ? <div className="watch-list">{chinaItems.map((item, index) => <a href={item.url} target="_blank" rel="noreferrer" key={item.id}><span className={`watch-dot ${index === 0 ? 'red' : index === 1 ? 'blue' : 'amber'}`} /><p><b>{item.title}</b><small>{item.source} · {relativeTime(item, clock)}</small></p><ExternalLink size={14} /></a>)}</div> : <div className="watch-empty">本轮没有通过核验的中国 AI 事件，不用占位内容补齐。</div>}</section>
+              <section className="briefing-card china-watch"><div className="panel-head"><div><h2>中国 AI 观察</h2><span>本轮实际收录的本土信号</span></div><Sparkles size={15} /></div>{chinaItems.length ? <div className="watch-list">{chinaItems.map((item, index) => <a href={item.url} target="_blank" rel="noreferrer" key={item.id}><span className={`watch-dot ${index === 0 ? 'red' : index === 1 ? 'blue' : 'amber'}`} /><p><b>{item.title}</b><small>{item.source} · {relativeTime(item, clock)}</small></p><ExternalLink size={14} /></a>)}</div> : <div className="watch-empty">本轮没有通过核验的中国 AI 事件，不用占位内容补齐。</div>}</section>
             </aside>
           </div>
 
