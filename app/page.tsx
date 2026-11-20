@@ -100,7 +100,7 @@ function focusMatches(item: NewsItem) {
 }
 
 const channels = [
-  ['全部情报', Newspaper], ['中国AI', Sparkles], ['模型', Zap], ['AI Coding', Code2],
+  ['全部情报', Newspaper], ['本地AI', Sparkles], ['模型', Zap], ['AI Coding', Code2],
   ['算力', Cpu], ['研究', FlaskConical], ['产品', Globe2], ['资本', Landmark], ['安全', ShieldCheck], ['开源', Globe2],
 ] as const;
 
@@ -294,7 +294,7 @@ export default function Home() {
 
               <section className="briefing-card"><div className="panel-head"><div><h2>关注主题</h2><span>按真实事件标签汇总</span></div><TrendingUp size={15} /></div><div className="trend-list">{topics.map(([name, value], index) => <div key={name}><span className="trend-rank">{index + 1}</span><p><b>{name}</b><small>{value.count} 个事件</small></p><em>{value.score}</em></div>)}</div></section>
 
-              <section className="briefing-card china-watch"><div className="panel-head"><div><h2>中国 AI 观察</h2><span>本轮实际收录的本土信号</span></div><Sparkles size={15} /></div>{chinaItems.length ? <div className="watch-list">{chinaItems.map((item, index) => <a href={item.url} target="_blank" rel="noreferrer" key={item.id}><span className={`watch-dot ${index === 0 ? 'red' : index === 1 ? 'blue' : 'amber'}`} /><p><b>{item.title}</b><small>{item.source} · {relativeTime(item, clock)}</small></p><ExternalLink size={14} /></a>)}</div> : <div className="watch-empty">本轮没有通过核验的中国 AI 事件，不用占位内容补齐。</div>}</section>
+              <section className="briefing-card china-watch"><div className="panel-head"><div><h2>本地 AI 观察</h2><span>本轮实际收录的本地相关信号</span></div><Sparkles size={15} /></div>{chinaItems.length ? <div className="watch-list">{chinaItems.map((item, index) => <a href={item.url} target="_blank" rel="noreferrer" key={item.id}><span className={`watch-dot ${index === 0 ? 'red' : index === 1 ? 'blue' : 'amber'}`} /><p><b>{item.title}</b><small>{item.source} · {relativeTime(item, clock)}</small></p><ExternalLink size={14} /></a>)}</div> : <div className="watch-empty">本轮没有通过核验的中国 AI 事件，不用占位内容补齐。</div>}</section>
             </aside>
           </div>
 
