@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "reader": {
+    "displayName": "Kelly",
+    "language": "zh-CN",
+    "timezone": "Asia/Shanghai",
+    "dailyItemTarget": 12
+  },
+  "priorities": [
+    { "name": "Production Agent", "weight": 10, "keywords": ["Agent", "智能体", "Computer Use", "MCP", "工作流", "自动化"] },
+    { "name": "AI Coding", "weight": 9, "keywords": ["Codex", "Claude Code", "Cursor", "Copilot", "编程", "代码"] },
+    { "name": "中国模型生态", "weight": 9, "keywords": ["Qwen", "DeepSeek", "智谱", "MiniMax", "豆包", "中国AI", "阿里"] },
+    { "name": "企业 AI 产品", "weight": 8, "keywords": ["企业", "产品", "API", "部署", "客户", "商业化"] },
+    { "name": "AI 基础设施", "weight": 7, "keywords": ["NVIDIA", "GPU", "算力", "推理", "云", "芯片", "数据中心"] }
+  ],
+  "companies": {
+    "highPriority": ["OpenAI", "Anthropic", "Google DeepMind", "Microsoft", "NVIDIA", "Qwen", "DeepSeek"],
+    "watch": ["Meta", "AWS", "百度", "腾讯", "字节跳动", "智谱", "MiniMax"]
+  },
+  "editorialPreferences": {
+    "chinaGlobalComparison": true,
+    "preferOfficialSources": true,
+    "preferProductAndBusinessImpact": true,
+    "includeResearchOnlyWhenActionable": true
+  },
+  "exclude": ["纯营销活动", "没有产品变化的客户稿", "重复融资传闻", "泛 AI 观点文章"]
+}

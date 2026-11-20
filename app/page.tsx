@@ -1,12 +1,13 @@
 'use client';
 
 import {
-  Activity, Bell, Bookmark, BookmarkCheck, Circle, Clock3, Code2,
+  Bookmark, BookmarkCheck, Circle, Clock3, Code2,
   Command, Cpu, ExternalLink, Flame, FlaskConical, Globe2, Landmark, Languages,
-  Menu, Newspaper, Radio, RefreshCw, Search, ShieldCheck, Sparkles, TrendingUp, X, Zap,
+  Menu, Newspaper, RefreshCw, Search, ShieldCheck, Sparkles, TrendingUp, X, Zap,
 } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import dashboardJson from '@/data/dashboard.json';
+import focusProfileJson from '@/config/focus-profile.json';
 
 export const dynamic = 'force-static';
 
@@ -48,7 +49,14 @@ type DashboardData = {
   items: NewsItem[];
 };
 
+type FocusProfile = {
+  reader: { displayName?: string; language: string; timezone: string; dailyItemTarget: number };
+  priorities: { name: string; weight: number; keywords: string[] }[];
+  companies: { highPriority: string[]; watch: string[] };
+};
+
 const dashboard = dashboardJson as unknown as DashboardData;
+const focusProfile = focusProfileJson as FocusProfile;
 const news = dashboard.items;
 const dateFormatter = new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Shanghai', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false });
 const dateOnlyFormatter = new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Shanghai', month: '2-digit', day: '2-digit' });
@@ -81,6 +89,14 @@ function relativeTime(item: NewsItem, clock: number) {
   if (hours < 24) return `${Math.floor(hours)} 小时前`;
   const days = Math.floor(hours / 24);
   return days < 7 ? `${days} 天前` : dateFormatter.format(new Date(item.publishedAt));
+}
+
+function focusMatches(item: NewsItem) {
+  const haystack = `${item.title} ${item.titleEn} ${item.summary} ${item.why} ${item.source} ${item.sources.join(' ')} ${item.tags.join(' ')}`.toLowerCase();
+  return focusProfile.priorities
+    .filter((priority) => priority.keywords.some((keyword) => haystack.includes(keyword.toLowerCase())))
+    .sort((a, b) => b.weight - a.weight)
+    .slice(0, 2);
 }
 
 const channels = [
@@ -217,12 +233,12 @@ export default function Home() {
   return (
     <main className="news-center">
       <header className="command-header">
-        <a className="command-brand" href="#top"><span className="command-logo"><Activity size={17} /></span><span>AI 情报站</span><b>MARKET PULSE</b></a>
+        <a className="command-brand" href="#top"><span className="command-logo">AI</span><span className="brand-copy"><strong>Intelligence Hub</strong><small>Market Pulse</small></span></a>
         <div className="global-search"><Search size={16} /><input ref={searchRef} value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜索公司、模型、事件、标签或来源" aria-label="搜索市场情报" /><kbd><Command size={11} /> K</kbd></div>
-        <div className={`system-state ${isStale ? 'stale' : ''}`}><span><i /> {isStale ? '数据待更新' : '研究已更新'}</span><span>内容时间 {updatedAt}</span><button aria-label="高影响事件"><Bell size={16} /><em>{computedStats.highImpact}</em></button><button className="mobile-toggle" aria-label="打开频道" onClick={() => setMobileOpen(!mobileOpen)}>{mobileOpen ? <X size={18} /> : <Menu size={18} />}</button></div>
+        <div className={`system-state ${isStale ? 'stale' : ''}`}><span><i /> {isStale ? '等待下一次研究' : `Updated ${updatedAt}`}</span><button className="mobile-toggle" aria-label="打开频道" onClick={() => setMobileOpen(!mobileOpen)}>{mobileOpen ? <X size={18} /> : <Menu size={18} />}</button></div>
       </header>
 
-      <div className="news-ticker"><span><Radio size={13} /> 最新信号</span><div>{rangeNews.slice(0, 4).map((item, index) => <span key={item.id}>{index === 0 ? <b>{item.title}</b> : item.title}{index < Math.min(rangeNews.length, 4) - 1 && <i />}</span>)}</div></div>
+      <div className="news-ticker"><span>TODAY&apos;S SIGNALS</span><div>{rangeNews.slice(0, 4).map((item, index) => <span key={item.id}>{index === 0 ? <b>{item.title}</b> : item.title}{index < Math.min(rangeNews.length, 4) - 1 && <i />}</span>)}</div></div>
 
       <div className="cockpit" id="top">
         <aside className={`channel-rail ${mobileOpen ? 'open' : ''}`}>
@@ -237,13 +253,13 @@ export default function Home() {
 
         <section className="intel-workspace">
           <div className="workspace-topline">
-            <div><span>AI MARKET PULSE / 中文版</span><h1>今天的 AI 市场，先看这几件事</h1></div>
+            <div><span>PERSONAL AI INTELLIGENCE / 中文版</span><h1>{focusProfile.reader.displayName ? `${focusProfile.reader.displayName} 的 Daily Brief` : 'Your Daily Brief'}</h1><p>不追逐每一条新闻，只保留会改变判断的信号。</p></div>
             <div className="desk-metrics"><span><small>扫描线索</small><b>{dashboard.stats.rawSignals}</b><em>本轮研究</em></span><span><small>聚合事件</small><b>{computedStats.events}</b><em>去重后</em></span><span><small>中国相关</small><b>{computedStats.chinaRatio}%</b><em>按事件计算</em></span><span><small>高影响</small><b>{computedStats.highImpact}</b><em className="warn">需关注</em></span></div>
           </div>
 
           <section className="top-five-section">
-            <div className="section-inline-head"><div><span>EDITOR&apos;S PICKS</span><h2>今日 Top 5</h2></div><small>按影响力、时效与信源质量综合排序</small></div>
-            <div className="top-five-grid">{topFive.map((item, index) => <a className={`top-five-card ${index === 0 ? 'hot' : ''}`} href={item.url} target="_blank" rel="noreferrer" key={item.id}><em>{String(index + 1).padStart(2, '0')}</em><span><b>{item.title}</b><small>{item.category} · {item.sources.length} 源 · {item.score}</small></span></a>)}</div>
+            <div className="section-inline-head"><div><span>TOP SIGNALS</span><h2>今天真正值得看的变化</h2></div><small>按相关性、影响力与证据质量排序</small></div>
+            <div className="top-five-grid">{topFive.map((item, index) => <a className={`top-five-card ${index === 0 ? 'hot' : ''}`} href={item.url} target="_blank" rel="noreferrer" key={item.id}><em>{String(index + 1).padStart(2, '0')}</em><span><b>{item.title}</b>{index === 0 && <p>{item.summary}</p>}<small>{item.category} · {item.verification || `${item.sources.length} 源`} · {item.score}</small></span></a>)}</div>
           </section>
 
           <div className="control-bar">
@@ -260,6 +276,7 @@ export default function Home() {
                 <div className="news-rank"><span>{String(index + 1).padStart(2, '0')}</span><b>{item.score}</b></div>
                 <div className="news-body">
                   <div className="news-meta"><span className={`impact impact-${item.impact}`}>{item.impact}</span><span>{item.region}</span><span>{item.category}</span><span><Clock3 size={11} /> {relativeTime(item, clock)}</span></div>
+                  {focusMatches(item).length > 0 && <div className="relevance-line"><b>RELEVANCE</b>{focusMatches(item).map((match) => <span key={match.name}>{match.name}</span>)}</div>}
                   <h3>{item.title}</h3>{bilingual && <h4>{item.titleEn}</h4>}
                   <p>{item.summary}</p>
                   {(item.change || item.watch) && <div className="research-lines">{item.change && <span><b>发生了什么变化</b>{item.change}</span>}{item.watch && <span><b>下一步观察</b>{item.watch}</span>}</div>}
@@ -271,7 +288,9 @@ export default function Home() {
             </section>
 
             <aside className="briefing-stack">
-              <section className="briefing-card primary-brief"><div className="panel-head"><div><h2>今日三分钟</h2><span>{dashboard.mode}</span></div><span className="verified"><Circle size={7} fill="currentColor" /> {dashboard.sourceHealth.healthy} 源有效</span></div><h3>{dashboard.brief.title}</h3><ol>{dashboard.brief.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ol><div className="brief-footer"><span>约 3 分钟读完</span><span>{rangeNews.filter((item) => item.sourceLinks.length > 1).length} 条多源核验</span></div></section>
+              <section className="briefing-card primary-brief"><div className="panel-head"><div><h2>What Matters</h2><span>AI-assisted editorial view</span></div><span className="verified"><Circle size={7} fill="currentColor" /> {dashboard.sourceHealth.healthy} 源有效</span></div><h3>{dashboard.brief.title}</h3><ol>{dashboard.brief.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ol><div className="brief-footer"><span>约 3 分钟读完</span><span>{rangeNews.filter((item) => item.sourceLinks.length > 1).length} 条多源核验</span></div></section>
+
+              <section className="briefing-card focus-profile-card"><div className="panel-head"><div><h2>Focus Profile</h2><span>透明、可修改的个性化依据</span></div><small>{focusProfile.priorities.length} 个关注方向</small></div><div className="focus-priority-list">{focusProfile.priorities.map((priority) => <div key={priority.name}><span>{priority.name}</span><i><b style={{ width: `${priority.weight * 10}%` }} /></i><em>{priority.weight}</em></div>)}</div></section>
 
               <section className="briefing-card"><div className="panel-head"><div><h2>关注主题</h2><span>按真实事件标签汇总</span></div><TrendingUp size={15} /></div><div className="trend-list">{topics.map(([name, value], index) => <div key={name}><span className="trend-rank">{index + 1}</span><p><b>{name}</b><small>{value.count} 个事件</small></p><em>{value.score}</em></div>)}</div></section>
 
