@@ -39,7 +39,7 @@ if (!Array.isArray(input.items) || input.items.length < 1 || input.items.length 
 }
 
 const seenUrls = new Set();
-const categories = new Set(['中国AI', '模型', 'AI Coding', '算力', '研究', '产品', '资本', '安全', '开源']);
+const categories = new Set(['本地AI', '模型', 'AI Coding', '算力', '研究', '产品', '资本', '安全', '开源']);
 const impacts = new Set(['突发', '高影响', '关注']);
 const regions = new Set(['中国', '全球']);
 
