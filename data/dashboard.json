@@ -1,34 +1,32 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-20T02:12:57.000Z",
-  "contentUpdatedAt": "2026-11-20T02:12:57.000Z",
+  "generatedAt": "2026-11-20T02:20:51.000Z",
+  "contentUpdatedAt": "2026-11-20T02:20:51.000Z",
   "status": {
     "state": "fresh",
-    "lastSuccessfulAt": "2026-11-20T02:12:57.000Z",
-    "note": "已完成 GPT 联网研究、7天滚动数据迁移与 GitHub 数据快照；日常写入不使用 RSS。"
+    "lastSuccessfulAt": "2026-11-20T02:20:51.000Z",
+    "note": "已完成 GPT 联网研究、7天滚动数据合并与 GitHub 数据快照；日常写入不使用 RSS。"
   },
   "mode": "GPT 联网研究 · 7天滚动数据 · 非RSS",
   "stats": {
-    "rawSignals": 13,
-    "events": 9,
-    "chinaRatio": 11,
-    "highImpact": 0
+    "rawSignals": 34,
+    "events": 13,
+    "chinaRatio": 8,
+    "highImpact": 2
   },
   "sourceHealth": {
-    "attempted": 13,
-    "healthy": 12,
-    "officialHealthy": 12,
-    "failed": [
-      "AI Daily Journal：页面抓取被禁用，未用于事实核验。"
-    ]
+    "attempted": 6,
+    "healthy": 6,
+    "officialHealthy": 6,
+    "failed": []
   },
   "brief": {
-    "title": "今天优先关注：生产级 Agent、云边推理与 Qwen4-Max 出海",
+    "title": "今天重点：Agent 从工具调用走向端侧执行与安全治理",
     "bullets": [
-      "OpenAI 的 Performance Factory 展示了可长期运行的 Codex 工作流：报警触发、Agent 排查、独立复核和人工合并都被编入状态化流程。",
-      "NVIDIA 与 Microsoft 将模型、算力和部署延伸到 Azure、工业现场与 Windows PC；企业 AI 正从模型选型进入全栈落地竞赛。",
-      "AWS 同日补齐多区域推理、端点优化、训练可观测性和长时无服务器执行，云厂商把 AI 的运维能力产品化。",
-      "阿里云围绕 Qwen4-Max 同步推进香港与马来西亚生态，模型能力、当地算力和行业伙伴正在绑定交付。"
+      "Google 同时推进工具按需检索、世界模型 API 与 Mac 端 computer use，Agent 的上下文管理、交互能力和执行边界被拆成独立产品层。",
+      "OpenAI 的 Codex 性能工厂与 Google Tool Retrieval 都指向同一趋势：生产 Agent 需要状态、工具治理与可观测工作流，而非一次性对话。",
+      "NVIDIA、AWS 与 Microsoft 的更新显示，企业 AI 的竞争重心正向高可用推理、云边部署和 Agent 权限治理延伸。",
+      "中国侧仍以阿里云 Qwen4-Max 的海外生态推进为本轮主要信号，后续应观察 API 可用范围和第三方复现。"
     ]
   },
   "items": [
@@ -69,6 +67,42 @@
       "verification": "官方一手"
     },
     {
+      "id": 3906363715,
+      "firstSeenAt": "2026-11-20T02:20:51.000Z",
+      "publishedPrecision": "date",
+      "verification": "官方一手",
+      "title": "Google 为 Gemini API 加入按需工具检索",
+      "titleEn": "Introducing Tool Retrieval in the Gemini API",
+      "summary": "Google 在 Gemini Interactions API 预览推出 Tool Retrieval：Agent 可仅在需要时加载函数参数 schema，而不是在每次请求中附带完整工具库。",
+      "change": "从把全部工具 schema 预先塞入提示词，改为由模型按任务需要检索并加载具体工具定义。",
+      "why": "大型企业 Agent 往往连接数十到数百个工具；按需加载可减少输入 token、延迟与工具选择干扰，同时保留可审计的调用步骤。",
+      "watch": "观察该预览功能在复杂 MCP 工具服务器上的稳定性、实际 token 节省，以及是否扩展至更多模型与区域。",
+      "source": "Google",
+      "sources": [
+        "Google"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Google",
+          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-19T00:00:00.000Z",
+      "category": "AI Coding",
+      "region": "全球",
+      "impact": "高影响",
+      "score": 91,
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/",
+      "tags": [
+        "Google",
+        "Gemini API",
+        "Agent",
+        "Tool Retrieval"
+      ],
+      "rank": 2
+    },
+    {
       "id": 2177847865,
       "title": "NVIDIA 与 Microsoft 扩展云到边缘的 AI 栈",
       "titleEn": "NVIDIA and Microsoft Expand Accelerated Computing From Azure to Windows PCs",
@@ -97,12 +131,48 @@
         "Azure",
         "边缘AI"
       ],
-      "rank": 2,
+      "rank": 3,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从云侧加速计算扩展到 Azure Local、工业边缘与 Windows PC 的统一部署栈。",
       "watch": "观察可用区域、具体硬件配置与企业端成本，及工业场景的实际落地案例。",
       "verification": "官方一手"
+    },
+    {
+      "id": 3906363716,
+      "firstSeenAt": "2026-11-20T02:20:51.000Z",
+      "publishedPrecision": "date",
+      "verification": "官方一手",
+      "title": "Google 将 Genie 4 世界模型开放至 Gemini API",
+      "titleEn": "Genie 4 is now available on the Gemini API",
+      "summary": "Google 宣布 Genie 4 已通过 Gemini API 的 Interactions API 与 Google AI Studio 向开发者开放，可从文字或参考图生成带原生音频的连续 720p、24fps 交互世界。",
+      "change": "从面向订阅用户的 Project Genie 体验，扩展为开发者可调用的 API 与 AI Studio 能力。",
+      "why": "世界模型从演示产品进入 API 后，游戏原型、空间设计可视化和机器人/Agent 训练可开始评估真实的调用成本与工程集成路径。",
+      "watch": "观察官方定价、并发与地区可用性，以及第三方对长时一致性、物理交互和安全水印效果的验证。",
+      "source": "Google",
+      "sources": [
+        "Google"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Google",
+          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/genie-4-in-gemini-api/",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-19T00:00:00.000Z",
+      "category": "模型",
+      "region": "全球",
+      "impact": "高影响",
+      "score": 89,
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/genie-4-in-gemini-api/",
+      "tags": [
+        "Google",
+        "Genie 4",
+        "世界模型",
+        "Gemini API"
+      ],
+      "rank": 4
     },
     {
       "id": 3248149539,
@@ -139,7 +209,7 @@
         "东南亚",
         "出海"
       ],
-      "rank": 3,
+      "rank": 5,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从单一模型披露扩展为模型、区域云容量、人才项目和行业伙伴同步推进。",
@@ -175,12 +245,48 @@
         "推理",
         "高可用"
       ],
-      "rank": 4,
+      "rank": 6,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从团队自建跨区域容灾逻辑转为 SageMaker 可管理的跨区域推理路由资源。",
       "watch": "观察支持区域、流式请求行为与跨区域调用成本是否适合生产级多区域架构。",
       "verification": "官方一手"
+    },
+    {
+      "id": 3906363717,
+      "firstSeenAt": "2026-11-20T02:20:51.000Z",
+      "publishedPrecision": "date",
+      "verification": "官方一手",
+      "title": "Gemini App for Mac 上线计算机操作能力",
+      "titleEn": "Let Gemini tackle repetitive chores on your Mac",
+      "summary": "Google 在 Mac 版 Gemini App 推出 computer use：用户可描述跨本地文件、桌面应用和网页的多步任务，系统在隔离窗口中执行并提供实时预览与操作审批。",
+      "change": "从对话式建议升级为可在 Mac 本地应用与网页之间点击、输入和填写表单的计算机操作工作流。",
+      "why": "消费者级 computer use 的竞争开始落到权限、隔离执行和人工确认等交互设计；这些也是企业 Agent 进入端侧流程的关键安全边界。",
+      "watch": "观察首批地区和订阅层级的可用范围、失败恢复机制，以及对敏感文件和浏览器操作的权限控制细节。",
+      "source": "Google",
+      "sources": [
+        "Google"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Google",
+          "url": "https://blog.google/innovation-and-ai/products/gemini-app/computer-use-mac/",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-19T00:00:00.000Z",
+      "category": "产品",
+      "region": "全球",
+      "impact": "关注",
+      "score": 84,
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/computer-use-mac/",
+      "tags": [
+        "Google",
+        "Gemini",
+        "Computer Use",
+        "Mac"
+      ],
+      "rank": 7
     },
     {
       "id": 1875041669,
@@ -211,12 +317,48 @@
         "推理优化",
         "GPU"
       ],
-      "rank": 5,
+      "rank": 8,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从人工巡检端点配置转为自动发现延迟漂移、闲置 GPU 与优化缺口。",
       "watch": "观察该能力在真实生产端点中的误报率，以及是否带来可量化的推理成本下降。",
       "verification": "官方一手"
+    },
+    {
+      "id": 3906363718,
+      "firstSeenAt": "2026-11-20T02:20:51.000Z",
+      "publishedPrecision": "date",
+      "verification": "官方一手",
+      "title": "Microsoft 将 Agent 权限与可观测性列为 AI 安全重点",
+      "titleEn": "Security fundamentals to enable the frontier",
+      "summary": "Microsoft 在安全文章中提出，企业应把 AI Agent 视为内部风险主体，围绕最小权限、可观测性、补丁速度和人工保留关键决策来构建防御，并援引其此前披露的 AI 辅助攻击活动。",
+      "change": "从把生成式 AI 风险主要视为模型层问题，转向把 Agent 身份、资源权限、动作范围与监控纳入企业安全治理。",
+      "why": "当 Agent 获得云资源、代码库和业务系统权限后，安全控制点不再只在模型输入输出，而在身份、授权、审计与人工接管机制。",
+      "watch": "观察 Microsoft Agent 365 等治理产品的实际功能边界，以及企业如何把 Agent 资产盘点和最小权限纳入现有安全运营。",
+      "source": "Microsoft",
+      "sources": [
+        "Microsoft"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Microsoft",
+          "url": "https://blogs.microsoft.com/on-the-issues/2026/11/19/security-fundamentals-to-enable-the-frontier/",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-19T00:00:00.000Z",
+      "category": "安全",
+      "region": "全球",
+      "impact": "关注",
+      "score": 82,
+      "url": "https://blogs.microsoft.com/on-the-issues/2026/11/19/security-fundamentals-to-enable-the-frontier/",
+      "tags": [
+        "Microsoft",
+        "Agent Security",
+        "可观测性",
+        "治理"
+      ],
+      "rank": 9
     },
     {
       "id": 1080720566,
@@ -247,7 +389,7 @@
         "GPU",
         "可观测性"
       ],
-      "rank": 6,
+      "rank": 10,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从多工具拼接排障转为集群级 GPU、网络与训练任务的联合基础设施诊断。",
@@ -283,7 +425,7 @@
         "语音Agent",
         "SageMaker"
       ],
-      "rank": 7,
+      "rank": 11,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从供应商托管的对话模型扩展到可在客户 AWS 账户内部署的 JumpStart 选项。",
@@ -319,7 +461,7 @@
         "VPC",
         "AI Agent"
       ],
-      "rank": 8,
+      "rank": 12,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从原型数据库需要重建迁移变为可保留数据与 endpoint 并迁入私有 VPC。",
@@ -355,7 +497,7 @@
         "推理",
         "Serverless"
       ],
-      "rank": 9,
+      "rank": 13,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从最长十五分钟的按需事件函数执行窗口扩展至三十分钟。",
