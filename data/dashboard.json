@@ -1,13 +1,13 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-20T00:18:26.000Z",
-  "contentUpdatedAt": "2026-11-20T00:18:26.000Z",
+  "generatedAt": "2026-11-20T02:12:57.000Z",
+  "contentUpdatedAt": "2026-11-20T02:12:57.000Z",
   "status": {
     "state": "fresh",
-    "lastSuccessfulAt": "2026-11-20T00:18:26.000Z",
-    "note": "已完成 GPT 联网研究与 GitHub 数据快照；日常写入不使用 RSS。"
+    "lastSuccessfulAt": "2026-11-20T02:12:57.000Z",
+    "note": "已完成 GPT 联网研究、7天滚动数据迁移与 GitHub 数据快照；日常写入不使用 RSS。"
   },
-  "mode": "GPT 联网研究（非RSS）",
+  "mode": "GPT 联网研究 · 7天滚动数据 · 非RSS",
   "stats": {
     "rawSignals": 13,
     "events": 9,
@@ -46,7 +46,7 @@
         {
           "name": "OpenAI",
           "url": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast/",
-          "tier": 3
+          "tier": 1
         }
       ],
       "publishedAt": "2026-11-19T00:00:00.000Z",
@@ -61,7 +61,12 @@
         "Agent Workflow",
         "SRE"
       ],
-      "rank": 1
+      "rank": 1,
+      "firstSeenAt": "2026-11-20T00:18:26.000Z",
+      "publishedPrecision": "date",
+      "change": "从单次编码辅助转为状态化、可派发、带独立复核的持久 Agent 运维流程。",
+      "watch": "观察该流程在更多故障场景中的自治边界，以及工程师审批对修复质量的实际影响。",
+      "verification": "官方一手"
     },
     {
       "id": 2177847865,
@@ -77,7 +82,7 @@
         {
           "name": "NVIDIA",
           "url": "https://blogs.nvidia.com/blog/microsoft-ignite-accelerated-computing-azure-windows-pcs/",
-          "tier": 3
+          "tier": 1
         }
       ],
       "publishedAt": "2026-11-19T00:00:00.000Z",
@@ -92,7 +97,12 @@
         "Azure",
         "边缘AI"
       ],
-      "rank": 2
+      "rank": 2,
+      "firstSeenAt": "2026-11-20T00:18:26.000Z",
+      "publishedPrecision": "date",
+      "change": "从云侧加速计算扩展到 Azure Local、工业边缘与 Windows PC 的统一部署栈。",
+      "watch": "观察可用区域、具体硬件配置与企业端成本，及工业场景的实际落地案例。",
+      "verification": "官方一手"
     },
     {
       "id": 3248149539,
@@ -109,12 +119,12 @@
         {
           "name": "Alibaba Cloud Hong Kong",
           "url": "https://www.alibabacloud.com/blog/alibaba-cloud-unveils-new-ai-initiatives-at-hong-kong-summit-to-advance-the-city%E2%80%99s-ai-ecosystem_603792",
-          "tier": 3
+          "tier": 1
         },
         {
           "name": "Alibaba Cloud Malaysia",
           "url": "https://www.alibabacloud.com/blog/alibaba-cloud-advances-ai-adoption-in-malaysia-with-nationwide-youth-contest-and-industry-collaborations_603793",
-          "tier": 3
+          "tier": 1
         }
       ],
       "publishedAt": "2026-11-19T00:00:00.000Z",
@@ -129,7 +139,12 @@
         "东南亚",
         "出海"
       ],
-      "rank": 3
+      "rank": 3,
+      "firstSeenAt": "2026-11-20T00:18:26.000Z",
+      "publishedPrecision": "date",
+      "change": "从单一模型披露扩展为模型、区域云容量、人才项目和行业伙伴同步推进。",
+      "watch": "观察 Qwen4-Max 的 API 可用范围、第三方评测复现和海外企业实际采用情况。",
+      "verification": "官方一手"
     },
     {
       "id": 2331097513,
@@ -145,7 +160,7 @@
         {
           "name": "AWS",
           "url": "https://aws.amazon.com/blogs/machine-learning/keep-inference-running-through-regional-capacity-shortfalls-with-cross-region-inference-routing-in-amazon-sagemaker-ai/",
-          "tier": 3
+          "tier": 1
         }
       ],
       "publishedAt": "2026-11-19T00:00:00.000Z",
@@ -160,7 +175,12 @@
         "推理",
         "高可用"
       ],
-      "rank": 4
+      "rank": 4,
+      "firstSeenAt": "2026-11-20T00:18:26.000Z",
+      "publishedPrecision": "date",
+      "change": "从团队自建跨区域容灾逻辑转为 SageMaker 可管理的跨区域推理路由资源。",
+      "watch": "观察支持区域、流式请求行为与跨区域调用成本是否适合生产级多区域架构。",
+      "verification": "官方一手"
     },
     {
       "id": 1875041669,
@@ -176,7 +196,7 @@
         {
           "name": "AWS",
           "url": "https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-ai-now-detects-latency-drift-idle-gpus-and-missed-optimizations-on-your-inference-endpoints/",
-          "tier": 3
+          "tier": 1
         }
       ],
       "publishedAt": "2026-11-19T00:00:00.000Z",
@@ -191,7 +211,12 @@
         "推理优化",
         "GPU"
       ],
-      "rank": 5
+      "rank": 5,
+      "firstSeenAt": "2026-11-20T00:18:26.000Z",
+      "publishedPrecision": "date",
+      "change": "从人工巡检端点配置转为自动发现延迟漂移、闲置 GPU 与优化缺口。",
+      "watch": "观察该能力在真实生产端点中的误报率，以及是否带来可量化的推理成本下降。",
+      "verification": "官方一手"
     },
     {
       "id": 1080720566,
@@ -207,7 +232,7 @@
         {
           "name": "AWS",
           "url": "https://aws.amazon.com/blogs/machine-learning/introducing-enhanced-observability-in-amazon-sagemaker-hyperpod-to-diagnose-gpu-training-issues/",
-          "tier": 3
+          "tier": 1
         }
       ],
       "publishedAt": "2026-11-19T00:00:00.000Z",
@@ -222,7 +247,12 @@
         "GPU",
         "可观测性"
       ],
-      "rank": 6
+      "rank": 6,
+      "firstSeenAt": "2026-11-20T00:18:26.000Z",
+      "publishedPrecision": "date",
+      "change": "从多工具拼接排障转为集群级 GPU、网络与训练任务的联合基础设施诊断。",
+      "watch": "观察可支持的集群规模、异常告警准确性和对平均故障定位时间的改善。",
+      "verification": "官方一手"
     },
     {
       "id": 1098711981,
@@ -238,7 +268,7 @@
         {
           "name": "AWS",
           "url": "https://aws.amazon.com/blogs/machine-learning/polyai-dialog-rsn-1-is-now-on-amazon-sagemaker-jumpstart/",
-          "tier": 3
+          "tier": 1
         }
       ],
       "publishedAt": "2026-11-19T00:00:00.000Z",
@@ -253,7 +283,12 @@
         "语音Agent",
         "SageMaker"
       ],
-      "rank": 7
+      "rank": 7,
+      "firstSeenAt": "2026-11-20T00:18:26.000Z",
+      "publishedPrecision": "date",
+      "change": "从供应商托管的对话模型扩展到可在客户 AWS 账户内部署的 JumpStart 选项。",
+      "watch": "观察支持语言、端到端延迟、商业定价以及受监管客户的规模化采用。",
+      "verification": "官方一手"
     },
     {
       "id": 2236239695,
@@ -269,7 +304,7 @@
         {
           "name": "AWS",
           "url": "https://aws.amazon.com/blogs/database/from-instant-aurora-postgresql-databases-to-production-ready-in-your-vpc/",
-          "tier": 3
+          "tier": 1
         }
       ],
       "publishedAt": "2026-11-19T00:00:00.000Z",
@@ -284,7 +319,12 @@
         "VPC",
         "AI Agent"
       ],
-      "rank": 8
+      "rank": 8,
+      "firstSeenAt": "2026-11-20T00:18:26.000Z",
+      "publishedPrecision": "date",
+      "change": "从原型数据库需要重建迁移变为可保留数据与 endpoint 并迁入私有 VPC。",
+      "watch": "观察地区覆盖、迁移失败回滚机制及 Agent 工作负载在私网环境中的权限配置。",
+      "verification": "官方一手"
     },
     {
       "id": 3906363714,
@@ -300,7 +340,7 @@
         {
           "name": "AWS",
           "url": "https://aws.amazon.com/blogs/compute/announcing-30-minute-timeout-for-on-demand-aws-lambda-event-functions/",
-          "tier": 3
+          "tier": 1
         }
       ],
       "publishedAt": "2026-11-19T00:00:00.000Z",
@@ -315,7 +355,12 @@
         "推理",
         "Serverless"
       ],
-      "rank": 9
+      "rank": 9,
+      "firstSeenAt": "2026-11-20T00:18:26.000Z",
+      "publishedPrecision": "date",
+      "change": "从最长十五分钟的按需事件函数执行窗口扩展至三十分钟。",
+      "watch": "观察较长推理任务下的并发、重试、成本和外部连接超时策略是否需要同步调整。",
+      "verification": "官方一手"
     }
   ]
 }
