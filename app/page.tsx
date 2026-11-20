@@ -1,320 +1,213 @@
 'use client';
 
-import {
-  Bookmark, BookmarkCheck, Circle, Clock3, Code2,
-  Command, Cpu, ExternalLink, Flame, FlaskConical, Globe2, Landmark, Languages,
-  Menu, Newspaper, RefreshCw, Search, ShieldCheck, Sparkles, TrendingUp, X, Zap,
-} from 'lucide-react';
+import { Bookmark, BookmarkCheck, Clock3, Command, ExternalLink, Globe2, Landmark, Languages, RefreshCw, Search, ShieldCheck, Sparkles, TrendingUp } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import dashboardJson from '@/data/dashboard.json';
 import focusProfileJson from '@/config/focus-profile.json';
 
 export const dynamic = 'force-static';
 
-declare global {
-  interface Document {
-    modelContext?: {
-      registerTool: (tool: {
-        name: string;
-        title: string;
-        description: string;
-        inputSchema: object;
-        annotations: { readOnlyHint: boolean; untrustedContentHint: boolean };
-        execute: (input: unknown) => unknown;
-      }, options?: { signal?: AbortSignal }) => void | Promise<void>;
-    };
-  }
-}
-
 type Impact = '突发' | '高影响' | '关注';
 type Region = '中国' | '全球';
 type NewsItem = {
   id: number; title: string; titleEn: string; summary: string; why: string; source: string;
-  sources: string[]; publishedAt: string; category: string; region: Region;
-  impact: Impact; score: number; rank: number; url: string; tags: string[];
-  firstSeenAt?: string; publishedPrecision?: 'datetime' | 'date';
-  change?: string; watch?: string; verification?: string;
+  sources: string[]; publishedAt: string; category: string; region: Region; impact: Impact;
+  score: number; rank: number; url: string; tags: string[]; firstSeenAt?: string;
+  publishedPrecision?: 'datetime' | 'date'; change?: string; watch?: string; verification?: string;
   sourceLinks: { name: string; url: string; tier: number }[];
 };
-
-type DashboardData = {
-  schemaVersion?: number;
-  generatedAt: string;
-  contentUpdatedAt?: string;
-  status?: { state: 'fresh' | 'stale' | 'failed'; lastSuccessfulAt: string; note?: string };
-  mode: string;
-  stats: { rawSignals: number; events: number; chinaRatio: number; highImpact: number };
-  sourceHealth: { attempted: number; healthy: number; officialHealthy: number; failed: string[] };
-  brief: { title: string; bullets: string[] };
-  items: NewsItem[];
+type Dashboard = {
+  generatedAt: string; contentUpdatedAt?: string; status?: { state: 'fresh' | 'stale' | 'failed' };
+  mode: string; stats: { rawSignals: number }; sourceHealth: { attempted: number; healthy: number; officialHealthy: number };
+  brief: { title: string; bullets: string[] }; items: NewsItem[];
 };
+type FocusProfile = { priorities: { name: string; weight: number; keywords: string[] }[] };
 
-type FocusProfile = {
-  reader: { displayName?: string; language: string; timezone: string; dailyItemTarget: number };
-  priorities: { name: string; weight: number; keywords: string[] }[];
-  companies: { highPriority: string[]; watch: string[] };
-};
-
-const dashboard = dashboardJson as unknown as DashboardData;
+const dashboard = dashboardJson as Dashboard;
 const focusProfile = focusProfileJson as FocusProfile;
 const news = dashboard.items;
-const dateFormatter = new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Shanghai', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false });
-const dateOnlyFormatter = new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Shanghai', month: '2-digit', day: '2-digit' });
-const dayKeyFormatter = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit' });
-const updatedAt = dateFormatter.format(new Date(dashboard.contentUpdatedAt || dashboard.generatedAt));
-
-const companyMatchers = [
-  ['OpenAI', ['openai', 'codex', 'chatgpt']], ['Anthropic', ['anthropic', 'claude']],
-  ['Google', ['google', 'deepmind', 'gemini']], ['Microsoft', ['microsoft', '微软']],
-  ['NVIDIA', ['nvidia', '英伟达']], ['Meta', ['meta', 'llama']], ['AWS', ['aws', 'amazon']],
-  ['阿里 / Qwen', ['阿里', 'qwen', '通义']], ['DeepSeek', ['deepseek']],
-  ['百度', ['百度', 'baidu', '文心']], ['腾讯', ['腾讯', 'tencent', '混元']],
-  ['字节跳动', ['字节', 'bytedance', '豆包', '火山引擎']], ['智谱', ['智谱', 'zhipu', 'glm']],
+const dateTime = new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Shanghai', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false });
+const dateOnly = new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Shanghai', month: '2-digit', day: '2-digit' });
+const dayKey = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit' });
+const updatedAt = dateTime.format(new Date(dashboard.contentUpdatedAt || dashboard.generatedAt));
+const categories = ['全部', '本地AI', '模型', 'AI Coding', '算力', '研究', '产品', '资本', '安全', '开源'];
+const companies = [
+  ['OpenAI', ['openai', 'codex', 'chatgpt']], ['Google', ['google', 'gemini']], ['Microsoft', ['microsoft', '微软']],
+  ['NVIDIA', ['nvidia', '英伟达']], ['AWS', ['aws', 'amazon']], ['阿里 / Qwen', ['阿里', 'qwen', '通义']],
 ] as const;
 
-function itemAgeHours(item: NewsItem, clock: number) {
-  const timestamp = new Date(item.firstSeenAt || dashboard.contentUpdatedAt || dashboard.generatedAt || item.publishedAt).getTime();
-  return Number.isFinite(timestamp) ? Math.max(0, (clock - timestamp) / 3600000) : Number.POSITIVE_INFINITY;
+function age(item: NewsItem, clock: number, published = false) {
+  const stamp = new Date(published ? item.publishedAt : item.firstSeenAt || dashboard.contentUpdatedAt || dashboard.generatedAt).getTime();
+  return Number.isFinite(stamp) ? Math.max(0, (clock - stamp) / 3600000) : Infinity;
 }
-
-function publishedAgeHours(item: NewsItem, clock: number) {
-  const timestamp = new Date(item.publishedAt).getTime();
-  return Number.isFinite(timestamp) ? Math.max(0, (clock - timestamp) / 3600000) : Number.POSITIVE_INFINITY;
-}
-
 function relativeTime(item: NewsItem, clock: number) {
-  if (item.publishedPrecision === 'date') return dateOnlyFormatter.format(new Date(item.publishedAt));
-  const hours = publishedAgeHours(item, clock);
+  if (item.publishedPrecision === 'date') return dateOnly.format(new Date(item.publishedAt));
+  const hours = age(item, clock, true);
   if (hours < 1) return '刚刚';
   if (hours < 24) return `${Math.floor(hours)} 小时前`;
   const days = Math.floor(hours / 24);
-  return days < 7 ? `${days} 天前` : dateFormatter.format(new Date(item.publishedAt));
+  return days < 7 ? `${days} 天前` : dateOnly.format(new Date(item.publishedAt));
+}
+function relevance(item: NewsItem) {
+  const text = `${item.title} ${item.titleEn} ${item.summary} ${item.why} ${item.tags.join(' ')}`.toLowerCase();
+  return focusProfile.priorities.filter((p) => p.keywords.some((keyword) => text.includes(keyword.toLowerCase()))).sort((a, b) => b.weight - a.weight).slice(0, 2);
 }
 
-function focusMatches(item: NewsItem) {
-  const haystack = `${item.title} ${item.titleEn} ${item.summary} ${item.why} ${item.source} ${item.sources.join(' ')} ${item.tags.join(' ')}`.toLowerCase();
-  return focusProfile.priorities
-    .filter((priority) => priority.keywords.some((keyword) => haystack.includes(keyword.toLowerCase())))
-    .sort((a, b) => b.weight - a.weight)
-    .slice(0, 2);
+function AmbientSignalField() {
+  const ref = useRef<HTMLCanvasElement>(null);
+  useEffect(() => {
+    const canvas = ref.current;
+    const context = canvas?.getContext('2d');
+    if (!canvas || !context) return;
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const pointer = { x: -999, y: -999 };
+    const ripples: { x: number; y: number; radius: number; alpha: number }[] = [];
+    const particles = Array.from({ length: reduced ? 20 : 60 }, (_, i) => ({ x: (i * 83.7) % 100 / 100, y: (i * 47.3) % 100 / 100, vx: ((i % 5) - 2) * .018, vy: (((i * 3) % 5) - 2) * .012, r: .7 + i % 4 * .3 }));
+    let width = 0, height = 0, frame = 0;
+    const resize = () => {
+      const box = canvas.getBoundingClientRect(), ratio = Math.min(devicePixelRatio || 1, 2);
+      width = box.width; height = box.height; canvas.width = width * ratio; canvas.height = height * ratio;
+      context.setTransform(ratio, 0, 0, ratio, 0, 0);
+    };
+    const move = (event: PointerEvent) => { pointer.x = event.clientX; pointer.y = event.clientY; };
+    const click = (event: PointerEvent) => ripples.push({ x: event.clientX, y: event.clientY, radius: 0, alpha: .34 });
+    const draw = () => {
+      context.clearRect(0, 0, width, height);
+      const box = canvas.getBoundingClientRect();
+      const points = particles.map((p) => {
+        if (!reduced) { p.x = (p.x + p.vx / Math.max(width, 1) + 1) % 1; p.y = (p.y + p.vy / Math.max(height, 1) + 1) % 1; }
+        return { ...p, px: p.x * width, py: p.y * height };
+      });
+      points.forEach((p, i) => {
+        points.slice(i + 1).forEach((q) => {
+          const distance = Math.hypot(p.px - q.px, p.py - q.py);
+          if (distance < 118) { context.strokeStyle = `rgba(125,211,252,${(1 - distance / 118) * .08})`; context.beginPath(); context.moveTo(p.px, p.py); context.lineTo(q.px, q.py); context.stroke(); }
+        });
+        const proximity = Math.max(0, 1 - Math.hypot(pointer.x - box.left - p.px, pointer.y - box.top - p.py) / 180);
+        context.fillStyle = `rgba(125,211,252,${.2 + proximity * .6})`; context.beginPath(); context.arc(p.px, p.py, p.r + proximity * 1.7, 0, Math.PI * 2); context.fill();
+      });
+      for (let i = ripples.length - 1; i >= 0; i -= 1) {
+        const wave = ripples[i]; wave.radius += 1.8; wave.alpha *= .974;
+        context.strokeStyle = `rgba(125,211,252,${wave.alpha})`; context.beginPath(); context.arc(wave.x - box.left, wave.y - box.top, wave.radius, 0, Math.PI * 2); context.stroke();
+        if (wave.alpha < .015) ripples.splice(i, 1);
+      }
+      frame = requestAnimationFrame(draw);
+    };
+    resize(); addEventListener('resize', resize); addEventListener('pointermove', move); addEventListener('pointerdown', click); frame = requestAnimationFrame(draw);
+    return () => { cancelAnimationFrame(frame); removeEventListener('resize', resize); removeEventListener('pointermove', move); removeEventListener('pointerdown', click); };
+  }, []);
+  return <canvas ref={ref} className="ambient-signal-field" aria-hidden="true" />;
 }
-
-const channels = [
-  ['全部情报', Newspaper], ['中国AI', Sparkles], ['模型', Zap], ['AI Coding', Code2],
-  ['算力', Cpu], ['研究', FlaskConical], ['产品', Globe2], ['资本', Landmark], ['安全', ShieldCheck], ['开源', Globe2],
-] as const;
 
 export default function Home() {
   const [query, setQuery] = useState('');
-  const [category, setCategory] = useState('全部情报');
-  const [region, setRegion] = useState<'全部' | Region>('全部');
+  const [category, setCategory] = useState('全部');
   const [range, setRange] = useState(24);
   const [sort, setSort] = useState<'影响力' | '最新' | '来源数'>('影响力');
   const [bilingual, setBilingual] = useState(false);
   const [bookmarks, setBookmarks] = useState<number[]>([]);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [selectedId, setSelectedId] = useState(news[0]?.id || 0);
   const [clock, setClock] = useState(() => Date.now());
   const searchRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    const timer = window.setInterval(() => setClock(Date.now()), 60_000);
-    return () => window.clearInterval(timer);
-  }, []);
-
+  useEffect(() => { const timer = setInterval(() => setClock(Date.now()), 60_000); return () => clearInterval(timer); }, []);
   useEffect(() => {
     let saved: number[] = [];
-    try {
-      const parsed = JSON.parse(window.localStorage.getItem('aihub-bookmarks') || '[]');
-      if (Array.isArray(parsed)) saved = parsed.filter(Number.isInteger);
-    } catch {}
-    const timer = window.setTimeout(() => setBookmarks(saved), 0);
-    return () => window.clearTimeout(timer);
+    try { const parsed = JSON.parse(localStorage.getItem('aihub-bookmarks') || '[]'); if (Array.isArray(parsed)) saved = parsed.filter(Number.isInteger); } catch {}
+    const timer = setTimeout(() => setBookmarks(saved), 0);
+    return () => clearTimeout(timer);
+  }, []);
+  useEffect(() => {
+    const shortcut = (event: KeyboardEvent) => { if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); searchRef.current?.focus(); } };
+    addEventListener('keydown', shortcut); return () => removeEventListener('keydown', shortcut);
   }, []);
 
-  const rangeNews = useMemo(() => news.filter((item) => itemAgeHours(item, clock) <= range), [clock, range]);
-
-  const computedStats = useMemo(() => {
-    const highImpact = rangeNews.filter((item) => item.impact === '突发' || item.impact === '高影响').length;
-    const china = rangeNews.filter((item) => item.region === '中国').length;
-    return { events: rangeNews.length, highImpact, chinaRatio: rangeNews.length ? Math.round(china / rangeNews.length * 100) : 0 };
-  }, [rangeNews]);
-
-  const snapshotAge = Math.max(0, (clock - new Date(dashboard.contentUpdatedAt || dashboard.generatedAt).getTime()) / 3600000);
-  const isStale = dashboard.status?.state === 'stale' || dashboard.status?.state === 'failed' || snapshotAge > 36;
-
-  const topics = useMemo(() => {
-    const scores = new Map<string, { count: number; score: number }>();
-    for (const item of rangeNews) for (const tag of item.tags) {
-      const current = scores.get(tag) || { count: 0, score: 0 };
-      scores.set(tag, { count: current.count + 1, score: current.score + item.score });
-    }
-    return [...scores.entries()].sort((a, b) => b[1].score - a[1].score).slice(0, 5);
-  }, [rangeNews]);
-
-  const chinaItems = useMemo(() => rangeNews.filter((item) => item.region === '中国').slice(0, 3), [rangeNews]);
-  const topFive = useMemo(() => [...rangeNews].sort((a, b) => a.rank - b.rank || b.score - a.score).slice(0, 5), [rangeNews]);
-  const sevenDayNews = useMemo(() => news.filter((item) => itemAgeHours(item, clock) <= 168), [clock]);
-  const sevenDayTrend = useMemo(() => {
-    const days = Array.from({ length: 7 }, (_, offset) => {
-      const date = new Date(clock - (6 - offset) * 86400000);
-      return { key: dayKeyFormatter.format(date), label: dateOnlyFormatter.format(date), count: 0 };
-    });
-    const buckets = new Map(days.map((day) => [day.key, day]));
-    for (const item of sevenDayNews) {
-      const seenAt = new Date(item.firstSeenAt || dashboard.contentUpdatedAt || dashboard.generatedAt);
-      const bucket = buckets.get(dayKeyFormatter.format(seenAt));
-      if (bucket) bucket.count += 1;
-    }
-    return days;
-  }, [clock, sevenDayNews]);
-  const trendPeak = Math.max(1, ...sevenDayTrend.map((day) => day.count));
-  const companySignals = useMemo(() => companyMatchers.map(([name, aliases]) => {
-    const matches = (item: NewsItem) => {
-      const haystack = `${item.title} ${item.titleEn} ${item.source} ${item.sources.join(' ')} ${item.tags.join(' ')}`.toLowerCase();
-      return aliases.some((alias) => haystack.includes(alias));
-    };
-    const day = news.filter((item) => itemAgeHours(item, clock) <= 24 && matches(item)).length;
-    const week = sevenDayNews.filter(matches).length;
-    return { name, day, week };
-  }).filter((item) => item.week > 0).sort((a, b) => b.week - a.week || b.day - a.day).slice(0, 7), [clock, sevenDayNews]);
-  const coverage = useMemo(() => channels.slice(1).map(([label]) => ({ label, count: sevenDayNews.filter((item) => item.category === label).length })).filter((item) => item.count > 0).sort((a, b) => b.count - a.count), [sevenDayNews]);
-  const topicBoards = useMemo(() => [
-    ['中国 AI', rangeNews.filter((item) => item.region === '中国').slice(0, 3)],
-    ['模型与产品', rangeNews.filter((item) => ['模型', '产品'].includes(item.category)).slice(0, 3)],
-    ['开发者与基础设施', rangeNews.filter((item) => ['AI Coding', '开源', '算力'].includes(item.category)).slice(0, 3)],
-  ].filter(([, items]) => (items as NewsItem[]).length > 0) as [string, NewsItem[]][], [rangeNews]);
-
+  const rangeNews = useMemo(() => news.filter((item) => age(item, clock) <= range), [clock, range]);
   const filtered = useMemo(() => {
-    const normalized = query.trim().toLowerCase();
-    return rangeNews.filter((item) => {
-      const categoryMatch = category === '全部情报' || item.category === category;
-      const regionMatch = region === '全部' || item.region === region;
-      const queryMatch = !normalized || `${item.title} ${item.titleEn} ${item.summary} ${item.source} ${item.tags.join(' ')}`.toLowerCase().includes(normalized);
-      return categoryMatch && regionMatch && queryMatch;
-    }).sort((a, b) => sort === '最新' ? publishedAgeHours(a, clock) - publishedAgeHours(b, clock) : sort === '来源数' ? b.sources.length - a.sources.length : b.score - a.score);
-  }, [category, clock, query, rangeNews, region, sort]);
+    const q = query.trim().toLowerCase();
+    return rangeNews.filter((item) => (category === '全部' || item.category === category) && (!q || `${item.title} ${item.titleEn} ${item.summary} ${item.source} ${item.tags.join(' ')}`.toLowerCase().includes(q)))
+      .sort((a, b) => sort === '最新' ? age(a, clock, true) - age(b, clock, true) : sort === '来源数' ? b.sources.length - a.sources.length : b.score - a.score);
+  }, [category, clock, query, rangeNews, sort]);
+  const selected = filtered.find((item) => item.id === selectedId) || filtered[0];
+  const highImpact = rangeNews.filter((item) => item.impact !== '关注').length;
+  const chinaRatio = rangeNews.length ? Math.round(rangeNews.filter((item) => item.region === '中国').length / rangeNews.length * 100) : 0;
+  const snapshot = new Date(dashboard.contentUpdatedAt || dashboard.generatedAt).getTime();
+  const isStale = dashboard.status?.state !== 'fresh' || (clock - snapshot) / 3600000 > 36;
 
-  const categoryCount = (label: string) => label === '全部情报' ? rangeNews.length : rangeNews.filter((item) => item.category === label).length;
+  const pulseSignals = useMemo(() => {
+    const groups = new Map<string, { count: number; total: number }>();
+    rangeNews.forEach((item) => { const value = groups.get(item.category) || { count: 0, total: 0 }; groups.set(item.category, { count: value.count + 1, total: value.total + item.score }); });
+    return [...groups].map(([name, value]) => ({ name, count: value.count, score: Math.round(value.total / value.count) })).sort((a, b) => b.score - a.score).slice(0, 6);
+  }, [rangeNews]);
+
+  const sevenDays = useMemo(() => news.filter((item) => age(item, clock) <= 168), [clock]);
+  const trend = useMemo(() => {
+    const days = Array.from({ length: 7 }, (_, offset) => { const date = new Date(clock - (6 - offset) * 86400000); return { key: dayKey.format(date), label: dateOnly.format(date), count: 0 }; });
+    const buckets = new Map(days.map((day) => [day.key, day]));
+    sevenDays.forEach((item) => { const bucket = buckets.get(dayKey.format(new Date(item.firstSeenAt || dashboard.contentUpdatedAt || dashboard.generatedAt))); if (bucket) bucket.count += 1; });
+    return days;
+  }, [clock, sevenDays]);
+  const peak = Math.max(1, ...trend.map((day) => day.count));
+  const companySignals = useMemo(() => companies.map(([name, aliases]) => {
+    const match = (item: NewsItem) => { const text = `${item.title} ${item.titleEn} ${item.tags.join(' ')}`.toLowerCase(); return aliases.some((alias) => text.includes(alias)); };
+    return { name, day: rangeNews.filter(match).length, week: sevenDays.filter(match).length };
+  }).filter((item) => item.week).sort((a, b) => b.week - a.week), [rangeNews, sevenDays]);
+
   const toggleBookmark = (id: number) => setBookmarks((items) => {
     const next = items.includes(id) ? items.filter((item) => item !== id) : [...items, id];
-    try { window.localStorage.setItem('aihub-bookmarks', JSON.stringify(next)); } catch {}
+    try { localStorage.setItem('aihub-bookmarks', JSON.stringify(next)); } catch {}
     return next;
   });
-
-  useEffect(() => {
-    const shortcut = (event: KeyboardEvent) => {
-      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
-        event.preventDefault(); searchRef.current?.focus();
-      }
-    };
-    window.addEventListener('keydown', shortcut);
-    return () => window.removeEventListener('keydown', shortcut);
-  }, []);
-
-  useEffect(() => {
-    const context = document.modelContext;
-    if (!context?.registerTool) return;
-    const lifecycle = new AbortController();
-    void Promise.resolve(context.registerTool({
-      name: 'search_market_pulse', title: '搜索 AI 市场情报', description: '搜索当前 AI 情报流，并同步更新页面结果。',
-      inputSchema: { type: 'object', properties: { query: { type: 'string', minLength: 1 } }, required: ['query'], additionalProperties: false },
-      annotations: { readOnlyHint: true, untrustedContentHint: false },
-      execute(input) {
-        const value = typeof input === 'object' && input !== null && 'query' in input ? String(input.query).trim() : '';
-        if (!value) throw new Error('query 不能为空');
-        setQuery(value); setCategory('全部情报'); setRegion('全部'); setRange(168);
-        const matches = news.filter((item) => `${item.title} ${item.titleEn} ${item.summary} ${item.tags.join(' ')}`.toLowerCase().includes(value.toLowerCase()));
-        return { query: value, matchCount: matches.length, headlines: matches.map((item) => item.title) };
-      },
-    }, { signal: lifecycle.signal })).catch(() => undefined);
-    return () => lifecycle.abort();
-  }, []);
+  const positions = [[15, 65], [30, 29], [47, 68], [64, 27], [80, 61], [91, 28]];
 
   return (
-    <main className="news-center">
-      <header className="command-header">
-        <a className="command-brand" href="#top"><span className="command-logo">AI</span><span className="brand-copy"><strong>Intelligence Hub</strong><small>Market Pulse</small></span></a>
-        <div className="global-search"><Search size={16} /><input ref={searchRef} value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜索公司、模型、事件、标签或来源" aria-label="搜索市场情报" /><kbd><Command size={11} /> K</kbd></div>
-        <div className={`system-state ${isStale ? 'stale' : ''}`}><span><i /> {isStale ? '等待下一次研究' : `Updated ${updatedAt}`}</span><button className="mobile-toggle" aria-label="打开频道" onClick={() => setMobileOpen(!mobileOpen)}>{mobileOpen ? <X size={18} /> : <Menu size={18} />}</button></div>
+    <main className="liquid-terminal">
+      <AmbientSignalField />
+      <header className="liquid-header">
+        <a className="liquid-brand" href="#top"><span>AI</span><div><b>Intelligence Hub</b><small>AI 市场情报</small></div></a>
+        <label className="liquid-search"><Search size={17} /><input ref={searchRef} value={query} onChange={(e) => setQuery(e.target.value)} placeholder="搜索公司、模型、事件或来源" /><kbd><Command size={11} /> K</kbd></label>
+        <div className="liquid-status"><i className={isStale ? 'stale' : ''} /><span>{isStale ? '等待更新' : '研究已更新'}</span><b>{updatedAt}</b></div>
       </header>
 
-      <div className="news-ticker"><span>今日信号</span><div>{rangeNews.slice(0, 4).map((item, index) => <span key={item.id}>{index === 0 ? <b>{item.title}</b> : item.title}{index < Math.min(rangeNews.length, 4) - 1 && <i />}</span>)}</div></div>
+      <section className="pulse-stage" id="top">
+        <div className="pulse-copy"><span>个人化 AI 情报</span><h1>今天的 AI 市场信号</h1><p>从真实事件中识别影响产品、技术与部署判断的变化。</p></div>
+        <div className="pulse-network" aria-label="当前市场信号分布">
+          <svg viewBox="0 0 100 90" preserveAspectRatio="none" aria-hidden="true">{pulseSignals.map((signal, i) => <line key={signal.name} x1="50" y1="48" x2={positions[i][0]} y2={positions[i][1]} />)}</svg>
+          <span className="network-core"><b>{rangeNews.length}</b><small>事件</small></span>
+          {pulseSignals.map((signal, i) => <button key={signal.name} className={signal.score >= 88 ? 'hot' : ''} style={{ left: `${positions[i][0]}%`, top: `${positions[i][1]}%`, width: 43 + signal.count * 7, height: 43 + signal.count * 7 }} onClick={() => setCategory(signal.name)}><b>{signal.name}</b><small>{signal.count} · {signal.score}</small></button>)}
+        </div>
+        <div className="pulse-metrics"><span><small>扫描线索</small><b>{dashboard.stats.rawSignals}</b></span><span><small>高影响</small><b>{highImpact}</b></span><span><small>中国相关</small><b>{chinaRatio}%</b></span><span><small>官方源</small><b>{dashboard.sourceHealth.officialHealthy}</b></span></div>
+      </section>
 
-      <div className="cockpit" id="top">
-        <aside className={`channel-rail ${mobileOpen ? 'open' : ''}`}>
-          <div className="rail-label">情报频道</div>
-          <nav aria-label="情报频道">{channels.map(([label, Icon]) => <button className={category === label ? 'active' : ''} key={label} onClick={() => { setCategory(label); setMobileOpen(false); }}><Icon size={15} /><span>{label}</span><b>{categoryCount(label)}</b></button>)}</nav>
-          <div className="rail-divider" />
-          <div className="rail-label">阅读视角</div>
-          <div className="region-switch">{(['全部', '中国', '全球'] as const).map((item) => <button key={item} className={region === item ? 'active' : ''} onClick={() => setRegion(item)}>{item}</button>)}</div>
-          <div className="source-health"><span><i className="healthy" />成功数据源<b>{dashboard.sourceHealth.healthy}</b></span><span><i className="healthy" />一手官方源<b>{dashboard.sourceHealth.officialHealthy}</b></span><span><i className={dashboard.sourceHealth.failed.length ? 'warning' : 'healthy'} />异常数据源<b>{dashboard.sourceHealth.failed.length}</b></span></div>
-          <div className="rail-footer"><span>数据模式</span><b>{dashboard.mode}</b><small>更新时间 · {updatedAt}</small></div>
-        </aside>
+      <nav className="terminal-controls" aria-label="新闻筛选">
+        <div className="category-strip">{categories.map((item) => <button key={item} className={category === item ? 'active' : ''} onClick={() => setCategory(item)}>{item}<em>{item === '全部' ? rangeNews.length : rangeNews.filter((entry) => entry.category === item).length}</em></button>)}</div>
+        <div className="control-actions"><div>{[[24, '24小时'], [72, '3天'], [168, '7天']].map(([value, label]) => <button key={value} className={range === value ? 'active' : ''} onClick={() => setRange(Number(value))}>{label}</button>)}</div><select value={sort} onChange={(e) => setSort(e.target.value as typeof sort)}><option>影响力</option><option>最新</option><option>来源数</option></select></div>
+      </nav>
 
-        <section className="intel-workspace">
-          <div className="workspace-topline">
-            <div><span>PERSONALIZED AI INTELLIGENCE / 中文版</span><h1>今天的 AI 市场，先看这几件事</h1><p>按你的关注方向整理，聚焦真正影响判断的变化。</p></div>
-            <div className="desk-metrics"><span><small>扫描线索</small><b>{dashboard.stats.rawSignals}</b><em>本轮研究</em></span><span><small>聚合事件</small><b>{computedStats.events}</b><em>去重后</em></span><span><small>中国相关</small><b>{computedStats.chinaRatio}%</b><em>按事件计算</em></span><span><small>高影响</small><b>{computedStats.highImpact}</b><em className="warn">需关注</em></span></div>
-          </div>
-
-          <section className="top-five-section">
-            <div className="section-inline-head"><div><span>重点速览</span><h2>今天真正值得看的变化</h2></div><small>按相关性、影响力与证据质量排序</small></div>
-            <div className="top-five-grid">{topFive.map((item, index) => <a className={`top-five-card ${index === 0 ? 'hot' : ''}`} href={item.url} target="_blank" rel="noreferrer" key={item.id}><em>{String(index + 1).padStart(2, '0')}</em><span><b>{item.title}</b>{index === 0 && <p>{item.summary}</p>}<small>{item.category} · {item.verification || `${item.sources.length} 源`} · {item.score}</small></span></a>)}</div>
-          </section>
-
-          <div className="control-bar">
-            <div className="control-group"><span>时间</span>{[[24, '24小时'], [72, '3天'], [168, '7天']].map(([value, label]) => <button key={value} className={range === value ? 'active' : ''} onClick={() => setRange(Number(value))}>{label}</button>)}</div>
-            <div className="control-group"><span>排序</span>{(['影响力', '最新', '来源数'] as const).map((item) => <button key={item} className={sort === item ? 'active' : ''} onClick={() => setSort(item)}>{item}</button>)}</div>
-            <button className={`language-toggle ${bilingual ? 'active' : ''}`} onClick={() => setBilingual(!bilingual)}><Languages size={13} /> {bilingual ? '双语' : '仅中文'}</button>
-            <span className="refresh-button" title="每日自动更新"><RefreshCw size={13} /> {updatedAt} 更新</span>
-          </div>
-
-          <div className="desk-grid">
-            <section className="feed-panel">
-              <div className="panel-head"><div><h2>聚合情报流</h2><span>{filtered.length} 个事件 · 相似报道已合并</span></div><span className="method-badge">去重 + 交叉信源</span></div>
-              {filtered.length > 0 ? <div className="news-feed">{filtered.map((item, index) => <article className={`news-row ${index === 0 ? 'lead' : ''}`} key={item.id}>
-                <div className="news-rank"><span>{String(index + 1).padStart(2, '0')}</span><b>{item.score}</b></div>
-                <div className="news-body">
-                  <div className="news-meta"><span className={`impact impact-${item.impact}`}>{item.impact}</span><span>{item.region}</span><span>{item.category}</span><span><Clock3 size={11} /> {relativeTime(item, clock)}</span></div>
-                  {focusMatches(item).length > 0 && <div className="relevance-line"><b>与你相关</b>{focusMatches(item).map((match) => <span key={match.name}>{match.name}</span>)}</div>}
-                  <h3>{item.title}</h3>{bilingual && <h4>{item.titleEn}</h4>}
-                  <p>{item.summary}</p>
-                  {(item.change || item.watch) && <div className="research-lines">{item.change && <span><b>发生了什么变化</b>{item.change}</span>}{item.watch && <span><b>下一步观察</b>{item.watch}</span>}</div>}
-                  <div className="why-line"><b>为什么重要</b><span>{item.why}</span></div>
-                  <div className="source-line"><span>{item.verification || `${item.sources.length} 个来源`}</span>{item.sourceLinks.slice(0, 4).map((source) => <a href={source.url} target="_blank" rel="noreferrer" key={source.url}>{source.name}{source.tier === 1 ? ' · 官方' : ''}</a>)}{item.tags.slice(0, 2).map((tag) => <i key={tag}>#{tag}</i>)}</div>
-                </div>
-                <div className="news-actions"><button onClick={() => toggleBookmark(item.id)} aria-label={bookmarks.includes(item.id) ? '取消收藏' : '收藏'}>{bookmarks.includes(item.id) ? <BookmarkCheck size={15} /> : <Bookmark size={15} />}</button><a href={item.url} target="_blank" rel="noreferrer" aria-label={`打开来源：${item.title}`}><ExternalLink size={15} /></a></div>
-              </article>)}</div> : <div className="empty-result"><Search size={22} /><b>没有匹配的情报</b><span>扩大时间范围、清空搜索或切换频道</span><button onClick={() => { setQuery(''); setCategory('全部情报'); setRegion('全部'); setRange(168); }}>重置筛选</button></div>}
-            </section>
-
-            <aside className="briefing-stack">
-              <section className="briefing-card primary-brief"><div className="panel-head"><div><h2>今日判断</h2><span>基于本轮研究生成</span></div><span className="verified"><Circle size={7} fill="currentColor" /> {dashboard.sourceHealth.healthy} 源有效</span></div><h3>{dashboard.brief.title}</h3><ol>{dashboard.brief.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ol><div className="brief-footer"><span>约 3 分钟读完</span><span>{rangeNews.filter((item) => item.sourceLinks.length > 1).length} 条多源核验</span></div></section>
-
-              <section className="briefing-card focus-profile-card"><div className="panel-head"><div><h2>关注画像</h2><span>透明、可修改的个性化依据</span></div><small>{focusProfile.priorities.length} 个关注方向</small></div><div className="focus-priority-list">{focusProfile.priorities.map((priority) => <div key={priority.name}><span>{priority.name}</span><i><b style={{ width: `${priority.weight * 10}%` }} /></i><em>{priority.weight}</em></div>)}</div></section>
-
-              <section className="briefing-card"><div className="panel-head"><div><h2>关注主题</h2><span>按真实事件标签汇总</span></div><TrendingUp size={15} /></div><div className="trend-list">{topics.map(([name, value], index) => <div key={name}><span className="trend-rank">{index + 1}</span><p><b>{name}</b><small>{value.count} 个事件</small></p><em>{value.score}</em></div>)}</div></section>
-
-              <section className="briefing-card china-watch"><div className="panel-head"><div><h2>中国 AI 观察</h2><span>本轮实际收录的本土信号</span></div><Sparkles size={15} /></div>{chinaItems.length ? <div className="watch-list">{chinaItems.map((item, index) => <a href={item.url} target="_blank" rel="noreferrer" key={item.id}><span className={`watch-dot ${index === 0 ? 'red' : index === 1 ? 'blue' : 'amber'}`} /><p><b>{item.title}</b><small>{item.source} · {relativeTime(item, clock)}</small></p><ExternalLink size={14} /></a>)}</div> : <div className="watch-empty">本轮没有通过核验的中国 AI 事件，不用占位内容补齐。</div>}</section>
-            </aside>
-          </div>
-
-          <section className="market-depth-section">
-            <div className="section-heading"><div><span>MARKET DEPTH</span><h2>7天市场结构</h2></div><small>全部指标由滚动事件数据实时计算</small></div>
-            <div className="market-depth-grid">
-              <article className="company-matrix"><header><div><b>重点公司矩阵</b><span>24小时 / 7天事件数</span></div><Landmark size={15} /></header><div className="matrix-head"><span>公司</span><span>24H</span><span>7D</span><span>动量</span></div>{companySignals.length ? companySignals.map((company) => <div className="matrix-row" key={company.name}><b>{company.name}</b><span>{company.day}</span><span>{company.week}</span><em className={company.day > 0 ? 'rising' : ''}>{company.day > 0 ? '活跃' : '平稳'}</em></div>) : <p className="depth-empty">7天内暂无可归属的公司事件</p>}</article>
-              <article className="seven-day-chart"><header><div><b>事件密度</b><span>按首次收录时间计算</span></div><TrendingUp size={15} /></header><div className="bar-chart">{sevenDayTrend.map((day) => <div key={day.key}><span><i style={{ height: `${Math.max(5, day.count / trendPeak * 100)}%` }} /></span><b>{day.count}</b><small>{day.label}</small></div>)}</div></article>
-              <article className="coverage-card"><header><div><b>情报篮子</b><span>近7天真实分类覆盖</span></div><Globe2 size={15} /></header><div className="coverage-list">{coverage.map((item) => <div key={item.label}><span>{item.label}</span><i><b style={{ width: `${item.count / Math.max(1, sevenDayNews.length) * 100}%` }} /></i><em>{item.count}</em></div>)}</div></article>
-            </div>
-          </section>
-
-          <section className="platform-section">
-            <div className="section-heading"><div><span>事件覆盖</span><h2>本轮研究覆盖的重点议题</h2></div><small>仅基于已核验事件，不模拟平台热度</small></div>
-            <div className="platform-grid">{topicBoards.map(([name, items]) => <article key={name}><header><div><b>{name}</b><span>按事件影响力排序</span></div><Flame size={15} /></header>{items.map((item, index) => <a className="board-item" href={item.url} target="_blank" rel="noreferrer" key={item.id}><em>{index + 1}</em><span>{item.title}</span><small>{item.score}</small></a>)}</article>)}</div>
-          </section>
+      <section className="terminal-workspace">
+        <section className="signal-scanner">
+          <header><div><span>实时信号</span><h2>新闻扫描</h2></div><b>{filtered.length}</b></header>
+          <div className="scanner-list">{filtered.map((item, index) => <button key={item.id} className={selected?.id === item.id ? 'selected' : ''} onClick={() => setSelectedId(item.id)}><span className="scanner-rank">{String(index + 1).padStart(2, '0')}</span><span className="scanner-copy"><small><i className={`impact-dot impact-${item.impact}`} />{item.category} · {relativeTime(item, clock)}</small><b>{item.title}</b><em>{item.source} · {item.score}</em></span></button>)}
+          {!filtered.length && <div className="scanner-empty"><Search size={21} /><b>没有匹配的信号</b><button onClick={() => { setQuery(''); setCategory('全部'); setRange(168); }}>重置筛选</button></div>}</div>
         </section>
-      </div>
 
-      <footer className={`status-footer ${isStale ? 'stale' : ''}`}><span><i /> {isStale ? '展示最近成功快照' : '每日研究快照可用'}</span><span>{computedStats.events} 个聚合事件</span><span>{dashboard.sourceHealth.healthy}/{dashboard.sourceHealth.attempted} 个来源有效</span><span>内容更新 {updatedAt}</span><span>AI Intelligence Hub</span></footer>
+        {selected && <article className="signal-detail">
+          <header className="detail-meta"><div><span className={`impact-pill impact-${selected.impact}`}>{selected.impact}</span><span>{selected.region}</span><span>{selected.category}</span><span><Clock3 size={13} /> {relativeTime(selected, clock)}</span></div><div><button onClick={() => toggleBookmark(selected.id)}>{bookmarks.includes(selected.id) ? <BookmarkCheck size={17} /> : <Bookmark size={17} />}</button><a href={selected.url} target="_blank" rel="noreferrer"><ExternalLink size={17} /> 原文</a></div></header>
+          <div className="detail-title"><span>{String(filtered.findIndex((item) => item.id === selected.id) + 1).padStart(2, '0')} / {String(filtered.length).padStart(2, '0')}</span><h2>{selected.title}</h2>{bilingual && <p>{selected.titleEn}</p>}</div>
+          <p className="detail-summary">{selected.summary}</p>
+          {!!relevance(selected).length && <div className="detail-relevance"><b>与你相关</b>{relevance(selected).map((item) => <span key={item.name}>{item.name}</span>)}</div>}
+          <div className="detail-analysis"><section><span>发生了什么变化</span><p>{selected.change || selected.summary}</p></section><section><span>为什么重要</span><p>{selected.why}</p></section><section><span>下一步观察</span><p>{selected.watch || '继续观察后续产品可用性、定价和第三方验证。'}</p></section></div>
+          <footer className="detail-sources"><div><ShieldCheck size={15} /><span>{selected.verification || `${selected.sources.length} 个来源`}</span></div>{selected.sourceLinks.map((source) => <a key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.name}{source.tier === 1 ? ' · 官方' : ''}</a>)}</footer>
+        </article>}
+      </section>
+
+      <section className="terminal-depth">
+        <article className="brief-module"><header><Sparkles size={16} /><span>今日判断</span></header><h2>{dashboard.brief.title}</h2><ul>{dashboard.brief.bullets.slice(0, 3).map((bullet) => <li key={bullet}>{bullet}</li>)}</ul></article>
+        <article className="company-module"><header><Landmark size={16} /><span>公司动量</span></header>{companySignals.map((company) => <div key={company.name}><b>{company.name}</b><span>{company.day} / {company.week}</span><i><em style={{ width: `${company.week / Math.max(1, companySignals[0]?.week || 1) * 100}%` }} /></i></div>)}</article>
+        <article className="density-module"><header><TrendingUp size={16} /><span>7日事件密度</span></header><div>{trend.map((day) => <span key={day.key}><i style={{ height: `${Math.max(5, day.count / peak * 100)}%` }} /><b>{day.count}</b><small>{day.label}</small></span>)}</div></article>
+      </section>
+
+      <footer className="liquid-footer"><span><Globe2 size={14} /> {dashboard.mode}</span><span>{dashboard.sourceHealth.healthy}/{dashboard.sourceHealth.attempted} 来源有效</span><button onClick={() => setBilingual(!bilingual)}><Languages size={14} /> {bilingual ? '双语开启' : '仅中文'}</button><span><RefreshCw size={13} /> {updatedAt}</span></footer>
     </main>
   );
 }
