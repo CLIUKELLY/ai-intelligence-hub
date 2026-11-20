@@ -56,11 +56,11 @@ function IntelligenceField() {
     if (!canvas || !context) return;
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const pointer = { x: -999, y: -999, px: -999, py: -999, speed: 0 };
-    const ripples: { x: number; y: number; radius: number; alpha: number; hue: number }[] = [];
+    const ripples: { x: number; y: number; radius: number; alpha: number; hue: number; phase: number; stretch: number }[] = [];
     const particles = Array.from({ length: reduced ? 24 : 92 }, (_, i) => ({
       x: ((i * 83.7) % 100) / 100, y: ((i * 47.3) % 100) / 100,
       vx: ((i % 7) - 3) * .008, vy: (((i * 3) % 7) - 3) * .006,
-      r: .5 + (i % 5) * .25, hue: i % 7 === 0 ? 266 : 198,
+      r: .5 + (i % 5) * .25, hue: i % 8 === 0 ? 278 : 38,
     }));
     let width = 0, height = 0, frame = 0;
     const resize = () => {
@@ -73,8 +73,9 @@ function IntelligenceField() {
       pointer.speed = Math.min(26, Math.hypot(pointer.x - pointer.px, pointer.y - pointer.py));
     };
     const click = (event: PointerEvent) => {
-      ripples.push({ x: event.clientX, y: event.clientY, radius: 0, alpha: .52, hue: Math.random() > .55 ? 198 : 266 });
-      window.setTimeout(() => ripples.push({ x: event.clientX, y: event.clientY, radius: 0, alpha: .25, hue: 198 }), 120);
+      const phase = Math.random() * Math.PI;
+      ripples.push({ x: event.clientX, y: event.clientY, radius: 0, alpha: .42, hue: Math.random() > .7 ? 278 : 38, phase, stretch: .88 + Math.random() * .24 });
+      window.setTimeout(() => ripples.push({ x: event.clientX, y: event.clientY, radius: 0, alpha: .2, hue: 38, phase: phase + .8, stretch: 1.12 }), 140);
     };
     const draw = () => {
       context.clearRect(0, 0, width, height);
@@ -94,23 +95,24 @@ function IntelligenceField() {
         points.slice(i + 1).forEach((q) => {
           const distance = Math.hypot(p.px - q.px, p.py - q.py);
           if (distance < 112) {
-            context.strokeStyle = `hsla(${p.hue},92%,72%,${(1 - distance / 112) * (.055 + p.proximity * .08)})`;
+            context.strokeStyle = `hsla(${p.hue},48%,78%,${(1 - distance / 112) * (.045 + p.proximity * .07)})`;
             context.beginPath(); context.moveTo(p.px, p.py); context.lineTo(q.px, q.py); context.stroke();
           }
         });
-        context.fillStyle = `hsla(${p.hue},92%,72%,${.16 + p.proximity * .7})`;
+        context.fillStyle = `hsla(${p.hue},52%,78%,${.13 + p.proximity * .58})`;
         context.beginPath(); context.arc(p.px, p.py, p.r + p.proximity * 2.2, 0, Math.PI * 2); context.fill();
       });
       if (pointer.speed > 2 && localX > 0 && localY > 0) {
         const gradient = context.createLinearGradient(localX, localY, localX - (pointer.x - pointer.px) * 5, localY - (pointer.y - pointer.py) * 5);
-        gradient.addColorStop(0, `rgba(125,211,252,${Math.min(.3, pointer.speed / 70)})`); gradient.addColorStop(1, 'rgba(125,211,252,0)');
+        gradient.addColorStop(0, `rgba(255,235,210,${Math.min(.24, pointer.speed / 82)})`); gradient.addColorStop(1, 'rgba(255,235,210,0)');
         context.strokeStyle = gradient; context.lineWidth = 1.2; context.beginPath(); context.moveTo(localX, localY); context.lineTo(localX - (pointer.x - pointer.px) * 5, localY - (pointer.y - pointer.py) * 5); context.stroke();
       }
       pointer.speed *= .92;
       for (let i = ripples.length - 1; i >= 0; i -= 1) {
         const wave = ripples[i]; wave.radius += 2.6; wave.alpha *= .971;
-        context.strokeStyle = `hsla(${wave.hue},92%,72%,${wave.alpha})`; context.lineWidth = 1;
-        context.beginPath(); context.arc(wave.x - box.left, wave.y - box.top, wave.radius, 0, Math.PI * 2); context.stroke();
+        context.save(); context.translate(wave.x - box.left, wave.y - box.top); context.rotate(Math.sin(wave.phase + wave.radius * .012) * .12);
+        context.strokeStyle = `hsla(${wave.hue},48%,78%,${wave.alpha})`; context.lineWidth = 1;
+        context.beginPath(); context.ellipse(0, 0, wave.radius * wave.stretch, wave.radius * (2 - wave.stretch + Math.sin(wave.radius * .035) * .035), 0, 0, Math.PI * 2); context.stroke(); context.restore();
         if (wave.alpha < .012) ripples.splice(i, 1);
       }
       frame = requestAnimationFrame(draw);
@@ -156,6 +158,8 @@ export default function Home() {
   const snapshot = new Date(dashboard.contentUpdatedAt || dashboard.generatedAt).getTime();
   const isStale = dashboard.status?.state !== 'fresh' || (clock - snapshot) / 3600000 > 36;
   const highImpact = rangeNews.filter((item) => item.impact !== '关注').length;
+  const highImpactCategories = new Set(rangeNews.filter((item) => item.impact !== '关注').map((item) => item.category)).size;
+  const intensity = highImpact >= 5 ? '高' : highImpact >= 2 ? '偏高' : highImpact === 0 ? '平静' : '常态';
   const chinaRatio = rangeNews.length ? Math.round(rangeNews.filter((item) => item.region === '中国').length / rangeNews.length * 100) : 0;
   const pulseSignals = useMemo(() => {
     const groups = new Map<string, { count: number; total: number; title: string }>();
@@ -186,10 +190,10 @@ export default function Home() {
         <div className="intelligence-status"><i className={isStale ? 'stale' : ''} /><span>{isStale ? '等待更新' : '情报已更新'}</span><b>{updatedAt}</b></div>
       </header>
 
-      <section className="signal-hero" id="top">
+      <section className="signal-hero" id="top" onPointerMove={(event) => { const box = event.currentTarget.getBoundingClientRect(); event.currentTarget.style.setProperty('--hero-x', `${(event.clientX - box.left) / box.width * 100}%`); event.currentTarget.style.setProperty('--hero-y', `${(event.clientY - box.top) / box.height * 100}%`); }}>
         <div className="hero-orbit" aria-hidden="true"><i /><i /><i /></div>
         <div className="hero-heading"><span><Activity size={13} /> 市场脉搏</span><h1>先看懂变化，<br />再进入新闻。</h1><p>{dashboard.brief.title}</p></div>
-        <div className="market-state"><span>当前市场状态</span><b>{highImpact >= 5 ? '高活跃' : highImpact >= 2 ? '结构性升温' : '常态观察'}</b><small>{rangeNews.length} 个有效事件 · {highImpact} 个高影响信号</small></div>
+        <div className="market-state"><span>今日信号强度</span><b>{intensity}</b><small>{rangeNews.length} 个有效事件 · {highImpact} 个高影响信号 · 覆盖 {highImpactCategories} 个领域</small></div>
 
         <div className="signal-map" aria-label="当前市场信号图谱">
           <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
@@ -197,7 +201,7 @@ export default function Home() {
             {pulseSignals.slice(0, -1).map((signal, i) => <line key={`mesh-${signal.name}`} className="mesh" x1={positions[i][0]} y1={positions[i][1]} x2={positions[i + 1][0]} y2={positions[i + 1][1]} />)}
           </svg>
           <button className="signal-core" onClick={() => chooseSignal('全部')}><span>今日信号</span><b>{rangeNews.length}</b><small>点击查看全部</small></button>
-          {pulseSignals.map((signal, i) => <button key={signal.name} className={`signal-node ${signal.score >= 88 ? 'hot' : ''} ${category === signal.name ? 'selected' : ''}`} style={{ left: `${positions[i][0]}%`, top: `${positions[i][1]}%`, '--node-size': `${54 + Math.min(26, signal.count * 8)}px` } as React.CSSProperties} onPointerEnter={() => setHoverSignal(signal.name)} onPointerLeave={() => setHoverSignal(null)} onFocus={() => setHoverSignal(signal.name)} onBlur={() => setHoverSignal(null)} onClick={() => chooseSignal(signal.name)}><b>{signal.name}</b><small>{signal.count} 条 · {signal.score}</small></button>)}
+          {pulseSignals.map((signal, i) => <button key={signal.name} className={`signal-node ${signal.score >= 88 ? 'hot' : ''} ${category === signal.name ? 'selected' : ''}`} style={{ left: `${positions[i][0]}%`, top: `${positions[i][1]}%`, '--node-size': `${64 + Math.min(28, signal.count * 7)}px` } as React.CSSProperties} onPointerEnter={() => setHoverSignal(signal.name)} onPointerLeave={() => setHoverSignal(null)} onFocus={() => setHoverSignal(signal.name)} onBlur={() => setHoverSignal(null)} onClick={() => chooseSignal(signal.name)}><b>{signal.name}</b><small>{signal.count} 条 · {signal.score}</small></button>)}
           <div className={`signal-tooltip ${activeSignal ? 'visible' : ''}`}><span>{activeSignal?.name || '信号详情'}</span><b>{activeSignal?.title || '悬停节点查看该领域的首要事件'}</b><small>点击以筛选并进入新闻扫描</small></div>
         </div>
 
@@ -205,7 +209,7 @@ export default function Home() {
         <button className="enter-terminal" onClick={() => terminalRef.current?.scrollIntoView({ behavior: 'smooth' })}><span>进入新闻扫描</span><ArrowDown size={16} /></button>
       </section>
 
-      <div className="market-ribbon"><span><Waves size={14} /> 市场状态：{highImpact >= 5 ? '高活跃' : highImpact >= 2 ? '结构性升温' : '常态观察'}</span><i /><b>{rangeNews.length} 信号</b><b>{highImpact} 高影响</b><b>{chinaRatio}% 中国相关</b><small>更新于 {updatedAt}</small></div>
+      <div className="market-ribbon"><span><Waves size={14} /> 今日信号强度：{intensity}</span><i /><b>{rangeNews.length} 信号</b><b>{highImpact} 高影响</b><b>覆盖 {highImpactCategories} 个领域</b><b>{chinaRatio}% 中国相关</b><small>更新于 {updatedAt}</small></div>
 
       <section className="research-terminal" ref={terminalRef}>
         <aside className="filter-rail">
