@@ -1,17 +1,17 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-20T23:47:11.511Z",
-  "contentUpdatedAt": "2026-11-20T23:47:11.511Z",
+  "generatedAt": "2026-11-21T23:47:02.036Z",
+  "contentUpdatedAt": "2026-11-21T23:47:02.036Z",
   "status": {
     "state": "fresh",
-    "lastSuccessfulAt": "2026-11-20T23:47:11.511Z",
+    "lastSuccessfulAt": "2026-11-21T23:47:02.036Z",
     "note": "已完成 GPT 联网研究、7天滚动数据合并与 GitHub 数据快照；日常写入不使用 RSS。"
   },
   "mode": "GPT 联网研究 · 7天滚动数据 · 非RSS",
   "stats": {
-    "rawSignals": 32,
-    "events": 16,
-    "chinaRatio": 6,
+    "rawSignals": 34,
+    "events": 19,
+    "chinaRatio": 5,
     "highImpact": 4
   },
   "sourceHealth": {
@@ -21,12 +21,12 @@
     "failed": []
   },
   "brief": {
-    "title": "今日重点：AI 资本、企业 Copilot 与科研评测同步推进",
+    "title": "今日重点：从模型防护到可核验自动化，企业 AI 进入可运营阶段",
     "bullets": [
-      "Anthropic 完成 IPO 并同步引入多家云与芯片伙伴的私募资金，前沿模型竞争与基础设施资本绑定进一步加深。",
-      "Microsoft 将 GPT‑6.2 Sol 与 Astra 铺入 Copilot 的多个工作入口，企业采用将更看重权限、任务适配与实际成本。",
-      "OpenAI 的 MedChemBench 把药物化学推理拆解为可追溯评测任务，同时明确它不等同于现实药物发现能力。",
-      "滚动数据仍显示 Agent 的工具治理、端侧执行与云端推理可观测性正在从功能更新走向生产部署环节。"
+      "OpenAI 将推理轨迹保护扩展为模型、分类器、API 和活动调查联动的防线，模型安全开始覆盖完整调用链。",
+      "AWS 的 Textract Insights 将字段抽取、页级回证和置信度放进同一服务，文档智能更接近可审计的业务自动化。",
+      "HyperPod 全局推理网关把跨区域 GPU 调度和故障转移产品化，推理基础设施竞争继续向可用性与运维效率延伸。",
+      "近七天的滚动数据仍显示，模型能力之外，企业的主要决策点已转向权限、安全、可追溯性和推理成本。"
     ]
   },
   "items": [
@@ -247,6 +247,42 @@
       "rank": 6
     },
     {
+      "id": 3906363722,
+      "title": "OpenAI 强化对抗蒸馏防护",
+      "titleEn": "Combatting adversarial distillation",
+      "summary": "OpenAI 披露其为 GPT‑6.2 Astra 与 Sol 增加针对受保护推理提取的防护；在其内部自适应红队评测中，针对先前请求推理的平均攻击成功率从 GPT‑6 Astra 原始防护下的 54.0% 降至 0.2%。",
+      "change": "从主要依赖单次请求拦截，扩展为模型训练、分类器、API 保护与跨账户活动调查共同组成的分层防护。",
+      "why": "推理轨迹和工具调用可能承载比最终答案更强的能力信号；若防护可在生产环境保持有效，将改变模型提供方对 API、Agent 和合作部署的安全治理方式。",
+      "watch": "观察独立安全研究者能否复现防护效果、旧模型的升级范围，以及跨模型提供方是否形成可互操作的蒸馏滥用处置标准。",
+      "verification": "官方一手",
+      "source": "OpenAI",
+      "sources": [
+        "OpenAI"
+      ],
+      "sourceLinks": [
+        {
+          "name": "OpenAI",
+          "url": "https://openai.com/index/combatting-adversarial-distillation/",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-20T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-21T23:47:02.036Z",
+      "category": "安全",
+      "region": "全球",
+      "impact": "关注",
+      "score": 87,
+      "url": "https://openai.com/index/combatting-adversarial-distillation/",
+      "tags": [
+        "OpenAI",
+        "模型安全",
+        "蒸馏防护",
+        "红队测试"
+      ],
+      "rank": 7
+    },
+    {
       "id": 3248149539,
       "title": "阿里云发布 Qwen4-Max 并推进东南亚生态",
       "titleEn": "Alibaba Cloud Unveils New AI Initiatives at Hong Kong Summit to Advance the City’s AI Ecosystem",
@@ -281,7 +317,7 @@
         "东南亚",
         "出海"
       ],
-      "rank": 7,
+      "rank": 8,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从单一模型披露扩展为模型、区域云容量、人才项目和行业伙伴同步推进。",
@@ -317,7 +353,7 @@
         "推理",
         "高可用"
       ],
-      "rank": 8,
+      "rank": 9,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从团队自建跨区域容灾逻辑转为 SageMaker 可管理的跨区域推理路由资源。",
@@ -358,7 +394,43 @@
         "Computer Use",
         "Mac"
       ],
-      "rank": 9
+      "rank": 10
+    },
+    {
+      "id": 3906363723,
+      "title": "AWS 推出可核验文档 AI 服务 Textract Insights",
+      "titleEn": "Announcing Amazon Textract Insights: Verifiable generative AI for documents",
+      "summary": "AWS 宣布 Amazon Textract Insights 正式可用：用户以自然语言和 JSON Schema 定义字段后，服务可在混合文档包中完成拆分、分类与抽取，并返回置信度及页级定位信息；当前在美国东部和西部区域提供。",
+      "change": "从 OCR、分类、提示词和人工复核的自建流水线，转为单个托管 API 内完成多文档理解、抽取与可追溯回证。",
+      "why": "对财务、保险、医疗等高审计要求场景，能回溯到原页与坐标的抽取结果比纯生成答案更接近可进入业务流程的自动化能力。",
+      "watch": "观察区域扩展、不同语言和复杂表格的实际准确率，以及企业在置信度阈值和人工复核上的成本收益。",
+      "verification": "官方一手",
+      "source": "AWS",
+      "sources": [
+        "AWS"
+      ],
+      "sourceLinks": [
+        {
+          "name": "AWS",
+          "url": "https://aws.amazon.com/blogs/machine-learning/announcing-amazon-textract-insights-verifiable-generative-ai-for-documents/",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-20T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-21T23:47:02.036Z",
+      "category": "产品",
+      "region": "全球",
+      "impact": "关注",
+      "score": 83,
+      "url": "https://aws.amazon.com/blogs/machine-learning/announcing-amazon-textract-insights-verifiable-generative-ai-for-documents/",
+      "tags": [
+        "AWS",
+        "Textract",
+        "智能文档",
+        "可追溯AI"
+      ],
+      "rank": 11
     },
     {
       "id": 1875041669,
@@ -389,12 +461,48 @@
         "推理优化",
         "GPU"
       ],
-      "rank": 10,
+      "rank": 12,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从人工巡检端点配置转为自动发现延迟漂移、闲置 GPU 与优化缺口。",
       "watch": "观察该能力在真实生产端点中的误报率，以及是否带来可量化的推理成本下降。",
       "verification": "官方一手"
+    },
+    {
+      "id": 3906363724,
+      "title": "SageMaker HyperPod 增加跨区域全局推理网关",
+      "titleEn": "Introducing Amazon SageMaker HyperPod Global Inference Gateway: One endpoint across Regions and clusters",
+      "summary": "AWS 为 SageMaker HyperPod 推出 Global Inference Gateway：一个托管端点可在注册的集群和区域之间基于 KV 缓存余量、队列深度、区域邻近度与错误率路由请求，并在集群故障时自动切换。",
+      "change": "从单集群的 GPU 感知路由，提升为跨集群、跨区域的统一入口和自动故障转移层。",
+      "why": "对于自建大模型推理集群，跨区域 GPU 利用率和故障恢复通常需要自建 DNS、负载均衡与网络层；托管网关将这些运维能力产品化。",
+      "watch": "观察首批区域、协议与模型框架支持范围，以及跨区域路由在延迟、数据边界和总体成本上的真实表现。",
+      "verification": "官方一手",
+      "source": "AWS",
+      "sources": [
+        "AWS"
+      ],
+      "sourceLinks": [
+        {
+          "name": "AWS",
+          "url": "https://aws.amazon.com/blogs/machine-learning/introducing-amazon-sagemaker-hyperpod-global-inference-gateway-one-endpoint-across-regions-and-clusters/",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-20T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-21T23:47:02.036Z",
+      "category": "算力",
+      "region": "全球",
+      "impact": "关注",
+      "score": 82,
+      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-amazon-sagemaker-hyperpod-global-inference-gateway-one-endpoint-across-regions-and-clusters/",
+      "tags": [
+        "AWS",
+        "SageMaker",
+        "HyperPod",
+        "推理路由"
+      ],
+      "rank": 13
     },
     {
       "id": 3906363718,
@@ -430,7 +538,7 @@
         "可观测性",
         "治理"
       ],
-      "rank": 11
+      "rank": 14
     },
     {
       "id": 3906363721,
@@ -466,7 +574,7 @@
         "药物化学",
         "评测"
       ],
-      "rank": 12
+      "rank": 15
     },
     {
       "id": 1080720566,
@@ -497,7 +605,7 @@
         "GPU",
         "可观测性"
       ],
-      "rank": 13,
+      "rank": 16,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从多工具拼接排障转为集群级 GPU、网络与训练任务的联合基础设施诊断。",
@@ -533,7 +641,7 @@
         "语音Agent",
         "SageMaker"
       ],
-      "rank": 14,
+      "rank": 17,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从供应商托管的对话模型扩展到可在客户 AWS 账户内部署的 JumpStart 选项。",
@@ -569,7 +677,7 @@
         "VPC",
         "AI Agent"
       ],
-      "rank": 15,
+      "rank": 18,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从原型数据库需要重建迁移变为可保留数据与 endpoint 并迁入私有 VPC。",
@@ -605,7 +713,7 @@
         "推理",
         "Serverless"
       ],
-      "rank": 16,
+      "rank": 19,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从最长十五分钟的按需事件函数执行窗口扩展至三十分钟。",
