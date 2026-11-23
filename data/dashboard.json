@@ -1,32 +1,32 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-21T23:47:02.036Z",
-  "contentUpdatedAt": "2026-11-21T23:47:02.036Z",
+  "generatedAt": "2026-11-23T02:30:57.192Z",
+  "contentUpdatedAt": "2026-11-23T02:30:57.192Z",
   "status": {
     "state": "fresh",
-    "lastSuccessfulAt": "2026-11-21T23:47:02.036Z",
+    "lastSuccessfulAt": "2026-11-23T02:30:57.192Z",
     "note": "已完成 GPT 联网研究、7天滚动数据合并与 GitHub 数据快照；日常写入不使用 RSS。"
   },
   "mode": "GPT 联网研究 · 7天滚动数据 · 非RSS",
   "stats": {
-    "rawSignals": 34,
-    "events": 19,
+    "rawSignals": 35,
+    "events": 20,
     "chinaRatio": 5,
-    "highImpact": 4
+    "highImpact": 5
   },
   "sourceHealth": {
-    "attempted": 3,
-    "healthy": 3,
-    "officialHealthy": 3,
+    "attempted": 2,
+    "healthy": 2,
+    "officialHealthy": 1,
     "failed": []
   },
   "brief": {
-    "title": "今日重点：从模型防护到可核验自动化，企业 AI 进入可运营阶段",
+    "title": "今日重点：前沿模型竞争开始触及共同安全节奏",
     "bullets": [
-      "OpenAI 将推理轨迹保护扩展为模型、分类器、API 和活动调查联动的防线，模型安全开始覆盖完整调用链。",
-      "AWS 的 Textract Insights 将字段抽取、页级回证和置信度放进同一服务，文档智能更接近可审计的业务自动化。",
-      "HyperPod 全局推理网关把跨区域 GPU 调度和故障转移产品化，推理基础设施竞争继续向可用性与运维效率延伸。",
-      "近七天的滚动数据仍显示，模型能力之外，企业的主要决策点已转向权限、安全、可追溯性和推理成本。"
+      "OpenAI 提议用困惑度等共同指标与能力阈值约束前沿模型推进，讨论焦点从单家实验室承诺转向跨机构可比较的治理机制。",
+      "这一主张仍是提议而非行业标准；训练数据、评测集和能力涌现的可比性，决定它能否真正成为公共安全门槛。",
+      "近七天的滚动信号显示，企业 AI 的竞争已同时发生在模型能力、推理基础设施、可追溯自动化和安全治理四个层面。",
+      "对部署方而言，模型供应商是否公开可审计的安全评测、变更控制与权限边界，正比单次榜单成绩更影响生产决策。"
     ]
   },
   "items": [
@@ -139,6 +139,48 @@
       "rank": 3
     },
     {
+      "id": 3906363725,
+      "title": "OpenAI 提议以困惑度设定前沿模型共同安全门槛",
+      "titleEn": "Perplexity and Intelligence",
+      "summary": "OpenAI 首席科学家 Jakub Pachocki 提议，模型开发者以困惑度等共同指标衡量预训练进展，并在可理解和监控模型行为达到明确里程碑前，不跨越预先约定的能力边界；路透社独立报道确认了该提议及 CEO 的公开支持。",
+      "change": "从各实验室各自披露能力评测与安全案例，转向尝试建立跨开发者可比较的预训练进展指标和能力阈值约束。",
+      "why": "若行业接受共同的度量与暂停条件，前沿模型竞争将首次拥有可供监管、合作伙伴和研究界讨论的量化节奏框架；但不同训练数据与评测集的可比性仍是关键难题。",
+      "watch": "观察其他前沿实验室、标准组织和政策制定者是否采纳共同指标，以及是否公布可独立比较的数据集、阈值和触发后的治理程序。",
+      "verification": "多源核验",
+      "source": "OpenAI",
+      "sources": [
+        "OpenAI",
+        "Reuters"
+      ],
+      "sourceLinks": [
+        {
+          "name": "OpenAI",
+          "url": "https://openai.com/index/perplexity-and-intelligence/",
+          "tier": 1
+        },
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/business/openai-scientist-proposes-industry-ai-limits-tied-model-intelligence-metric-2026-11-22/",
+          "tier": 2
+        }
+      ],
+      "publishedAt": "2026-11-22T23:09:53.000Z",
+      "publishedPrecision": "datetime",
+      "firstSeenAt": "2026-11-23T02:30:57.192Z",
+      "category": "安全",
+      "region": "全球",
+      "impact": "高影响",
+      "score": 90,
+      "url": "https://openai.com/index/perplexity-and-intelligence/",
+      "tags": [
+        "OpenAI",
+        "模型安全",
+        "困惑度",
+        "治理"
+      ],
+      "rank": 4
+    },
+    {
       "id": 2177847865,
       "title": "NVIDIA 与 Microsoft 扩展云到边缘的 AI 栈",
       "titleEn": "NVIDIA and Microsoft Expand Accelerated Computing From Azure to Windows PCs",
@@ -167,7 +209,7 @@
         "Azure",
         "边缘AI"
       ],
-      "rank": 4,
+      "rank": 5,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从云侧加速计算扩展到 Azure Local、工业边缘与 Windows PC 的统一部署栈。",
@@ -208,7 +250,7 @@
         "世界模型",
         "Gemini API"
       ],
-      "rank": 5
+      "rank": 6
     },
     {
       "id": 3906363720,
@@ -244,7 +286,7 @@
         "OpenAI",
         "GPT-6.2"
       ],
-      "rank": 6
+      "rank": 7
     },
     {
       "id": 3906363722,
@@ -280,7 +322,7 @@
         "蒸馏防护",
         "红队测试"
       ],
-      "rank": 7
+      "rank": 8
     },
     {
       "id": 3248149539,
@@ -317,7 +359,7 @@
         "东南亚",
         "出海"
       ],
-      "rank": 8,
+      "rank": 9,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从单一模型披露扩展为模型、区域云容量、人才项目和行业伙伴同步推进。",
@@ -353,7 +395,7 @@
         "推理",
         "高可用"
       ],
-      "rank": 9,
+      "rank": 10,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从团队自建跨区域容灾逻辑转为 SageMaker 可管理的跨区域推理路由资源。",
@@ -394,7 +436,7 @@
         "Computer Use",
         "Mac"
       ],
-      "rank": 10
+      "rank": 11
     },
     {
       "id": 3906363723,
@@ -430,7 +472,7 @@
         "智能文档",
         "可追溯AI"
       ],
-      "rank": 11
+      "rank": 12
     },
     {
       "id": 1875041669,
@@ -461,7 +503,7 @@
         "推理优化",
         "GPU"
       ],
-      "rank": 12,
+      "rank": 13,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从人工巡检端点配置转为自动发现延迟漂移、闲置 GPU 与优化缺口。",
@@ -502,7 +544,7 @@
         "HyperPod",
         "推理路由"
       ],
-      "rank": 13
+      "rank": 14
     },
     {
       "id": 3906363718,
@@ -538,7 +580,7 @@
         "可观测性",
         "治理"
       ],
-      "rank": 14
+      "rank": 15
     },
     {
       "id": 3906363721,
@@ -574,7 +616,7 @@
         "药物化学",
         "评测"
       ],
-      "rank": 15
+      "rank": 16
     },
     {
       "id": 1080720566,
@@ -605,7 +647,7 @@
         "GPU",
         "可观测性"
       ],
-      "rank": 16,
+      "rank": 17,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从多工具拼接排障转为集群级 GPU、网络与训练任务的联合基础设施诊断。",
@@ -641,7 +683,7 @@
         "语音Agent",
         "SageMaker"
       ],
-      "rank": 17,
+      "rank": 18,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从供应商托管的对话模型扩展到可在客户 AWS 账户内部署的 JumpStart 选项。",
@@ -677,7 +719,7 @@
         "VPC",
         "AI Agent"
       ],
-      "rank": 18,
+      "rank": 19,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从原型数据库需要重建迁移变为可保留数据与 endpoint 并迁入私有 VPC。",
@@ -713,7 +755,7 @@
         "推理",
         "Serverless"
       ],
-      "rank": 19,
+      "rank": 20,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从最长十五分钟的按需事件函数执行窗口扩展至三十分钟。",
