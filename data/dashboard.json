@@ -1,32 +1,32 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-23T02:30:57.192Z",
-  "contentUpdatedAt": "2026-11-23T02:30:57.192Z",
+  "generatedAt": "2026-11-23T05:43:52.740Z",
+  "contentUpdatedAt": "2026-11-23T05:43:52.740Z",
   "status": {
     "state": "fresh",
-    "lastSuccessfulAt": "2026-11-23T02:30:57.192Z",
-    "note": "已完成 GPT 联网研究、7天滚动数据合并与 GitHub 数据快照；日常写入不使用 RSS。"
+    "lastSuccessfulAt": "2026-11-23T05:43:52.740Z",
+    "note": "已完成 GPT 联网研究、72小时扩展补扫与7天滚动合并；日常写入不使用 RSS。"
   },
   "mode": "GPT 联网研究 · 7天滚动数据 · 非RSS",
   "stats": {
-    "rawSignals": 35,
-    "events": 20,
-    "chinaRatio": 5,
-    "highImpact": 5
+    "rawSignals": 47,
+    "events": 28,
+    "chinaRatio": 18,
+    "highImpact": 7
   },
   "sourceHealth": {
-    "attempted": 2,
-    "healthy": 2,
-    "officialHealthy": 1,
+    "attempted": 10,
+    "healthy": 10,
+    "officialHealthy": 8,
     "failed": []
   },
   "brief": {
-    "title": "今日重点：前沿模型竞争开始触及共同安全节奏",
+    "title": "今日重点：开源权重、Agent 运行时与端侧推理同步前移",
     "bullets": [
-      "OpenAI 提议用困惑度等共同指标与能力阈值约束前沿模型推进，讨论焦点从单家实验室承诺转向跨机构可比较的治理机制。",
-      "这一主张仍是提议而非行业标准；训练数据、评测集和能力涌现的可比性，决定它能否真正成为公共安全门槛。",
-      "近七天的滚动信号显示，企业 AI 的竞争已同时发生在模型能力、推理基础设施、可追溯自动化和安全治理四个层面。",
-      "对部署方而言，模型供应商是否公开可审计的安全评测、变更控制与权限边界，正比单次榜单成绩更影响生产决策。"
+      "腾讯混元开放 Hy4 权重，使中国多模态 MoE 的竞争从 API 能力延伸至自建部署、量化和安全评测。",
+      "Qwen Code、火山 AgentKit 与 LangChain 的更新共同指向生产 Agent 的三项底座：隔离执行、状态可追踪和运行时防护。",
+      "Vercel eve 1.0 把持久执行、审批和可观测性打包为开源框架，企业 Agent 的竞争重心继续从提示词转向控制面。",
+      "AMD 将 XDNA 2 NPU 接入更广泛的 Agent 工作流，端侧推理是否能提供稳定收益将取决于工具链兼容与调度表现。"
     ]
   },
   "items": [
@@ -67,6 +67,48 @@
       "rank": 1
     },
     {
+      "id": 3906363726,
+      "title": "腾讯开源混元 Hy4 旗舰多模态模型权重",
+      "titleEn": "Tencent Hunyuan Hy4 open weights",
+      "summary": "腾讯混元在官方 GitHub 发布 Hy4 权重与部署说明；独立报道确认该模型为总参数 770B、每 token 激活 49B 的原生多模态 MoE，并提供 1M 上下文版本、FP8 版本及系统卡。",
+      "change": "从此前的 Hy4 产品发布，扩展为开发者可下载、微调与自建推理服务的开放权重和部署路径。",
+      "why": "对本地 AI 团队而言，开放权重把模型能力评估从 API 体验延伸到私有部署、推理栈适配和安全评测；但 770B 级权重的实际部署门槛仍主要取决于显存、量化和并行方案。",
+      "watch": "观察权重许可证的商用边界、第三方在 vLLM 与 SGLang 上的吞吐复现，以及系统卡中的安全结论能否经独立评测验证。",
+      "verification": "多源核验",
+      "source": "Tencent Hunyuan",
+      "sources": [
+        "Tencent Hunyuan",
+        "IT之家"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Tencent Hunyuan",
+          "url": "https://github.com/Tencent-Hunyuan/Hy4",
+          "tier": 1
+        },
+        {
+          "name": "IT之家",
+          "url": "https://www.ithome.com/1/029/841.htm",
+          "tier": 2
+        }
+      ],
+      "publishedAt": "2026-11-20T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-23T05:43:52.740Z",
+      "category": "开源",
+      "region": "中国",
+      "impact": "高影响",
+      "score": 94,
+      "url": "https://github.com/Tencent-Hunyuan/Hy4",
+      "tags": [
+        "腾讯",
+        "混元 Hy4",
+        "开源权重",
+        "MoE"
+      ],
+      "rank": 2
+    },
+    {
       "id": 3636787553,
       "title": "OpenAI 展示 Codex 驱动的性能 Agent 工厂",
       "titleEn": "How OpenAI’s Performance Factory keeps ChatGPT fast",
@@ -95,7 +137,7 @@
         "Agent Workflow",
         "SRE"
       ],
-      "rank": 2,
+      "rank": 3,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从单次编码辅助转为状态化、可派发、带独立复核的持久 Agent 运维流程。",
@@ -136,7 +178,7 @@
         "Agent",
         "Tool Retrieval"
       ],
-      "rank": 3
+      "rank": 4
     },
     {
       "id": 3906363725,
@@ -178,7 +220,7 @@
         "困惑度",
         "治理"
       ],
-      "rank": 4
+      "rank": 5
     },
     {
       "id": 2177847865,
@@ -209,7 +251,7 @@
         "Azure",
         "边缘AI"
       ],
-      "rank": 5,
+      "rank": 6,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从云侧加速计算扩展到 Azure Local、工业边缘与 Windows PC 的统一部署栈。",
@@ -250,7 +292,7 @@
         "世界模型",
         "Gemini API"
       ],
-      "rank": 6
+      "rank": 7
     },
     {
       "id": 3906363720,
@@ -286,7 +328,43 @@
         "OpenAI",
         "GPT-6.2"
       ],
-      "rank": 7
+      "rank": 8
+    },
+    {
+      "id": 3906363727,
+      "title": "Qwen Code 接入 Qwen4-Max，并默认隔离并行工作树",
+      "titleEn": "Qwen Code weekly update: Qwen4-Max, isolated worktrees, and webhook delivery",
+      "summary": "Qwen Code 发布 v0.27.3 至 v0.28.0：接入 Qwen4-Max，新增独立 Git 工作树作为新会话默认执行环境，并支持把任务结果通过 Webhook 推送至飞书、企业微信和钉钉群。",
+      "change": "从多个 Agent 会话共用同一目录，改为默认在独立工作树中并行执行，同时补齐面向中国企业协作工具的任务交付通道。",
+      "why": "隔离工作树直接降低多 Agent 并发改码时的文件覆盖风险；群组回调让长任务结果能进入团队既有协作流，适合需要审阅和交接的工程场景。",
+      "watch": "观察工作树合并、冲突处理和权限控制在大型仓库中的表现，以及 Qwen4-Max 在实际代码任务中的速度、成本和稳定性。",
+      "verification": "官方一手",
+      "source": "Qwen",
+      "sources": [
+        "Qwen"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Qwen",
+          "url": "https://qwenlm.github.io/qwen-code-docs/zh/blog/updates/weekly-update-2026-11-19/",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-19T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-23T05:43:52.740Z",
+      "category": "AI Coding",
+      "region": "中国",
+      "impact": "高影响",
+      "score": 88,
+      "url": "https://qwenlm.github.io/qwen-code-docs/zh/blog/updates/weekly-update-2026-11-19/",
+      "tags": [
+        "Qwen",
+        "Qwen Code",
+        "工作树",
+        "企业协作"
+      ],
+      "rank": 9
     },
     {
       "id": 3906363722,
@@ -322,7 +400,7 @@
         "蒸馏防护",
         "红队测试"
       ],
-      "rank": 8
+      "rank": 10
     },
     {
       "id": 3248149539,
@@ -359,7 +437,7 @@
         "东南亚",
         "出海"
       ],
-      "rank": 9,
+      "rank": 11,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从单一模型披露扩展为模型、区域云容量、人才项目和行业伙伴同步推进。",
@@ -395,12 +473,48 @@
         "推理",
         "高可用"
       ],
-      "rank": 10,
+      "rank": 12,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从团队自建跨区域容灾逻辑转为 SageMaker 可管理的跨区域推理路由资源。",
       "watch": "观察支持区域、流式请求行为与跨区域调用成本是否适合生产级多区域架构。",
       "verification": "官方一手"
+    },
+    {
+      "id": 3906363728,
+      "title": "Vercel 将开源 Agent 框架 eve 推至 1.0 正式版",
+      "titleEn": "Introducing eve 1.0",
+      "summary": "Vercel 宣布开源 Agent 框架 eve 1.0 正式可用；其 harness 支持模型、工具、审批策略和子 Agent 编排的可配置组合，并通过持久化工作流在中断后从已完成步骤恢复。",
+      "change": "从 6 月的公开预览进入 1.0 正式版，补充可观测性、安全审批与面向生产托管的持久执行能力。",
+      "why": "企业 Agent 的难点常在长任务恢复、工具权限和审计，而非单次模型调用；eve 把这些工程控制面暴露给开发者，降低自建生产框架的重复成本。",
+      "watch": "观察其开源社区的实际采用、跨模型兼容性和在非 Vercel 环境部署时的运维复杂度。",
+      "verification": "官方一手",
+      "source": "Vercel",
+      "sources": [
+        "Vercel"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Vercel",
+          "url": "https://vercel.com/blog/eve-is-now-generally-available",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-17T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-23T05:43:52.740Z",
+      "category": "开源",
+      "region": "全球",
+      "impact": "关注",
+      "score": 85,
+      "url": "https://vercel.com/blog/eve-is-now-generally-available",
+      "tags": [
+        "Vercel",
+        "eve",
+        "Agent Framework",
+        "可观测性"
+      ],
+      "rank": 13
     },
     {
       "id": 3906363717,
@@ -436,7 +550,7 @@
         "Computer Use",
         "Mac"
       ],
-      "rank": 11
+      "rank": 14
     },
     {
       "id": 3906363723,
@@ -472,7 +586,7 @@
         "智能文档",
         "可追溯AI"
       ],
-      "rank": 12
+      "rank": 15
     },
     {
       "id": 1875041669,
@@ -503,12 +617,48 @@
         "推理优化",
         "GPU"
       ],
-      "rank": 13,
+      "rank": 16,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从人工巡检端点配置转为自动发现延迟漂移、闲置 GPU 与优化缺口。",
       "watch": "观察该能力在真实生产端点中的误报率，以及是否带来可量化的推理成本下降。",
       "verification": "官方一手"
+    },
+    {
+      "id": 3906363729,
+      "title": "AMD 与 Unsloth 将 XDNA 2 NPU 接入百余个 Agent 工作流",
+      "titleEn": "AMD and Unsloth Bring NPU Support to 100+ Agentic AI Apps",
+      "summary": "AMD 宣布通过 Unsloth Desktop 向 100 多个兼容的 Agentic AI 应用和工作流提供 AMD XDNA 2 NPU 加速，使部分本地推理可直接调用 PC 端 NPU。",
+      "change": "从面向少数模型或开发接口的 NPU 支持，扩展为通过桌面工具进入一组可用的 Agent 应用与工作流。",
+      "why": "若端侧 NPU 能被 Agent 工具链稳定利用，企业可将部分低延迟、隐私敏感或离线任务从云端 GPU 转移到员工设备；实际收益仍取决于模型兼容性和内存约束。",
+      "watch": "观察支持应用清单、模型尺寸上限和真实吞吐数据，以及 Windows 终端上 NPU 与 CPU/GPU 混合调度的体验。",
+      "verification": "官方一手",
+      "source": "AMD",
+      "sources": [
+        "AMD"
+      ],
+      "sourceLinks": [
+        {
+          "name": "AMD",
+          "url": "https://newsroom.amd.com/news/amd-unsloth-bring-npu-support-agentic-ai-applications/",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-19T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-23T05:43:52.740Z",
+      "category": "算力",
+      "region": "全球",
+      "impact": "关注",
+      "score": 83,
+      "url": "https://newsroom.amd.com/news/amd-unsloth-bring-npu-support-agentic-ai-applications/",
+      "tags": [
+        "AMD",
+        "NPU",
+        "Unsloth",
+        "端侧AI"
+      ],
+      "rank": 17
     },
     {
       "id": 3906363724,
@@ -544,7 +694,7 @@
         "HyperPod",
         "推理路由"
       ],
-      "rank": 14
+      "rank": 18
     },
     {
       "id": 3906363718,
@@ -580,7 +730,43 @@
         "可观测性",
         "治理"
       ],
-      "rank": 15
+      "rank": 19
+    },
+    {
+      "id": 3906363730,
+      "title": "火山引擎 AgentKit 增加技能轨迹与安全围栏能力",
+      "titleEn": "AgentKit feature release notes",
+      "summary": "火山引擎 AgentKit 11 月 19 日更新：技能模块可展示 Agent 执行调用链、耗时和 Token 消耗；安全围栏在运行时提供算力消耗攻击、提示词攻击、模型滥用和敏感数据四类默认防护策略。",
+      "change": "从搭建与运行 Agent，补齐了技能级执行可观测性和运行时输入输出防护两类生产控制能力。",
+      "why": "企业部署 Agent 时，定位一次任务为何失败或为何成本异常，与限制越权和提示词攻击同样关键；这类控制面决定 Agent 能否从演示走向可运营服务。",
+      "watch": "观察该能力的区域覆盖、策略可配置粒度和误拦截率，以及是否能与企业现有日志和安全运营系统集成。",
+      "verification": "官方一手",
+      "source": "火山引擎",
+      "sources": [
+        "火山引擎"
+      ],
+      "sourceLinks": [
+        {
+          "name": "火山引擎",
+          "url": "https://docs.volcengine.com/docs/agentkit/new-feature-release-notes?lang=zh",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-19T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-23T05:43:52.740Z",
+      "category": "本地AI",
+      "region": "中国",
+      "impact": "关注",
+      "score": 82,
+      "url": "https://docs.volcengine.com/docs/agentkit/new-feature-release-notes?lang=zh",
+      "tags": [
+        "火山引擎",
+        "AgentKit",
+        "可观测性",
+        "Agent安全"
+      ],
+      "rank": 20
     },
     {
       "id": 3906363721,
@@ -616,7 +802,7 @@
         "药物化学",
         "评测"
       ],
-      "rank": 16
+      "rank": 21
     },
     {
       "id": 1080720566,
@@ -647,12 +833,84 @@
         "GPU",
         "可观测性"
       ],
-      "rank": 17,
+      "rank": 22,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从多工具拼接排障转为集群级 GPU、网络与训练任务的联合基础设施诊断。",
       "watch": "观察可支持的集群规模、异常告警准确性和对平均故障定位时间的改善。",
       "verification": "官方一手"
+    },
+    {
+      "id": 3906363731,
+      "title": "百炼上架 Kimi K3.1 Pro Prime 模式",
+      "titleEn": "Kimi-K3.1-Pro-Prime availability in Model Studio",
+      "summary": "阿里云百炼更新模型目录，在中国内地和国际服务范围列出 kimi-k3.1-pro-prime；官方描述其能力与 Kimi K3.1 Pro 一致，面向对输出速度敏感的 AI 编程助手、Agent 多步推理和实时对话场景。",
+      "change": "在原有 Kimi K3.1 Pro 供给之外新增 Prime 模式，为重视响应速度的编程与 Agent 工作负载提供新的托管可用性选项。",
+      "why": "模型能力未变但托管供给与模式变化会影响企业的路由、延迟和成本测试；对多模型平台用户，是否可在不改业务逻辑的前提下切换尤为重要。",
+      "watch": "观察 Prime 的实际价格、限流规则、区域可用性和相对普通 Pro 的端到端延迟差异。",
+      "verification": "官方一手",
+      "source": "阿里云百炼",
+      "sources": [
+        "阿里云百炼"
+      ],
+      "sourceLinks": [
+        {
+          "name": "阿里云百炼",
+          "url": "https://docs.bailian.console.aliyun.com/zh/model-studio/newly-released-models",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-19T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-23T05:43:52.740Z",
+      "category": "本地AI",
+      "region": "中国",
+      "impact": "关注",
+      "score": 80,
+      "url": "https://docs.bailian.console.aliyun.com/zh/model-studio/newly-released-models",
+      "tags": [
+        "阿里云百炼",
+        "Kimi",
+        "API",
+        "模型供给"
+      ],
+      "rank": 23
+    },
+    {
+      "id": 3906363732,
+      "title": "LangChain Deep Agents 新版让代码直接读写 Agent 文件状态",
+      "titleEn": "langchain-quickjs 0.4.0",
+      "summary": "LangChain 的 deepagents 发布 langchain-quickjs 0.4.0：Code mode 新增 Node 风格 fs 全局，代码可直接读写与 Agent 文件工具相同的状态；工具返回的状态更新也可在同一评测流程中被后续调用读取。",
+      "change": "从依赖多轮文件工具调用和容易丢失的状态更新，改为在代码执行环境内直接操作 Agent 文件与图状态。",
+      "why": "这降低了复杂 Agent 在文件处理、计划保存和工具编排中的往返次数，使开发者更容易构建可恢复、状态一致的长流程。",
+      "watch": "观察该接口的沙箱边界、权限模型和在长上下文、多 Agent 协作中的状态一致性表现。",
+      "verification": "官方一手",
+      "source": "LangChain",
+      "sources": [
+        "LangChain"
+      ],
+      "sourceLinks": [
+        {
+          "name": "LangChain",
+          "url": "https://github.com/langchain-ai/deepagents/releases",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-19T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-23T05:43:52.740Z",
+      "category": "开源",
+      "region": "全球",
+      "impact": "关注",
+      "score": 79,
+      "url": "https://github.com/langchain-ai/deepagents/releases",
+      "tags": [
+        "LangChain",
+        "Deep Agents",
+        "Agent状态",
+        "开源"
+      ],
+      "rank": 24
     },
     {
       "id": 1098711981,
@@ -683,12 +941,48 @@
         "语音Agent",
         "SageMaker"
       ],
-      "rank": 18,
+      "rank": 25,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从供应商托管的对话模型扩展到可在客户 AWS 账户内部署的 JumpStart 选项。",
       "watch": "观察支持语言、端到端延迟、商业定价以及受监管客户的规模化采用。",
       "verification": "官方一手"
+    },
+    {
+      "id": 3906363733,
+      "title": "NanoClaw 稳定版收紧 Agent 密钥隔离并接入 Cursor",
+      "titleEn": "NanoClaw 2026.11.0",
+      "summary": "NanoClaw 发布 2026.11.0 稳定版：新 Agent 组默认只获得模型密钥，数据库使用独立密码；同时支持把 Cursor Agent SDK 作为 Agent provider，并允许基于模板创建子 Agent。",
+      "change": "从共享密钥与单一运行方式，改为更细的密钥隔离、可选 Cursor provider 和模板化子 Agent 创建。",
+      "why": "对自托管 Agent，凭据最小化与可替换执行提供方是进入团队环境的基础治理能力；该版本把这两点落到默认配置与 CLI 流程。",
+      "watch": "观察密钥迁移对既有部署的兼容性，以及 Cursor provider 在不同权限和成本模型下的可用范围。",
+      "verification": "官方一手",
+      "source": "NanoClaw",
+      "sources": [
+        "NanoClaw"
+      ],
+      "sourceLinks": [
+        {
+          "name": "NanoClaw",
+          "url": "https://github.com/nanocoai/nanoclaw/blob/main/CHANGELOG.md",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-20T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-23T05:43:52.740Z",
+      "category": "开源",
+      "region": "全球",
+      "impact": "关注",
+      "score": 75,
+      "url": "https://github.com/nanocoai/nanoclaw/blob/main/CHANGELOG.md",
+      "tags": [
+        "NanoClaw",
+        "Agent安全",
+        "Cursor",
+        "开源"
+      ],
+      "rank": 26
     },
     {
       "id": 2236239695,
@@ -719,7 +1013,7 @@
         "VPC",
         "AI Agent"
       ],
-      "rank": 19,
+      "rank": 27,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从原型数据库需要重建迁移变为可保留数据与 endpoint 并迁入私有 VPC。",
@@ -755,7 +1049,7 @@
         "推理",
         "Serverless"
       ],
-      "rank": 20,
+      "rank": 28,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从最长十五分钟的按需事件函数执行窗口扩展至三十分钟。",
