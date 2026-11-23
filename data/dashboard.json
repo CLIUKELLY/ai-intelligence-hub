@@ -1,32 +1,35 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-23T05:43:52.740Z",
-  "contentUpdatedAt": "2026-11-23T05:43:52.740Z",
+  "generatedAt": "2026-11-23T23:49:44.018Z",
+  "contentUpdatedAt": "2026-11-23T23:49:44.018Z",
   "status": {
     "state": "fresh",
-    "lastSuccessfulAt": "2026-11-23T05:43:52.740Z",
+    "lastSuccessfulAt": "2026-11-23T23:49:44.018Z",
     "note": "已完成 GPT 联网研究、72小时扩展补扫与7天滚动合并；日常写入不使用 RSS。"
   },
   "mode": "GPT 联网研究 · 7天滚动数据 · 非RSS",
   "stats": {
-    "rawSignals": 47,
-    "events": 28,
+    "rawSignals": 39,
+    "events": 33,
     "chinaRatio": 18,
-    "highImpact": 7
+    "highImpact": 8
   },
   "sourceHealth": {
-    "attempted": 10,
-    "healthy": 10,
-    "officialHealthy": 8,
-    "failed": []
+    "attempted": 8,
+    "healthy": 6,
+    "officialHealthy": 6,
+    "failed": [
+      "Anthropic 新闻室：未发现覆盖窗口内的可收录新发布",
+      "Azure 更新页：未返回可支撑事实的具体条目"
+    ]
   },
   "brief": {
-    "title": "今日重点：开源权重、Agent 运行时与端侧推理同步前移",
+    "title": "今日重点：前沿能力进入产品，评测与本地部署成为落地约束",
     "bullets": [
-      "腾讯混元开放 Hy4 权重，使中国多模态 MoE 的竞争从 API 能力延伸至自建部署、量化和安全评测。",
-      "Qwen Code、火山 AgentKit 与 LangChain 的更新共同指向生产 Agent 的三项底座：隔离执行、状态可追踪和运行时防护。",
-      "Vercel eve 1.0 把持久执行、审批和可观测性打包为开源框架，企业 Agent 的竞争重心继续从提示词转向控制面。",
-      "AMD 将 XDNA 2 NPU 接入更广泛的 Agent 工作流，端侧推理是否能提供稳定收益将取决于工具链兼容与调度表现。"
+      "OpenAI 将优化后的 GPT‑6.2 推入 ChatGPT 主入口，并公开更高风险能力的准备度与防护信息，产品可用性和治理边界开始同步推进。",
+      "千问的实时语音与音频理解更新把语音 Agent 从单次转写推进到任务执行期间持续交互和可结构化审计的信息流。",
+      "Inkling 2 Mini 与 RoboTrack 显示开源能力正同时向本地多模态推理和真实机器人感知推进，部署条件与外部复现仍是关键验证点。",
+      "对企业 Agent 而言，Hugging Face 的评测方法强调不能只看模型分数，还需审查 harness、环境、轨迹与评分器。"
     ]
   },
   "items": [
@@ -109,6 +112,42 @@
       "rank": 2
     },
     {
+      "id": 3906363734,
+      "title": "OpenAI 向 ChatGPT Plus 与 Pro 推出 GPT‑6.2（11 月 23 日版）",
+      "titleEn": "GPT-6.2 in ChatGPT System Card",
+      "summary": "OpenAI 在系统卡中披露，面向 ChatGPT Plus 与 Pro 的 GPT‑6.2（11 月 23 日版）已发布。该版本针对 chat tab 优化，并沿用 GPT‑6.2 Astra 与 Sol 的生物、网络安全、对齐与蒸馏防护框架。",
+      "change": "从 Astra 与 Sol 的模型/API供给，新增面向 ChatGPT 对话入口优化的 GPT‑6.2 版本，并公开其针对高风险能力的准备度评估。",
+      "why": "前沿能力进入大规模对话产品后，企业需要同时评估用户可用性、审批边界和安全治理；系统卡把该版本的网络安全、生命科学和自我改进风险分级置于可审阅范围。",
+      "watch": "观察各订阅层级与地区的实际可用性、开发者能否获得相同版本，以及后续独立评测与安全研究对其防护效果的复现。",
+      "verification": "官方一手",
+      "source": "OpenAI",
+      "sources": [
+        "OpenAI"
+      ],
+      "sourceLinks": [
+        {
+          "name": "OpenAI",
+          "url": "https://deploymentsafety.openai.com/gpt-6-2-chatgpt/gpt-6-2-chatgpt.pdf",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-23T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-23T23:49:44.018Z",
+      "category": "安全",
+      "region": "全球",
+      "impact": "高影响",
+      "score": 93,
+      "url": "https://deploymentsafety.openai.com/gpt-6-2-chatgpt/gpt-6-2-chatgpt.pdf",
+      "tags": [
+        "OpenAI",
+        "GPT-6.2",
+        "ChatGPT",
+        "模型安全"
+      ],
+      "rank": 3
+    },
+    {
       "id": 3636787553,
       "title": "OpenAI 展示 Codex 驱动的性能 Agent 工厂",
       "titleEn": "How OpenAI’s Performance Factory keeps ChatGPT fast",
@@ -137,7 +176,7 @@
         "Agent Workflow",
         "SRE"
       ],
-      "rank": 3,
+      "rank": 4,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从单次编码辅助转为状态化、可派发、带独立复核的持久 Agent 运维流程。",
@@ -178,7 +217,7 @@
         "Agent",
         "Tool Retrieval"
       ],
-      "rank": 4
+      "rank": 5
     },
     {
       "id": 3906363725,
@@ -220,7 +259,7 @@
         "困惑度",
         "治理"
       ],
-      "rank": 5
+      "rank": 6
     },
     {
       "id": 2177847865,
@@ -251,7 +290,7 @@
         "Azure",
         "边缘AI"
       ],
-      "rank": 6,
+      "rank": 7,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从云侧加速计算扩展到 Azure Local、工业边缘与 Windows PC 的统一部署栈。",
@@ -292,7 +331,7 @@
         "世界模型",
         "Gemini API"
       ],
-      "rank": 7
+      "rank": 8
     },
     {
       "id": 3906363720,
@@ -328,7 +367,7 @@
         "OpenAI",
         "GPT-6.2"
       ],
-      "rank": 8
+      "rank": 9
     },
     {
       "id": 3906363727,
@@ -364,7 +403,7 @@
         "工作树",
         "企业协作"
       ],
-      "rank": 9
+      "rank": 10
     },
     {
       "id": 3906363722,
@@ -400,7 +439,7 @@
         "蒸馏防护",
         "红队测试"
       ],
-      "rank": 10
+      "rank": 11
     },
     {
       "id": 3248149539,
@@ -437,7 +476,7 @@
         "东南亚",
         "出海"
       ],
-      "rank": 11,
+      "rank": 12,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从单一模型披露扩展为模型、区域云容量、人才项目和行业伙伴同步推进。",
@@ -473,7 +512,7 @@
         "推理",
         "高可用"
       ],
-      "rank": 12,
+      "rank": 13,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从团队自建跨区域容灾逻辑转为 SageMaker 可管理的跨区域推理路由资源。",
@@ -514,7 +553,43 @@
         "Agent Framework",
         "可观测性"
       ],
-      "rank": 13
+      "rank": 14
+    },
+    {
+      "id": 3906363735,
+      "title": "千问平台上架 Qwen-Audio 3.1 实时对话与音频理解模型",
+      "titleEn": "Qwen-Audio 3.1 Live and Captioner model availability",
+      "summary": "千问 AI 平台在 11 月 23 日上架 qwen-audio-3.1-live 和 qwen-audio-3.1-captioner：前者支持任务处理期间持续语音对话与完成播报，后者强化说话人、时间戳、环境音、音乐等全信息音频转写、摘要与分离。",
+      "change": "从通用音频输入输出，扩展为可在后台任务执行期间保持前台交互的实时语音 Agent，以及面向复杂声学场景的结构化理解能力。",
+      "why": "实时语音 Agent 的产品价值取决于用户等待长任务时是否仍可自然交互，而企业音频自动化还需要说话人、时间和背景声等可审计信息；两类能力分别补足交互与数据层。",
+      "watch": "观察实时模式的端到端延迟、并发和价格，及 Captioner 在会议、客服、现场录音等噪声环境中的准确率与隐私边界。",
+      "verification": "官方一手",
+      "source": "千问AI平台",
+      "sources": [
+        "千问AI平台"
+      ],
+      "sourceLinks": [
+        {
+          "name": "千问AI平台",
+          "url": "https://platform.qianwenai.com/docs/changelog/models",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-23T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-23T23:49:44.018Z",
+      "category": "本地AI",
+      "region": "中国",
+      "impact": "关注",
+      "score": 84,
+      "url": "https://platform.qianwenai.com/docs/changelog/models",
+      "tags": [
+        "Qwen",
+        "实时语音",
+        "音频理解",
+        "Agent"
+      ],
+      "rank": 15
     },
     {
       "id": 3906363717,
@@ -550,7 +625,7 @@
         "Computer Use",
         "Mac"
       ],
-      "rank": 14
+      "rank": 16
     },
     {
       "id": 3906363723,
@@ -586,7 +661,7 @@
         "智能文档",
         "可追溯AI"
       ],
-      "rank": 15
+      "rank": 17
     },
     {
       "id": 1875041669,
@@ -617,7 +692,7 @@
         "推理优化",
         "GPU"
       ],
-      "rank": 16,
+      "rank": 18,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从人工巡检端点配置转为自动发现延迟漂移、闲置 GPU 与优化缺口。",
@@ -658,7 +733,7 @@
         "Unsloth",
         "端侧AI"
       ],
-      "rank": 17
+      "rank": 19
     },
     {
       "id": 3906363724,
@@ -694,7 +769,7 @@
         "HyperPod",
         "推理路由"
       ],
-      "rank": 18
+      "rank": 20
     },
     {
       "id": 3906363718,
@@ -730,7 +805,7 @@
         "可观测性",
         "治理"
       ],
-      "rank": 19
+      "rank": 21
     },
     {
       "id": 3906363730,
@@ -766,7 +841,7 @@
         "可观测性",
         "Agent安全"
       ],
-      "rank": 20
+      "rank": 22
     },
     {
       "id": 3906363721,
@@ -802,7 +877,43 @@
         "药物化学",
         "评测"
       ],
-      "rank": 21
+      "rank": 23
+    },
+    {
+      "id": 3906363736,
+      "title": "Thinking Machines 与 Hugging Face 发布可本地运行的 Inkling 2 Mini",
+      "titleEn": "Welcome Inkling 2 Mini, Cutting-edge Performance for your Local Setup",
+      "summary": "Hugging Face 与 Thinking Machines Lab 发布 Inkling 2 Mini：约 26B 物理参数、每 token 激活 3B 参数的多模态 MoE，支持 1M 上下文，并提供 Transformers、llama.cpp、MLX 与 SGLang 的推理路径。",
+      "change": "从更大规模的 Inkling 2 Small，推出面向本地设备和单机推理的 Mini 版本，并同时给出多运行时与量化部署支持。",
+      "why": "中等模型若能在约 32GB GPU 或统一内存的量化环境运行，会扩大本地代码、图像理解和 Agent 原型的可选模型范围；其官方榜单主张仍需在目标业务任务中复现。",
+      "watch": "观察第三方对质量、吞吐、长上下文稳定性和工具调用格式的复现，以及本地部署对显存与功耗的真实要求。",
+      "verification": "官方一手",
+      "source": "Hugging Face",
+      "sources": [
+        "Hugging Face"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Hugging Face",
+          "url": "https://huggingface.co/blog/inkling2mini",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-20T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-23T23:49:44.018Z",
+      "category": "开源",
+      "region": "全球",
+      "impact": "关注",
+      "score": 81,
+      "url": "https://huggingface.co/blog/inkling2mini",
+      "tags": [
+        "Hugging Face",
+        "Inkling 2 Mini",
+        "本地模型",
+        "MoE"
+      ],
+      "rank": 24
     },
     {
       "id": 1080720566,
@@ -833,7 +944,7 @@
         "GPU",
         "可观测性"
       ],
-      "rank": 22,
+      "rank": 25,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从多工具拼接排障转为集群级 GPU、网络与训练任务的联合基础设施诊断。",
@@ -874,7 +985,43 @@
         "API",
         "模型供给"
       ],
-      "rank": 23
+      "rank": 26
+    },
+    {
+      "id": 3906363737,
+      "title": "Hugging Face 发布 Agent 评测构建与维护指南",
+      "titleEn": "How to build and maintain an agentic evaluation",
+      "summary": "Hugging Face 发布 Agent 评测指南，提出从定义业务主张、复用任务、验证 grader、读取执行轨迹到报告模型比较的八步方法，并强调 Agent harness 与环境变化会显著影响最终得分。",
+      "change": "从仅比较模型回答或单一榜单，转向把任务环境、工具链、执行轨迹和评分器作为可审查的评测资产。",
+      "why": "企业采购和内部验证 Agent 时，模型分数无法独立说明生产能力；把 harness、权限、环境版本和 trace 纳入评测，才更接近可复现的部署决策。",
+      "watch": "观察该方法是否沉淀为可复用的评测模板，以及更多厂商是否公开 Agent trace、grader 和环境配置以支持横向比较。",
+      "verification": "官方一手",
+      "source": "Hugging Face",
+      "sources": [
+        "Hugging Face"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Hugging Face",
+          "url": "https://huggingface.co/blog/agentic-evals",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-23T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-23T23:49:44.018Z",
+      "category": "研究",
+      "region": "全球",
+      "impact": "关注",
+      "score": 79,
+      "url": "https://huggingface.co/blog/agentic-evals",
+      "tags": [
+        "Hugging Face",
+        "Agent评测",
+        "Trace",
+        "企业部署"
+      ],
+      "rank": 27
     },
     {
       "id": 3906363732,
@@ -910,7 +1057,43 @@
         "Agent状态",
         "开源"
       ],
-      "rank": 24
+      "rank": 28
+    },
+    {
+      "id": 3906363738,
+      "title": "Ai2 开源 RoboTrack 机器人操作追踪基准与模型",
+      "titleEn": "RoboTrack: Point tracking for real-world robotic manipulation",
+      "summary": "Ai2 发布 RoboTrack-Bench、RoboTrack-15M 训练数据及 RoboTracker 系列模型，用于真实机器人操作中的点追踪；其基准包含 307 段人工标注视频和 2,522 条验证轨迹，并提供实际机械臂移液演示。",
+      "change": "从通用视频或受控桌面任务的追踪评估，转向覆盖遮挡、杂乱场景和多视角的真实操作追踪数据、基准与可用模型。",
+      "why": "机器人进入实验室和工业操作前，视觉感知是否能在遮挡和布局变化下稳定工作是关键前提；这一开源基准让团队能更具体地验证视觉组件，而非只依赖通用视频分数。",
+      "watch": "观察其模型在不同机械臂、相机布置和工业物体上的迁移能力，以及后续是否扩展到更长遮挡与高精度装配任务。",
+      "verification": "官方一手",
+      "source": "Ai2",
+      "sources": [
+        "Ai2"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Ai2",
+          "url": "https://huggingface.co/blog/allenai/robotrack",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-23T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-23T23:49:44.018Z",
+      "category": "研究",
+      "region": "全球",
+      "impact": "关注",
+      "score": 78,
+      "url": "https://huggingface.co/blog/allenai/robotrack",
+      "tags": [
+        "Ai2",
+        "机器人",
+        "RoboTrack",
+        "开源评测"
+      ],
+      "rank": 29
     },
     {
       "id": 1098711981,
@@ -941,7 +1124,7 @@
         "语音Agent",
         "SageMaker"
       ],
-      "rank": 25,
+      "rank": 30,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从供应商托管的对话模型扩展到可在客户 AWS 账户内部署的 JumpStart 选项。",
@@ -982,7 +1165,7 @@
         "Cursor",
         "开源"
       ],
-      "rank": 26
+      "rank": 31
     },
     {
       "id": 2236239695,
@@ -1013,7 +1196,7 @@
         "VPC",
         "AI Agent"
       ],
-      "rank": 27,
+      "rank": 32,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从原型数据库需要重建迁移变为可保留数据与 endpoint 并迁入私有 VPC。",
@@ -1049,7 +1232,7 @@
         "推理",
         "Serverless"
       ],
-      "rank": 28,
+      "rank": 33,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从最长十五分钟的按需事件函数执行窗口扩展至三十分钟。",
