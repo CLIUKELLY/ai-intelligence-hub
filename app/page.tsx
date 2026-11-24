@@ -3,8 +3,7 @@
 import { ArrowDown, Bookmark, BookmarkCheck, Check, ChevronDown, Command, ExternalLink, Filter, Globe2, Languages, Search, ShieldCheck } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import dashboardJson from '@/data/dashboard.json';
-import focusProfileJson from '@/config/focus-profile.json';
-import WaterField from './water-field';
+import NewsLens from './news-lens';
 
 export const dynamic = 'force-static';
 
@@ -14,6 +13,7 @@ type NewsItem = {
   id: number; title: string; titleEn: string; summary: string; why: string; source: string;
   sources: string[]; publishedAt: string; category: string; region: Region; impact: Impact;
   score: number; rank: number; url: string; tags: string[]; firstSeenAt?: string;
+  summaryEn?: string; whyEn?: string; changeEn?: string; watchEn?: string;
   publishedPrecision?: 'datetime' | 'date'; change?: string; watch?: string; verification?: string;
   sourceLinks: { name: string; url: string; tier: number }[];
 };
@@ -22,19 +22,17 @@ type Dashboard = {
   mode: string; stats: { rawSignals: number }; sourceHealth: { attempted: number; healthy: number; officialHealthy: number };
   brief: { title: string; bullets: string[] }; items: NewsItem[];
 };
-type FocusProfile = { priorities: { name: string; weight: number; keywords: string[] }[] };
 
 const dashboard = dashboardJson as Dashboard;
-const focusProfile = focusProfileJson as FocusProfile;
 const news = dashboard.items;
 const categories = ['全部', '本地AI', '模型', 'AI Coding', '算力', '研究', '产品', '资本', '安全', '开源'];
 const dateTime = new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Shanghai', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false });
 
-function publicationDate(item: NewsItem, full = false) {
+function publicationDate(item: NewsItem, full = false, english = false) {
   const value = new Date(item.publishedAt);
   // Date-only sources carry a calendar date, not an exact publication instant.
   const zone = item.publishedPrecision === 'date' ? 'UTC' : 'Asia/Shanghai';
-  return new Intl.DateTimeFormat('zh-CN', { timeZone: zone, ...(full ? { year: 'numeric' as const } : {}), month: 'long', day: 'numeric', ...(full && item.publishedPrecision !== 'date' ? { hour: '2-digit' as const, minute: '2-digit' as const, hour12: false } : {}) }).format(value);
+  return new Intl.DateTimeFormat(english ? 'en-US' : 'zh-CN', { timeZone: zone, ...(full ? { year: 'numeric' as const } : {}), month: 'long', day: 'numeric', ...(full && item.publishedPrecision !== 'date' ? { hour: '2-digit' as const, minute: '2-digit' as const, hour12: false } : {}) }).format(value);
 }
 const updatedAt = dateTime.format(new Date(dashboard.contentUpdatedAt || dashboard.generatedAt));
 
@@ -42,11 +40,6 @@ function age(item: NewsItem, clock: number, published = false) {
   const stamp = new Date(published ? item.publishedAt : item.firstSeenAt || dashboard.contentUpdatedAt || dashboard.generatedAt).getTime();
   return Number.isFinite(stamp) ? Math.max(0, (clock - stamp) / 3600000) : Infinity;
 }
-function relevance(item: NewsItem) {
-  const text = `${item.title} ${item.titleEn} ${item.summary} ${item.why} ${item.tags.join(' ')}`.toLowerCase();
-  return focusProfile.priorities.filter((p) => p.keywords.some((keyword) => text.includes(keyword.toLowerCase()))).sort((a, b) => b.weight - a.weight).slice(0, 2);
-}
-
 export default function Home() {
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState('全部');
@@ -55,8 +48,11 @@ export default function Home() {
   const [bilingual, setBilingual] = useState(false);
   const t = (zh: string, en: string) => bilingual ? en : zh;
   const categoryLabel = (value: string) => bilingual ? ({ '全部': 'All', '本地AI': 'China AI', '模型': 'Models', '算力': 'Infrastructure', '研究': 'Research', '产品': 'Products', '资本': 'Business', '安全': 'Safety', '开源': 'Open source' } as Record<string, string>)[value] || value : value === '本地AI' ? '本土 AI' : value;
-  useEffect(() => { document.documentElement.lang = bilingual ? 'en' : 'zh-CN'; document.title = bilingual ? 'Noted | Your daily read on AI.' : '有数儿｜AI 的事，心里有数。'; }, [bilingual]);
-  const displayTitle = (item: NewsItem) => bilingual ? item.titleEn || item.title : item.title;
+  useEffect(() => { document.documentElement.lang = bilingual ? 'en' : 'zh-CN'; document.title = bilingual ? 'There Goes AI Again | The latest moves. The useful bits.' : '又整啥了｜AI 今天，又整啥了？'; }, [bilingual]);
+  const english = (value: string | undefined, fallback: string) => value && !/[\u3400-\u9fff]/u.test(value) ? value : fallback;
+  const displayTitle = (item: NewsItem) => bilingual ? english(item.titleEn, 'AI development — read the source') : item.title;
+  const sourceName = (name: string, url: string) => bilingual ? english(name, new URL(url).hostname.replace(/^www\./, '')) : name;
+  const copy = (item: NewsItem, field: 'summary' | 'why' | 'change' | 'watch') => bilingual ? english(item[(field + 'En') as keyof NewsItem] as string | undefined, '') : item[field];
   const [bookmarks, setBookmarks] = useState<number[]>([]);
   const [selectedId, setSelectedId] = useState(news[0]?.id || 0);
   const [coverVisible, setCoverVisible] = useState(true);
@@ -94,6 +90,8 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  const lensClues = useMemo(() => news.slice().sort((a, b) => b.score - a.score).slice(0, 4).map(item => ({ id: item.id, title: bilingual ? item.titleEn : item.title, label: item.tags.find(tag => !['AI','Agent','AI Coding'].includes(tag) && (!bilingual || !/[\u3400-\u9fff]/u.test(tag))) || new URL(item.url).hostname })), [bilingual]);
+
   const toggleBookmark = (id: number) => setBookmarks((items) => {
     const next = items.includes(id) ? items.filter((item) => item !== id) : [...items, id];
     try { localStorage.setItem('aihub-bookmarks', JSON.stringify(next)); } catch {}
@@ -103,16 +101,18 @@ export default function Home() {
   return (
     <main className={`intelligence-terminal ${coverVisible ? 'cover-active' : 'reading-active'}`}>
       <header className="intelligence-header">
-        <a className="intelligence-brand" aria-label={t('有数儿首页', 'Noted home')} href="#top"><div><b className="noted-wordmark">{t('有数儿', 'Noted')}<em aria-hidden="true">.</em></b><small className="brand-signature">{t('AI 的事，心里有数。', 'Your daily read on AI.')}</small></div></a>
+        <a className="intelligence-brand" aria-label={t('又整啥了首页', 'There Goes AI Again home')} href="#top"><div><b className="noted-wordmark">{t('又整啥了', 'There Goes AI Again')}</b><small className="brand-signature">{t('AI 今天，又整啥了？', 'The latest moves. The useful bits.')}</small></div></a>
+        <div className="masthead-translation" aria-hidden="true">THERE GOES<br />AI AGAIN</div>
+        <nav className="cover-navigation" aria-label={t('新闻导航', 'News navigation')}><button onClick={() => { setCategory('全部'); setRange(168); terminalRef.current?.scrollIntoView({ behavior: 'smooth' }); }}>{t('新闻','News')}</button><button onClick={() => { setCategory('AI Coding'); setRange(168); terminalRef.current?.scrollIntoView({ behavior: 'smooth' }); }}>{t('工具','Tools')}</button><button onClick={() => { setCategory('开源'); setRange(168); terminalRef.current?.scrollIntoView({ behavior: 'smooth' }); }}>{t('开源','Open source')}</button></nav>
         <label className="intelligence-search"><Search size={17} /><input ref={searchRef} value={query} onChange={(e) => setQuery(e.target.value)} aria-label={t('搜索新闻', 'Search news')} placeholder={t('搜索公司、模型、事件或来源', 'Search companies, models or news')} /><kbd><Command size={11} /> K</kbd></label>
-        <button className="language-switch" onClick={() => setBilingual(!bilingual)} aria-label="Switch interface language">{bilingual ? '中文' : 'EN'}</button><div className="intelligence-status"><i className={isStale ? 'stale' : ''} /><span>{isStale ? t('等待更新', 'Awaiting update') : t('已更新', 'Updated')}</span><b>{updatedAt}</b></div>
+        <button className="language-switch" onClick={() => setBilingual(!bilingual)} aria-label="Switch interface language">{bilingual ? 'ZH' : 'EN'}</button><div className="intelligence-status"><i className={isStale ? 'stale' : ''} /><span>{isStale ? t('等待更新', 'Awaiting update') : t('已更新', 'Updated')}</span><b>{updatedAt}</b></div>
       </header>
 
       <section className="signal-hero noted-hero editorial-cover" id="top" ref={coverRef}>
-        <WaterField />
-        <div className="hero-heading"><span className="cover-kicker">{t('每日精选', 'THE DAILY READ')}<time>{updatedAt.split(' ')[0]}</time></span><h1>{bilingual ? 'A closer read on AI.' : dashboard.brief.title.replace(/^(今日重点|今天重点|今日判断)[：:]/, '')}</h1><p>{t('读你关心的进展，找到值得继续追问的事。', 'The developments worth your attention. The questions worth following.')}</p></div>
+        <NewsLens english={bilingual} clues={lensClues} onSelect={(id) => { setQuery(''); setCategory('全部'); setRange(168); setSelectedId(id); terminalRef.current?.scrollIntoView({ behavior: 'smooth' }); }} />
+        <div className="hero-heading"><span className="cover-kicker">{t('每日精选', 'THE DAILY READ')}</span><span className="cover-edition">THERE GOES AI AGAIN</span><h1>{bilingual ? <>There goes<br />AI again.</> : <>今天，<br />又整啥了？</>}</h1><p>{t('AI 新鲜事，每天都在整点新活。', 'The latest moves. The useful bits. None of the hype.')}</p></div>
 
-        <aside className="focus-now"><header><span>{t('值得一读', 'WORTH YOUR TIME')}</span></header>{leadSignals.map((item) => <button aria-label={displayTitle(item)} key={item.id} onClick={() => { setQuery(''); setCategory('全部'); setSelectedId(item.id); terminalRef.current?.scrollIntoView({ behavior: 'smooth' }); }}><span><b>{displayTitle(item)}</b><small>{categoryLabel(item.category)} · {publicationDate(item)}</small></span><ExternalLink className="cover-story-arrow" size={17} aria-hidden="true" /></button>)}</aside>
+        <aside className="focus-now"><header><span>{t('这几件值得看', 'WORTH YOUR TIME')}</span></header>{leadSignals.map((item) => <button aria-label={displayTitle(item)} key={item.id} onClick={() => { setQuery(''); setCategory('全部'); setSelectedId(item.id); terminalRef.current?.scrollIntoView({ behavior: 'smooth' }); }}><span><b>{displayTitle(item)}</b><small>{categoryLabel(item.category)} · {publicationDate(item, false, bilingual)}</small></span><ExternalLink className="cover-story-arrow" size={17} aria-hidden="true" /></button>)}</aside>
         <button className="enter-terminal" onClick={() => terminalRef.current?.scrollIntoView({ behavior: 'smooth' })}><span>{t('下滑，展开今日新闻', 'Scroll to explore today’s stories')}</span><ArrowDown size={16} /></button>
       </section>
 
@@ -127,26 +127,24 @@ export default function Home() {
 
         <section className="news-scanner">
           <header><div><span>{t('新闻', 'STORIES')}</span><h2>{category === '全部' ? t('新闻列表', 'All stories') : categoryLabel(category)}</h2></div><b>{filtered.length}</b></header>
-          <div className="news-list">{filtered.map((item) => <button aria-label={displayTitle(item)} key={item.id} className={selected?.id === item.id ? 'selected' : ''} onClick={() => setSelectedId(item.id)}><span className="news-copy"><small>{categoryLabel(item.category)} · <time dateTime={item.publishedAt}>{publicationDate(item)}</time></small><b>{displayTitle(item)}</b><em>来源：{item.source}</em></span></button>)}
-          {!filtered.length && <div className="news-empty"><Search size={22} /><b>这个范围内没有匹配新闻</b><p>扩大时间范围或清除当前筛选。</p><button onClick={() => { setQuery(''); setCategory('全部'); setRange(168); }}>查看 7 天全部新闻</button></div>}</div>
+          <div className="news-list">{filtered.map((item) => <button aria-label={displayTitle(item)} key={item.id} className={selected?.id === item.id ? 'selected' : ''} onClick={() => setSelectedId(item.id)}><span className="news-copy"><small>{categoryLabel(item.category)} · <time dateTime={item.publishedAt}>{publicationDate(item, false, bilingual)}</time></small><b>{displayTitle(item)}</b><em>{t('来源：','Source: ')}{sourceName(item.source, item.url)}</em></span></button>)}
+          {!filtered.length && <div className="news-empty"><Search size={22} /><b>{t('这个范围内没有匹配新闻','No matching stories')}</b><p>{t('扩大时间范围或清除当前筛选。','Try a wider date range or clear the filters.')}</p><button onClick={() => { setQuery(''); setCategory('全部'); setRange(168); }}>{t('查看 7 天全部新闻','View all stories from the past 7 days')}</button></div>}</div>
         </section>
 
         {selected && <article className="research-detail">
-          <header className="research-meta"><div><time dateTime={selected.publishedAt}>{publicationDate(selected, true)}发布</time><span>{selected.region}</span><span>{categoryLabel(selected.category)}</span></div><div><button aria-label="收藏" onClick={() => toggleBookmark(selected.id)}>{bookmarks.includes(selected.id) ? <BookmarkCheck size={17} /> : <Bookmark size={17} />}</button><a href={selected.url} target="_blank" rel="noreferrer"><ExternalLink size={16} /> {t('阅读原文', 'Read source')}</a></div></header>
-          <div className="research-title"><h2>{displayTitle(selected)}</h2>{bilingual && <p className="language-note">Analysis below is currently available in Chinese.</p>}</div>
-          <p className="research-summary">{selected.summary}</p>
-          <section className="editorial-take"><span>{t('核心判断', 'Our read')}</span><p>{selected.why}</p></section>
-          {!!relevance(selected).length && <div className="research-relevance"><b>{t('与你相关', 'Your interests')}</b>{relevance(selected).map((item) => <span key={item.name}>{item.name}</span>)}</div>}
-          <div className="related-topics"><span>{t('相关主题：', 'Related topics: ')}</span>{[...new Set(selected.tags.filter((tag) => tag !== selected.category))].map(categoryLabel).join('、')}</div>
+          <header className="research-meta"><div><time dateTime={selected.publishedAt}>{t('','Published ')}{publicationDate(selected, true, bilingual)}{t('发布','')}</time><span>{bilingual ? selected.region === '中国' ? 'China' : 'Global' : selected.region}</span><span>{categoryLabel(selected.category)}</span></div><div><button aria-label={t('收藏','Bookmark')} onClick={() => toggleBookmark(selected.id)}>{bookmarks.includes(selected.id) ? <BookmarkCheck size={17} /> : <Bookmark size={17} />}</button><a href={selected.url} target="_blank" rel="noreferrer"><ExternalLink size={16} /> {t('阅读原文', 'Read source')}</a></div></header>
+          <div className="research-title"><h2>{displayTitle(selected)}</h2></div>
+          {copy(selected, 'summary') ? <p className="research-summary">{copy(selected, 'summary')}</p> : <p className="research-summary">This archived story has an English headline, but its analysis has not been translated yet. You can read the original source above.</p>}
+          {copy(selected, 'why') && <section className="editorial-take"><span>{t('实际意义', 'Why it matters')}</span><p>{copy(selected, 'why')}</p></section>}
           <div className="research-timeline">
-            <details open><summary><span>{t('发生了什么变化', 'What changed')}</span><ChevronDown size={16} /></summary><p>{selected.change || selected.summary}</p></details>
-            <details><summary><span>{t('下一步观察', 'What to watch')}</span><ChevronDown size={16} /></summary><p>{selected.watch || '继续观察后续产品可用性、定价和第三方验证。'}</p></details>
-            <details><summary><span>{t('来源与验证', 'Sources')}</span><ChevronDown size={16} /></summary><div className="source-links"><p><ShieldCheck size={15} />{selected.verification || `${selected.sources.length} 个来源交叉核验`}</p>{selected.sourceLinks.map((source) => <a key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.name}{source.tier === 1 ? ' · 官方' : ''}<ExternalLink size={12} /></a>)}</div></details>
+            {copy(selected, 'change') && copy(selected, 'change') !== copy(selected, 'summary') && <details open><summary><span>{t('更新要点', 'What changed')}</span><ChevronDown size={16} /></summary><p>{copy(selected, 'change')}</p></details>}
+            {copy(selected, 'watch') && <details><summary><span>{t('待验证的问题', 'What remains unverified')}</span><ChevronDown size={16} /></summary><p>{copy(selected, 'watch')}</p></details>}
+            <details><summary><span>{t('来源与验证', 'Sources')}</span><ChevronDown size={16} /></summary><div className="source-links"><p><ShieldCheck size={15} />{bilingual ? ({'官方一手':'First-party source','多源核验':'Multiple sources','单一来源':'Single source'}[selected.verification || '单一来源']) : selected.verification || `${selected.sources.length} 个来源`}</p>{selected.sourceLinks.map((source) => <a key={source.url} href={source.url} target="_blank" rel="noreferrer">{sourceName(source.name, source.url)}{source.tier === 1 ? t(' · 官方',' · Official') : ''}<ExternalLink size={12} /></a>)}</div></details>
           </div>
         </article>}
       </section>
 
-      <footer className="intelligence-footer"><span><Globe2 size={14} /> {dashboard.mode}</span><span>{dashboard.sourceHealth.healthy}/{dashboard.sourceHealth.attempted} 来源有效</span><span><Languages size={14} /> {t('有数儿 · 每日精选', 'Noted · Your daily read on AI.')}</span></footer>
+      <footer className="intelligence-footer"><span><Globe2 size={14} /> {t('模型 · 产品 · 开发工具 · 基础设施', 'Models · Products · Developer tools · Infrastructure')}</span><span>{dashboard.sourceHealth.healthy}/{dashboard.sourceHealth.attempted} {t('来源可用','sources available')}</span><span><Languages size={14} /> {t('又整啥了 · 每日精选', 'There Goes AI Again · The latest moves. The useful bits.')}</span></footer>
     </main>
   );
 }
