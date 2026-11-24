@@ -1,33 +1,33 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-24T05:38:35.146Z",
-  "contentUpdatedAt": "2026-11-24T05:38:35.146Z",
+  "generatedAt": "2026-11-24T23:46:48.696Z",
+  "contentUpdatedAt": "2026-11-24T23:46:48.696Z",
   "status": {
     "state": "fresh",
-    "lastSuccessfulAt": "2026-11-24T05:38:35.146Z"
+    "lastSuccessfulAt": "2026-11-24T23:46:48.696Z"
   },
   "mode": "GPT 联网研究 · 7天滚动数据 · 非RSS",
   "stats": {
-    "rawSignals": 54,
-    "events": 45,
-    "chinaRatio": 18,
+    "rawSignals": 51,
+    "events": 46,
+    "chinaRatio": 17,
     "highImpact": 17
   },
   "sourceHealth": {
-    "attempted": 37,
-    "healthy": 32,
-    "officialHealthy": 24,
+    "attempted": 25,
+    "healthy": 22,
+    "officialHealthy": 19,
     "failed": [
-      "3个预测 URL 被拒绝访问，均已改用实际打开的具体页面或淘汰。"
+      "GitHub Actions commit-runs 端点仅返回 PR 运行，未将其作为数据来源。",
+      "部分聚合页未作为入选事实来源。"
     ]
   },
   "brief": {
-    "title": "Agent 的生产化开始进入安全、成本与基础设施层",
+    "title": "Agent 工程从模型能力转向可恢复、可审计的执行层",
     "bullets": [
-      "Claude Ship、AWS DevOps Agent 与 OpenAI SDK 把审批、沙箱与预算带入 Agent 交付流程。",
-      "Google 和 Anthropic 将安全控制延伸到工具调用边界与数据留存架构。",
-      "Amazon 与 AMD 的动作表明推理效率正成为云供给和自研芯片竞争焦点。",
-      "GLM-5.4 与 MiniMax 的新进展为本地生态补充了工程与研究信号。"
+      "OpenAI Agents SDK 的 Alpha 更新把会话恢复、待审批操作和工具执行控制推进到框架层。",
+      "昨天已入库的 Claude Ship、Shirudo 与 Agent 治理更新仍构成当前最值得跟踪的生产化主线。",
+      "本轮检索未发现新的、可独立核验的重大模型、资本或本地 AI 发布，未为填充数量收录活动预告。"
     ]
   },
   "items": [
@@ -102,6 +102,40 @@
       "rank": 2
     },
     {
+      "id": 3906363741,
+      "title": "Amazon 签约收购 Decart 推理优化技术并吸纳团队",
+      "titleEn": "Amazon to purchase Decart's AI optimization technology to advance chip and model innovation for customers",
+      "summary": "Amazon 11月23日宣布签约购买 Decart Optimization Stack 的专有技术，并计划引入其联合创始人与研究工程团队；交易仍待交割条件和监管许可。",
+      "change": "既有 Trainium 性能协作推进为技术和团队整合。",
+      "why": "推理效率正在成为云厂商自研芯片路线的核心竞争层，关键仍是实际成本和可用性。",
+      "watch": "观察技术是否进入 Trainium 或 AWS 产品及定价变化。",
+      "verification": "官方一手",
+      "source": "Amazon",
+      "sources": [
+        "Amazon"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Amazon",
+          "url": "https://www.aboutamazon.com/news/company-news/amazon-decart-ai-optimization",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-23T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-24T05:38:35.146Z",
+      "category": "资本",
+      "region": "全球",
+      "impact": "高影响",
+      "score": 94,
+      "url": "https://www.aboutamazon.com/news/company-news/amazon-decart-ai-optimization",
+      "tags": [
+        "Amazon",
+        "资本"
+      ],
+      "rank": 3
+    },
+    {
       "id": 3906363726,
       "title": "腾讯开源混元 Hy4 旗舰多模态模型权重",
       "titleEn": "Tencent Hunyuan Hy4 open weights",
@@ -141,41 +175,41 @@
         "开源权重",
         "MoE"
       ],
-      "rank": 3
+      "rank": 4
     },
     {
-      "id": 3906363741,
-      "title": "Amazon 签约收购 Decart 推理优化技术并吸纳团队",
-      "titleEn": "Amazon to purchase Decart's AI optimization technology to advance chip and model innovation for customers",
-      "summary": "Amazon 11月23日宣布签约购买 Decart Optimization Stack 的专有技术，并计划引入其联合创始人与研究工程团队；交易仍待交割条件和监管许可。",
-      "change": "既有 Trainium 性能协作推进为技术和团队整合。",
-      "why": "推理效率正在成为云厂商自研芯片路线的核心竞争层，关键仍是实际成本和可用性。",
-      "watch": "观察技术是否进入 Trainium 或 AWS 产品及定价变化。",
+      "id": 3906363748,
+      "title": "OpenAI 与 Cisco 开源 Shirudo，为 Linux 漏洞提供运行中防护",
+      "titleEn": "OpenAI and Cisco introduce Shirudo",
+      "summary": "OpenAI 与 Cisco 11月23日发布开源 Linux 运行时 Shirudo，使用 eBPF 让团队在补丁部署前测试并加载可签名的临时防护规则。",
+      "change": "漏洞响应增加了运行中、经人工批准的细粒度临时防护路径。",
+      "why": "高可用系统可缩短补丁前的暴露窗口，但必须把兼容性、误阻断和回滚纳入变更管理。",
+      "watch": "观察社区规则库、发行版兼容性和真实 CVE 场景效果。",
       "verification": "官方一手",
-      "source": "Amazon",
+      "source": "OpenAI",
       "sources": [
-        "Amazon"
+        "OpenAI"
       ],
       "sourceLinks": [
         {
-          "name": "Amazon",
-          "url": "https://www.aboutamazon.com/news/company-news/amazon-decart-ai-optimization",
+          "name": "OpenAI",
+          "url": "https://openai.com/index/introducing-shirudo/",
           "tier": 1
         }
       ],
       "publishedAt": "2026-11-23T00:00:00.000Z",
       "publishedPrecision": "date",
       "firstSeenAt": "2026-11-24T05:38:35.146Z",
-      "category": "资本",
+      "category": "安全",
       "region": "全球",
       "impact": "高影响",
-      "score": 94,
-      "url": "https://www.aboutamazon.com/news/company-news/amazon-decart-ai-optimization",
+      "score": 93,
+      "url": "https://openai.com/index/introducing-shirudo/",
       "tags": [
-        "Amazon",
-        "资本"
+        "OpenAI",
+        "安全"
       ],
-      "rank": 4
+      "rank": 5
     },
     {
       "id": 3906363734,
@@ -211,77 +245,7 @@
         "ChatGPT",
         "模型安全"
       ],
-      "rank": 5
-    },
-    {
-      "id": 3906363748,
-      "title": "OpenAI 与 Cisco 开源 Shirudo，为 Linux 漏洞提供运行中防护",
-      "titleEn": "OpenAI and Cisco introduce Shirudo",
-      "summary": "OpenAI 与 Cisco 11月23日发布开源 Linux 运行时 Shirudo，使用 eBPF 让团队在补丁部署前测试并加载可签名的临时防护规则。",
-      "change": "漏洞响应增加了运行中、经人工批准的细粒度临时防护路径。",
-      "why": "高可用系统可缩短补丁前的暴露窗口，但必须把兼容性、误阻断和回滚纳入变更管理。",
-      "watch": "观察社区规则库、发行版兼容性和真实 CVE 场景效果。",
-      "verification": "官方一手",
-      "source": "OpenAI",
-      "sources": [
-        "OpenAI"
-      ],
-      "sourceLinks": [
-        {
-          "name": "OpenAI",
-          "url": "https://openai.com/index/introducing-shirudo/",
-          "tier": 1
-        }
-      ],
-      "publishedAt": "2026-11-23T00:00:00.000Z",
-      "publishedPrecision": "date",
-      "firstSeenAt": "2026-11-24T05:38:35.146Z",
-      "category": "安全",
-      "region": "全球",
-      "impact": "高影响",
-      "score": 93,
-      "url": "https://openai.com/index/introducing-shirudo/",
-      "tags": [
-        "OpenAI",
-        "安全"
-      ],
       "rank": 6
-    },
-    {
-      "id": 3636787553,
-      "title": "OpenAI 展示 Codex 驱动的性能 Agent 工厂",
-      "titleEn": "How OpenAI’s Performance Factory keeps ChatGPT fast",
-      "summary": "OpenAI 披露其在云端运行的 Performance Factory：性能告警触发后，Codex 完成排查、提出修复和验证恢复，工程师审核关键决策与合并。",
-      "why": "它提供了生产级 Agent 运营范式：状态机、跨会话任务记录、独立复核与人工审批共同构成可靠闭环。",
-      "source": "OpenAI",
-      "sources": [
-        "OpenAI"
-      ],
-      "sourceLinks": [
-        {
-          "name": "OpenAI",
-          "url": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast/",
-          "tier": 1
-        }
-      ],
-      "publishedAt": "2026-11-19T00:00:00.000Z",
-      "category": "AI Coding",
-      "region": "全球",
-      "impact": "关注",
-      "score": 92,
-      "url": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast/",
-      "tags": [
-        "OpenAI",
-        "Codex",
-        "Agent Workflow",
-        "SRE"
-      ],
-      "rank": 7,
-      "firstSeenAt": "2026-11-20T00:18:26.000Z",
-      "publishedPrecision": "date",
-      "change": "从单次编码辅助转为状态化、可派发、带独立复核的持久 Agent 运维流程。",
-      "watch": "观察该流程在更多故障场景中的自治边界，以及工程师审批对修复质量的实际影响。",
-      "verification": "官方一手"
     },
     {
       "id": 3906363742,
@@ -321,7 +285,77 @@
         "智谱官方微博（新浪转载）",
         "本地AI"
       ],
-      "rank": 8
+      "rank": 7
+    },
+    {
+      "id": 3636787553,
+      "title": "OpenAI 展示 Codex 驱动的性能 Agent 工厂",
+      "titleEn": "How OpenAI’s Performance Factory keeps ChatGPT fast",
+      "summary": "OpenAI 披露其在云端运行的 Performance Factory：性能告警触发后，Codex 完成排查、提出修复和验证恢复，工程师审核关键决策与合并。",
+      "why": "它提供了生产级 Agent 运营范式：状态机、跨会话任务记录、独立复核与人工审批共同构成可靠闭环。",
+      "source": "OpenAI",
+      "sources": [
+        "OpenAI"
+      ],
+      "sourceLinks": [
+        {
+          "name": "OpenAI",
+          "url": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast/",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-19T00:00:00.000Z",
+      "category": "AI Coding",
+      "region": "全球",
+      "impact": "关注",
+      "score": 92,
+      "url": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast/",
+      "tags": [
+        "OpenAI",
+        "Codex",
+        "Agent Workflow",
+        "SRE"
+      ],
+      "rank": 8,
+      "firstSeenAt": "2026-11-20T00:18:26.000Z",
+      "publishedPrecision": "date",
+      "change": "从单次编码辅助转为状态化、可派发、带独立复核的持久 Agent 运维流程。",
+      "watch": "观察该流程在更多故障场景中的自治边界，以及工程师审批对修复质量的实际影响。",
+      "verification": "官方一手"
+    },
+    {
+      "id": 3906363740,
+      "title": "Gemini API 增加文件切片控制与 Office 原生上传",
+      "titleEn": "Introducing file slicing controls in the Gemini API",
+      "summary": "Google 11月23日宣布 Gemini API 可按 PDF 页、表格范围和音视频片段处理文件，并支持 Microsoft Office 与 OpenDocument 原生上传。",
+      "change": "从整份文件输入改为由应用或 Agent 按片段选择上下文。",
+      "why": "它可降低长文档工作流的无效 token 消耗，但切片失误会遗漏关键上下文。",
+      "watch": "观察不同文件类型的实际节省和检索准确率。",
+      "verification": "官方一手",
+      "source": "Google",
+      "sources": [
+        "Google"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Google",
+          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/file-slicing-controls/",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-23T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-24T05:38:35.146Z",
+      "category": "产品",
+      "region": "全球",
+      "impact": "高影响",
+      "score": 91,
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/file-slicing-controls/",
+      "tags": [
+        "Google",
+        "产品"
+      ],
+      "rank": 9
     },
     {
       "id": 3906363715,
@@ -357,41 +391,41 @@
         "Agent",
         "Tool Retrieval"
       ],
-      "rank": 9
+      "rank": 10
     },
     {
-      "id": 3906363740,
-      "title": "Gemini API 增加文件切片控制与 Office 原生上传",
-      "titleEn": "Introducing file slicing controls in the Gemini API",
-      "summary": "Google 11月23日宣布 Gemini API 可按 PDF 页、表格范围和音视频片段处理文件，并支持 Microsoft Office 与 OpenDocument 原生上传。",
-      "change": "从整份文件输入改为由应用或 Agent 按片段选择上下文。",
-      "why": "它可降低长文档工作流的无效 token 消耗，但切片失误会遗漏关键上下文。",
-      "watch": "观察不同文件类型的实际节省和检索准确率。",
+      "id": 3906363743,
+      "title": "AMD 与 Microsoft 在 Azure 实验室验证 Helios 机架级 AI 系统",
+      "titleEn": "Microsoft Running Workload Validation with AMD Helios Rackscale Solution",
+      "summary": "AMD 11月23日称 Microsoft 已在 Azure 研究实验室通电首套 Helios 系统，正做早期工作负载验证；Azure 计划后续规模化部署用于 AI 推理。",
+      "change": "合作从产品路线推进到实验室上电与工作负载验证阶段。",
+      "why": "这为 Azure 增加 NVIDIA 之外的推理供给选项，但尚非普遍可用实例。",
+      "watch": "观察正式实例、ROCm 兼容性与单位推理成本。",
       "verification": "官方一手",
-      "source": "Google",
+      "source": "AMD",
       "sources": [
-        "Google"
+        "AMD"
       ],
       "sourceLinks": [
         {
-          "name": "Google",
-          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/file-slicing-controls/",
+          "name": "AMD",
+          "url": "https://newsroom.amd.com/news/microsoft-running-workload-validation-amd-helios-rackscale-solution/",
           "tier": 1
         }
       ],
       "publishedAt": "2026-11-23T00:00:00.000Z",
       "publishedPrecision": "date",
       "firstSeenAt": "2026-11-24T05:38:35.146Z",
-      "category": "产品",
+      "category": "算力",
       "region": "全球",
       "impact": "高影响",
-      "score": 91,
-      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/file-slicing-controls/",
+      "score": 90,
+      "url": "https://newsroom.amd.com/news/microsoft-running-workload-validation-amd-helios-rackscale-solution/",
       "tags": [
-        "Google",
-        "产品"
+        "AMD",
+        "算力"
       ],
-      "rank": 10
+      "rank": 11
     },
     {
       "id": 3906363725,
@@ -433,77 +467,41 @@
         "困惑度",
         "治理"
       ],
-      "rank": 11
+      "rank": 12
     },
     {
-      "id": 3906363743,
-      "title": "AMD 与 Microsoft 在 Azure 实验室验证 Helios 机架级 AI 系统",
-      "titleEn": "Microsoft Running Workload Validation with AMD Helios Rackscale Solution",
-      "summary": "AMD 11月23日称 Microsoft 已在 Azure 研究实验室通电首套 Helios 系统，正做早期工作负载验证；Azure 计划后续规模化部署用于 AI 推理。",
-      "change": "合作从产品路线推进到实验室上电与工作负载验证阶段。",
-      "why": "这为 Azure 增加 NVIDIA 之外的推理供给选项，但尚非普遍可用实例。",
-      "watch": "观察正式实例、ROCm 兼容性与单位推理成本。",
+      "id": 3906363745,
+      "title": "Anthropic 为企业安全监控测试零数据留存模式",
+      "titleEn": "Zero data retention with Enterprise Frontier Safeguards is now in beta",
+      "summary": "Anthropic 11月23日将 Enterprise Frontier Safeguards 的零数据留存模式置于 beta：客户自带存储保存输入输出，内容不用于训练。",
+      "change": "安全监控新增客户持有内容、平台处理监控元数据的架构选项。",
+      "why": "敏感数据行业接入前沿模型的合规阻力可降低，但存储、密钥和审计责任转向客户。",
+      "watch": "观察 beta 的地区、云平台和价格覆盖。",
       "verification": "官方一手",
-      "source": "AMD",
+      "source": "Claude by Anthropic",
       "sources": [
-        "AMD"
+        "Claude by Anthropic"
       ],
       "sourceLinks": [
         {
-          "name": "AMD",
-          "url": "https://newsroom.amd.com/news/microsoft-running-workload-validation-amd-helios-rackscale-solution/",
+          "name": "Claude by Anthropic",
+          "url": "https://claude.com/resources/articles/zero-data-retention-with-enterprise-frontier-safeguards",
           "tier": 1
         }
       ],
       "publishedAt": "2026-11-23T00:00:00.000Z",
       "publishedPrecision": "date",
       "firstSeenAt": "2026-11-24T05:38:35.146Z",
-      "category": "算力",
+      "category": "安全",
       "region": "全球",
       "impact": "高影响",
-      "score": 90,
-      "url": "https://newsroom.amd.com/news/microsoft-running-workload-validation-amd-helios-rackscale-solution/",
-      "tags": [
-        "AMD",
-        "算力"
-      ],
-      "rank": 12
-    },
-    {
-      "id": 2177847865,
-      "title": "NVIDIA 与 Microsoft 扩展云到边缘的 AI 栈",
-      "titleEn": "NVIDIA and Microsoft Expand Accelerated Computing From Azure to Windows PCs",
-      "summary": "NVIDIA 宣布与 Microsoft 扩展协作，覆盖 Azure 上的 Vera Rubin 系统、Microsoft Foundry 的模型定制，以及 Azure Local、工业与 Windows PC 端部署。",
-      "why": "企业 AI 的竞争正从单一模型转向云、边缘、终端与数据治理的全栈交付，对工业部署架构更直接。",
-      "source": "NVIDIA",
-      "sources": [
-        "NVIDIA"
-      ],
-      "sourceLinks": [
-        {
-          "name": "NVIDIA",
-          "url": "https://blogs.nvidia.com/blog/microsoft-ignite-accelerated-computing-azure-windows-pcs/",
-          "tier": 1
-        }
-      ],
-      "publishedAt": "2026-11-19T00:00:00.000Z",
-      "category": "算力",
-      "region": "全球",
-      "impact": "关注",
       "score": 89,
-      "url": "https://blogs.nvidia.com/blog/microsoft-ignite-accelerated-computing-azure-windows-pcs/",
+      "url": "https://claude.com/resources/articles/zero-data-retention-with-enterprise-frontier-safeguards",
       "tags": [
-        "NVIDIA",
-        "Microsoft",
-        "Azure",
-        "边缘AI"
+        "Claude",
+        "安全"
       ],
-      "rank": 13,
-      "firstSeenAt": "2026-11-20T00:18:26.000Z",
-      "publishedPrecision": "date",
-      "change": "从云侧加速计算扩展到 Azure Local、工业边缘与 Windows PC 的统一部署栈。",
-      "watch": "观察可用区域、具体硬件配置与企业端成本，及工业场景的实际落地案例。",
-      "verification": "官方一手"
+      "rank": 13
     },
     {
       "id": 3906363716,
@@ -542,22 +540,58 @@
       "rank": 14
     },
     {
-      "id": 3906363745,
-      "title": "Anthropic 为企业安全监控测试零数据留存模式",
-      "titleEn": "Zero data retention with Enterprise Frontier Safeguards is now in beta",
-      "summary": "Anthropic 11月23日将 Enterprise Frontier Safeguards 的零数据留存模式置于 beta：客户自带存储保存输入输出，内容不用于训练。",
-      "change": "安全监控新增客户持有内容、平台处理监控元数据的架构选项。",
-      "why": "敏感数据行业接入前沿模型的合规阻力可降低，但存储、密钥和审计责任转向客户。",
-      "watch": "观察 beta 的地区、云平台和价格覆盖。",
-      "verification": "官方一手",
-      "source": "Claude by Anthropic",
+      "id": 2177847865,
+      "title": "NVIDIA 与 Microsoft 扩展云到边缘的 AI 栈",
+      "titleEn": "NVIDIA and Microsoft Expand Accelerated Computing From Azure to Windows PCs",
+      "summary": "NVIDIA 宣布与 Microsoft 扩展协作，覆盖 Azure 上的 Vera Rubin 系统、Microsoft Foundry 的模型定制，以及 Azure Local、工业与 Windows PC 端部署。",
+      "why": "企业 AI 的竞争正从单一模型转向云、边缘、终端与数据治理的全栈交付，对工业部署架构更直接。",
+      "source": "NVIDIA",
       "sources": [
-        "Claude by Anthropic"
+        "NVIDIA"
       ],
       "sourceLinks": [
         {
-          "name": "Claude by Anthropic",
-          "url": "https://claude.com/resources/articles/zero-data-retention-with-enterprise-frontier-safeguards",
+          "name": "NVIDIA",
+          "url": "https://blogs.nvidia.com/blog/microsoft-ignite-accelerated-computing-azure-windows-pcs/",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-19T00:00:00.000Z",
+      "category": "算力",
+      "region": "全球",
+      "impact": "关注",
+      "score": 89,
+      "url": "https://blogs.nvidia.com/blog/microsoft-ignite-accelerated-computing-azure-windows-pcs/",
+      "tags": [
+        "NVIDIA",
+        "Microsoft",
+        "Azure",
+        "边缘AI"
+      ],
+      "rank": 15,
+      "firstSeenAt": "2026-11-20T00:18:26.000Z",
+      "publishedPrecision": "date",
+      "change": "从云侧加速计算扩展到 Azure Local、工业边缘与 Windows PC 的统一部署栈。",
+      "watch": "观察可用区域、具体硬件配置与企业端成本，及工业场景的实际落地案例。",
+      "verification": "官方一手"
+    },
+    {
+      "id": 3906363746,
+      "title": "Google 预览用语义策略拦截 Agent 意图劫持",
+      "titleEn": "Did the user ask for this? Securing AI agents against intent hijacking with Semantic governance policies",
+      "summary": "Google 11月23日公布 Semantic governance policies 的 AgentDojo 测试：攻击成功率从48.7%降至0.9%，良性任务效用平均下降2.6个百分点；能力在 Gemini 平台预览提供。",
+      "change": "防护从扫描可疑文本转向在工具调用前核对用户意图。",
+      "why": "生产 Agent 应把动作审核放在工具调用边界；该结果仍限于特定基准与配置。",
+      "watch": "观察自适应攻击表现、误拦截率和延迟开销。",
+      "verification": "官方一手",
+      "source": "Google Developers Blog",
+      "sources": [
+        "Google Developers Blog"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Google Developers Blog",
+          "url": "https://developers.googleblog.com/en/did-the-user-ask-for-this-securing-ai-agents-against-intent-hijacking-with-semantic-governance-policies/",
           "tier": 1
         }
       ],
@@ -567,47 +601,11 @@
       "category": "安全",
       "region": "全球",
       "impact": "高影响",
-      "score": 89,
-      "url": "https://claude.com/resources/articles/zero-data-retention-with-enterprise-frontier-safeguards",
-      "tags": [
-        "Claude",
-        "安全"
-      ],
-      "rank": 15
-    },
-    {
-      "id": 3906363720,
-      "title": "Microsoft Copilot 上线 GPT‑6.2 Sol 与 Astra",
-      "titleEn": "Available today: OpenAI’s GPT-6.2 Sol and GPT-6.2 Astra in Microsoft Copilot",
-      "summary": "Microsoft 宣布 GPT‑6.2 Sol 在全球逐步进入符合条件的 Copilot Chat、Cowork、Studio 及 Excel、PowerPoint、Word；GPT‑6.2 Astra 面向全球 Cowork 和 Studio，并向 Frontier 用户逐步扩展至部分其他 Copilot 体验。",
-      "change": "从单一工作流中的模型选择，扩展为按任务复杂度、产品入口和组织权限分层部署 Sol 与 Astra。",
-      "why": "Microsoft 把最新模型能力嵌入办公和企业 Agent 入口，影响的不只是聊天质量，还包括知识工作自动化的采购、权限治理与生产落地节奏。",
-      "watch": "观察各地区与许可层级的实际开放范围、Work IQ 权限边界，以及企业用户在长任务中对速度、成本和可靠性的反馈。",
-      "verification": "官方一手",
-      "source": "Microsoft",
-      "sources": [
-        "Microsoft"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Microsoft",
-          "url": "https://techcommunity.microsoft.com/blog/microsoft-copilot-blog/available-today-openais-gpt-6-2-sol-and-gpt-6-2-astra-in-microsoft-copilot/4574229",
-          "tier": 1
-        }
-      ],
-      "publishedAt": "2026-11-20T00:00:00.000Z",
-      "publishedPrecision": "date",
-      "firstSeenAt": "2026-11-20T23:47:11.511Z",
-      "category": "产品",
-      "region": "全球",
-      "impact": "高影响",
       "score": 88,
-      "url": "https://techcommunity.microsoft.com/blog/microsoft-copilot-blog/available-today-openais-gpt-6-2-sol-and-gpt-6-2-astra-in-microsoft-copilot/4574229",
+      "url": "https://developers.googleblog.com/en/did-the-user-ask-for-this-securing-ai-agents-against-intent-hijacking-with-semantic-governance-policies/",
       "tags": [
-        "Microsoft",
-        "Copilot",
-        "OpenAI",
-        "GPT-6.2"
+        "Google",
+        "安全"
       ],
       "rank": 16
     },
@@ -648,38 +646,74 @@
       "rank": 17
     },
     {
-      "id": 3906363746,
-      "title": "Google 预览用语义策略拦截 Agent 意图劫持",
-      "titleEn": "Did the user ask for this? Securing AI agents against intent hijacking with Semantic governance policies",
-      "summary": "Google 11月23日公布 Semantic governance policies 的 AgentDojo 测试：攻击成功率从48.7%降至0.9%，良性任务效用平均下降2.6个百分点；能力在 Gemini 平台预览提供。",
-      "change": "防护从扫描可疑文本转向在工具调用前核对用户意图。",
-      "why": "生产 Agent 应把动作审核放在工具调用边界；该结果仍限于特定基准与配置。",
-      "watch": "观察自适应攻击表现、误拦截率和延迟开销。",
+      "id": 3906363720,
+      "title": "Microsoft Copilot 上线 GPT‑6.2 Sol 与 Astra",
+      "titleEn": "Available today: OpenAI’s GPT-6.2 Sol and GPT-6.2 Astra in Microsoft Copilot",
+      "summary": "Microsoft 宣布 GPT‑6.2 Sol 在全球逐步进入符合条件的 Copilot Chat、Cowork、Studio 及 Excel、PowerPoint、Word；GPT‑6.2 Astra 面向全球 Cowork 和 Studio，并向 Frontier 用户逐步扩展至部分其他 Copilot 体验。",
+      "change": "从单一工作流中的模型选择，扩展为按任务复杂度、产品入口和组织权限分层部署 Sol 与 Astra。",
+      "why": "Microsoft 把最新模型能力嵌入办公和企业 Agent 入口，影响的不只是聊天质量，还包括知识工作自动化的采购、权限治理与生产落地节奏。",
+      "watch": "观察各地区与许可层级的实际开放范围、Work IQ 权限边界，以及企业用户在长任务中对速度、成本和可靠性的反馈。",
       "verification": "官方一手",
-      "source": "Google Developers Blog",
+      "source": "Microsoft",
       "sources": [
-        "Google Developers Blog"
+        "Microsoft"
       ],
       "sourceLinks": [
         {
-          "name": "Google Developers Blog",
-          "url": "https://developers.googleblog.com/en/did-the-user-ask-for-this-securing-ai-agents-against-intent-hijacking-with-semantic-governance-policies/",
+          "name": "Microsoft",
+          "url": "https://techcommunity.microsoft.com/blog/microsoft-copilot-blog/available-today-openais-gpt-6-2-sol-and-gpt-6-2-astra-in-microsoft-copilot/4574229",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-20T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-20T23:47:11.511Z",
+      "category": "产品",
+      "region": "全球",
+      "impact": "高影响",
+      "score": 88,
+      "url": "https://techcommunity.microsoft.com/blog/microsoft-copilot-blog/available-today-openais-gpt-6-2-sol-and-gpt-6-2-astra-in-microsoft-copilot/4574229",
+      "tags": [
+        "Microsoft",
+        "Copilot",
+        "OpenAI",
+        "GPT-6.2"
+      ],
+      "rank": 18
+    },
+    {
+      "id": 3906363747,
+      "title": "AWS 开源 Strands Decider v2，用小模型做 Agent 路由",
+      "titleEn": "Introducing Strands Decider v2: open, calibrated system one models",
+      "summary": "Strands 11月23日发布五个基于 Gemma 4 的 Apache-2.0 Decider v2 权重，用有限选项打分来承担工具选择、请求路由和答案评估。",
+      "change": "从通用生成模型承担每一步判断，转为小模型处理高频有限决策。",
+      "why": "该分层模式可压低 Agent 成本并将升级处理变为可测量策略，但官方案例需自行复现。",
+      "watch": "观察中文、长轨迹和生产推理栈中的校准与成本表现。",
+      "verification": "官方一手",
+      "source": "Strands Agents",
+      "sources": [
+        "Strands Agents"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Strands Agents",
+          "url": "https://strandsagents.com/blog/introducing-strands-decider-v2/",
           "tier": 1
         }
       ],
       "publishedAt": "2026-11-23T00:00:00.000Z",
       "publishedPrecision": "date",
       "firstSeenAt": "2026-11-24T05:38:35.146Z",
-      "category": "安全",
+      "category": "开源",
       "region": "全球",
       "impact": "高影响",
-      "score": 88,
-      "url": "https://developers.googleblog.com/en/did-the-user-ask-for-this-securing-ai-agents-against-intent-hijacking-with-semantic-governance-policies/",
+      "score": 87,
+      "url": "https://strandsagents.com/blog/introducing-strands-decider-v2/",
       "tags": [
-        "Google",
-        "安全"
+        "Strands",
+        "开源"
       ],
-      "rank": 18
+      "rank": 19
     },
     {
       "id": 3906363722,
@@ -714,40 +748,6 @@
         "模型安全",
         "蒸馏防护",
         "红队测试"
-      ],
-      "rank": 19
-    },
-    {
-      "id": 3906363747,
-      "title": "AWS 开源 Strands Decider v2，用小模型做 Agent 路由",
-      "titleEn": "Introducing Strands Decider v2: open, calibrated system one models",
-      "summary": "Strands 11月23日发布五个基于 Gemma 4 的 Apache-2.0 Decider v2 权重，用有限选项打分来承担工具选择、请求路由和答案评估。",
-      "change": "从通用生成模型承担每一步判断，转为小模型处理高频有限决策。",
-      "why": "该分层模式可压低 Agent 成本并将升级处理变为可测量策略，但官方案例需自行复现。",
-      "watch": "观察中文、长轨迹和生产推理栈中的校准与成本表现。",
-      "verification": "官方一手",
-      "source": "Strands Agents",
-      "sources": [
-        "Strands Agents"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Strands Agents",
-          "url": "https://strandsagents.com/blog/introducing-strands-decider-v2/",
-          "tier": 1
-        }
-      ],
-      "publishedAt": "2026-11-23T00:00:00.000Z",
-      "publishedPrecision": "date",
-      "firstSeenAt": "2026-11-24T05:38:35.146Z",
-      "category": "开源",
-      "region": "全球",
-      "impact": "高影响",
-      "score": 87,
-      "url": "https://strandsagents.com/blog/introducing-strands-decider-v2/",
-      "tags": [
-        "Strands",
-        "开源"
       ],
       "rank": 20
     },
@@ -794,42 +794,6 @@
       "verification": "官方一手"
     },
     {
-      "id": 2331097513,
-      "title": "SageMaker 推出跨区域推理路由",
-      "titleEn": "Keep inference running through regional capacity shortfalls with cross-Region inference routing in Amazon SageMaker AI",
-      "summary": "AWS 发布 SageMaker 跨区域推理路由：一个调用入口可在多个区域或账户的既有 endpoint 与 inference component 间路由，并在本地容量不足时转移新请求。",
-      "why": "生产推理的可用性不再完全由单一区域 GPU 供给决定；这对高可用模型服务和灾备设计是直接的平台能力提升。",
-      "source": "AWS",
-      "sources": [
-        "AWS"
-      ],
-      "sourceLinks": [
-        {
-          "name": "AWS",
-          "url": "https://aws.amazon.com/blogs/machine-learning/keep-inference-running-through-regional-capacity-shortfalls-with-cross-region-inference-routing-in-amazon-sagemaker-ai/",
-          "tier": 1
-        }
-      ],
-      "publishedAt": "2026-11-19T00:00:00.000Z",
-      "category": "算力",
-      "region": "全球",
-      "impact": "关注",
-      "score": 85,
-      "url": "https://aws.amazon.com/blogs/machine-learning/keep-inference-running-through-regional-capacity-shortfalls-with-cross-region-inference-routing-in-amazon-sagemaker-ai/",
-      "tags": [
-        "AWS",
-        "SageMaker",
-        "推理",
-        "高可用"
-      ],
-      "rank": 22,
-      "firstSeenAt": "2026-11-20T00:18:26.000Z",
-      "publishedPrecision": "date",
-      "change": "从团队自建跨区域容灾逻辑转为 SageMaker 可管理的跨区域推理路由资源。",
-      "watch": "观察支持区域、流式请求行为与跨区域调用成本是否适合生产级多区域架构。",
-      "verification": "官方一手"
-    },
-    {
       "id": 3906363728,
       "title": "Vercel 将开源 Agent 框架 eve 推至 1.0 正式版",
       "titleEn": "Introducing eve 1.0",
@@ -863,7 +827,43 @@
         "Agent Framework",
         "可观测性"
       ],
-      "rank": 23
+      "rank": 22
+    },
+    {
+      "id": 2331097513,
+      "title": "SageMaker 推出跨区域推理路由",
+      "titleEn": "Keep inference running through regional capacity shortfalls with cross-Region inference routing in Amazon SageMaker AI",
+      "summary": "AWS 发布 SageMaker 跨区域推理路由：一个调用入口可在多个区域或账户的既有 endpoint 与 inference component 间路由，并在本地容量不足时转移新请求。",
+      "why": "生产推理的可用性不再完全由单一区域 GPU 供给决定；这对高可用模型服务和灾备设计是直接的平台能力提升。",
+      "source": "AWS",
+      "sources": [
+        "AWS"
+      ],
+      "sourceLinks": [
+        {
+          "name": "AWS",
+          "url": "https://aws.amazon.com/blogs/machine-learning/keep-inference-running-through-regional-capacity-shortfalls-with-cross-region-inference-routing-in-amazon-sagemaker-ai/",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-19T00:00:00.000Z",
+      "category": "算力",
+      "region": "全球",
+      "impact": "关注",
+      "score": 85,
+      "url": "https://aws.amazon.com/blogs/machine-learning/keep-inference-running-through-regional-capacity-shortfalls-with-cross-region-inference-routing-in-amazon-sagemaker-ai/",
+      "tags": [
+        "AWS",
+        "SageMaker",
+        "推理",
+        "高可用"
+      ],
+      "rank": 23,
+      "firstSeenAt": "2026-11-20T00:18:26.000Z",
+      "publishedPrecision": "date",
+      "change": "从团队自建跨区域容灾逻辑转为 SageMaker 可管理的跨区域推理路由资源。",
+      "watch": "观察支持区域、流式请求行为与跨区域调用成本是否适合生产级多区域架构。",
+      "verification": "官方一手"
     },
     {
       "id": 3906363735,
@@ -938,78 +938,6 @@
       "rank": 25
     },
     {
-      "id": 3906363723,
-      "title": "AWS 推出可核验文档 AI 服务 Textract Insights",
-      "titleEn": "Announcing Amazon Textract Insights: Verifiable generative AI for documents",
-      "summary": "AWS 宣布 Amazon Textract Insights 正式可用：用户以自然语言和 JSON Schema 定义字段后，服务可在混合文档包中完成拆分、分类与抽取，并返回置信度及页级定位信息；当前在美国东部和西部区域提供。",
-      "change": "从 OCR、分类、提示词和人工复核的自建流水线，转为单个托管 API 内完成多文档理解、抽取与可追溯回证。",
-      "why": "对财务、保险、医疗等高审计要求场景，能回溯到原页与坐标的抽取结果比纯生成答案更接近可进入业务流程的自动化能力。",
-      "watch": "观察区域扩展、不同语言和复杂表格的实际准确率，以及企业在置信度阈值和人工复核上的成本收益。",
-      "verification": "官方一手",
-      "source": "AWS",
-      "sources": [
-        "AWS"
-      ],
-      "sourceLinks": [
-        {
-          "name": "AWS",
-          "url": "https://aws.amazon.com/blogs/machine-learning/announcing-amazon-textract-insights-verifiable-generative-ai-for-documents/",
-          "tier": 1
-        }
-      ],
-      "publishedAt": "2026-11-20T00:00:00.000Z",
-      "publishedPrecision": "date",
-      "firstSeenAt": "2026-11-21T23:47:02.036Z",
-      "category": "产品",
-      "region": "全球",
-      "impact": "关注",
-      "score": 83,
-      "url": "https://aws.amazon.com/blogs/machine-learning/announcing-amazon-textract-insights-verifiable-generative-ai-for-documents/",
-      "tags": [
-        "AWS",
-        "Textract",
-        "智能文档",
-        "可追溯AI"
-      ],
-      "rank": 26
-    },
-    {
-      "id": 1875041669,
-      "title": "SageMaker 自动发现推理延迟与闲置 GPU",
-      "titleEn": "Amazon SageMaker AI now detects latency drift, idle GPUs, and missed optimizations on your inference endpoints",
-      "summary": "AWS 宣布 SageMaker 对符合条件的 vLLM GPU 推理 endpoint 默认监测延迟漂移、闲置容量和配置缺口，并把发现导入 Studio 的基准测试流程；生产端点不会被自动修改。",
-      "why": "把运行后优化从人工巡检变为“观测—通知—基准—决策”的闭环，适合需要控制成本和稳定性的企业推理服务。",
-      "source": "AWS",
-      "sources": [
-        "AWS"
-      ],
-      "sourceLinks": [
-        {
-          "name": "AWS",
-          "url": "https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-ai-now-detects-latency-drift-idle-gpus-and-missed-optimizations-on-your-inference-endpoints/",
-          "tier": 1
-        }
-      ],
-      "publishedAt": "2026-11-19T00:00:00.000Z",
-      "category": "产品",
-      "region": "全球",
-      "impact": "关注",
-      "score": 83,
-      "url": "https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-ai-now-detects-latency-drift-idle-gpus-and-missed-optimizations-on-your-inference-endpoints/",
-      "tags": [
-        "AWS",
-        "SageMaker",
-        "推理优化",
-        "GPU"
-      ],
-      "rank": 27,
-      "firstSeenAt": "2026-11-20T00:18:26.000Z",
-      "publishedPrecision": "date",
-      "change": "从人工巡检端点配置转为自动发现延迟漂移、闲置 GPU 与优化缺口。",
-      "watch": "观察该能力在真实生产端点中的误报率，以及是否带来可量化的推理成本下降。",
-      "verification": "官方一手"
-    },
-    {
       "id": 3906363729,
       "title": "AMD 与 Unsloth 将 XDNA 2 NPU 接入百余个 Agent 工作流",
       "titleEn": "AMD and Unsloth Bring NPU Support to 100+ Agentic AI Apps",
@@ -1043,16 +971,16 @@
         "Unsloth",
         "端侧AI"
       ],
-      "rank": 28
+      "rank": 26
     },
     {
-      "id": 3906363724,
-      "title": "SageMaker HyperPod 增加跨区域全局推理网关",
-      "titleEn": "Introducing Amazon SageMaker HyperPod Global Inference Gateway: One endpoint across Regions and clusters",
-      "summary": "AWS 为 SageMaker HyperPod 推出 Global Inference Gateway：一个托管端点可在注册的集群和区域之间基于 KV 缓存余量、队列深度、区域邻近度与错误率路由请求，并在集群故障时自动切换。",
-      "change": "从单集群的 GPU 感知路由，提升为跨集群、跨区域的统一入口和自动故障转移层。",
-      "why": "对于自建大模型推理集群，跨区域 GPU 利用率和故障恢复通常需要自建 DNS、负载均衡与网络层；托管网关将这些运维能力产品化。",
-      "watch": "观察首批区域、协议与模型框架支持范围，以及跨区域路由在延迟、数据边界和总体成本上的真实表现。",
+      "id": 3906363723,
+      "title": "AWS 推出可核验文档 AI 服务 Textract Insights",
+      "titleEn": "Announcing Amazon Textract Insights: Verifiable generative AI for documents",
+      "summary": "AWS 宣布 Amazon Textract Insights 正式可用：用户以自然语言和 JSON Schema 定义字段后，服务可在混合文档包中完成拆分、分类与抽取，并返回置信度及页级定位信息；当前在美国东部和西部区域提供。",
+      "change": "从 OCR、分类、提示词和人工复核的自建流水线，转为单个托管 API 内完成多文档理解、抽取与可追溯回证。",
+      "why": "对财务、保险、医疗等高审计要求场景，能回溯到原页与坐标的抽取结果比纯生成答案更接近可进入业务流程的自动化能力。",
+      "watch": "观察区域扩展、不同语言和复杂表格的实际准确率，以及企业在置信度阈值和人工复核上的成本收益。",
       "verification": "官方一手",
       "source": "AWS",
       "sources": [
@@ -1061,61 +989,97 @@
       "sourceLinks": [
         {
           "name": "AWS",
-          "url": "https://aws.amazon.com/blogs/machine-learning/introducing-amazon-sagemaker-hyperpod-global-inference-gateway-one-endpoint-across-regions-and-clusters/",
+          "url": "https://aws.amazon.com/blogs/machine-learning/announcing-amazon-textract-insights-verifiable-generative-ai-for-documents/",
           "tier": 1
         }
       ],
       "publishedAt": "2026-11-20T00:00:00.000Z",
       "publishedPrecision": "date",
       "firstSeenAt": "2026-11-21T23:47:02.036Z",
-      "category": "算力",
+      "category": "产品",
       "region": "全球",
       "impact": "关注",
-      "score": 82,
-      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-amazon-sagemaker-hyperpod-global-inference-gateway-one-endpoint-across-regions-and-clusters/",
+      "score": 83,
+      "url": "https://aws.amazon.com/blogs/machine-learning/announcing-amazon-textract-insights-verifiable-generative-ai-for-documents/",
       "tags": [
         "AWS",
-        "SageMaker",
-        "HyperPod",
-        "推理路由"
+        "Textract",
+        "智能文档",
+        "可追溯AI"
       ],
-      "rank": 29
+      "rank": 27
     },
     {
-      "id": 3906363718,
-      "firstSeenAt": "2026-11-20T02:20:51.000Z",
-      "publishedPrecision": "date",
-      "verification": "官方一手",
-      "title": "Microsoft 将 Agent 权限与可观测性列为 AI 安全重点",
-      "titleEn": "Security fundamentals to enable the frontier",
-      "summary": "Microsoft 在安全文章中提出，企业应把 AI Agent 视为内部风险主体，围绕最小权限、可观测性、补丁速度和人工保留关键决策来构建防御，并援引其此前披露的 AI 辅助攻击活动。",
-      "change": "从把生成式 AI 风险主要视为模型层问题，转向把 Agent 身份、资源权限、动作范围与监控纳入企业安全治理。",
-      "why": "当 Agent 获得云资源、代码库和业务系统权限后，安全控制点不再只在模型输入输出，而在身份、授权、审计与人工接管机制。",
-      "watch": "观察 Microsoft Agent 365 等治理产品的实际功能边界，以及企业如何把 Agent 资产盘点和最小权限纳入现有安全运营。",
-      "source": "Microsoft",
+      "id": 1875041669,
+      "title": "SageMaker 自动发现推理延迟与闲置 GPU",
+      "titleEn": "Amazon SageMaker AI now detects latency drift, idle GPUs, and missed optimizations on your inference endpoints",
+      "summary": "AWS 宣布 SageMaker 对符合条件的 vLLM GPU 推理 endpoint 默认监测延迟漂移、闲置容量和配置缺口，并把发现导入 Studio 的基准测试流程；生产端点不会被自动修改。",
+      "why": "把运行后优化从人工巡检变为“观测—通知—基准—决策”的闭环，适合需要控制成本和稳定性的企业推理服务。",
+      "source": "AWS",
       "sources": [
-        "Microsoft"
+        "AWS"
       ],
       "sourceLinks": [
         {
-          "name": "Microsoft",
-          "url": "https://blogs.microsoft.com/on-the-issues/2026/11/19/security-fundamentals-to-enable-the-frontier/",
+          "name": "AWS",
+          "url": "https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-ai-now-detects-latency-drift-idle-gpus-and-missed-optimizations-on-your-inference-endpoints/",
           "tier": 1
         }
       ],
       "publishedAt": "2026-11-19T00:00:00.000Z",
-      "category": "安全",
+      "category": "产品",
+      "region": "全球",
+      "impact": "关注",
+      "score": 83,
+      "url": "https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-ai-now-detects-latency-drift-idle-gpus-and-missed-optimizations-on-your-inference-endpoints/",
+      "tags": [
+        "AWS",
+        "SageMaker",
+        "推理优化",
+        "GPU"
+      ],
+      "rank": 28,
+      "firstSeenAt": "2026-11-20T00:18:26.000Z",
+      "publishedPrecision": "date",
+      "change": "从人工巡检端点配置转为自动发现延迟漂移、闲置 GPU 与优化缺口。",
+      "watch": "观察该能力在真实生产端点中的误报率，以及是否带来可量化的推理成本下降。",
+      "verification": "官方一手"
+    },
+    {
+      "id": 3906363751,
+      "title": "OpenAI Agents SDK 1.0 Alpha 2 增加可恢复会话与 Codex 审批恢复",
+      "titleEn": "Agents SDK v1.0.0-alpha.2",
+      "summary": "OpenAI 官方 Python Agents SDK 于 11 月 23 日发布 1.0.0-alpha.2 预览版，增加跨 worker 恢复对话和待审批操作、恢复受支持的原生 Codex 命令与编辑审批、工具执行 hooks、函数工具过滤、文本脱敏和细粒度操作追踪。",
+      "change": "从早期 Agent 运行接口扩展到可持久化状态、跨 worker 恢复与原生 Codex 审批恢复，并引入新的持久化状态格式。",
+      "why": "这对长运行或可中断的企业 Agent 是关键工程能力：会话迁移、审批恢复和追踪决定了任务能否安全接入队列、故障恢复与人工治理流程。该版本仍为 Alpha，状态格式升级有兼容性要求。",
+      "watch": "观察稳定版时间表、持久化状态格式是否冻结，以及在多 worker、Redis 和真实审批流中的恢复一致性。",
+      "verification": "官方一手",
+      "source": "GitHub · openai/openai-agents-python",
+      "sources": [
+        "GitHub · openai/openai-agents-python"
+      ],
+      "sourceLinks": [
+        {
+          "name": "GitHub · openai/openai-agents-python",
+          "url": "https://github.com/openai/openai-agents-python/releases",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-23T20:11:00.000Z",
+      "publishedPrecision": "datetime",
+      "firstSeenAt": "2026-11-24T23:46:48.696Z",
+      "category": "AI Coding",
       "region": "全球",
       "impact": "关注",
       "score": 82,
-      "url": "https://blogs.microsoft.com/on-the-issues/2026/11/19/security-fundamentals-to-enable-the-frontier/",
+      "url": "https://github.com/openai/openai-agents-python/releases",
       "tags": [
-        "Microsoft",
-        "Agent Security",
-        "可观测性",
-        "治理"
+        "OpenAI",
+        "Agents SDK",
+        "Codex",
+        "会话恢复"
       ],
-      "rank": 30
+      "rank": 29
     },
     {
       "id": 3906363730,
@@ -1151,41 +1115,77 @@
         "可观测性",
         "Agent安全"
       ],
-      "rank": 31
+      "rank": 30
     },
     {
-      "id": 3906363721,
-      "title": "OpenAI 发布药物化学推理基准 MedChemBench",
-      "titleEn": "Can AI help scientists identify promising drug candidates?",
-      "summary": "OpenAI 发布 MedChemBench，基于 117 篇论文与专利整理出 99 道药物化学问题和 761 个分子结构，用于评估模型在化学证据检索、结构推理和候选判断上的能力；其报告称 GPT‑6.2 Astra 在 xhigh 设置下获得 84.5% 的可得分分数。",
-      "change": "从以通用科学问答展示模型能力，转向用可追溯文献、分子结构和多步判断构成的公开药物化学评测任务。",
-      "why": "它为科研团队比较模型在真实专业推理中的边界提供了更具体的测试框架，但 OpenAI 也明确说明该基准不能证明模型已经具备现实药物发现能力。",
-      "watch": "观察是否发布可复现实验材料、独立团队能否验证结果，以及模型在未见化学空间、工具调用和专家审阅下的表现。",
+      "id": 3906363724,
+      "title": "SageMaker HyperPod 增加跨区域全局推理网关",
+      "titleEn": "Introducing Amazon SageMaker HyperPod Global Inference Gateway: One endpoint across Regions and clusters",
+      "summary": "AWS 为 SageMaker HyperPod 推出 Global Inference Gateway：一个托管端点可在注册的集群和区域之间基于 KV 缓存余量、队列深度、区域邻近度与错误率路由请求，并在集群故障时自动切换。",
+      "change": "从单集群的 GPU 感知路由，提升为跨集群、跨区域的统一入口和自动故障转移层。",
+      "why": "对于自建大模型推理集群，跨区域 GPU 利用率和故障恢复通常需要自建 DNS、负载均衡与网络层；托管网关将这些运维能力产品化。",
+      "watch": "观察首批区域、协议与模型框架支持范围，以及跨区域路由在延迟、数据边界和总体成本上的真实表现。",
       "verification": "官方一手",
-      "source": "OpenAI",
+      "source": "AWS",
       "sources": [
-        "OpenAI"
+        "AWS"
       ],
       "sourceLinks": [
         {
-          "name": "OpenAI",
-          "url": "https://openai.com/index/introducing-medchembench/",
+          "name": "AWS",
+          "url": "https://aws.amazon.com/blogs/machine-learning/introducing-amazon-sagemaker-hyperpod-global-inference-gateway-one-endpoint-across-regions-and-clusters/",
           "tier": 1
         }
       ],
       "publishedAt": "2026-11-20T00:00:00.000Z",
       "publishedPrecision": "date",
-      "firstSeenAt": "2026-11-20T23:47:11.511Z",
-      "category": "研究",
+      "firstSeenAt": "2026-11-21T23:47:02.036Z",
+      "category": "算力",
       "region": "全球",
       "impact": "关注",
-      "score": 81,
-      "url": "https://openai.com/index/introducing-medchembench/",
+      "score": 82,
+      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-amazon-sagemaker-hyperpod-global-inference-gateway-one-endpoint-across-regions-and-clusters/",
       "tags": [
-        "OpenAI",
-        "MedChemBench",
-        "药物化学",
-        "评测"
+        "AWS",
+        "SageMaker",
+        "HyperPod",
+        "推理路由"
+      ],
+      "rank": 31
+    },
+    {
+      "id": 3906363718,
+      "firstSeenAt": "2026-11-20T02:20:51.000Z",
+      "publishedPrecision": "date",
+      "verification": "官方一手",
+      "title": "Microsoft 将 Agent 权限与可观测性列为 AI 安全重点",
+      "titleEn": "Security fundamentals to enable the frontier",
+      "summary": "Microsoft 在安全文章中提出，企业应把 AI Agent 视为内部风险主体，围绕最小权限、可观测性、补丁速度和人工保留关键决策来构建防御，并援引其此前披露的 AI 辅助攻击活动。",
+      "change": "从把生成式 AI 风险主要视为模型层问题，转向把 Agent 身份、资源权限、动作范围与监控纳入企业安全治理。",
+      "why": "当 Agent 获得云资源、代码库和业务系统权限后，安全控制点不再只在模型输入输出，而在身份、授权、审计与人工接管机制。",
+      "watch": "观察 Microsoft Agent 365 等治理产品的实际功能边界，以及企业如何把 Agent 资产盘点和最小权限纳入现有安全运营。",
+      "source": "Microsoft",
+      "sources": [
+        "Microsoft"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Microsoft",
+          "url": "https://blogs.microsoft.com/on-the-issues/2026/11/19/security-fundamentals-to-enable-the-frontier/",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-19T00:00:00.000Z",
+      "category": "安全",
+      "region": "全球",
+      "impact": "关注",
+      "score": 82,
+      "url": "https://blogs.microsoft.com/on-the-issues/2026/11/19/security-fundamentals-to-enable-the-frontier/",
+      "tags": [
+        "Microsoft",
+        "Agent Security",
+        "可观测性",
+        "治理"
       ],
       "rank": 32
     },
@@ -1226,40 +1226,40 @@
       "rank": 33
     },
     {
-      "id": 1080720566,
-      "title": "SageMaker HyperPod 增强训练基础设施可观测性",
-      "titleEn": "Introducing enhanced infrastructure observability in Amazon SageMaker HyperPod",
-      "summary": "AWS 为 SageMaker HyperPod 发布增强可观测性，可在 EKS 与 Slurm 训练中识别异常 GPU、ECC/XID 错误、网络吞吐下降与过热等问题。",
-      "why": "大规模训练的浪费常来自定位故障而非发现故障；更细粒度的遥测能减少昂贵集群的无效 GPU 小时。",
-      "source": "AWS",
+      "id": 3906363721,
+      "title": "OpenAI 发布药物化学推理基准 MedChemBench",
+      "titleEn": "Can AI help scientists identify promising drug candidates?",
+      "summary": "OpenAI 发布 MedChemBench，基于 117 篇论文与专利整理出 99 道药物化学问题和 761 个分子结构，用于评估模型在化学证据检索、结构推理和候选判断上的能力；其报告称 GPT‑6.2 Astra 在 xhigh 设置下获得 84.5% 的可得分分数。",
+      "change": "从以通用科学问答展示模型能力，转向用可追溯文献、分子结构和多步判断构成的公开药物化学评测任务。",
+      "why": "它为科研团队比较模型在真实专业推理中的边界提供了更具体的测试框架，但 OpenAI 也明确说明该基准不能证明模型已经具备现实药物发现能力。",
+      "watch": "观察是否发布可复现实验材料、独立团队能否验证结果，以及模型在未见化学空间、工具调用和专家审阅下的表现。",
+      "verification": "官方一手",
+      "source": "OpenAI",
       "sources": [
-        "AWS"
+        "OpenAI"
       ],
       "sourceLinks": [
         {
-          "name": "AWS",
-          "url": "https://aws.amazon.com/blogs/machine-learning/introducing-enhanced-observability-in-amazon-sagemaker-hyperpod-to-diagnose-gpu-training-issues/",
+          "name": "OpenAI",
+          "url": "https://openai.com/index/introducing-medchembench/",
           "tier": 1
         }
       ],
-      "publishedAt": "2026-11-19T00:00:00.000Z",
-      "category": "算力",
+      "publishedAt": "2026-11-20T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-20T23:47:11.511Z",
+      "category": "研究",
       "region": "全球",
       "impact": "关注",
-      "score": 80,
-      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-enhanced-observability-in-amazon-sagemaker-hyperpod-to-diagnose-gpu-training-issues/",
+      "score": 81,
+      "url": "https://openai.com/index/introducing-medchembench/",
       "tags": [
-        "AWS",
-        "HyperPod",
-        "GPU",
-        "可观测性"
+        "OpenAI",
+        "MedChemBench",
+        "药物化学",
+        "评测"
       ],
-      "rank": 34,
-      "firstSeenAt": "2026-11-20T00:18:26.000Z",
-      "publishedPrecision": "date",
-      "change": "从多工具拼接排障转为集群级 GPU、网络与训练任务的联合基础设施诊断。",
-      "watch": "观察可支持的集群规模、异常告警准确性和对平均故障定位时间的改善。",
-      "verification": "官方一手"
+      "rank": 34
     },
     {
       "id": 3906363731,
@@ -1298,6 +1298,76 @@
       "rank": 35
     },
     {
+      "id": 1080720566,
+      "title": "SageMaker HyperPod 增强训练基础设施可观测性",
+      "titleEn": "Introducing enhanced infrastructure observability in Amazon SageMaker HyperPod",
+      "summary": "AWS 为 SageMaker HyperPod 发布增强可观测性，可在 EKS 与 Slurm 训练中识别异常 GPU、ECC/XID 错误、网络吞吐下降与过热等问题。",
+      "why": "大规模训练的浪费常来自定位故障而非发现故障；更细粒度的遥测能减少昂贵集群的无效 GPU 小时。",
+      "source": "AWS",
+      "sources": [
+        "AWS"
+      ],
+      "sourceLinks": [
+        {
+          "name": "AWS",
+          "url": "https://aws.amazon.com/blogs/machine-learning/introducing-enhanced-observability-in-amazon-sagemaker-hyperpod-to-diagnose-gpu-training-issues/",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-19T00:00:00.000Z",
+      "category": "算力",
+      "region": "全球",
+      "impact": "关注",
+      "score": 80,
+      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-enhanced-observability-in-amazon-sagemaker-hyperpod-to-diagnose-gpu-training-issues/",
+      "tags": [
+        "AWS",
+        "HyperPod",
+        "GPU",
+        "可观测性"
+      ],
+      "rank": 36,
+      "firstSeenAt": "2026-11-20T00:18:26.000Z",
+      "publishedPrecision": "date",
+      "change": "从多工具拼接排障转为集群级 GPU、网络与训练任务的联合基础设施诊断。",
+      "watch": "观察可支持的集群规模、异常告警准确性和对平均故障定位时间的改善。",
+      "verification": "官方一手"
+    },
+    {
+      "id": 3906363750,
+      "title": "AWS DevOps Agent 扩展 Sandbox 并限制自动审查预览采样",
+      "titleEn": "What's new - AWS DevOps Agent",
+      "summary": "AWS 记录显示，11月21日 DevOps Agent Sandbox 覆盖全部商业区域；11月22日 Automatic Reviews 预览采样率限制为1%–10%。",
+      "change": "Sandbox 走向商业区域覆盖，自动审查仍是受限采样预览。",
+      "why": "Agent 代码执行可进入受约束环境，但权限、软件源和审查采样都仍需逐项治理。",
+      "watch": "观察审查采样放宽及更细粒度网络和身份控制。",
+      "verification": "官方一手",
+      "source": "AWS Documentation",
+      "sources": [
+        "AWS Documentation"
+      ],
+      "sourceLinks": [
+        {
+          "name": "AWS Documentation",
+          "url": "https://docs.aws.amazon.com/devopsagent/latest/userguide/whats-new.html",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-22T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-24T05:38:35.146Z",
+      "category": "AI Coding",
+      "region": "全球",
+      "impact": "关注",
+      "score": 79,
+      "url": "https://docs.aws.amazon.com/devopsagent/latest/userguide/whats-new.html",
+      "tags": [
+        "AWS",
+        "AI Coding"
+      ],
+      "rank": 37
+    },
+    {
       "id": 3906363737,
       "title": "Hugging Face 发布 Agent 评测构建与维护指南",
       "titleEn": "How to build and maintain an agentic evaluation",
@@ -1331,7 +1401,7 @@
         "Trace",
         "企业部署"
       ],
-      "rank": 36
+      "rank": 38
     },
     {
       "id": 3906363732,
@@ -1367,41 +1437,41 @@
         "Agent状态",
         "开源"
       ],
-      "rank": 37
+      "rank": 39
     },
     {
-      "id": 3906363750,
-      "title": "AWS DevOps Agent 扩展 Sandbox 并限制自动审查预览采样",
-      "titleEn": "What's new - AWS DevOps Agent",
-      "summary": "AWS 记录显示，11月21日 DevOps Agent Sandbox 覆盖全部商业区域；11月22日 Automatic Reviews 预览采样率限制为1%–10%。",
-      "change": "Sandbox 走向商业区域覆盖，自动审查仍是受限采样预览。",
-      "why": "Agent 代码执行可进入受约束环境，但权限、软件源和审查采样都仍需逐项治理。",
-      "watch": "观察审查采样放宽及更细粒度网络和身份控制。",
+      "id": 3906363744,
+      "title": "OpenAI Node SDK 加入 Agent 会话消费限额",
+      "titleEn": "openai-node v7.63.0",
+      "summary": "OpenAI 官方 Node SDK 于11月23日发布 v7.63.0，新增 Agent Sessions 的 spending limits API 字段。",
+      "change": "SDK 层增加了会话级预算控制入口。",
+      "why": "长链 Agent 的重试和工具循环可能迅速放大成本；原生限额是生产治理基础但不能替代任务级监控。",
+      "watch": "观察其他 SDK、控制台和告警接口是否同步支持。",
       "verification": "官方一手",
-      "source": "AWS Documentation",
+      "source": "GitHub · openai/openai-node",
       "sources": [
-        "AWS Documentation"
+        "GitHub · openai/openai-node"
       ],
       "sourceLinks": [
         {
-          "name": "AWS Documentation",
-          "url": "https://docs.aws.amazon.com/devopsagent/latest/userguide/whats-new.html",
+          "name": "GitHub · openai/openai-node",
+          "url": "https://github.com/openai/openai-node/releases",
           "tier": 1
         }
       ],
-      "publishedAt": "2026-11-22T00:00:00.000Z",
-      "publishedPrecision": "date",
+      "publishedAt": "2026-11-23T19:00:00.000Z",
+      "publishedPrecision": "datetime",
       "firstSeenAt": "2026-11-24T05:38:35.146Z",
       "category": "AI Coding",
       "region": "全球",
       "impact": "关注",
-      "score": 79,
-      "url": "https://docs.aws.amazon.com/devopsagent/latest/userguide/whats-new.html",
+      "score": 78,
+      "url": "https://github.com/openai/openai-node/releases",
       "tags": [
-        "AWS",
+        "GitHub",
         "AI Coding"
       ],
-      "rank": 38
+      "rank": 40
     },
     {
       "id": 3906363738,
@@ -1437,7 +1507,7 @@
         "RoboTrack",
         "开源评测"
       ],
-      "rank": 39
+      "rank": 41
     },
     {
       "id": 1098711981,
@@ -1468,46 +1538,12 @@
         "语音Agent",
         "SageMaker"
       ],
-      "rank": 40,
+      "rank": 42,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从供应商托管的对话模型扩展到可在客户 AWS 账户内部署的 JumpStart 选项。",
       "watch": "观察支持语言、端到端延迟、商业定价以及受监管客户的规模化采用。",
       "verification": "官方一手"
-    },
-    {
-      "id": 3906363744,
-      "title": "OpenAI Node SDK 加入 Agent 会话消费限额",
-      "titleEn": "openai-node v7.63.0",
-      "summary": "OpenAI 官方 Node SDK 于11月23日发布 v7.63.0，新增 Agent Sessions 的 spending limits API 字段。",
-      "change": "SDK 层增加了会话级预算控制入口。",
-      "why": "长链 Agent 的重试和工具循环可能迅速放大成本；原生限额是生产治理基础但不能替代任务级监控。",
-      "watch": "观察其他 SDK、控制台和告警接口是否同步支持。",
-      "verification": "官方一手",
-      "source": "GitHub · openai/openai-node",
-      "sources": [
-        "GitHub · openai/openai-node"
-      ],
-      "sourceLinks": [
-        {
-          "name": "GitHub · openai/openai-node",
-          "url": "https://github.com/openai/openai-node/releases",
-          "tier": 1
-        }
-      ],
-      "publishedAt": "2026-11-23T19:00:00.000Z",
-      "publishedPrecision": "datetime",
-      "firstSeenAt": "2026-11-24T05:38:35.146Z",
-      "category": "AI Coding",
-      "region": "全球",
-      "impact": "关注",
-      "score": 78,
-      "url": "https://github.com/openai/openai-node/releases",
-      "tags": [
-        "GitHub",
-        "AI Coding"
-      ],
-      "rank": 41
     },
     {
       "id": 3906363749,
@@ -1541,7 +1577,7 @@
         "TechNode",
         "研究"
       ],
-      "rank": 42
+      "rank": 43
     },
     {
       "id": 3906363733,
@@ -1577,7 +1613,7 @@
         "Cursor",
         "开源"
       ],
-      "rank": 43
+      "rank": 44
     },
     {
       "id": 2236239695,
@@ -1608,7 +1644,7 @@
         "VPC",
         "AI Agent"
       ],
-      "rank": 44,
+      "rank": 45,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从原型数据库需要重建迁移变为可保留数据与 endpoint 并迁入私有 VPC。",
@@ -1644,7 +1680,7 @@
         "推理",
         "Serverless"
       ],
-      "rank": 45,
+      "rank": 46,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从最长十五分钟的按需事件函数执行窗口扩展至三十分钟。",
