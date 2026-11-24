@@ -1,6 +1,6 @@
 'use client';
 
-import { Activity, ArrowDown, Bookmark, BookmarkCheck, Check, ChevronDown, Clock3, Command, ExternalLink, Filter, Globe2, Languages, RefreshCw, Search, ShieldCheck, Sparkles, Waves } from 'lucide-react';
+import { Activity, ArrowDown, Bookmark, BookmarkCheck, Check, ChevronDown, Command, ExternalLink, Filter, Globe2, Languages, Search, ShieldCheck, Sparkles } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import dashboardJson from '@/data/dashboard.json';
 import focusProfileJson from '@/config/focus-profile.json';
@@ -28,20 +28,18 @@ const focusProfile = focusProfileJson as FocusProfile;
 const news = dashboard.items;
 const categories = ['全部', '本地AI', '模型', 'AI Coding', '算力', '研究', '产品', '资本', '安全', '开源'];
 const dateTime = new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Shanghai', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false });
-const dateOnly = new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Shanghai', month: '2-digit', day: '2-digit' });
+const categoryLabel = (value: string) => value === '本地AI' ? '本土 AI' : value;
+function publicationDate(item: NewsItem, full = false) {
+  const value = new Date(item.publishedAt);
+  // Date-only sources carry a calendar date, not an exact publication instant.
+  const zone = item.publishedPrecision === 'date' ? 'UTC' : 'Asia/Shanghai';
+  return new Intl.DateTimeFormat('zh-CN', { timeZone: zone, ...(full ? { year: 'numeric' as const } : {}), month: 'long', day: 'numeric', ...(full && item.publishedPrecision !== 'date' ? { hour: '2-digit' as const, minute: '2-digit' as const, hour12: false } : {}) }).format(value);
+}
 const updatedAt = dateTime.format(new Date(dashboard.contentUpdatedAt || dashboard.generatedAt));
 
 function age(item: NewsItem, clock: number, published = false) {
   const stamp = new Date(published ? item.publishedAt : item.firstSeenAt || dashboard.contentUpdatedAt || dashboard.generatedAt).getTime();
   return Number.isFinite(stamp) ? Math.max(0, (clock - stamp) / 3600000) : Infinity;
-}
-function relativeTime(item: NewsItem, clock: number) {
-  if (item.publishedPrecision === 'date') return dateOnly.format(new Date(item.publishedAt));
-  const hours = age(item, clock, true);
-  if (hours < 1) return '刚刚';
-  if (hours < 24) return `${Math.floor(hours)} 小时前`;
-  const days = Math.floor(hours / 24);
-  return days < 7 ? `${days} 天前` : dateOnly.format(new Date(item.publishedAt));
 }
 function relevance(item: NewsItem) {
   const text = `${item.title} ${item.titleEn} ${item.summary} ${item.why} ${item.tags.join(' ')}`.toLowerCase();
@@ -127,7 +125,7 @@ export default function Home() {
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState('全部');
   const [range, setRange] = useState(24);
-  const [sort, setSort] = useState<'影响力' | '最新' | '来源数'>('影响力');
+  const [sort, setSort] = useState<'推荐顺序' | '最新发布' | '来源数'>('最新发布');
   const [bilingual, setBilingual] = useState(false);
   const [bookmarks, setBookmarks] = useState<number[]>([]);
   const [selectedId, setSelectedId] = useState(news[0]?.id || 0);
@@ -152,15 +150,11 @@ export default function Home() {
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return rangeNews.filter((item) => (category === '全部' || item.category === category) && (!q || `${item.title} ${item.titleEn} ${item.summary} ${item.source} ${item.tags.join(' ')}`.toLowerCase().includes(q)))
-      .sort((a, b) => sort === '最新' ? age(a, clock, true) - age(b, clock, true) : sort === '来源数' ? b.sources.length - a.sources.length : b.score - a.score);
+      .sort((a, b) => sort === '最新发布' ? age(a, clock, true) - age(b, clock, true) : sort === '来源数' ? b.sources.length - a.sources.length : b.score - a.score);
   }, [category, clock, query, rangeNews, sort]);
   const selected = filtered.find((item) => item.id === selectedId) || filtered[0];
   const snapshot = new Date(dashboard.contentUpdatedAt || dashboard.generatedAt).getTime();
   const isStale = dashboard.status?.state !== 'fresh' || (clock - snapshot) / 3600000 > 36;
-  const highImpact = rangeNews.filter((item) => item.impact !== '关注').length;
-  const highImpactCategories = new Set(rangeNews.filter((item) => item.impact !== '关注').map((item) => item.category)).size;
-  const intensity = highImpact >= 5 ? '高' : highImpact >= 2 ? '偏高' : highImpact === 0 ? '平静' : '常态';
-  const chinaRatio = rangeNews.length ? Math.round(rangeNews.filter((item) => item.region === '中国').length / rangeNews.length * 100) : 0;
   const pulseSignals = useMemo(() => {
     const groups = new Map<string, { count: number; total: number; title: string }>();
     rangeNews.forEach((item) => { const value = groups.get(item.category) || { count: 0, total: 0, title: item.title }; groups.set(item.category, { count: value.count + 1, total: value.total + item.score, title: value.total > item.score ? value.title : item.title }); });
@@ -193,54 +187,52 @@ export default function Home() {
       <section className="signal-hero" id="top" onPointerMove={(event) => { const box = event.currentTarget.getBoundingClientRect(); event.currentTarget.style.setProperty('--hero-x', `${(event.clientX - box.left) / box.width * 100}%`); event.currentTarget.style.setProperty('--hero-y', `${(event.clientY - box.top) / box.height * 100}%`); }}>
         <div className="hero-orbit" aria-hidden="true"><i /><i /><i /></div>
         <div className="hero-heading"><span><Activity size={13} /> 市场脉搏</span><h1>先看懂变化，<br />再进入新闻。</h1><p>{dashboard.brief.title}</p></div>
-        <div className="market-state"><span>今日信号强度</span><b>{intensity}</b><small>{rangeNews.length} 个有效事件 · {highImpact} 个高影响信号 · 覆盖 {highImpactCategories} 个领域</small></div>
 
         <div className="signal-map" aria-label="当前市场信号图谱">
           <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
             {pulseSignals.map((signal, i) => <line key={`core-${signal.name}`} className={hoverSignal === signal.name ? 'active' : ''} x1="50" y1="50" x2={positions[i][0]} y2={positions[i][1]} />)}
             {pulseSignals.slice(0, -1).map((signal, i) => <line key={`mesh-${signal.name}`} className="mesh" x1={positions[i][0]} y1={positions[i][1]} x2={positions[i + 1][0]} y2={positions[i + 1][1]} />)}
           </svg>
-          <button className="signal-core" onClick={() => chooseSignal('全部')}><span>今日信号</span><b>{rangeNews.length}</b><small>点击查看全部</small></button>
-          {pulseSignals.map((signal, i) => <button key={signal.name} className={`signal-node ${signal.score >= 88 ? 'hot' : ''} ${category === signal.name ? 'selected' : ''}`} style={{ left: `${positions[i][0]}%`, top: `${positions[i][1]}%`, '--node-size': `${64 + Math.min(28, signal.count * 7)}px` } as React.CSSProperties} onPointerEnter={() => setHoverSignal(signal.name)} onPointerLeave={() => setHoverSignal(null)} onFocus={() => setHoverSignal(signal.name)} onBlur={() => setHoverSignal(null)} onClick={() => chooseSignal(signal.name)}><b>{signal.name}</b><small>{signal.count} 条 · {signal.score}</small></button>)}
-          <div className={`signal-tooltip ${activeSignal ? 'visible' : ''}`}><span>{activeSignal?.name || '信号详情'}</span><b>{activeSignal?.title || '悬停节点查看该领域的首要事件'}</b><small>点击以筛选并进入新闻扫描</small></div>
+          <button className="signal-core" onClick={() => chooseSignal('全部')}><span>新闻</span><b>{rangeNews.length}</b><small>点击查看全部</small></button>
+          {pulseSignals.map((signal, i) => <button key={signal.name} className={`signal-node ${category === signal.name ? 'selected' : ''}`} style={{ left: `${positions[i][0]}%`, top: `${positions[i][1]}%`, '--node-size': `${64 + Math.min(28, signal.count * 7)}px` } as React.CSSProperties} onPointerEnter={() => setHoverSignal(signal.name)} onPointerLeave={() => setHoverSignal(null)} onFocus={() => setHoverSignal(signal.name)} onBlur={() => setHoverSignal(null)} onClick={() => chooseSignal(signal.name)}><b>{categoryLabel(signal.name)}</b><small>{signal.count} 条</small></button>)}
+          <div className={`signal-tooltip ${activeSignal ? 'visible' : ''}`}><span>{categoryLabel(activeSignal?.name || '分类新闻')}</span><b>{activeSignal?.title || '悬停节点查看该领域的首要事件'}</b><small>点击以筛选并进入新闻扫描</small></div>
         </div>
 
-        <aside className="focus-now"><header><Sparkles size={14} /><span>今天该关注</span></header>{leadSignals.map((item, index) => <button key={item.id} onClick={() => { setCategory('全部'); setSelectedId(item.id); terminalRef.current?.scrollIntoView({ behavior: 'smooth' }); }}><i>{String(index + 1).padStart(2, '0')}</i><span><b>{item.title}</b><small>{item.category} · 影响力 {item.score}</small></span></button>)}</aside>
+        <aside className="focus-now"><header><Sparkles size={14} /><span>今天该关注</span></header>{leadSignals.map((item) => <button aria-label={item.title} key={item.id} onClick={() => { setCategory('全部'); setSelectedId(item.id); terminalRef.current?.scrollIntoView({ behavior: 'smooth' }); }}><span><b>{item.title}</b><small>{categoryLabel(item.category)} · {publicationDate(item)}</small></span></button>)}</aside>
         <button className="enter-terminal" onClick={() => terminalRef.current?.scrollIntoView({ behavior: 'smooth' })}><span>进入新闻扫描</span><ArrowDown size={16} /></button>
       </section>
 
-      <div className="market-ribbon"><span><Waves size={14} /> 今日信号强度：{intensity}</span><i /><b>{rangeNews.length} 信号</b><b>{highImpact} 高影响</b><b>覆盖 {highImpactCategories} 个领域</b><b>{chinaRatio}% 中国相关</b><small>更新于 {updatedAt}</small></div>
 
       <section className="research-terminal" ref={terminalRef}>
         <aside className="filter-rail">
           <header><Filter size={15} /><span>筛选</span></header>
           <section><small>时间范围</small>{[[24, '24 小时'], [72, '3 天'], [168, '7 天']].map(([value, label]) => <button key={value} className={range === value ? 'active' : ''} onClick={() => setRange(Number(value))}><span>{label}</span>{range === value && <Check size={13} />}</button>)}</section>
-          <section><small>情报领域</small>{categories.map((item) => <button key={item} className={category === item ? 'active' : ''} onClick={() => setCategory(item)}><span>{item}</span><em>{item === '全部' ? rangeNews.length : rangeNews.filter((entry) => entry.category === item).length}</em></button>)}</section>
-          <section><small>排序</small><select value={sort} onChange={(e) => setSort(e.target.value as typeof sort)}><option>影响力</option><option>最新</option><option>来源数</option></select></section>
+          <section><small>情报领域</small>{categories.map((item) => <button key={item} className={category === item ? 'active' : ''} onClick={() => setCategory(item)}><span>{categoryLabel(item)}</span><em>{item === '全部' ? rangeNews.length : rangeNews.filter((entry) => entry.category === item).length}</em></button>)}</section>
+          <section><small>排序</small><select value={sort} onChange={(e) => setSort(e.target.value as typeof sort)}><option>最新发布</option><option>推荐顺序</option><option>来源数</option></select></section>
         </aside>
 
         <section className="news-scanner">
-          <header><div><span>实时信号</span><h2>{category === '全部' ? '新闻扫描' : category}</h2></div><b>{filtered.length}</b></header>
-          <div className="news-list">{filtered.map((item, index) => <button key={item.id} className={`${selected?.id === item.id ? 'selected' : ''} ${item.impact !== '关注' ? 'high-impact' : ''}`} onClick={() => setSelectedId(item.id)}><span className="news-rank">{String(index + 1).padStart(2, '0')}</span><span className="news-copy"><small><i className={`impact-dot impact-${item.impact}`} />{item.category} · {relativeTime(item, clock)}</small><b>{item.title}</b><em>{item.source} · 影响力 {item.score}</em></span></button>)}
-          {!filtered.length && <div className="news-empty"><Search size={22} /><b>这个范围内没有匹配信号</b><p>扩大时间范围或清除当前筛选。</p><button onClick={() => { setQuery(''); setCategory('全部'); setRange(168); }}>查看 7 天全部新闻</button></div>}</div>
+          <header><div><span>新闻</span><h2>{category === '全部' ? '新闻列表' : categoryLabel(category)}</h2></div><b>{filtered.length}</b></header>
+          <div className="news-list">{filtered.map((item) => <button aria-label={item.title} key={item.id} className={selected?.id === item.id ? 'selected' : ''} onClick={() => setSelectedId(item.id)}><span className="news-copy"><small>{categoryLabel(item.category)} · <time dateTime={item.publishedAt}>{publicationDate(item)}</time></small><b>{item.title}</b><em>来源：{item.source}</em></span></button>)}
+          {!filtered.length && <div className="news-empty"><Search size={22} /><b>这个范围内没有匹配新闻</b><p>扩大时间范围或清除当前筛选。</p><button onClick={() => { setQuery(''); setCategory('全部'); setRange(168); }}>查看 7 天全部新闻</button></div>}</div>
         </section>
 
         {selected && <article className="research-detail">
-          <header className="research-meta"><div><span className={`impact-pill impact-${selected.impact}`}>{selected.impact}</span><span>{selected.region}</span><span>{selected.category}</span><span><Clock3 size={13} /> {relativeTime(selected, clock)}</span></div><div><button aria-label="收藏" onClick={() => toggleBookmark(selected.id)}>{bookmarks.includes(selected.id) ? <BookmarkCheck size={17} /> : <Bookmark size={17} />}</button><a href={selected.url} target="_blank" rel="noreferrer"><ExternalLink size={16} /> 原文</a></div></header>
-          <div className="research-title"><span>{String(filtered.findIndex((item) => item.id === selected.id) + 1).padStart(2, '0')} / {String(filtered.length).padStart(2, '0')}</span><h2>{selected.title}</h2>{bilingual && <p>{selected.titleEn}</p>}</div>
+          <header className="research-meta"><div><time dateTime={selected.publishedAt}>{publicationDate(selected, true)}发布</time><span>{selected.region}</span><span>{categoryLabel(selected.category)}</span></div><div><button aria-label="收藏" onClick={() => toggleBookmark(selected.id)}>{bookmarks.includes(selected.id) ? <BookmarkCheck size={17} /> : <Bookmark size={17} />}</button><a href={selected.url} target="_blank" rel="noreferrer"><ExternalLink size={16} /> 阅读原文</a></div></header>
+          <div className="research-title"><h2>{selected.title}</h2>{bilingual && <p>{selected.titleEn}</p>}</div>
           <p className="research-summary">{selected.summary}</p>
           <section className="editorial-take"><span>核心判断</span><p>{selected.why}</p></section>
           {!!relevance(selected).length && <div className="research-relevance"><b>与你相关</b>{relevance(selected).map((item) => <span key={item.name}>{item.name}</span>)}</div>}
-          <section className="relationship-map"><header><Activity size={14} /><span>事件关系</span></header><div><b>{selected.category}</b>{selected.tags.slice(0, 5).map((tag) => <span key={tag}>{tag}</span>)}<em>{selected.sourceLinks.length} 个核验来源</em></div></section>
+          <div className="related-topics"><span>相关主题：</span>{[...new Set(selected.tags.filter((tag) => tag !== selected.category))].map(categoryLabel).join('、')}</div>
           <div className="research-timeline">
-            <details open><summary><span><i>01</i>发生了什么变化</span><ChevronDown size={16} /></summary><p>{selected.change || selected.summary}</p></details>
-            <details><summary><span><i>02</i>下一步观察</span><ChevronDown size={16} /></summary><p>{selected.watch || '继续观察后续产品可用性、定价和第三方验证。'}</p></details>
-            <details><summary><span><i>03</i>来源与验证</span><ChevronDown size={16} /></summary><div className="source-links"><p><ShieldCheck size={15} />{selected.verification || `${selected.sources.length} 个来源交叉核验`}</p>{selected.sourceLinks.map((source) => <a key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.name}{source.tier === 1 ? ' · 官方' : ''}<ExternalLink size={12} /></a>)}</div></details>
+            <details open><summary><span>发生了什么变化</span><ChevronDown size={16} /></summary><p>{selected.change || selected.summary}</p></details>
+            <details><summary><span>下一步观察</span><ChevronDown size={16} /></summary><p>{selected.watch || '继续观察后续产品可用性、定价和第三方验证。'}</p></details>
+            <details><summary><span>来源与验证</span><ChevronDown size={16} /></summary><div className="source-links"><p><ShieldCheck size={15} />{selected.verification || `${selected.sources.length} 个来源交叉核验`}</p>{selected.sourceLinks.map((source) => <a key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.name}{source.tier === 1 ? ' · 官方' : ''}<ExternalLink size={12} /></a>)}</div></details>
           </div>
         </article>}
       </section>
 
-      <footer className="intelligence-footer"><span><Globe2 size={14} /> {dashboard.mode}</span><span>{dashboard.sourceHealth.healthy}/{dashboard.sourceHealth.attempted} 来源有效</span><button onClick={() => setBilingual(!bilingual)}><Languages size={14} /> {bilingual ? '双语开启' : '仅中文'}</button><span><RefreshCw size={13} /> {updatedAt}</span></footer>
+      <footer className="intelligence-footer"><span><Globe2 size={14} /> {dashboard.mode}</span><span>{dashboard.sourceHealth.healthy}/{dashboard.sourceHealth.attempted} 来源有效</span><button onClick={() => setBilingual(!bilingual)}><Languages size={14} /> {bilingual ? '双语开启' : '仅中文'}</button></footer>
     </main>
   );
 }
