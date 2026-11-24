@@ -15,7 +15,7 @@ export default function WaterField() {
     let width = 1, height = 1, frame = 0, last = 0, time = 0, visible = true;
     const pointer = { tx: .56, ty: .48, x: .56, y: .48, vx: 0, vy: 0, active: 0, target: 0 };
     const waves: { x: number; y: number; age: number }[] = [];
-    const grains = Array.from({ length: coarse ? 220 : 480 }, (_, i) => ({
+    const grains = Array.from({ length: coarse ? 420 : 960 }, (_, i) => ({
       x: ((i * .61803398875) % 1), y: ((i * .754877666) % 1),
       phase: i * 2.39996, depth: .3 + (i % 11) / 16,
       ox: 0, oy: 0, vx: 0, vy: 0,
@@ -48,6 +48,12 @@ export default function WaterField() {
       pointer.active += (pointer.target - pointer.active) * (1 - Math.exp(-dt * 3));
       const mx = pointer.x * width, my = pointer.y * height;
       ctx.clearRect(0, 0, width, height);
+      // Visible reflected light anchors the response even between sparse grains.
+      const sheen = ctx.createRadialGradient(mx, my, 8, mx, my, 220);
+      sheen.addColorStop(0, `rgba(239,220,189,${.025 + pointer.active * .06})`);
+      sheen.addColorStop(.45, `rgba(198,179,151,${.015 + pointer.active * .025})`);
+      sheen.addColorStop(1, 'rgba(198,179,151,0)');
+      ctx.fillStyle = sheen; ctx.fillRect(0, 0, width, height);
       // Closely spaced contour highlights suggest reflected water, not network edges.
       for (let band = 0; band < 30; band++) {
         ctx.beginPath();
@@ -55,10 +61,16 @@ export default function WaterField() {
           const base = height * (.2 + band * .021);
           const d = Math.hypot(x - mx, base - my);
           const lens = Math.exp(-d * d / 55000) * pointer.active;
-          const y = base + Math.sin(x * .005 + time * .12 + band * .18) * 25 + Math.cos(x * .009 - time * .09 + band * .12) * 12 + lens * Math.sin(d * .014 - time * .6) * 18;
+          let surfaceWave = 0;
+          for (const wave of waves) {
+            const distance = Math.hypot(x - wave.x, base - wave.y);
+            const crest = distance - wave.age * 125;
+            surfaceWave += Math.sin(crest * .055) * Math.exp(-1 * (crest / 55) ** 2) * Math.exp(-wave.age * .5) * 17;
+          }
+          const y = base + Math.sin(x * .005 + time * .12 + band * .18) * 25 + Math.cos(x * .009 - time * .09 + band * .12) * 12 + lens * Math.sin(d * .014 - time * .6) * 26 + surfaceWave;
           if (x === -20) ctx.moveTo(x, y); else ctx.lineTo(x, y);
         }
-        ctx.lineWidth = .55; ctx.strokeStyle = `rgba(224,210,187,${.018 + Math.sin(band * .45 + time * .12) ** 8 * .035})`; ctx.stroke();
+        ctx.lineWidth = .85; ctx.strokeStyle = `rgba(224,210,187,${.055 + Math.sin(band * .45 + time * .12) ** 8 * .09})`; ctx.stroke();
       }
       for (const p of grains) {
         const bx = p.x * width, by = p.y * height;
@@ -66,19 +78,19 @@ export default function WaterField() {
         const d = Math.max(1, Math.hypot(dx, dy));
         const force = Math.exp(-d * d / 26000) * pointer.active;
         if (!motion.matches) {
-          p.vx += ((dx / d * force * .11 - dy / d * force * .028) * p.depth - p.ox * .0018) * step;
-          p.vy += ((dy / d * force * .11 + dx / d * force * .028) * p.depth - p.oy * .0018) * step;
+          p.vx += ((dx / d * force * .24 - dy / d * force * .065) * p.depth - p.ox * .0018) * step;
+          p.vy += ((dy / d * force * .24 + dx / d * force * .065) * p.depth - p.oy * .0018) * step;
           p.vx *= Math.pow(.93, step); p.vy *= Math.pow(.93, step); p.ox += p.vx * step; p.oy += p.vy * step;
         }
         let displacement = 0;
         for (const wave of waves) {
           const distance = Math.hypot(bx - wave.x, by - wave.y);
-          displacement += Math.sin((distance - wave.age * 95) * .065) * Math.exp(-1 * ((distance - wave.age * 95) / 28) ** 2) * Math.exp(-wave.age * .7) * 7;
+          displacement += Math.sin((distance - wave.age * 125) * .055) * Math.exp(-1 * ((distance - wave.age * 125) / 55) ** 2) * Math.exp(-wave.age * .5) * 17;
         }
         const x = bx + p.ox + Math.sin(time * .11 + p.phase) * 3;
         const y = by + p.oy + Math.cos(time * .13 + p.phase) * 3 + displacement;
-        ctx.fillStyle = `rgba(239,226,205,${(.12 + force * .3) * p.depth})`;
-        ctx.beginPath(); ctx.arc(x, y, .35 + p.depth * .55, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = `rgba(239,226,205,${(.26 + force * .48) * p.depth})`;
+        ctx.beginPath(); ctx.arc(x, y, .55 + p.depth * .75, 0, Math.PI * 2); ctx.fill();
       }
       for (let i = waves.length - 1; i >= 0; i--) { waves[i].age += dt; if (waves[i].age > 4) waves.splice(i, 1); }
       if (visible && !document.hidden && !motion.matches) frame = requestAnimationFrame(draw);
