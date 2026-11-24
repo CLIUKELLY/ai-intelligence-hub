@@ -14,19 +14,19 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://cliukelly.github.io'),
-  title: 'AI Intelligence Hub — Personalized AI Market Pulse',
+  title: '有数儿 Noted｜AI 的事，心里有数。',
   description:
     '按你的关注方向研究、筛选和解释全球与中国 AI 新闻，用已有的 GPT 与 GitHub 轻量运行。',
   openGraph: {
-    title: 'AI Intelligence Hub — Personalized AI Market Pulse',
-    description: '不是更多新闻，而是与你相关、可核验、能改变判断的 AI 信号。',
+    title: '有数儿 Noted｜AI 的事，心里有数。',
+    description: 'AI 的事，心里有数。Your daily read on AI.',
     type: 'website',
     images: [{ url: '/ai-intelligence-hub/og.png', width: 1734, height: 907, alt: 'AI Intelligence Hub' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Intelligence Hub — Personalized AI Market Pulse',
-    description: '不是更多新闻，而是与你相关、可核验、能改变判断的 AI 信号。',
+    title: '有数儿 Noted｜AI 的事，心里有数。',
+    description: 'AI 的事，心里有数。Your daily read on AI.',
     images: ['/ai-intelligence-hub/og.png'],
   },
 };
