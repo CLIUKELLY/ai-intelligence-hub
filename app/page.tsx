@@ -1,6 +1,6 @@
 'use client';
 
-import { ArrowDown, Bookmark, BookmarkCheck, Check, ChevronDown, Command, ExternalLink, Filter, Globe2, Languages, Search, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowDown, Bookmark, BookmarkCheck, Check, ChevronDown, Command, ExternalLink, Filter, Globe2, Languages, Search, ShieldCheck } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import dashboardJson from '@/data/dashboard.json';
 import focusProfileJson from '@/config/focus-profile.json';
@@ -59,7 +59,8 @@ export default function Home() {
   const displayTitle = (item: NewsItem) => bilingual ? item.titleEn || item.title : item.title;
   const [bookmarks, setBookmarks] = useState<number[]>([]);
   const [selectedId, setSelectedId] = useState(news[0]?.id || 0);
-  const [hoverSignal, setHoverSignal] = useState<string | null>(null);
+  const [coverVisible, setCoverVisible] = useState(true);
+  const coverRef = useRef<HTMLElement>(null);
   const [clock, setClock] = useState(() => Date.now());
   const searchRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLElement>(null);
@@ -72,7 +73,7 @@ export default function Home() {
     return () => window.clearTimeout(timer);
   }, []);
   useEffect(() => {
-    const shortcut = (event: KeyboardEvent) => { if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); searchRef.current?.focus(); } };
+    const shortcut = (event: KeyboardEvent) => { if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); terminalRef.current?.scrollIntoView({ behavior: 'instant' }); window.setTimeout(() => searchRef.current?.focus(), 100); } };
     addEventListener('keydown', shortcut); return () => removeEventListener('keydown', shortcut);
   }, []);
 
@@ -85,19 +86,14 @@ export default function Home() {
   const selected = filtered.find((item) => item.id === selectedId) || filtered[0];
   const snapshot = new Date(dashboard.contentUpdatedAt || dashboard.generatedAt).getTime();
   const isStale = dashboard.status?.state !== 'fresh' || (clock - snapshot) / 3600000 > 36;
-  const pulseSignals = useMemo(() => {
-    const groups = new Map<string, { count: number; total: number; title: string }>();
-    rangeNews.forEach((item) => { const value = groups.get(item.category) || { count: 0, total: 0, title: item.title }; groups.set(item.category, { count: value.count + 1, total: value.total + item.score, title: value.total > item.score ? value.title : item.title }); });
-    return [...groups].map(([name, value]) => ({ name, count: value.count, score: Math.round(value.total / value.count), title: value.title })).sort((a, b) => b.score - a.score).slice(0, 7);
-  }, [rangeNews]);
-  const positions = [[13, 62], [24, 25], [42, 74], [61, 20], [76, 65], [89, 31], [92, 78]];
   const leadSignals = rangeNews.slice().sort((a, b) => b.score - a.score).slice(0, 3);
-  const activeSignal = hoverSignal ? pulseSignals.find((item) => item.name === hoverSignal) : null;
+  useEffect(() => {
+    if (!coverRef.current) return;
+    const observer = new IntersectionObserver(([entry]) => setCoverVisible(entry.isIntersecting), { rootMargin: '-88px 0px 0px 0px' });
+    observer.observe(coverRef.current);
+    return () => observer.disconnect();
+  }, []);
 
-  const chooseSignal = (name: string) => {
-    setCategory(name); setHoverSignal(name);
-    window.setTimeout(() => terminalRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 260);
-  };
   const toggleBookmark = (id: number) => setBookmarks((items) => {
     const next = items.includes(id) ? items.filter((item) => item !== id) : [...items, id];
     try { localStorage.setItem('aihub-bookmarks', JSON.stringify(next)); } catch {}
@@ -105,29 +101,19 @@ export default function Home() {
   });
 
   return (
-    <main className="intelligence-terminal">
+    <main className={`intelligence-terminal ${coverVisible ? 'cover-active' : 'reading-active'}`}>
       <header className="intelligence-header">
-        <a className="intelligence-brand" aria-label={t('有数儿首页', 'Noted home')} href="#top"><div><b>{t('有数儿', 'Noted')}<em>AI</em></b><small>{t('AI 的事，心里有数。', 'Your daily read on AI.')}</small></div></a>
+        <a className="intelligence-brand" aria-label={t('有数儿首页', 'Noted home')} href="#top"><div><b className="noted-wordmark">{t('有数儿', 'Noted')}<em aria-hidden="true">.</em></b><small className="brand-signature">{t('AI 的事，心里有数。', 'Your daily read on AI.')}</small></div></a>
         <label className="intelligence-search"><Search size={17} /><input ref={searchRef} value={query} onChange={(e) => setQuery(e.target.value)} aria-label={t('搜索新闻', 'Search news')} placeholder={t('搜索公司、模型、事件或来源', 'Search companies, models or news')} /><kbd><Command size={11} /> K</kbd></label>
         <button className="language-switch" onClick={() => setBilingual(!bilingual)} aria-label="Switch interface language">{bilingual ? '中文' : 'EN'}</button><div className="intelligence-status"><i className={isStale ? 'stale' : ''} /><span>{isStale ? t('等待更新', 'Awaiting update') : t('已更新', 'Updated')}</span><b>{updatedAt}</b></div>
       </header>
 
-      <section className="signal-hero noted-hero" id="top">
+      <section className="signal-hero noted-hero editorial-cover" id="top" ref={coverRef}>
         <WaterField />
-        <div className="hero-heading"><span>{t('每日精选', 'THE DAILY READ')}</span><h1>{bilingual ? 'A closer read on AI.' : dashboard.brief.title.replace(/^(今日重点|今天重点|今日判断)[：:]/, '')}</h1><p>{t('读你关心的进展，找到值得继续追问的事。', 'The developments worth your attention. The questions worth following.')}</p></div>
+        <div className="hero-heading"><span className="cover-kicker">{t('每日精选', 'THE DAILY READ')}<time>{updatedAt.split(' ')[0]}</time></span><h1>{bilingual ? 'A closer read on AI.' : dashboard.brief.title.replace(/^(今日重点|今天重点|今日判断)[：:]/, '')}</h1><p>{t('读你关心的进展，找到值得继续追问的事。', 'The developments worth your attention. The questions worth following.')}</p></div>
 
-        <div className="signal-map" aria-label="当前市场信号图谱">
-          <svg className="noted-map-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-            {pulseSignals.map((signal, i) => <line key={`core-${signal.name}`} className={hoverSignal === signal.name ? 'active' : ''} x1="50" y1="50" x2={positions[i][0]} y2={positions[i][1]} />)}
-            {pulseSignals.slice(0, -1).map((signal, i) => <line key={`mesh-${signal.name}`} className="mesh" x1={positions[i][0]} y1={positions[i][1]} x2={positions[i + 1][0]} y2={positions[i + 1][1]} />)}
-          </svg>
-          <button className="signal-core" onClick={() => chooseSignal('全部')}><span>{t('新闻', 'Stories')}</span><b>{rangeNews.length}</b><small>{t('查看全部', 'View all')}</small></button>
-          {pulseSignals.map((signal, i) => <button key={signal.name} className={`signal-node ${category === signal.name ? 'selected' : ''}`} style={{ left: `${positions[i][0]}%`, top: `${positions[i][1]}%`, '--node-size': `${64 + Math.min(28, signal.count * 7)}px` } as React.CSSProperties} onPointerEnter={() => setHoverSignal(signal.name)} onPointerLeave={() => setHoverSignal(null)} onFocus={() => setHoverSignal(signal.name)} onBlur={() => setHoverSignal(null)} onClick={() => chooseSignal(signal.name)}><b>{categoryLabel(signal.name)}</b><small>{signal.count} {t('条','stories')}</small></button>)}
-          <div className={`signal-tooltip ${activeSignal ? 'visible' : ''}`}><span>{categoryLabel(activeSignal?.name || '分类新闻')}</span><b>{activeSignal?.title || '悬停节点查看该领域的首要事件'}</b><small>点击以筛选并进入新闻扫描</small></div>
-        </div>
-
-        <aside className="focus-now"><header><Sparkles size={14} /><span>{t('值得一读', 'WORTH YOUR TIME')}</span></header>{leadSignals.map((item) => <button aria-label={displayTitle(item)} key={item.id} onClick={() => { setCategory('全部'); setSelectedId(item.id); terminalRef.current?.scrollIntoView({ behavior: 'smooth' }); }}><span><b>{displayTitle(item)}</b><small>{categoryLabel(item.category)} · {publicationDate(item)}</small></span></button>)}</aside>
-        <button className="enter-terminal" onClick={() => terminalRef.current?.scrollIntoView({ behavior: 'smooth' })}><span>{t('浏览新闻', 'Explore stories')}</span><ArrowDown size={16} /></button>
+        <aside className="focus-now"><header><span>{t('值得一读', 'WORTH YOUR TIME')}</span></header>{leadSignals.map((item) => <button aria-label={displayTitle(item)} key={item.id} onClick={() => { setQuery(''); setCategory('全部'); setSelectedId(item.id); terminalRef.current?.scrollIntoView({ behavior: 'smooth' }); }}><span><b>{displayTitle(item)}</b><small>{categoryLabel(item.category)} · {publicationDate(item)}</small></span><ExternalLink className="cover-story-arrow" size={17} aria-hidden="true" /></button>)}</aside>
+        <button className="enter-terminal" onClick={() => terminalRef.current?.scrollIntoView({ behavior: 'smooth' })}><span>{t('下滑，展开今日新闻', 'Scroll to explore today’s stories')}</span><ArrowDown size={16} /></button>
       </section>
 
 
