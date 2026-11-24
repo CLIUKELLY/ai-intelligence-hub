@@ -20,6 +20,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
       - name: Set up Node
         uses: actions/setup-node@v4
@@ -32,6 +34,9 @@ jobs:
 
       - name: Validate dashboard data
         run: npm run validate:data
+
+      - name: Require complete English for new and updated stories
+        run: node scripts/validate-news-update.mjs
 
       - name: Build static site
         env:
