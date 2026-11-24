@@ -1,35 +1,33 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-23T23:49:44.018Z",
-  "contentUpdatedAt": "2026-11-23T23:49:44.018Z",
+  "generatedAt": "2026-11-24T05:38:35.146Z",
+  "contentUpdatedAt": "2026-11-24T05:38:35.146Z",
   "status": {
     "state": "fresh",
-    "lastSuccessfulAt": "2026-11-23T23:49:44.018Z",
-    "note": "已完成 GPT 联网研究、72小时扩展补扫与7天滚动合并；日常写入不使用 RSS。"
+    "lastSuccessfulAt": "2026-11-24T05:38:35.146Z"
   },
   "mode": "GPT 联网研究 · 7天滚动数据 · 非RSS",
   "stats": {
-    "rawSignals": 39,
-    "events": 33,
+    "rawSignals": 54,
+    "events": 45,
     "chinaRatio": 18,
-    "highImpact": 8
+    "highImpact": 17
   },
   "sourceHealth": {
-    "attempted": 8,
-    "healthy": 6,
-    "officialHealthy": 6,
+    "attempted": 37,
+    "healthy": 32,
+    "officialHealthy": 24,
     "failed": [
-      "Anthropic 新闻室：未发现覆盖窗口内的可收录新发布",
-      "Azure 更新页：未返回可支撑事实的具体条目"
+      "3个预测 URL 被拒绝访问，均已改用实际打开的具体页面或淘汰。"
     ]
   },
   "brief": {
-    "title": "今日重点：前沿能力进入产品，评测与本地部署成为落地约束",
+    "title": "Agent 的生产化开始进入安全、成本与基础设施层",
     "bullets": [
-      "OpenAI 将优化后的 GPT‑6.2 推入 ChatGPT 主入口，并公开更高风险能力的准备度与防护信息，产品可用性和治理边界开始同步推进。",
-      "千问的实时语音与音频理解更新把语音 Agent 从单次转写推进到任务执行期间持续交互和可结构化审计的信息流。",
-      "Inkling 2 Mini 与 RoboTrack 显示开源能力正同时向本地多模态推理和真实机器人感知推进，部署条件与外部复现仍是关键验证点。",
-      "对企业 Agent 而言，Hugging Face 的评测方法强调不能只看模型分数，还需审查 harness、环境、轨迹与评分器。"
+      "Claude Ship、AWS DevOps Agent 与 OpenAI SDK 把审批、沙箱与预算带入 Agent 交付流程。",
+      "Google 和 Anthropic 将安全控制延伸到工具调用边界与数据留存架构。",
+      "Amazon 与 AMD 的动作表明推理效率正成为云供给和自研芯片竞争焦点。",
+      "GLM-5.4 与 MiniMax 的新进展为本地生态补充了工程与研究信号。"
     ]
   },
   "items": [
@@ -68,6 +66,40 @@
         "算力生态"
       ],
       "rank": 1
+    },
+    {
+      "id": 3906363739,
+      "title": "Anthropic 推出 Claude Ship，覆盖 PR 审查、修复与策略审批",
+      "titleEn": "Introducing Claude Ship",
+      "summary": "Anthropic 11月23日发布测试版 Claude Ship，由 Code Review、PR Steward 和 Claude Approvals 组成，可按仓库策略处理 PR 审查、失败检查和常规审批。",
+      "change": "从代码生成和单点审查扩展到受策略约束的 PR 交付闭环。",
+      "why": "企业应同时衡量误批准、回滚率和人工复核时间，而不只看生成速度。",
+      "watch": "观察真实仓库的漏检率及其与分支保护和 CI 的兼容性。",
+      "verification": "官方一手",
+      "source": "Claude by Anthropic",
+      "sources": [
+        "Claude by Anthropic"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Claude by Anthropic",
+          "url": "https://claude.com/resources/articles/introducing-claude-ship",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-23T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-24T05:38:35.146Z",
+      "category": "AI Coding",
+      "region": "全球",
+      "impact": "高影响",
+      "score": 95,
+      "url": "https://claude.com/resources/articles/introducing-claude-ship",
+      "tags": [
+        "Claude",
+        "AI Coding"
+      ],
+      "rank": 2
     },
     {
       "id": 3906363726,
@@ -109,7 +141,41 @@
         "开源权重",
         "MoE"
       ],
-      "rank": 2
+      "rank": 3
+    },
+    {
+      "id": 3906363741,
+      "title": "Amazon 签约收购 Decart 推理优化技术并吸纳团队",
+      "titleEn": "Amazon to purchase Decart's AI optimization technology to advance chip and model innovation for customers",
+      "summary": "Amazon 11月23日宣布签约购买 Decart Optimization Stack 的专有技术，并计划引入其联合创始人与研究工程团队；交易仍待交割条件和监管许可。",
+      "change": "既有 Trainium 性能协作推进为技术和团队整合。",
+      "why": "推理效率正在成为云厂商自研芯片路线的核心竞争层，关键仍是实际成本和可用性。",
+      "watch": "观察技术是否进入 Trainium 或 AWS 产品及定价变化。",
+      "verification": "官方一手",
+      "source": "Amazon",
+      "sources": [
+        "Amazon"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Amazon",
+          "url": "https://www.aboutamazon.com/news/company-news/amazon-decart-ai-optimization",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-23T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-24T05:38:35.146Z",
+      "category": "资本",
+      "region": "全球",
+      "impact": "高影响",
+      "score": 94,
+      "url": "https://www.aboutamazon.com/news/company-news/amazon-decart-ai-optimization",
+      "tags": [
+        "Amazon",
+        "资本"
+      ],
+      "rank": 4
     },
     {
       "id": 3906363734,
@@ -145,7 +211,41 @@
         "ChatGPT",
         "模型安全"
       ],
-      "rank": 3
+      "rank": 5
+    },
+    {
+      "id": 3906363748,
+      "title": "OpenAI 与 Cisco 开源 Shirudo，为 Linux 漏洞提供运行中防护",
+      "titleEn": "OpenAI and Cisco introduce Shirudo",
+      "summary": "OpenAI 与 Cisco 11月23日发布开源 Linux 运行时 Shirudo，使用 eBPF 让团队在补丁部署前测试并加载可签名的临时防护规则。",
+      "change": "漏洞响应增加了运行中、经人工批准的细粒度临时防护路径。",
+      "why": "高可用系统可缩短补丁前的暴露窗口，但必须把兼容性、误阻断和回滚纳入变更管理。",
+      "watch": "观察社区规则库、发行版兼容性和真实 CVE 场景效果。",
+      "verification": "官方一手",
+      "source": "OpenAI",
+      "sources": [
+        "OpenAI"
+      ],
+      "sourceLinks": [
+        {
+          "name": "OpenAI",
+          "url": "https://openai.com/index/introducing-shirudo/",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-23T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-24T05:38:35.146Z",
+      "category": "安全",
+      "region": "全球",
+      "impact": "高影响",
+      "score": 93,
+      "url": "https://openai.com/index/introducing-shirudo/",
+      "tags": [
+        "OpenAI",
+        "安全"
+      ],
+      "rank": 6
     },
     {
       "id": 3636787553,
@@ -176,12 +276,52 @@
         "Agent Workflow",
         "SRE"
       ],
-      "rank": 4,
+      "rank": 7,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从单次编码辅助转为状态化、可派发、带独立复核的持久 Agent 运维流程。",
       "watch": "观察该流程在更多故障场景中的自治边界，以及工程师审批对修复质量的实际影响。",
       "verification": "官方一手"
+    },
+    {
+      "id": 3906363742,
+      "title": "智谱上线 GLM-5.4，将视觉能力带入 Coding Plan",
+      "titleEn": "GLM-5.4 model release: Loop architecture and general coding capabilities",
+      "summary": "智谱11月23日发布 GLM-5.4，官方称其采用 Loop Transformer，已向 Coding Plan 用户开放视觉理解和泛 Coding 能力，部分订阅额度提升至 GLM-5.3 的1.5倍。",
+      "change": "Coding Plan 从纯文本编程场景加入视觉输入与工程任务定位。",
+      "why": "本地开发团队可将截图和工程素材纳入编码工作流；厂商性能主张仍需独立复现。",
+      "watch": "观察 API、技术报告、权重及独立评测何时发布。",
+      "verification": "多源核验",
+      "source": "智谱官方微博（新浪转载）",
+      "sources": [
+        "智谱官方微博（新浪转载）",
+        "TechNode"
+      ],
+      "sourceLinks": [
+        {
+          "name": "智谱官方微博（新浪转载）",
+          "url": "https://www.sina.cn/news/detail/5368477856826133.html",
+          "tier": 1
+        },
+        {
+          "name": "TechNode",
+          "url": "https://technode.com/2026/11/23/zhipu-rolls-out-glm-5-4-with-vision-and-million-token-context/",
+          "tier": 2
+        }
+      ],
+      "publishedAt": "2026-11-23T10:05:24.000Z",
+      "publishedPrecision": "datetime",
+      "firstSeenAt": "2026-11-24T05:38:35.146Z",
+      "category": "本地AI",
+      "region": "中国",
+      "impact": "高影响",
+      "score": 92,
+      "url": "https://www.sina.cn/news/detail/5368477856826133.html",
+      "tags": [
+        "智谱官方微博（新浪转载）",
+        "本地AI"
+      ],
+      "rank": 8
     },
     {
       "id": 3906363715,
@@ -217,7 +357,41 @@
         "Agent",
         "Tool Retrieval"
       ],
-      "rank": 5
+      "rank": 9
+    },
+    {
+      "id": 3906363740,
+      "title": "Gemini API 增加文件切片控制与 Office 原生上传",
+      "titleEn": "Introducing file slicing controls in the Gemini API",
+      "summary": "Google 11月23日宣布 Gemini API 可按 PDF 页、表格范围和音视频片段处理文件，并支持 Microsoft Office 与 OpenDocument 原生上传。",
+      "change": "从整份文件输入改为由应用或 Agent 按片段选择上下文。",
+      "why": "它可降低长文档工作流的无效 token 消耗，但切片失误会遗漏关键上下文。",
+      "watch": "观察不同文件类型的实际节省和检索准确率。",
+      "verification": "官方一手",
+      "source": "Google",
+      "sources": [
+        "Google"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Google",
+          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/file-slicing-controls/",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-23T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-24T05:38:35.146Z",
+      "category": "产品",
+      "region": "全球",
+      "impact": "高影响",
+      "score": 91,
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/file-slicing-controls/",
+      "tags": [
+        "Google",
+        "产品"
+      ],
+      "rank": 10
     },
     {
       "id": 3906363725,
@@ -259,7 +433,41 @@
         "困惑度",
         "治理"
       ],
-      "rank": 6
+      "rank": 11
+    },
+    {
+      "id": 3906363743,
+      "title": "AMD 与 Microsoft 在 Azure 实验室验证 Helios 机架级 AI 系统",
+      "titleEn": "Microsoft Running Workload Validation with AMD Helios Rackscale Solution",
+      "summary": "AMD 11月23日称 Microsoft 已在 Azure 研究实验室通电首套 Helios 系统，正做早期工作负载验证；Azure 计划后续规模化部署用于 AI 推理。",
+      "change": "合作从产品路线推进到实验室上电与工作负载验证阶段。",
+      "why": "这为 Azure 增加 NVIDIA 之外的推理供给选项，但尚非普遍可用实例。",
+      "watch": "观察正式实例、ROCm 兼容性与单位推理成本。",
+      "verification": "官方一手",
+      "source": "AMD",
+      "sources": [
+        "AMD"
+      ],
+      "sourceLinks": [
+        {
+          "name": "AMD",
+          "url": "https://newsroom.amd.com/news/microsoft-running-workload-validation-amd-helios-rackscale-solution/",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-23T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-24T05:38:35.146Z",
+      "category": "算力",
+      "region": "全球",
+      "impact": "高影响",
+      "score": 90,
+      "url": "https://newsroom.amd.com/news/microsoft-running-workload-validation-amd-helios-rackscale-solution/",
+      "tags": [
+        "AMD",
+        "算力"
+      ],
+      "rank": 12
     },
     {
       "id": 2177847865,
@@ -290,7 +498,7 @@
         "Azure",
         "边缘AI"
       ],
-      "rank": 7,
+      "rank": 13,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从云侧加速计算扩展到 Azure Local、工业边缘与 Windows PC 的统一部署栈。",
@@ -331,7 +539,41 @@
         "世界模型",
         "Gemini API"
       ],
-      "rank": 8
+      "rank": 14
+    },
+    {
+      "id": 3906363745,
+      "title": "Anthropic 为企业安全监控测试零数据留存模式",
+      "titleEn": "Zero data retention with Enterprise Frontier Safeguards is now in beta",
+      "summary": "Anthropic 11月23日将 Enterprise Frontier Safeguards 的零数据留存模式置于 beta：客户自带存储保存输入输出，内容不用于训练。",
+      "change": "安全监控新增客户持有内容、平台处理监控元数据的架构选项。",
+      "why": "敏感数据行业接入前沿模型的合规阻力可降低，但存储、密钥和审计责任转向客户。",
+      "watch": "观察 beta 的地区、云平台和价格覆盖。",
+      "verification": "官方一手",
+      "source": "Claude by Anthropic",
+      "sources": [
+        "Claude by Anthropic"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Claude by Anthropic",
+          "url": "https://claude.com/resources/articles/zero-data-retention-with-enterprise-frontier-safeguards",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-23T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-24T05:38:35.146Z",
+      "category": "安全",
+      "region": "全球",
+      "impact": "高影响",
+      "score": 89,
+      "url": "https://claude.com/resources/articles/zero-data-retention-with-enterprise-frontier-safeguards",
+      "tags": [
+        "Claude",
+        "安全"
+      ],
+      "rank": 15
     },
     {
       "id": 3906363720,
@@ -367,7 +609,7 @@
         "OpenAI",
         "GPT-6.2"
       ],
-      "rank": 9
+      "rank": 16
     },
     {
       "id": 3906363727,
@@ -403,7 +645,41 @@
         "工作树",
         "企业协作"
       ],
-      "rank": 10
+      "rank": 17
+    },
+    {
+      "id": 3906363746,
+      "title": "Google 预览用语义策略拦截 Agent 意图劫持",
+      "titleEn": "Did the user ask for this? Securing AI agents against intent hijacking with Semantic governance policies",
+      "summary": "Google 11月23日公布 Semantic governance policies 的 AgentDojo 测试：攻击成功率从48.7%降至0.9%，良性任务效用平均下降2.6个百分点；能力在 Gemini 平台预览提供。",
+      "change": "防护从扫描可疑文本转向在工具调用前核对用户意图。",
+      "why": "生产 Agent 应把动作审核放在工具调用边界；该结果仍限于特定基准与配置。",
+      "watch": "观察自适应攻击表现、误拦截率和延迟开销。",
+      "verification": "官方一手",
+      "source": "Google Developers Blog",
+      "sources": [
+        "Google Developers Blog"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Google Developers Blog",
+          "url": "https://developers.googleblog.com/en/did-the-user-ask-for-this-securing-ai-agents-against-intent-hijacking-with-semantic-governance-policies/",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-23T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-24T05:38:35.146Z",
+      "category": "安全",
+      "region": "全球",
+      "impact": "高影响",
+      "score": 88,
+      "url": "https://developers.googleblog.com/en/did-the-user-ask-for-this-securing-ai-agents-against-intent-hijacking-with-semantic-governance-policies/",
+      "tags": [
+        "Google",
+        "安全"
+      ],
+      "rank": 18
     },
     {
       "id": 3906363722,
@@ -439,7 +715,41 @@
         "蒸馏防护",
         "红队测试"
       ],
-      "rank": 11
+      "rank": 19
+    },
+    {
+      "id": 3906363747,
+      "title": "AWS 开源 Strands Decider v2，用小模型做 Agent 路由",
+      "titleEn": "Introducing Strands Decider v2: open, calibrated system one models",
+      "summary": "Strands 11月23日发布五个基于 Gemma 4 的 Apache-2.0 Decider v2 权重，用有限选项打分来承担工具选择、请求路由和答案评估。",
+      "change": "从通用生成模型承担每一步判断，转为小模型处理高频有限决策。",
+      "why": "该分层模式可压低 Agent 成本并将升级处理变为可测量策略，但官方案例需自行复现。",
+      "watch": "观察中文、长轨迹和生产推理栈中的校准与成本表现。",
+      "verification": "官方一手",
+      "source": "Strands Agents",
+      "sources": [
+        "Strands Agents"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Strands Agents",
+          "url": "https://strandsagents.com/blog/introducing-strands-decider-v2/",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-23T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-24T05:38:35.146Z",
+      "category": "开源",
+      "region": "全球",
+      "impact": "高影响",
+      "score": 87,
+      "url": "https://strandsagents.com/blog/introducing-strands-decider-v2/",
+      "tags": [
+        "Strands",
+        "开源"
+      ],
+      "rank": 20
     },
     {
       "id": 3248149539,
@@ -476,7 +786,7 @@
         "东南亚",
         "出海"
       ],
-      "rank": 12,
+      "rank": 21,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从单一模型披露扩展为模型、区域云容量、人才项目和行业伙伴同步推进。",
@@ -512,7 +822,7 @@
         "推理",
         "高可用"
       ],
-      "rank": 13,
+      "rank": 22,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从团队自建跨区域容灾逻辑转为 SageMaker 可管理的跨区域推理路由资源。",
@@ -553,7 +863,7 @@
         "Agent Framework",
         "可观测性"
       ],
-      "rank": 14
+      "rank": 23
     },
     {
       "id": 3906363735,
@@ -589,7 +899,7 @@
         "音频理解",
         "Agent"
       ],
-      "rank": 15
+      "rank": 24
     },
     {
       "id": 3906363717,
@@ -625,7 +935,7 @@
         "Computer Use",
         "Mac"
       ],
-      "rank": 16
+      "rank": 25
     },
     {
       "id": 3906363723,
@@ -661,7 +971,7 @@
         "智能文档",
         "可追溯AI"
       ],
-      "rank": 17
+      "rank": 26
     },
     {
       "id": 1875041669,
@@ -692,7 +1002,7 @@
         "推理优化",
         "GPU"
       ],
-      "rank": 18,
+      "rank": 27,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从人工巡检端点配置转为自动发现延迟漂移、闲置 GPU 与优化缺口。",
@@ -733,7 +1043,7 @@
         "Unsloth",
         "端侧AI"
       ],
-      "rank": 19
+      "rank": 28
     },
     {
       "id": 3906363724,
@@ -769,7 +1079,7 @@
         "HyperPod",
         "推理路由"
       ],
-      "rank": 20
+      "rank": 29
     },
     {
       "id": 3906363718,
@@ -805,7 +1115,7 @@
         "可观测性",
         "治理"
       ],
-      "rank": 21
+      "rank": 30
     },
     {
       "id": 3906363730,
@@ -841,7 +1151,7 @@
         "可观测性",
         "Agent安全"
       ],
-      "rank": 22
+      "rank": 31
     },
     {
       "id": 3906363721,
@@ -877,7 +1187,7 @@
         "药物化学",
         "评测"
       ],
-      "rank": 23
+      "rank": 32
     },
     {
       "id": 3906363736,
@@ -913,7 +1223,7 @@
         "本地模型",
         "MoE"
       ],
-      "rank": 24
+      "rank": 33
     },
     {
       "id": 1080720566,
@@ -944,7 +1254,7 @@
         "GPU",
         "可观测性"
       ],
-      "rank": 25,
+      "rank": 34,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从多工具拼接排障转为集群级 GPU、网络与训练任务的联合基础设施诊断。",
@@ -985,7 +1295,7 @@
         "API",
         "模型供给"
       ],
-      "rank": 26
+      "rank": 35
     },
     {
       "id": 3906363737,
@@ -1021,7 +1331,7 @@
         "Trace",
         "企业部署"
       ],
-      "rank": 27
+      "rank": 36
     },
     {
       "id": 3906363732,
@@ -1057,7 +1367,41 @@
         "Agent状态",
         "开源"
       ],
-      "rank": 28
+      "rank": 37
+    },
+    {
+      "id": 3906363750,
+      "title": "AWS DevOps Agent 扩展 Sandbox 并限制自动审查预览采样",
+      "titleEn": "What's new - AWS DevOps Agent",
+      "summary": "AWS 记录显示，11月21日 DevOps Agent Sandbox 覆盖全部商业区域；11月22日 Automatic Reviews 预览采样率限制为1%–10%。",
+      "change": "Sandbox 走向商业区域覆盖，自动审查仍是受限采样预览。",
+      "why": "Agent 代码执行可进入受约束环境，但权限、软件源和审查采样都仍需逐项治理。",
+      "watch": "观察审查采样放宽及更细粒度网络和身份控制。",
+      "verification": "官方一手",
+      "source": "AWS Documentation",
+      "sources": [
+        "AWS Documentation"
+      ],
+      "sourceLinks": [
+        {
+          "name": "AWS Documentation",
+          "url": "https://docs.aws.amazon.com/devopsagent/latest/userguide/whats-new.html",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-22T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-24T05:38:35.146Z",
+      "category": "AI Coding",
+      "region": "全球",
+      "impact": "关注",
+      "score": 79,
+      "url": "https://docs.aws.amazon.com/devopsagent/latest/userguide/whats-new.html",
+      "tags": [
+        "AWS",
+        "AI Coding"
+      ],
+      "rank": 38
     },
     {
       "id": 3906363738,
@@ -1093,7 +1437,7 @@
         "RoboTrack",
         "开源评测"
       ],
-      "rank": 29
+      "rank": 39
     },
     {
       "id": 1098711981,
@@ -1124,12 +1468,80 @@
         "语音Agent",
         "SageMaker"
       ],
-      "rank": 30,
+      "rank": 40,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从供应商托管的对话模型扩展到可在客户 AWS 账户内部署的 JumpStart 选项。",
       "watch": "观察支持语言、端到端延迟、商业定价以及受监管客户的规模化采用。",
       "verification": "官方一手"
+    },
+    {
+      "id": 3906363744,
+      "title": "OpenAI Node SDK 加入 Agent 会话消费限额",
+      "titleEn": "openai-node v7.63.0",
+      "summary": "OpenAI 官方 Node SDK 于11月23日发布 v7.63.0，新增 Agent Sessions 的 spending limits API 字段。",
+      "change": "SDK 层增加了会话级预算控制入口。",
+      "why": "长链 Agent 的重试和工具循环可能迅速放大成本；原生限额是生产治理基础但不能替代任务级监控。",
+      "watch": "观察其他 SDK、控制台和告警接口是否同步支持。",
+      "verification": "官方一手",
+      "source": "GitHub · openai/openai-node",
+      "sources": [
+        "GitHub · openai/openai-node"
+      ],
+      "sourceLinks": [
+        {
+          "name": "GitHub · openai/openai-node",
+          "url": "https://github.com/openai/openai-node/releases",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-23T19:00:00.000Z",
+      "publishedPrecision": "datetime",
+      "firstSeenAt": "2026-11-24T05:38:35.146Z",
+      "category": "AI Coding",
+      "region": "全球",
+      "impact": "关注",
+      "score": 78,
+      "url": "https://github.com/openai/openai-node/releases",
+      "tags": [
+        "GitHub",
+        "AI Coding"
+      ],
+      "rank": 41
+    },
+    {
+      "id": 3906363749,
+      "title": "MiniMax 公开 AI 辅助发现的密码学攻击论文与代码",
+      "titleEn": "MiniMax publishes AI-discovered cryptographic attacks with papers and code",
+      "summary": "TechNode 11月23日报道，MiniMax 已公开论文与代码，说明内部 AI 如何协助发现针对特定实验性密码方案和公开挑战的攻击；报道明确不等同于攻破 AES、RSA 或 SHA-256。",
+      "change": "从能力展示转为给出可审查的研究材料和代码。",
+      "why": "它为评估 AI 在高专业安全研究中的作用提供了可复核对象，也要求区分研究结果与生产密码风险。",
+      "watch": "观察独立密码学界的可复现性评审和适用边界。",
+      "verification": "单一来源",
+      "source": "TechNode",
+      "sources": [
+        "TechNode"
+      ],
+      "sourceLinks": [
+        {
+          "name": "TechNode",
+          "url": "https://technode.com/2026/11/23/minimax-publishes-ai-discovered-cryptographic-attacks-with-papers-and-code/",
+          "tier": 2
+        }
+      ],
+      "publishedAt": "2026-11-23T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-24T05:38:35.146Z",
+      "category": "研究",
+      "region": "中国",
+      "impact": "关注",
+      "score": 76,
+      "url": "https://technode.com/2026/11/23/minimax-publishes-ai-discovered-cryptographic-attacks-with-papers-and-code/",
+      "tags": [
+        "TechNode",
+        "研究"
+      ],
+      "rank": 42
     },
     {
       "id": 3906363733,
@@ -1165,7 +1577,7 @@
         "Cursor",
         "开源"
       ],
-      "rank": 31
+      "rank": 43
     },
     {
       "id": 2236239695,
@@ -1196,7 +1608,7 @@
         "VPC",
         "AI Agent"
       ],
-      "rank": 32,
+      "rank": 44,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从原型数据库需要重建迁移变为可保留数据与 endpoint 并迁入私有 VPC。",
@@ -1232,7 +1644,7 @@
         "推理",
         "Serverless"
       ],
-      "rank": 33,
+      "rank": 45,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从最长十五分钟的按需事件函数执行窗口扩展至三十分钟。",
