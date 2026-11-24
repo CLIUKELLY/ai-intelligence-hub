@@ -70,7 +70,12 @@ export default function WaterField() {
           const y = base + Math.sin(x * .005 + time * .12 + band * .18) * 25 + Math.cos(x * .009 - time * .09 + band * .12) * 12 + lens * Math.sin(d * .014 - time * .6) * 26 + surfaceWave;
           if (x === -20) ctx.moveTo(x, y); else ctx.lineTo(x, y);
         }
-        ctx.lineWidth = .85; ctx.strokeStyle = `rgba(224,210,187,${.055 + Math.sin(band * .45 + time * .12) ** 8 * .09})`; ctx.stroke();
+        ctx.lineWidth = .7; ctx.strokeStyle = `rgba(216,221,218,${.045 + Math.sin(band * .45 + time * .12) ** 8 * .085})`; ctx.stroke();
+        // Offset reflected edge: a fine silver highlight instead of a neon glow.
+        if (band % 4 === 0) {
+          ctx.save(); ctx.translate(0, 1.8);
+          ctx.lineWidth = .4; ctx.strokeStyle = 'rgba(174,204,193,.06)'; ctx.stroke(); ctx.restore();
+        }
       }
       for (const p of grains) {
         const bx = p.x * width, by = p.y * height;
@@ -89,7 +94,13 @@ export default function WaterField() {
         }
         const x = bx + p.ox + Math.sin(time * .11 + p.phase) * 3;
         const y = by + p.oy + Math.cos(time * .13 + p.phase) * 3 + displacement;
-        ctx.fillStyle = `rgba(239,226,205,${(.26 + force * .48) * p.depth})`;
+        // Directional micro-reflections make the disturbance feel like a material.
+        if (force > .14 && p.depth > .65) {
+          const speed = Math.min(9, Math.hypot(p.vx, p.vy) * 8);
+          ctx.strokeStyle = `rgba(207,224,218,${force * .28})`; ctx.lineWidth = .55;
+          ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x - p.vx * speed * 2, y - p.vy * speed * 2); ctx.stroke();
+        }
+        ctx.fillStyle = `rgba(232,232,221,${(.23 + force * .48) * p.depth})`;
         ctx.beginPath(); ctx.arc(x, y, .55 + p.depth * .75, 0, Math.PI * 2); ctx.fill();
       }
       for (let i = waves.length - 1; i >= 0; i--) { waves[i].age += dt; if (waves[i].age > 4) waves.splice(i, 1); }
