@@ -1,10 +1,10 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-24T23:46:48.696Z",
-  "contentUpdatedAt": "2026-11-24T23:46:48.696Z",
+  "generatedAt": "2026-11-24T23:49:26.800Z",
+  "contentUpdatedAt": "2026-11-24T23:49:26.800Z",
   "status": {
     "state": "fresh",
-    "lastSuccessfulAt": "2026-11-24T23:46:48.696Z"
+    "lastSuccessfulAt": "2026-11-24T23:49:26.800Z"
   },
   "mode": "GPT 联网研究 · 7天滚动数据 · 非RSS",
   "stats": {
@@ -1079,7 +1079,11 @@
         "Codex",
         "会话恢复"
       ],
-      "rank": 29
+      "rank": 29,
+      "summaryEn": "OpenAI released Agents SDK v1.0.0-alpha.2 with resumable conversations and pending approvals across workers for Responses and Codex workflows.",
+      "changeEn": "The SDK moves from short-lived agent runs toward persisted, recoverable execution state, including recovery of supported native Codex command and edit approvals.",
+      "whyEn": "For production agent systems, recovery paths, approval continuity, tool filtering, and trace redaction are practical controls for reliability and governance, not just developer convenience.",
+      "watchEn": "Watch compatibility of the new persisted-state schema, operational behavior across worker restarts, and whether the approval recovery pattern matures beyond the alpha release."
     },
     {
       "id": 3906363730,
