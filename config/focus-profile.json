@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "reader": {
-    "displayName": "Kelly",
+    "displayName": "AI News Desk",
     "language": "zh-CN",
     "timezone": "Asia/Shanghai",
     "dailyItemTarget": 20
@@ -101,5 +101,20 @@
     "没有产品变化的客户稿",
     "重复融资传闻",
     "泛 AI 观点文章"
-  ]
+  ],
+  "positioning": {
+    "audience": "关注 AI 产品和工程进展的中文及英文读者",
+    "scope": [
+      "模型与可用能力",
+      "AI 产品与开发工具",
+      "Agent 工程",
+      "推理与部署基础设施",
+      "与上述直接相关的安全、开源及商业变化"
+    ],
+    "languages": [
+      "zh-CN",
+      "en"
+    ],
+    "personalization": false
+  }
 }

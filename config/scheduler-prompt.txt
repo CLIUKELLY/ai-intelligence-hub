@@ -1,0 +1,33 @@
+在云端执行 AI 新闻网站日更。只使用云端联网研究和已授权的 GitHub 工具，不依赖用户电脑、本地运行环境、RSS 或单独付费 API。
+
+仓库：CLIUKELLY/ai-intelligence-hub。先读取默认分支的 config/dashboard.schema.json、config/focus-profile.json、scripts/prepare-dashboard.mjs、data/dashboard.json 和 .github/workflows/daily-update.yml。以仓库当前内容为准，不沿用旧聊天中的字段猜测。
+
+定位：面向中英文读者，聚焦模型与可用能力、AI 产品、开发工具、Agent 工程、推理和部署基础设施，以及与它们直接相关的安全、开源和商业变化。内容服务于公共读者，不提 Kelly、不写个人兴趣匹配、不给个人投资或职业建议。关注方向是排序依据，不是排除其他重要 AI 进展的硬门槛。
+
+研究截至运行时刻过去24小时，并补扫自上次成功更新以来的遗漏。每轮以20个新发现独立事件为目标，通常12–20条。历史保留内容不计入新增数。覆盖全球实验室、中国模型生态、开发工具、产品和基础设施。使用中英文检索；优先官方公告、文档、仓库发布和原始研究，并用可信媒体补充。官方一手可独立收录；争议事实和重要数字尽量独立核验。不能将同一机构多页描述成独立交叉核验。
+
+若不足12条，先完成缺失方向的第二轮检索，再扩展至72小时补充未收录的重要产品和工程更新；必要时补过去7天漏报。真实发布时间必须保留，不得把补漏改成新发布。完成扩展后仍不足时，提交真实结果并报告原因，绝不凑数或编造。不要因只找到一个完整事件就结束研究。
+
+每个事件用简洁中英文分别提供：
+- title/titleEn：具体事实标题，避免空泛夸张。
+- summary/summaryEn：谁在何时更新什么、开放给谁、实际可用条件；事实均有来源。
+- change/changeEn：相较此前的具体变化，尽量含版本、功能边界、价格、可用范围或接口变化。若无法确认前后差异，不编造比较。
+- why/whyEn：对产品使用、开发或部署的实际意义，明确是分析而非已证实结果，不能给每条套相同模板。
+- watch/watchEn：本事件尚待验证的具体问题及可观察证据，如第三方基准、地区可用性、定价或生产稳定性。不得只写“继续关注后续发展”。
+所有 En 字段应自然英文，无中文正文；只翻译已核验事实，不在翻译中添加新结论。必须为本轮新事件和有实质更新事件生成完整双语内容；首次采用本提示词时，也为保留的历史事件补齐双语分析。若云端限制导致不能完成，诚实报告哪些历史事件缺少英语，不伪造完成状态。
+
+每条提供实际打开核实过的 sourceLinks、source、publishedAt、publishedPrecision、firstSeenAt、category、region、impact、score、tags、id、rank 等 schema 字段。按 schema 保持 category 的“本地AI”数据值（前端显示为本土 AI），不要擅自改枚举。英文来源名称尽可能使用机构英文名。score 仅是编辑排序参考，不代表事实准确率。保持事件稳定 id 和原 firstSeenAt；合并重复事件。既有事件只有实质新进展才算更新，不能改写摘要后算新增。
+
+保留7天内有效事件，总量遵守 schema 上限80。超过上限时按时效与编辑价值筛选，不机械删除最新事件。schemaVersion 保持2。stats.events 等于最终 items 数，chinaRatio 和 highImpact 根据 items 确定性计算；rawSignals 为本轮实际去重前候选数，不能沿用上轮累计数。sourceHealth 如实记录本轮实际检查的来源，不虚报覆盖。
+
+成功完成研究和生成后，generatedAt/contentUpdatedAt/status.lastSuccessfulAt 使用本次真实 ISO UTC 时间，status.state 为 fresh。研究失败不得重写旧内容的成功时间。brief 是本轮重要变化的公共编辑概述，不围绕私人身份撰写。mode 使用“GPT 联网研究 · 7天滚动数据 · 非RSS”。
+
+校验 JSON 必需字段、日期、链接格式、去重、计数及双语字段。能运行校验器时执行 npm run validate:data；不能运行时仅报告完成了哪些静态检查，不声称运行过命令。保留所有 En 字段，不能因旧整理流程而丢失。
+
+写入前重新读取默认分支的最新 SHA；若并发修改，重新合并最新数据，只修改本任务的数据文件，不能覆盖前端、配置和工作流。使用已授权的 GitHub 写入工具提交 data/dashboard.json，commit message 为“data: refresh AI intelligence dashboard”。没有写权限就报告阻塞，不声称提交成功。
+
+发布验证：此仓库对默认分支的 push 构建静态页面，单独修改 dashboard.json 也应触发。提交后查询与准确 SHA 对应的 Actions run；若尚未出现，短暂重查。若依然没有运行且具备 Actions 权限，对 daily-update.yml 发起 workflow_dispatch，并核对 run 的 head_sha。尤其注意以 GITHUB_TOKEN 从其他 Actions 提交的数据通常不会再次触发 push 工作流，不能假定所有提交路径都会自动部署。没有运行且无手动触发权限时报告“数据已提交，部署未触发”。
+
+等待构建及部署终态，在云端时限内无法等待时报告 pending。最后核对 GitHub Pages 页面或其发布快照的更新时间与本次内容相符；不能只凭提交成功声称网站已更新。
+
+最终报告：新事件、实质更新、历史保留、过期删除、最终总量；24小时新发布/72小时补充/7天补漏分布；中英文完整性、检查来源覆盖；提交 SHA、workflow run 链接、状态与结论、线上核验结果。失败如实报告，保留上一份成功内容。

@@ -1,131 +1,68 @@
 # AI Intelligence Hub
 
-**A personalized AI news feed that runs on tools you already have.**
+**AI 最新动态，看清更新，也看清边界。**
 
-AI Intelligence Hub researches the AI topics you care about, merges repetitive coverage into events, explains what changed, and publishes a focused Chinese briefing to a static website you own.
+A focused, bilingual AI news desk. Models, products, developer tools and infrastructure — with source links, practical context and clear open questions.
 
-> 不追逐每一条新闻，只保留会改变判断的信号。
+[阅读新闻 / Read the news](https://cliukelly.github.io/ai-intelligence-hub/)
 
-[Open the live Market Pulse →](https://cliukelly.github.io/ai-intelligence-hub/)
+## Editorial scope
 
-![AI Intelligence Hub Market Pulse](./public/og.png)
+We cover concrete changes: models becoming available, products shipping, developer interfaces evolving, inference stacks improving and safety findings affecting deployment. China and global developments share one workflow.
 
-## Why this exists
+This is a public, topic-focused news site. There is no personal relevance score or claim of comprehensive coverage.
 
-AI news is abundant; attention and context are not. Most feeds optimize for volume, recency, or engagement. This project optimizes for **personal relevance**:
+Each story separates facts, practical implications and open questions:
+- **更新要点 / What changed:** the specific change, availability or new evidence.
+- **实际意义 / Why it matters:** practical implications, distinguished from confirmed facts.
+- **待验证的问题 / What remains unverified:** a specific question and the evidence needed to answer it.
+- **来源与验证 / Sources:** clickable original references and provenance.
 
-- What changed compared with before?
-- Why does it matter to the reader's stated interests?
-- Which claims are supported by first-party evidence?
-- What should be watched next?
+## Lightweight architecture
 
-It is personal-first rather than platform-first. Fork the repository, edit one transparent focus profile, and the same lightweight system becomes your own news feed.
+GPT cloud research → versioned JSON → GitHub Actions validation and build → GitHub Pages.
 
-## What makes it different
+The configured cloud task is the only daily content writer. The default path needs no database, always-on backend or separate OpenAI API key. Account usage limits, connected GitHub permissions and unattended cloud-tool capabilities still apply. GitHub services are subject to their usage limits.
 
-| | Typical aggregator | AI Intelligence Hub |
-| --- | --- | --- |
-| Selection | Popularity and volume | Explicit interests in `focus-profile.json` |
-| Unit of information | Articles | Deduplicated events |
-| Explanation | Headline or summary | What changed, why it matters, what to watch |
-| China ↔ global | Usually one-sided | Both markets in one research pass |
-| Evidence | Often opaque | Clickable, tiered source links |
-| Ownership | Platform account | Your GitHub repository and JSON |
-| Infrastructure | Database, crawler, API stack | Scheduled GPT research + static JSON |
+Search and filtering run in the browser. Bookmarks stay in browser local storage. The site is a static snapshot.
 
-Most feeds optimize for engagement. This one optimizes for relevance you can inspect and change.
+## Daily updates
 
-## Focus Profile
+Paste the full [Scheduler prompt](config/scheduler-prompt.txt) into the existing cloud task. This repository file does **not** create or update a schedule automatically.
 
-Personalization is controlled by [`config/focus-profile.json`](./config/focus-profile.json), not by a hidden recommendation model. It contains public-safe preferences such as:
+Research the previous 24 hours and scan for missed events since the last successful update. Aim for 20 independent new events, normally 12–20. Widen research before accepting a sparse batch; never fabricate stories to meet a quota. Older discoveries retain their actual publication dates.
 
-- priority topics and weights;
-- companies to prioritize or watch;
-- preferred language, timezone, and daily reading volume;
-- editorial preferences and explicit exclusions.
+Retain a seven-day dataset within the 80-event limit. Stable IDs and first-seen times support the 24-hour, 3-day and 7-day filters. Those filters use first inclusion; publication dates are shown separately.
 
-The profile should never contain private work information, identity records, financial information, health information, credentials, or other sensitive context—this repository is public.
+New and substantively updated events include complete Chinese and English analysis. Legacy events without English analysis are explicitly identified in English mode. The cloud task should backfill their translations.
 
-## Lightweight by design
+## Evidence and publication
 
-The default architecture uses free resources or services the owner already subscribes to:
+Official announcements, documentation, repositories and original research anchor coverage. Multiple pages from one organization do not establish independent corroboration. Editorial scores are ranking aids, not calibrated accuracy measurements.
 
-| Capability | Default resource | Additional bill |
-| --- | --- | ---: |
-| Daily web research | GPT cloud Scheduler | None beyond the existing plan |
-| Data storage | Versioned JSON in GitHub | $0 |
-| Validation and publishing | GitHub Actions | $0 within free limits |
-| Hosting | GitHub Pages | $0 |
-| Search and filtering | Browser-side computation | $0 |
-| Bookmarks | Browser `localStorage` | $0 |
+Every push to main, including JSON-only changes, triggers validation, a static build and Pages deployment. Check the Actions run for the exact commit before claiming publication. The Scheduler prompt includes a workflow-dispatch fallback when no run appears and permissions allow.
 
-No database. No vector store. No crawler fleet. No always-on backend. No separate OpenAI API key is required for the default workflow.
-
-## How it works
-
-```text
-focus-profile.json
-        ↓
-GPT cloud research
-        ↓
-source verification + event clustering
-        ↓
-Chinese editorial analysis
-        ↓
-dashboard.json
-        ↓
-schema validation + GitHub Pages
-```
-
-The GPT Scheduler is the only daily content writer. It researches the previous 24 hours, merges results with the rolling seven-day dataset, and commits `data/dashboard.json`. GitHub Actions validates, builds, and deploys that committed snapshot. RSS remains an explicit manual fallback and never competes with the daily writer.
-
-## Editorial principles
-
-1. **Signal over volume.** Three meaningful events are better than twenty weak ones.
-2. **Fact before interpretation.** Facts, implications, and open questions are written separately.
-3. **First-party evidence first.** Official sources anchor important claims whenever possible.
-4. **Uncertainty stays visible.** Single-source stories are labelled as such.
-5. **No simulated activity.** Trends and counts are calculated from retained events.
-6. **The last good snapshot survives.** A failed research run never replaces valid public data.
-
-## Trust model
-
-- **Tier 1:** official or first-party sources—company releases, documentation, papers, regulators, and official repositories.
-- **Tier 2:** established technology, business, and specialist reporting.
-- **Tier 3:** community discovery signals and supplementary discussion.
-
-Multiple pages from the same organization do not automatically count as independent confirmation. Important or disputed events should include independent corroboration when it exists. Every displayed source remains clickable.
+Failed validation stops deployment. Research failures must preserve the previous successful content timestamps. Structural validation does not prove factual accuracy.
 
 ## Repository map
 
-```text
-config/focus-profile.json       Reader-controlled interests
-config/dashboard.schema.json    Public data contract
-data/dashboard.json             Current rolling seven-day snapshot
-scripts/prepare-dashboard.mjs   Deterministic validation
-app/page.tsx                    Market Pulse interface
-.github/workflows/              Validation and GitHub Pages deployment
-```
+| File | Role |
+| --- | --- |
+| config/focus-profile.json | Public editorial scope |
+| config/dashboard.schema.json | Data structure |
+| config/scheduler-prompt.txt | Copyable cloud-task instructions |
+| data/dashboard.json | Rolling news snapshot |
+| scripts/prepare-dashboard.mjs | Normalization and validation |
+| app/page.tsx | Reading interface |
+| .github/workflows/daily-update.yml | Build and deployment |
 
-## Local development
+## Development
 
 ```bash
 npm ci
 npm run validate:data
 npm run dev
-```
-
-Create the static GitHub Pages build with:
-
-```bash
 npm run build:pages
 ```
 
-## Use it as your own feed
-
-1. Fork the repository.
-2. Edit `config/focus-profile.json` with public-safe interests.
-3. Configure a GPT cloud schedule to read the profile and update `data/dashboard.json`.
-4. Enable GitHub Pages with **GitHub Actions** as the source.
-
-The result is a personal AI intelligence feed you can inspect, modify, and keep—without adopting another news platform or subscription.
+To reuse the project, fork it, enable Pages through GitHub Actions, adapt the editorial scope and connect an authorized cloud research task.

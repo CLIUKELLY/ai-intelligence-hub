@@ -50,6 +50,9 @@ const items = input.items.map((item, index) => {
   if (!outputPath && !Number.isInteger(item.rank)) fail(`items[${index}].rank 缺失或无效`);
   const title = requiredString(item.title, `items[${index}].title`, 4);
   const titleEn = requiredString(item.titleEn || title, `items[${index}].titleEn`, 4);
+  if (/[\u3400-\u9fff]/u.test(titleEn)) fail(`items[${index}].titleEn 必须是英文`);
+  const englishFields = ['summaryEn', 'whyEn', 'changeEn', 'watchEn'];
+  if (englishFields.some(field => item[field] !== undefined) && englishFields.some(field => !item[field])) fail(`items[${index}] 的英文分析必须四项完整，不能只提交部分字段`);
   const summary = requiredString(item.summary, `items[${index}].summary`, 20);
   const why = requiredString(item.why, `items[${index}].why`, 15);
   const change = typeof item.change === 'string' && item.change.trim().length >= 12 ? item.change.trim() : null;
@@ -84,6 +87,12 @@ const items = input.items.map((item, index) => {
     id: Number.isInteger(item.id) ? item.id : stableId(primaryUrl),
     title,
     titleEn,
+    ...Object.fromEntries(['summaryEn', 'whyEn', 'changeEn', 'watchEn'].flatMap((field) => {
+      if (item[field] === undefined) return [];
+      const value = requiredString(item[field], `items[${index}].${field}`, 12);
+      if (/[\u3400-\u9fff]/u.test(value)) fail(`items[${index}].${field} 必须是英文`);
+      return [[field, value]];
+    })),
     summary,
     why,
     ...(change ? { change } : {}),
@@ -104,6 +113,9 @@ const items = input.items.map((item, index) => {
     rank: index + 1,
   };
 });
+
+const englishMissing = items.filter(item => !item.summaryEn || !item.whyEn || !item.watchEn).length;
+if (englishMissing) warnings.push(`${englishMissing} 个历史事件尚无完整英文分析；英文页面将提示缺失。`);
 
 const bullets = Array.isArray(input.brief?.bullets) ? input.brief.bullets.map(String).filter((item) => item.trim().length >= 12).slice(0, 5) : [];
 if (bullets.length < 3) fail('brief.bullets 至少需要 3 条有效内容');
