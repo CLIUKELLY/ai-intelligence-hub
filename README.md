@@ -4,13 +4,13 @@
 
 **English** · [简体中文](README.zh-CN.md)
 
-[Read the news](https://cliukelly.github.io/ai-intelligence-hub/) · [How daily updates work](#daily-updates) · [Run locally](#run-locally)
+[Read the news](https://cliukelly.github.io/there-goes-ai-again/) · [How daily updates work](#daily-updates) · [Run locally](#run-locally)
 
-[![Build and deploy](https://github.com/CLIUKELLY/ai-intelligence-hub/actions/workflows/daily-update.yml/badge.svg?branch=main)](https://github.com/CLIUKELLY/ai-intelligence-hub/actions/workflows/daily-update.yml)
+[![There Goes AI Again · Build & Deploy](https://github.com/CLIUKELLY/there-goes-ai-again/actions/workflows/daily-update.yml/badge.svg?branch=main)](https://github.com/CLIUKELLY/there-goes-ai-again/actions/workflows/daily-update.yml)
 
 An independent, bilingual news site for people following AI products and development. It selects developments in models, tools and infrastructure, then explains what changed, why it matters and where to read the original source.
 
-Built by [Kelly](https://github.com/CLIUKELLY). The repository keeps its original name, `ai-intelligence-hub`.
+Built by [Kelly](https://github.com/CLIUKELLY).
 
 ## Why this exists
 
@@ -103,8 +103,8 @@ Research failures must preserve the previous successful content timestamps. Vali
 Use **Node.js 24** to match CI.
 
 ```bash
-git clone https://github.com/CLIUKELLY/ai-intelligence-hub.git
-cd ai-intelligence-hub
+git clone https://github.com/CLIUKELLY/there-goes-ai-again.git
+cd there-goes-ai-again
 npm ci
 npm run validate:data
 npm run dev
@@ -135,4 +135,4 @@ The static output is written to `dist/client`.
 
 ---
 
-[Built by Kelly](https://github.com/CLIUKELLY) · [Read the news](https://cliukelly.github.io/ai-intelligence-hub/) · [简体中文](README.zh-CN.md)
+[Built by Kelly](https://github.com/CLIUKELLY) · [Read the news](https://cliukelly.github.io/there-goes-ai-again/) · [简体中文](README.zh-CN.md)

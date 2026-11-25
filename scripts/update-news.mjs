@@ -14,7 +14,7 @@ const health = [];
 const raw = [];
 await Promise.all(sources.map(async (source) => {
   try {
-    const response = await fetch(source.url, { headers: { 'user-agent': 'AI-Market-Pulse/1.0 (+https://github.com/CLIUKELLY/ai-intelligence-hub)' }, signal: AbortSignal.timeout(20000), redirect: 'follow' });
+    const response = await fetch(source.url, { headers: { 'user-agent': 'There-Goes-AI-Again/1.0 (+https://github.com/CLIUKELLY/there-goes-ai-again)' }, signal: AbortSignal.timeout(20000), redirect: 'follow' });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const text = await response.text();
     const entries = parseFeed(text, source).filter((item) => item.publishedAt >= cutoff && aiKeywords.test(`${item.title} ${item.summary}`));

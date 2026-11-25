@@ -3,7 +3,7 @@ import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import process from 'node:process';
 
-const repository = process.env.GITHUB_REPOSITORY || 'CLIUKELLY/ai-intelligence-hub';
+const repository = process.env.GITHUB_REPOSITORY || 'CLIUKELLY/there-goes-ai-again';
 const filePath = 'data/dashboard.json';
 const content = fs.readFileSync(filePath, 'utf8');
 

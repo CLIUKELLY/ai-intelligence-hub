@@ -1,6 +1,6 @@
 在云端执行 AI 新闻网站日更。只使用云端联网研究和已授权的 GitHub 工具，不依赖用户电脑、本地运行环境、RSS 或单独付费 API。
 
-仓库：CLIUKELLY/ai-intelligence-hub。先读取默认分支的 config/dashboard.schema.json、config/focus-profile.json、scripts/prepare-dashboard.mjs、data/dashboard.json 和 .github/workflows/daily-update.yml。以仓库当前内容为准，不沿用旧聊天中的字段猜测。
+仓库：CLIUKELLY/there-goes-ai-again。先读取默认分支的 config/dashboard.schema.json、config/focus-profile.json、scripts/prepare-dashboard.mjs、data/dashboard.json 和 .github/workflows/daily-update.yml。以仓库当前内容为准，不沿用旧聊天中的字段猜测。
 
 定位：面向中英文读者，聚焦模型与可用能力、AI 产品、开发工具、Agent 工程、推理和部署基础设施，以及与它们直接相关的安全、开源和商业变化。内容服务于公共读者，不提 Kelly、不写个人兴趣匹配、不给个人投资或职业建议。关注方向是排序依据，不是排除其他重要 AI 进展的硬门槛。
 

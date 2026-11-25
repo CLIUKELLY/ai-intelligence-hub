@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     title: '又整啥了｜There Goes AI Again',
     description: 'AI 新鲜事，每天都在整点新活。The latest moves. The useful bits.',
     type: 'website',
-    images: [{ url: '/ai-intelligence-hub/og.png', width: 1734, height: 907, alt: 'AI Intelligence Hub' }],
+    images: [{ url: '/there-goes-ai-again/og.png', width: 1734, height: 907, alt: 'There Goes AI Again' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: '又整啥了｜There Goes AI Again',
     description: 'AI 新鲜事，每天都在整点新活。The latest moves. The useful bits.',
-    images: ['/ai-intelligence-hub/og.png'],
+    images: ['/there-goes-ai-again/og.png'],
   },
 };
 

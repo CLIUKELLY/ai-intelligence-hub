@@ -171,7 +171,7 @@ export default function Home() {
         </article>}
       </section>
 
-      <footer className="intelligence-footer"><div className="footer-signature"><span>{t('由', 'Built by')} <a href="https://github.com/CLIUKELLY" target="_blank" rel="noreferrer">Kelly</a>{t('独立构建。', '.')}</span><small>© {new Date(dashboard.generatedAt).getUTCFullYear()} Kelly</small></div><a className="footer-source" href="https://github.com/CLIUKELLY/ai-intelligence-hub" target="_blank" rel="noreferrer">{t('查看源码', 'View source')}<ExternalLink size={14} aria-hidden="true" /></a></footer>
+      <footer className="intelligence-footer"><div className="footer-signature"><span>{t('由', 'Built by')} <a href="https://github.com/CLIUKELLY" target="_blank" rel="noreferrer">Kelly</a>{t('独立构建。', '.')}</span><small>© {new Date(dashboard.generatedAt).getUTCFullYear()} Kelly</small></div><a className="footer-source" href="https://github.com/CLIUKELLY/there-goes-ai-again" target="_blank" rel="noreferrer">{t('查看源码', 'View source')}<ExternalLink size={14} aria-hidden="true" /></a></footer>
     </main>
   );
 }

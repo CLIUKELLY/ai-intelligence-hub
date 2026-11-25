@@ -4,13 +4,13 @@
 
 [English](README.md) · **简体中文**
 
-[开始阅读](https://cliukelly.github.io/ai-intelligence-hub/) · [每日更新流程](#每日更新) · [本地运行](#本地运行)
+[开始阅读](https://cliukelly.github.io/there-goes-ai-again/) · [每日更新流程](#每日更新) · [本地运行](#本地运行)
 
-[![构建与部署](https://github.com/CLIUKELLY/ai-intelligence-hub/actions/workflows/daily-update.yml/badge.svg?branch=main)](https://github.com/CLIUKELLY/ai-intelligence-hub/actions/workflows/daily-update.yml)
+[![There Goes AI Again · Build & Deploy](https://github.com/CLIUKELLY/there-goes-ai-again/actions/workflows/daily-update.yml/badge.svg?branch=main)](https://github.com/CLIUKELLY/there-goes-ai-again/actions/workflows/daily-update.yml)
 
 一个面向关注 **AI 产品与开发进展**的中英文独立新闻站。精选模型、工具和基础设施的新动态，交代具体变化、实际意义和原始来源。
 
-由 [Kelly](https://github.com/CLIUKELLY) 独立构建。仓库沿用原名称 `ai-intelligence-hub`。
+由 [Kelly](https://github.com/CLIUKELLY) 独立构建。
 
 ## 为什么做这个站
 
@@ -103,8 +103,8 @@ GitHub Pages
 建议使用 **Node.js 24**，与 CI 保持一致。
 
 ```bash
-git clone https://github.com/CLIUKELLY/ai-intelligence-hub.git
-cd ai-intelligence-hub
+git clone https://github.com/CLIUKELLY/there-goes-ai-again.git
+cd there-goes-ai-again
 npm ci
 npm run validate:data
 npm run dev
@@ -135,4 +135,4 @@ npm run build:pages
 
 ---
 
-[由 Kelly 独立构建](https://github.com/CLIUKELLY) · [开始阅读](https://cliukelly.github.io/ai-intelligence-hub/) · [English](README.md)
+[由 Kelly 独立构建](https://github.com/CLIUKELLY) · [开始阅读](https://cliukelly.github.io/there-goes-ai-again/) · [English](README.md)

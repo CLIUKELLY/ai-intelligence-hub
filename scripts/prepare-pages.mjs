@@ -2,7 +2,7 @@ import { existsSync, renameSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
 
 const repositoryName =
-  process.env.GITHUB_REPOSITORY?.split('/')[1] || 'ai-intelligence-hub';
+  process.env.GITHUB_REPOSITORY?.split('/')[1] || 'there-goes-ai-again';
 const outputRoot = join(process.cwd(), 'dist', 'client');
 const nestedRoot = join(outputRoot, repositoryName);
 const nestedNext = join(nestedRoot, '_next');
