@@ -26,7 +26,7 @@ So I built **There Goes AI Again**. It is a personal experiment in turning infor
 
 - **Selection with intent.** Follow concrete developments in models, products and developer tools, with repetitive coverage combined into events.
 - **Context you can inspect.** Keep original sources alongside summaries, editorial interpretation and questions that still need evidence.
-- **A point of view, with taste.** From selection and writing to visuals and interaction, the site has its own judgment and personality.
+- **A place to read at your own pace.** Browse the daily selection, follow the original sources, and explore what interests you.
 
 The aim is simple: stay curious, find something useful, and get back to the rest of your day.
 
