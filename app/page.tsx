@@ -25,7 +25,7 @@ type Dashboard = {
 
 const dashboard = dashboardJson as Dashboard;
 const news = dashboard.items;
-const categories = ['全部', '本地AI', '模型', 'AI Coding', '算力', '研究', '产品', '资本', '安全', '开源'];
+const categories = ['全部', '模型', 'AI Coding', '算力', '研究', '产品', '资本', '安全', '开源', '本地AI'];
 const dateTime = new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Shanghai', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false });
 
 function publicationDate(item: NewsItem, full = false, english = false) {
