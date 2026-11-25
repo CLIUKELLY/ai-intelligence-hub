@@ -10,8 +10,6 @@
 
 一个从个人阅读需求出发的中英文 AI 新闻网站：把自己关心的模型、产品与开发工具进展，整理成有原始来源、有阅读结构、每天愿意打开的一页，也分享给有同样困扰的人。
 
-由 [Kelly](https://github.com/CLIUKELLY) 构建的个人项目。相关观点不代表雇主。
-
 ## 为什么做这个站
 
 AI 变化太快，我有时也会担心自己跟不上。
@@ -143,4 +141,6 @@ npm run build:pages
 
 ---
 
-[由 Kelly 独立构建](https://github.com/CLIUKELLY) · [开始阅读](https://cliukelly.github.io/there-goes-ai-again/) · [English](README.md)
+[开始阅读](https://cliukelly.github.io/there-goes-ai-again/) · [English](README.md)
+
+<sub>由 <a href="https://github.com/CLIUKELLY">Kelly</a> 构建。</sub>

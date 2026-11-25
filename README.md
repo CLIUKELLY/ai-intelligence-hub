@@ -10,8 +10,6 @@
 
 A bilingual AI news site that started with a personal reading problem: keeping up with models, products and developer tools without getting lost in the feed. It brings selected developments, original sources and practical context into a place I want to open each day — and share with people who feel the same.
 
-Built by [Kelly](https://github.com/CLIUKELLY) as a personal project. Views are my own and do not represent my employer.
-
 ## Why I built this
 
 AI moves quickly, and sometimes I feel a step behind.
@@ -143,4 +141,6 @@ The static output is written to `dist/client`.
 
 ---
 
-[Built by Kelly](https://github.com/CLIUKELLY) · [Read the news](https://cliukelly.github.io/there-goes-ai-again/) · [简体中文](README.zh-CN.md)
+[Read the news](https://cliukelly.github.io/there-goes-ai-again/) · [简体中文](README.zh-CN.md)
+
+<sub>Built by <a href="https://github.com/CLIUKELLY">Kelly</a>.</sub>
