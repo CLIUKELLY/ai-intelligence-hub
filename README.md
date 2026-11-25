@@ -1,68 +1,138 @@
-# AI Intelligence Hub
+# There Goes AI Again · 又整啥了
 
-**AI 最新动态，看清更新，也看清边界。**
+**AI keeps moving. Find what’s worth a closer look.**
 
-A focused, bilingual AI news desk. Models, products, developer tools and infrastructure — with source links, practical context and clear open questions.
+**English** · [简体中文](README.zh-CN.md)
 
-[阅读新闻 / Read the news](https://cliukelly.github.io/ai-intelligence-hub/)
+[Read the news](https://cliukelly.github.io/ai-intelligence-hub/) · [How daily updates work](#daily-updates) · [Run locally](#run-locally)
 
-## Editorial scope
+[![Build and deploy](https://github.com/CLIUKELLY/ai-intelligence-hub/actions/workflows/daily-update.yml/badge.svg?branch=main)](https://github.com/CLIUKELLY/ai-intelligence-hub/actions/workflows/daily-update.yml)
 
-We cover concrete changes: models becoming available, products shipping, developer interfaces evolving, inference stacks improving and safety findings affecting deployment. China and global developments share one workflow.
+An independent, bilingual news site for people following AI products and development. It selects developments in models, tools and infrastructure, then explains what changed, why it matters and where to read the original source.
 
-This is a public, topic-focused news site. There is no personal relevance score or claim of comprehensive coverage.
+Built by [Kelly](https://github.com/CLIUKELLY). The repository keeps its original name, `ai-intelligence-hub`.
 
-Each story separates facts, practical implications and open questions:
-- **更新要点 / What changed:** the specific change, availability or new evidence.
-- **实际意义 / Why it matters:** practical implications, distinguished from confirmed facts.
-- **待验证的问题 / What remains unverified:** a specific question and the evidence needed to answer it.
-- **来源与验证 / Sources:** clickable original references and provenance.
+## Why this exists
 
-## Lightweight architecture
+AI news moves quickly. Understanding a release often means piecing together an announcement, documentation, a repository and several reports.
 
-GPT cloud research → versioned JSON → GitHub Actions validation and build → GitHub Pages.
+This site brings the useful parts into one reading experience:
 
-The configured cloud task is the only daily content writer. The default path needs no database, always-on backend or separate OpenAI API key. Account usage limits, connected GitHub permissions and unattended cloud-tool capabilities still apply. GitHub services are subject to their usage limits.
+- **Selection with intent.** Focus on concrete releases and meaningful developments; combine repetitive coverage into events.
+- **Context you can inspect.** Separate reported facts, editorial interpretation and open questions, with links to the underlying sources.
+- **A point of view, with taste.** From selection and writing to visuals and interaction, the site has its own judgment and personality.
 
-Search and filtering run in the browser. Bookmarks stay in browser local storage. The site is a static snapshot.
+The goal is to help readers decide what deserves a closer look.
+
+## What you can read
+
+Coverage centers on **models and usable capabilities, AI products, developer tools, Agent engineering, and inference and deployment infrastructure**. Related open-source releases, safety findings and business developments enter the feed when they affect those areas.
+
+China and global developments share the same editorial workflow. Selection follows a public [editorial profile](config/focus-profile.json).
+
+Each story provides:
+
+| Layer | What it answers |
+| --- | --- |
+| Summary | Who announced what, and what is available? |
+| What changed | What is new compared with the previous state? |
+| Why it matters | What are the practical implications? |
+| What remains unverified | What specific question still needs evidence? |
+| Sources | Where can the reader check the claims? |
+
+First-party announcements, documentation, official repositories and original research are preferred. Independent reporting adds context and corroboration where available. A single official source is identified as such; multiple pages from one organization do not establish independent confirmation.
+
+## The reading experience
+
+- A full-screen daily selection leads into a searchable news list and article view.
+- An interactive magnifying glass reveals story keywords in a gently moving grain landscape.
+- Filters cover stories first added within **24 hours, 3 days or 7 days**. Original publication dates remain visible separately.
+- The interface selects a supported language from browser preferences, with English as the fallback. A manual choice is remembered in the current browser.
+- Bookmarks stay in browser local storage.
+- Reduced-motion preferences disable automatic demonstrations, ambient movement and smooth scrolling.
+
+New and substantively updated stories require complete Chinese and English analysis. Some retained historical stories still await English translations; English mode identifies those gaps.
+
+## Lightweight by design
+
+The project uses an existing GPT cloud task and GitHub infrastructure:
+
+```text
+Public editorial profile + previous snapshot
+                    ↓
+GPT cloud research, selection and bilingual writing
+                    ↓
+data/dashboard.json
+                    ↓
+GitHub Actions: validate → build → deploy
+                    ↓
+GitHub Pages
+```
+
+| Part | Implementation |
+| --- | --- |
+| Interface | React, TypeScript, Vinext / Vite, CSS and Canvas |
+| Content | Versioned static JSON |
+| Research | A separately configured GPT cloud task |
+| Publishing | GitHub Actions and GitHub Pages |
+| Search, filters, bookmarks | Browser-side behavior |
+
+The default workflow needs no database, always-on backend or separate OpenAI API key. Cloud-task availability and connected GitHub permissions depend on the account; subscription and GitHub usage limits apply.
 
 ## Daily updates
 
-Paste the full [Scheduler prompt](config/scheduler-prompt.txt) into the existing cloud task. This repository file does **not** create or update a schedule automatically.
+The cloud task is the sole daily content writer. It researches the previous 24 hours, scans for missed developments since the last successful update, and merges the results into a rolling seven-day snapshot of up to 80 events.
 
-Research the previous 24 hours and scan for missed events since the last successful update. Aim for 20 independent new events, normally 12–20. Widen research before accepting a sparse batch; never fabricate stories to meet a quota. Older discoveries retain their actual publication dates.
+The editorial target is normally 12–20 new independent events. A sparse research pass should expand its search before stopping. Older discoveries keep their real publication dates, and event targets never justify invented stories.
 
-Retain a seven-day dataset within the 80-event limit. Stable IDs and first-seen times support the 24-hour, 3-day and 7-day filters. Those filters use first inclusion; publication dates are shown separately.
+To configure the task:
 
-New and substantively updated events include complete Chinese and English analysis. Legacy events without English analysis are explicitly identified in English mode. The cloud task should backfill their translations.
+1. Enable GitHub Pages with **GitHub Actions** as its publishing source.
+2. Give the cloud task the authorized GitHub capabilities needed to read and update this repository.
+3. Paste the full [Scheduler prompt](config/scheduler-prompt.txt) into the cloud task and configure its schedule there.
+4. Run once and verify the data commit, its corresponding Actions run and the published site.
 
-## Evidence and publication
+The prompt file documents the task; committing that file does not create or update the cloud schedule automatically.
 
-Official announcements, documentation, repositories and original research anchor coverage. Multiple pages from one organization do not establish independent corroboration. Editorial scores are ranking aids, not calibrated accuracy measurements.
+Every push to `main`, including a JSON-only change, triggers validation and a static build. New or substantively changed events without complete English analysis fail the publishing check. Unchanged historical records can be translated gradually.
 
-Every push to main, including JSON-only changes, triggers validation, a static build and Pages deployment. Check the Actions run for the exact commit before claiming publication. The Scheduler prompt includes a workflow-dispatch fallback when no run appears and permissions allow.
+Research failures must preserve the previous successful content timestamps. Validation failures stop publication. Structural checks do not establish factual accuracy, and a successful commit alone does not prove deployment succeeded.
 
-Failed validation stops deployment. Research failures must preserve the previous successful content timestamps. Structural validation does not prove factual accuracy.
+## Run locally
 
-## Repository map
-
-| File | Role |
-| --- | --- |
-| config/focus-profile.json | Public editorial scope |
-| config/dashboard.schema.json | Data structure |
-| config/scheduler-prompt.txt | Copyable cloud-task instructions |
-| data/dashboard.json | Rolling news snapshot |
-| scripts/prepare-dashboard.mjs | Normalization and validation |
-| app/page.tsx | Reading interface |
-| .github/workflows/daily-update.yml | Build and deployment |
-
-## Development
+Use **Node.js 24** to match CI.
 
 ```bash
+git clone https://github.com/CLIUKELLY/ai-intelligence-hub.git
+cd ai-intelligence-hub
 npm ci
 npm run validate:data
 npm run dev
+```
+
+Build for GitHub Pages:
+
+```bash
 npm run build:pages
 ```
 
-To reuse the project, fork it, enable Pages through GitHub Actions, adapt the editorial scope and connect an authorized cloud research task.
+The static output is written to `dist/client`.
+
+## Repository map
+
+| Path | Purpose |
+| --- | --- |
+| [app/page.tsx](app/page.tsx) | News interface, language selection and filtering |
+| [app/news-lens.tsx](app/news-lens.tsx) | Interactive lens and ambient grain animation |
+| [app/globals.css](app/globals.css) | Visual system and responsive layout |
+| [config/focus-profile.json](config/focus-profile.json) | Editorial scope and priorities |
+| [config/dashboard.schema.json](config/dashboard.schema.json) | JSON data contract |
+| [config/scheduler-prompt.txt](config/scheduler-prompt.txt) | Copyable cloud-task instructions |
+| [data/dashboard.json](data/dashboard.json) | Rolling news snapshot |
+| [scripts/prepare-dashboard.mjs](scripts/prepare-dashboard.mjs) | Normalization and validation |
+| [scripts/validate-news-update.mjs](scripts/validate-news-update.mjs) | English completeness check against the previous commit |
+| [.github/workflows/daily-update.yml](.github/workflows/daily-update.yml) | Build and Pages deployment |
+
+---
+
+[Built by Kelly](https://github.com/CLIUKELLY) · [Read the news](https://cliukelly.github.io/ai-intelligence-hub/) · [简体中文](README.zh-CN.md)
