@@ -1,6 +1,6 @@
 'use client';
 
-import { ArrowDown, Bookmark, BookmarkCheck, Check, ChevronDown, Command, ExternalLink, Filter, Globe2, Languages, Search, ShieldCheck } from 'lucide-react';
+import { ArrowDown, Bookmark, BookmarkCheck, Check, ChevronDown, Command, ExternalLink, Filter, Search, ShieldCheck } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import dashboardJson from '@/data/dashboard.json';
 import NewsLens from './news-lens';
@@ -171,7 +171,7 @@ export default function Home() {
         </article>}
       </section>
 
-      <footer className="intelligence-footer"><span><Globe2 size={14} /> {t('模型 · 产品 · 开发工具 · 基础设施', 'Models · Products · Developer tools · Infrastructure')}</span><span>{dashboard.sourceHealth.healthy}/{dashboard.sourceHealth.attempted} {t('来源可用','sources available')}</span><span><Languages size={14} /> {t('又整啥了 · 每日精选', 'There Goes AI Again · The latest moves. The useful bits.')}</span></footer>
+      <footer className="intelligence-footer"><div className="footer-signature"><span>{t('由', 'Built by')} <a href="https://github.com/CLIUKELLY" target="_blank" rel="noreferrer">Kelly</a>{t('独立构建。', '.')}</span><small>© {new Date(dashboard.generatedAt).getUTCFullYear()} Kelly</small></div><a className="footer-source" href="https://github.com/CLIUKELLY/ai-intelligence-hub" target="_blank" rel="noreferrer">{t('查看源码', 'View source')}<ExternalLink size={14} aria-hidden="true" /></a></footer>
     </main>
   );
 }

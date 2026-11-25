@@ -530,3 +530,15 @@ html[lang="en"] .intelligence-terminal .intelligence-brand b.noted-wordmark { fo
 @media(max-width:1100px) { .intelligence-terminal .intelligence-status { display:none; }html[lang] .intelligence-terminal .intelligence-header { grid-template-columns:auto minmax(0,1fr) auto; }.intelligence-terminal .intelligence-brand b.noted-wordmark { font-size:calc(33px - var(--header-progress) * 7px); }.intelligence-terminal .masthead-translation { font-size:12px; padding-left:16px; } }
 @media(max-width:760px) { .masthead-slot { height:78px; }html[lang] .intelligence-terminal .intelligence-header { height:calc(78px - var(--header-progress) * 16px); padding-inline:20px; gap:16px; grid-template-columns:auto minmax(0,1fr) auto; }.intelligence-terminal .intelligence-brand b.noted-wordmark { font-size:calc(30px - var(--header-progress) * 9px); }.intelligence-terminal .masthead-translation,.intelligence-terminal .cover-navigation { display:none; }.intelligence-terminal .intelligence-search { height:36px; padding-inline:9px; gap:5px; }.intelligence-terminal .intelligence-search input { width:100%; font-size:14px; }.intelligence-terminal .intelligence-search kbd { display:none; }.intelligence-terminal .intelligence-search svg { width:14px; }.discovery-onboarding { bottom:4%; left:24px; max-width:calc(100% - 48px); }.discovery-onboarding p { font-size:14px; }.discovery-onboarding small { font-size:12px; }html[lang="en"] .intelligence-terminal .intelligence-brand b.noted-wordmark { font-size:calc(22px - var(--header-progress) * 7px); } }
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; }.intelligence-terminal .intelligence-search,.glass-crosshair { transition:none; }.editorial-cover.noted-hero .enter-terminal svg,.news-discovery .guide-orbit { animation:none; } }
+
+/* A quiet independent-maker signature. */
+.intelligence-terminal .intelligence-footer { min-height:112px; justify-content:space-between; gap:24px; padding:26px clamp(24px,3.5vw,64px); background:#090a09; border-top:1px solid rgb(232 232 219 / 14%); color:#cdcec6; font-size:14px; }
+.footer-signature { display:grid; gap:8px; }
+.intelligence-footer .footer-signature > span { gap:5px; line-height:1.5; }
+.footer-signature a { color:#f3aa95; font-weight:600; text-underline-offset:4px; }
+.footer-signature a:hover { text-decoration:underline; }
+.footer-signature small { color:#a7aaa1; font-size:13px; line-height:1.5; }
+.footer-source { display:flex; align-items:center; gap:8px; min-height:44px; color:#d9dbd2; text-underline-offset:5px; }
+.footer-source:hover { color:#f3aa95; text-decoration:underline; }
+.intelligence-footer a:focus-visible { outline:2px solid #f3aa95; outline-offset:5px; border-radius:3px; }
+@media(max-width:480px) { .intelligence-terminal .intelligence-footer { padding-block:24px; gap:16px; } }
