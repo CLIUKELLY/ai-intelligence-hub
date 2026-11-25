@@ -45,7 +45,23 @@ export default function Home() {
   const [category, setCategory] = useState('全部');
   const [range, setRange] = useState(24);
   const [sort, setSort] = useState<'推荐顺序' | '最新发布' | '来源数'>('最新发布');
-  const [bilingual, setBilingual] = useState(false);
+  const [bilingual, setBilingual] = useState(true);
+  useEffect(() => {
+    // English is the static fallback; the browser selects a supported locale after hydration.
+    const timer = window.setTimeout(() => {
+      let saved: string | null = null;
+      try { saved = localStorage.getItem('aihub-language'); } catch {}
+      const preferred = (navigator.languages?.length ? navigator.languages : [navigator.language])
+        .find(language => /^(zh|en)(-|$)/i.test(language || ''));
+      setBilingual(saved === 'en' ? true : saved === 'zh' ? false : !/^zh(-|$)/i.test(preferred || ''));
+    }, 0);
+    return () => window.clearTimeout(timer);
+  }, []);
+  const switchLanguage = () => {
+    const next = !bilingual;
+    setBilingual(next);
+    try { localStorage.setItem('aihub-language', next ? 'en' : 'zh'); } catch {}
+  };
   const t = (zh: string, en: string) => bilingual ? en : zh;
   const categoryLabel = (value: string) => bilingual ? ({ '全部': 'All', '本地AI': 'China AI', '模型': 'Models', '算力': 'Infrastructure', '研究': 'Research', '产品': 'Products', '资本': 'Business', '安全': 'Safety', '开源': 'Open source' } as Record<string, string>)[value] || value : value === '本地AI' ? '本土 AI' : value;
   useEffect(() => { document.documentElement.lang = bilingual ? 'en' : 'zh-CN'; document.title = bilingual ? 'There Goes AI Again | The latest moves. The useful bits.' : '又整啥了｜AI 今天，又整啥了？'; }, [bilingual]);
@@ -116,7 +132,7 @@ export default function Home() {
         <div className="masthead-translation" aria-hidden="true">THERE GOES<br />AI AGAIN</div>
         <nav className="cover-navigation" aria-label={t('新闻导航', 'News navigation')}><button onClick={() => { setCategory('全部'); setRange(168); openNews(); }}>{t('新闻','News')}</button><button onClick={() => { setCategory('AI Coding'); setRange(168); openNews(); }}>{t('工具','Tools')}</button><button onClick={() => { setCategory('开源'); setRange(168); openNews(); }}>{t('开源','Open source')}</button></nav>
         <label className="intelligence-search"><Search size={17} /><input ref={searchRef} value={query} onChange={(e) => setQuery(e.target.value)} aria-label={t('搜索新闻', 'Search news')} placeholder={t('搜索公司、模型、事件或来源', 'Search companies, models or news')} /><kbd><Command size={11} /> K</kbd></label>
-        <button className="language-switch" onClick={() => setBilingual(!bilingual)} aria-label="Switch interface language">{bilingual ? 'ZH' : 'EN'}</button><div className="intelligence-status"><i className={isStale ? 'stale' : ''} /><span>{isStale ? t('等待更新', 'Awaiting update') : t('已更新', 'Updated')}</span><b>{updatedAt}</b></div>
+        <button className="language-switch" onClick={switchLanguage} aria-label={bilingual ? 'Switch to Chinese' : '切换为英文'} lang={bilingual ? 'zh-CN' : 'en'}>{bilingual ? '中文' : 'EN'}</button><div className="intelligence-status"><i className={isStale ? 'stale' : ''} /><span>{isStale ? t('等待更新', 'Awaiting update') : t('已更新', 'Updated')}</span><b>{updatedAt}</b></div>
       </header>
 
       <section className="signal-hero noted-hero editorial-cover" id="top" ref={coverRef}>

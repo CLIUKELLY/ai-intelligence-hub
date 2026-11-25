@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://cliukelly.github.io'),
-  title: '又整啥了｜AI 今天，又整啥了？',
+  title: 'There Goes AI Again | The latest moves. The useful bits.',
   description:
     '全球与中国 AI 最新动态：模型、产品、开发工具与基础设施，附具体变化、实际意义和原始来源。',
   openGraph: {
@@ -37,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN" className="dark">
+    <html lang="en" className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
