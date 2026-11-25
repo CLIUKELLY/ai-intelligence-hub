@@ -1,6 +1,6 @@
 # There Goes AI Again · 又整啥了
 
-**AI keeps moving. Find what’s worth a closer look.**
+**Catch up on AI. Get back to your day.**
 
 **English** · [简体中文](README.zh-CN.md)
 
@@ -8,27 +8,35 @@
 
 [![There Goes AI Again · Build & Deploy](https://github.com/CLIUKELLY/there-goes-ai-again/actions/workflows/daily-update.yml/badge.svg?branch=main)](https://github.com/CLIUKELLY/there-goes-ai-again/actions/workflows/daily-update.yml)
 
-An independent, bilingual news site for people following AI products and development. It selects developments in models, tools and infrastructure, then explains what changed, why it matters and where to read the original source.
+A bilingual AI news site that started with a personal reading problem: keeping up with models, products and developer tools without getting lost in the feed. It brings selected developments, original sources and practical context into a place I want to open each day — and share with people who feel the same.
 
-Built by [Kelly](https://github.com/CLIUKELLY).
+Built by [Kelly](https://github.com/CLIUKELLY) as a personal project. Views are my own and do not represent my employer.
 
-## Why this exists
+## Why I built this
 
-AI news moves quickly. Understanding a release often means piecing together an announcement, documentation, a repository and several reports.
+AI moves quickly, and sometimes I feel a step behind.
 
-This site brings the useful parts into one reading experience:
+There are plenty of useful news tools, but the things I care about are often scattered across different feeds. Social media helps me discover stories, yet a search for one AI update can turn into a much longer scroll. By the end, I may have spent more time consuming the feed than understanding what changed.
 
-- **Selection with intent.** Focus on concrete releases and meaningful developments; combine repetitive coverage into events.
-- **Context you can inspect.** Separate reported facts, editorial interpretation and open questions, with links to the underlying sources.
+I was already experimenting with AI subscriptions and scheduled research. They could help gather a daily briefing, but I wanted a better way to browse it: original links, a clear reading structure, and a website with some personality.
+
+So I built **There Goes AI Again**. It is a personal experiment in turning information gathering into a reading habit I actually enjoy.
+
+## What this offers
+
+**A focused daily read, with enough context to decide what deserves more of your attention.**
+
+- **Selection with intent.** Follow concrete developments in models, products and developer tools, with repetitive coverage combined into events.
+- **Context you can inspect.** Keep original sources alongside summaries, editorial interpretation and questions that still need evidence.
 - **A point of view, with taste.** From selection and writing to visuals and interaction, the site has its own judgment and personality.
 
-The goal is to help readers decide what deserves a closer look.
+The aim is simple: stay curious, find something useful, and get back to the rest of your day.
 
 ## What you can read
 
 Coverage centers on **models and usable capabilities, AI products, developer tools, Agent engineering, and inference and deployment infrastructure**. Related open-source releases, safety findings and business developments enter the feed when they affect those areas.
 
-China and global developments share the same editorial workflow. Selection follows a public [editorial profile](config/focus-profile.json).
+China and global developments share the same editorial workflow. Selection follows a public [editorial profile](config/focus-profile.json). All readers see the same curated feed; individual recommendation profiles are not part of the current site.
 
 Each story provides:
 
