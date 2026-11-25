@@ -56,10 +56,12 @@ export default function Home() {
   const [bookmarks, setBookmarks] = useState<number[]>([]);
   const [selectedId, setSelectedId] = useState(news[0]?.id || 0);
   const [coverVisible, setCoverVisible] = useState(true);
+  const pageRef = useRef<HTMLElement>(null);
   const coverRef = useRef<HTMLElement>(null);
   const [clock, setClock] = useState(() => Date.now());
   const searchRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLElement>(null);
+  const openNews = () => terminalRef.current?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
 
   useEffect(() => { const timer = setInterval(() => setClock(Date.now()), 60_000); return () => clearInterval(timer); }, []);
   useEffect(() => {
@@ -84,10 +86,18 @@ export default function Home() {
   const isStale = dashboard.status?.state !== 'fresh' || (clock - snapshot) / 3600000 > 36;
   const leadSignals = rangeNews.slice().sort((a, b) => b.score - a.score).slice(0, 3);
   useEffect(() => {
-    if (!coverRef.current) return;
-    const observer = new IntersectionObserver(([entry]) => setCoverVisible(entry.isIntersecting), { rootMargin: '-88px 0px 0px 0px' });
-    observer.observe(coverRef.current);
-    return () => observer.disconnect();
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const progress = Math.max(0, Math.min(1, (window.scrollY - 24) / 200));
+      pageRef.current?.style.setProperty('--header-progress', String(progress));
+      setCoverVisible(progress < .65);
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    update();
+    return () => { cancelAnimationFrame(frame); window.removeEventListener('scroll', schedule); window.removeEventListener('resize', schedule); };
   }, []);
 
   const lensClues = useMemo(() => news.slice().sort((a, b) => b.score - a.score).slice(0, 4).map(item => ({ id: item.id, title: bilingual ? item.titleEn : item.title, label: item.tags.find(tag => !['AI','Agent','AI Coding'].includes(tag) && (!bilingual || !/[\u3400-\u9fff]/u.test(tag))) || new URL(item.url).hostname })), [bilingual]);
@@ -99,21 +109,22 @@ export default function Home() {
   });
 
   return (
-    <main className={`intelligence-terminal ${coverVisible ? 'cover-active' : 'reading-active'}`}>
+    <main ref={pageRef} className={`intelligence-terminal ${coverVisible ? 'cover-active' : 'reading-active'}`}>
+      <div className="masthead-slot" aria-hidden="true" />
       <header className="intelligence-header">
         <a className="intelligence-brand" aria-label={t('又整啥了首页', 'There Goes AI Again home')} href="#top"><div><b className="noted-wordmark">{t('又整啥了', 'There Goes AI Again')}</b><small className="brand-signature">{t('AI 今天，又整啥了？', 'The latest moves. The useful bits.')}</small></div></a>
         <div className="masthead-translation" aria-hidden="true">THERE GOES<br />AI AGAIN</div>
-        <nav className="cover-navigation" aria-label={t('新闻导航', 'News navigation')}><button onClick={() => { setCategory('全部'); setRange(168); terminalRef.current?.scrollIntoView({ behavior: 'smooth' }); }}>{t('新闻','News')}</button><button onClick={() => { setCategory('AI Coding'); setRange(168); terminalRef.current?.scrollIntoView({ behavior: 'smooth' }); }}>{t('工具','Tools')}</button><button onClick={() => { setCategory('开源'); setRange(168); terminalRef.current?.scrollIntoView({ behavior: 'smooth' }); }}>{t('开源','Open source')}</button></nav>
+        <nav className="cover-navigation" aria-label={t('新闻导航', 'News navigation')}><button onClick={() => { setCategory('全部'); setRange(168); openNews(); }}>{t('新闻','News')}</button><button onClick={() => { setCategory('AI Coding'); setRange(168); openNews(); }}>{t('工具','Tools')}</button><button onClick={() => { setCategory('开源'); setRange(168); openNews(); }}>{t('开源','Open source')}</button></nav>
         <label className="intelligence-search"><Search size={17} /><input ref={searchRef} value={query} onChange={(e) => setQuery(e.target.value)} aria-label={t('搜索新闻', 'Search news')} placeholder={t('搜索公司、模型、事件或来源', 'Search companies, models or news')} /><kbd><Command size={11} /> K</kbd></label>
         <button className="language-switch" onClick={() => setBilingual(!bilingual)} aria-label="Switch interface language">{bilingual ? 'ZH' : 'EN'}</button><div className="intelligence-status"><i className={isStale ? 'stale' : ''} /><span>{isStale ? t('等待更新', 'Awaiting update') : t('已更新', 'Updated')}</span><b>{updatedAt}</b></div>
       </header>
 
       <section className="signal-hero noted-hero editorial-cover" id="top" ref={coverRef}>
-        <NewsLens english={bilingual} clues={lensClues} onSelect={(id) => { setQuery(''); setCategory('全部'); setRange(168); setSelectedId(id); terminalRef.current?.scrollIntoView({ behavior: 'smooth' }); }} />
+        <NewsLens english={bilingual} clues={lensClues} onSelect={(id) => { setQuery(''); setCategory('全部'); setRange(168); setSelectedId(id); openNews(); }} />
         <div className="hero-heading"><span className="cover-kicker">{t('每日精选', 'THE DAILY READ')}</span><span className="cover-edition">THERE GOES AI AGAIN</span><h1>{bilingual ? <>There goes<br />AI again.</> : <>今天，<br />又整啥了？</>}</h1><p>{t('AI 新鲜事，每天都在整点新活。', 'The latest moves. The useful bits. None of the hype.')}</p></div>
 
-        <aside className="focus-now"><header><span>{t('这几件值得看', 'WORTH YOUR TIME')}</span></header>{leadSignals.map((item) => <button aria-label={displayTitle(item)} key={item.id} onClick={() => { setQuery(''); setCategory('全部'); setSelectedId(item.id); terminalRef.current?.scrollIntoView({ behavior: 'smooth' }); }}><span><b>{displayTitle(item)}</b><small>{categoryLabel(item.category)} · {publicationDate(item, false, bilingual)}</small></span><ExternalLink className="cover-story-arrow" size={17} aria-hidden="true" /></button>)}</aside>
-        <button className="enter-terminal" onClick={() => terminalRef.current?.scrollIntoView({ behavior: 'smooth' })}><span>{t('下滑，展开今日新闻', 'Scroll to explore today’s stories')}</span><ArrowDown size={16} /></button>
+        <aside className="focus-now"><header><span>{t('这几件值得看', 'WORTH YOUR TIME')}</span></header>{leadSignals.map((item) => <button aria-label={displayTitle(item)} key={item.id} onClick={() => { setQuery(''); setCategory('全部'); setSelectedId(item.id); openNews(); }}><span><b>{displayTitle(item)}</b><small>{categoryLabel(item.category)} · {publicationDate(item, false, bilingual)}</small></span><ExternalLink className="cover-story-arrow" size={17} aria-hidden="true" /></button>)}</aside>
+        <button className="enter-terminal" onClick={() => openNews()}><span>{t('下滑，展开今日新闻', 'Scroll to explore today’s stories')}</span><ArrowDown size={16} /></button>
       </section>
 
 
