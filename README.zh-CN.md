@@ -18,7 +18,7 @@ AI 变化太快，我有时也会担心自己跟不上。
 
 我也在尝试用已有的 AI 工具订阅和定时任务整理每日信息。它们能帮忙收集内容，但我还想要一个更舒服的阅读入口：有原始链接，有清楚的层次，也有一点自己的 taste。
 
-于是做了「又整啥了」。这是一次个人产品实验，想把信息收集变成一种自己愿意坚持的阅读习惯。
+于是做了「又整啥了」，把每天想看的 AI 动态，整理到一个读起来舒服的网站里。
 
 ## 它提供什么
 
@@ -143,4 +143,4 @@ npm run build:pages
 
 [开始阅读](https://cliukelly.github.io/there-goes-ai-again/) · [English](README.md)
 
-<sub>由 <a href="https://github.com/CLIUKELLY">Kelly</a> 构建。</sub>
+<sub>© 2026 <a href="https://github.com/CLIUKELLY">Kelly L.</a></sub>

@@ -18,7 +18,7 @@ There are plenty of useful news tools, but the things I care about are often sca
 
 I was already experimenting with AI subscriptions and scheduled research. They could help gather a daily briefing, but I wanted a better way to browse it: original links, a clear reading structure, and a website with some personality.
 
-So I built **There Goes AI Again**. It is a personal experiment in turning information gathering into a reading habit I actually enjoy.
+So I built **There Goes AI Again**: a place to catch up on the AI developments I care about, with a reading experience I enjoy.
 
 ## What this offers
 
@@ -143,4 +143,4 @@ The static output is written to `dist/client`.
 
 [Read the news](https://cliukelly.github.io/there-goes-ai-again/) · [简体中文](README.zh-CN.md)
 
-<sub>Built by <a href="https://github.com/CLIUKELLY">Kelly</a>.</sub>
+<sub>© 2026 <a href="https://github.com/CLIUKELLY">Kelly L.</a></sub>
