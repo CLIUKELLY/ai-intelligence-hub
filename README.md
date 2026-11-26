@@ -10,6 +10,8 @@
 
 A bilingual AI news site that started with a personal reading problem: keeping up with models, products and developer tools without getting lost in the feed. It brings selected developments, original sources and practical context into a place I want to open each day — and share with people who feel the same.
 
+![There Goes AI Again brand concept: a magnifying glass brings AI topics into focus across silver particle dunes.](public/brand-concept.png)
+
 ## Why I built this
 
 AI moves quickly, and sometimes I feel a step behind.

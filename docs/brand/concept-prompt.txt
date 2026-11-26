@@ -1,0 +1,13 @@
+Generated with the built-in image generation tool.
+Purpose: README concept illustration and LinkedIn launch image.
+
+Use case: ads-marketing. Asset: high resolution landscape brand concept illustration for an existing indie AI news website, to embed in GitHub README and use unchanged as a LinkedIn launch post image. Produce a polished wide horizontal 1.91:1 composition, ideally 2400 by 1260 pixels. NOT a fake app screenshot or a device mockup.
+Brand: There Goes AI Again / 又整啥了. Personality: witty, curious, independently crafted; quiet professional confidence, attention and reading, avoid corporate sales language. 
+Visual direction: very dark warm graphite #090a09 background, sharp off-white typography, sculptural silver fine-grain dunes made from thousands of tiny metallic particles; one elegant large realistic chrome magnifying glass embedded at an angle in the right half of the landscape, glass subtly magnifies the grains into small, perfectly readable words "MODELS", "TOOLS", "PRODUCTS", "RESEARCH". Outside the glass the silver field recedes into gentle soft-focus ripples, metaphorically turning a scattered information stream into focused reading. Soft cinematic grazing light, precise optical refraction, finely resolved tactile silver grains, restrained coral #f17b60 accent as a thin lens reticle and short editorial rule. No blue backgrounds, no neon cyberpunk, no glowing network globes, no robot, no SaaS cards, no chart percentages, no fabricated news headlines.
+Layout: oversized editorial bold slightly condensed grotesk headline on left 50%, sculptural particle-dune and magnifying glass on right 50%, integrated naturally, generous negative space, all essential type within 7% safe margins. Design should still read at feed thumbnail size. Use strong typographic hierarchy and minimal copy.
+Exact copy, reproduce faithfully:
+Small bilingual brand label near top left: "又整啥了"
+Large headline left, white, two or three lines: "THERE GOES AI AGAIN."
+Medium readable tagline beneath: "Catch up on AI. Get back to your day."
+Small understated footer bottom left: "cliukelly.github.io/there-goes-ai-again"
+These and the four lens keywords are the only text. No author signature, badges, extra slogans or subtitles. Ensure text doesn't overlap shiny areas. Beautiful editorial art direction, conceptual rather than diagrammatic, sophisticated material detail, clean composition.
