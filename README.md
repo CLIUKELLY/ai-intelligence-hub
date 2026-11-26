@@ -34,8 +34,6 @@ The aim is simple: stay curious, find something useful, and get back to the rest
 
 Coverage centers on **models and usable capabilities, AI products, developer tools, Agent engineering, and inference and deployment infrastructure**. Related open-source releases, safety findings and business developments enter the feed when they affect those areas.
 
-China and global developments share the same editorial workflow. Selection follows a public [editorial profile](config/focus-profile.json). All readers see the same curated feed; individual recommendation profiles are not part of the current site.
-
 Each story provides:
 
 | Layer | What it answers |
