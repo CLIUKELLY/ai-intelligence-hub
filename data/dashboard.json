@@ -1,33 +1,33 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-24T23:49:26.800Z",
-  "contentUpdatedAt": "2026-11-24T23:49:26.800Z",
+  "generatedAt": "2026-11-26T04:36:39.867Z",
+  "contentUpdatedAt": "2026-11-26T04:36:39.867Z",
   "status": {
     "state": "fresh",
-    "lastSuccessfulAt": "2026-11-24T23:49:26.800Z"
+    "lastSuccessfulAt": "2026-11-26T04:36:39.867Z"
   },
   "mode": "GPT 联网研究 · 7天滚动数据 · 非RSS",
   "stats": {
-    "rawSignals": 51,
-    "events": 46,
-    "chinaRatio": 17,
+    "rawSignals": 31,
+    "events": 62,
+    "chinaRatio": 23,
     "highImpact": 17
   },
   "sourceHealth": {
-    "attempted": 25,
-    "healthy": 22,
-    "officialHealthy": 19,
+    "attempted": 21,
+    "healthy": 19,
+    "officialHealthy": 16,
     "failed": [
-      "GitHub Actions commit-runs 端点仅返回 PR 运行，未将其作为数据来源。",
-      "部分聚合页未作为入选事实来源。"
+      "JetBrains Mellum2.1 Instruct Hugging Face 模型页：无法访问",
+      "inclusionAI Ling-3.2 GitHub 页面：访问失败"
     ]
   },
   "brief": {
-    "title": "Agent 工程从模型能力转向可恢复、可审计的执行层",
+    "title": "Agent 连接治理与模型部署成为本轮重点",
     "bullets": [
-      "OpenAI Agents SDK 的 Alpha 更新把会话恢复、待审批操作和工具执行控制推进到框架层。",
-      "昨天已入库的 Claude Ship、Shirudo 与 Agent 治理更新仍构成当前最值得跟踪的生产化主线。",
-      "本轮检索未发现新的、可独立核验的重大模型、资本或本地 AI 发布，未为填充数量收录活动预告。"
+      "Google 与 Anthropic 扩展 MCP 连接和任务能力，企业需要重新核对 Agent 访问边界。",
+      "百度与商汤开放模型权重，开发者可进一步验证部署成本和独立表现。",
+      "新的工作流引擎与站点搜索入口降低部分集成摩擦，实际收益仍需实测。"
     ]
   },
   "items": [
@@ -248,6 +248,45 @@
       "rank": 6
     },
     {
+      "id": 3906363752,
+      "title": "Google Workspace MCP 与 CLI 正式开放，并引入 Agent 访问治理",
+      "titleEn": "Built for trust and control: New AI agent protections and developer tools in Google Workspace",
+      "summary": "Google 于11月24日宣布 Workspace MCP 服务器和 CLI 正式开放，覆盖 Gmail、Drive 等应用，并提供管理策略和审计控制。",
+      "change": "从预览连接方式扩展为正式托管服务，并配合统一的访问管理与用量规则。",
+      "why": "开发团队需要同时评估 Agent 的访问权限、请求配额和 Workspace 接口迁移成本。",
+      "watch": "观察配额收费细则、企业策略兼容性及现有 Agent 接入迁移情况。",
+      "summaryEn": "Google made Workspace MCP servers and its CLI generally available on November 24, with access policies and audit controls for applications including Gmail and Drive.",
+      "changeEn": "The managed connection moves to general availability alongside standardized usage and access governance.",
+      "whyEn": "Teams integrating agents need to assess permissions, quotas, and the effort required to migrate Workspace connections.",
+      "watchEn": "Watch quota pricing, enterprise policy compatibility, and migration of existing agent integrations.",
+      "verification": "官方一手",
+      "source": "Google",
+      "sources": [
+        "Google"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Google",
+          "url": "https://workspace.google.com/blog/product-announcements/built-for-trust-and-control-new-ai-agent-protections-and-developer-tools-in-google-workspace",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-24T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-26T04:36:02.809Z",
+      "category": "产品",
+      "region": "全球",
+      "impact": "关注",
+      "score": 93,
+      "url": "https://workspace.google.com/blog/product-announcements/built-for-trust-and-control-new-ai-agent-protections-and-developer-tools-in-google-workspace",
+      "tags": [
+        "Google",
+        "MCP",
+        "Workspace"
+      ],
+      "rank": 7
+    },
+    {
       "id": 3906363742,
       "title": "智谱上线 GLM-5.4，将视觉能力带入 Coding Plan",
       "titleEn": "GLM-5.4 model release: Loop architecture and general coding capabilities",
@@ -285,7 +324,7 @@
         "智谱官方微博（新浪转载）",
         "本地AI"
       ],
-      "rank": 7
+      "rank": 8
     },
     {
       "id": 3636787553,
@@ -316,12 +355,51 @@
         "Agent Workflow",
         "SRE"
       ],
-      "rank": 8,
+      "rank": 9,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从单次编码辅助转为状态化、可派发、带独立复核的持久 Agent 运维流程。",
       "watch": "观察该流程在更多故障场景中的自治边界，以及工程师审批对修复质量的实际影响。",
       "verification": "官方一手"
+    },
+    {
+      "id": 3906363753,
+      "title": "Anthropic 公测 Skills over MCP，开放后台任务和交互",
+      "titleEn": "MCP servers can now ship skills, run tasks, and more with Claude",
+      "summary": "Anthropic 11月24日宣布 Claude 和 Claude Code 公测 Skills over MCP；Tasks 与 Elicitation 已面向部分套餐正式开放。",
+      "change": "MCP 服务端可随工具提供技能，并支持后台任务及执行中请求用户输入。",
+      "why": "连接器可同时交付工具与操作指导，但企业仍需审查技能内容和授权边界。",
+      "watch": "观察企业套餐覆盖、服务端技能审核和文件上传能力的实际开放进度。",
+      "summaryEn": "On November 24, Anthropic announced a public beta of Skills over MCP in Claude and Claude Code, with Tasks and Elicitation generally available on selected plans.",
+      "changeEn": "MCP servers can distribute skills with tools and support background tasks and requests for user input.",
+      "whyEn": "Connectors can deliver operational guidance with their tools, while enterprises still need to assess skill content and permissions.",
+      "watchEn": "Watch enterprise availability, server skill review, and the rollout of file uploads.",
+      "verification": "官方一手",
+      "source": "Anthropic",
+      "sources": [
+        "Anthropic"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Anthropic",
+          "url": "https://claude.com/resources/articles/skills-over-mcp-tasks-and-more",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-24T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-26T04:36:02.809Z",
+      "category": "产品",
+      "region": "全球",
+      "impact": "关注",
+      "score": 92,
+      "url": "https://claude.com/resources/articles/skills-over-mcp-tasks-and-more",
+      "tags": [
+        "Anthropic",
+        "Claude",
+        "MCP"
+      ],
+      "rank": 10
     },
     {
       "id": 3906363740,
@@ -355,7 +433,7 @@
         "Google",
         "产品"
       ],
-      "rank": 9
+      "rank": 11
     },
     {
       "id": 3906363715,
@@ -391,7 +469,46 @@
         "Agent",
         "Tool Retrieval"
       ],
-      "rank": 10
+      "rank": 12
+    },
+    {
+      "id": 3906363754,
+      "title": "Cognition 发布 Devin 编程模型 SWE-2.1",
+      "titleEn": "Introducing SWE-2.1",
+      "summary": "Cognition 11月24日发布 SWE-2.1，称该编程模型基于 Kimi K3 使用强化学习训练，并公布新版评测结果。",
+      "change": "相较 SWE-2，厂商在新版中加强长流程软件工程任务并提供不同运行变体。",
+      "why": "开发团队获得新的编程 Agent 模型选择，厂商基准表现仍需独立复现。",
+      "watch": "观察真实仓库任务完成率、人工审查负担以及各运行变体的定价。",
+      "summaryEn": "Cognition released SWE-2.1 on November 24, saying the coding model was trained with reinforcement learning on Kimi K3 and publishing its benchmark results.",
+      "changeEn": "The release extends SWE-2 with an emphasis on longer software engineering workflows and different serving variants.",
+      "whyEn": "Development teams gain another coding-agent model option, although the vendor's benchmark results require independent replication.",
+      "watchEn": "Watch real repository completion rates, human review burden, and pricing across serving variants.",
+      "verification": "官方一手",
+      "source": "Cognition",
+      "sources": [
+        "Cognition"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Cognition",
+          "url": "https://cognition.com/blog/swe-2-1",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-24T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-26T04:36:02.809Z",
+      "category": "AI Coding",
+      "region": "全球",
+      "impact": "关注",
+      "score": 91,
+      "url": "https://cognition.com/blog/swe-2-1",
+      "tags": [
+        "Cognition",
+        "Devin",
+        "SWE-2.1"
+      ],
+      "rank": 13
     },
     {
       "id": 3906363743,
@@ -425,7 +542,7 @@
         "AMD",
         "算力"
       ],
-      "rank": 11
+      "rank": 14
     },
     {
       "id": 3906363725,
@@ -467,7 +584,52 @@
         "困惑度",
         "治理"
       ],
-      "rank": 12
+      "rank": 15
+    },
+    {
+      "id": 3906363755,
+      "title": "百度开放 ERNIE 5.5 Flash Preview 模型权重",
+      "titleEn": "ERNIE 5.5 Flash Preview",
+      "summary": "百度开放 ERNIE 5.5 Flash Preview 权重，IT之家11月24日报道其已上架模型平台，模型卡列出 Apache 2.0 许可。",
+      "change": "原先作为预览提供的后训练模型增加了可下载权重和自部署路径。",
+      "why": "开发团队可以评估微调与私有部署，但需单独核对基础模型和预览权重的许可证。",
+      "watch": "观察第三方编程评测、显存需求和推理框架兼容性。",
+      "summaryEn": "Baidu opened ERNIE 5.5 Flash Preview weights; IT Home reported their availability on November 24 and the model card lists Apache 2.0 licensing.",
+      "changeEn": "The post-trained preview gained downloadable weights and a self-hosted deployment path.",
+      "whyEn": "Teams can evaluate fine-tuning and private deployment, while checking the separate licenses for the base and preview weights.",
+      "watchEn": "Watch independent coding evaluations, memory requirements, and inference framework compatibility.",
+      "verification": "多源核验",
+      "source": "Baidu",
+      "sources": [
+        "Baidu",
+        "IT之家"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Baidu",
+          "url": "https://huggingface.co/baidu/ERNIE-5.5-Flash-Preview",
+          "tier": 1
+        },
+        {
+          "name": "IT之家",
+          "url": "https://www.ithome.com/1/031/501.htm",
+          "tier": 2
+        }
+      ],
+      "publishedAt": "2026-11-24T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-26T04:36:02.809Z",
+      "category": "本地AI",
+      "region": "中国",
+      "impact": "关注",
+      "score": 90,
+      "url": "https://huggingface.co/baidu/ERNIE-5.5-Flash-Preview",
+      "tags": [
+        "百度",
+        "ERNIE",
+        "开放权重"
+      ],
+      "rank": 16
     },
     {
       "id": 3906363745,
@@ -501,7 +663,7 @@
         "Claude",
         "安全"
       ],
-      "rank": 13
+      "rank": 17
     },
     {
       "id": 3906363716,
@@ -537,7 +699,7 @@
         "世界模型",
         "Gemini API"
       ],
-      "rank": 14
+      "rank": 18
     },
     {
       "id": 2177847865,
@@ -568,7 +730,7 @@
         "Azure",
         "边缘AI"
       ],
-      "rank": 15,
+      "rank": 19,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从云侧加速计算扩展到 Azure Local、工业边缘与 Windows PC 的统一部署栈。",
@@ -607,7 +769,7 @@
         "Google",
         "安全"
       ],
-      "rank": 16
+      "rank": 20
     },
     {
       "id": 3906363727,
@@ -643,7 +805,7 @@
         "工作树",
         "企业协作"
       ],
-      "rank": 17
+      "rank": 21
     },
     {
       "id": 3906363720,
@@ -679,7 +841,46 @@
         "OpenAI",
         "GPT-6.2"
       ],
-      "rank": 18
+      "rank": 22
+    },
+    {
+      "id": 3906363756,
+      "title": "商汤发布 SenseNova U1.6 多模态模型及蒸馏变体",
+      "titleEn": "SenseNova-U1.6",
+      "summary": "商汤官方仓库记录，11月24日发布 SenseNova U1.6 及四步、八步蒸馏变体，并支持 ComfyUI。",
+      "change": "新版本在统一图像理解与生成的基础上加入按提示检查并修正图像的流程。",
+      "why": "开放权重和工作流使开发者可以测试图文生成质量及部署成本，而非仅依赖展示样例。",
+      "watch": "观察独立文字准确率测试、显存需求和真实设计任务中的修正效果。",
+      "summaryEn": "SenseTime's official repository records the November 24 release of SenseNova U1.6 and four-step and eight-step distilled variants with ComfyUI support.",
+      "changeEn": "The unified image understanding and generation model adds a prompt-based image self-correction workflow.",
+      "whyEn": "Open weights and workflows let developers test text rendering quality and deployment costs beyond demonstration examples.",
+      "watchEn": "Watch independent text accuracy tests, memory requirements, and correction quality on real design tasks.",
+      "verification": "官方一手",
+      "source": "SenseTime",
+      "sources": [
+        "SenseTime"
+      ],
+      "sourceLinks": [
+        {
+          "name": "SenseTime",
+          "url": "https://github.com/OpenSenseNova/SenseNova-U1",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-24T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-26T04:36:02.809Z",
+      "category": "本地AI",
+      "region": "中国",
+      "impact": "关注",
+      "score": 88,
+      "url": "https://github.com/OpenSenseNova/SenseNova-U1",
+      "tags": [
+        "商汤",
+        "SenseNova",
+        "多模态"
+      ],
+      "rank": 23
     },
     {
       "id": 3906363747,
@@ -713,7 +914,7 @@
         "Strands",
         "开源"
       ],
-      "rank": 19
+      "rank": 24
     },
     {
       "id": 3906363722,
@@ -749,7 +950,46 @@
         "蒸馏防护",
         "红队测试"
       ],
-      "rank": 20
+      "rank": 25
+    },
+    {
+      "id": 3906363757,
+      "title": "Sand.ai 推出 MAGI-2 视频生成旗舰模型",
+      "titleEn": "MAGI-2: A 480B Frontier Video Generation Model",
+      "summary": "Sand.ai 11月24日发布 MAGI-2 视频生成模型，公司称总参数为4800亿、每次激活约280亿。",
+      "change": "该旗舰从此前的 MAGI-2 Preview 扩展模型规模和训练数据，并加入针对性后训练。",
+      "why": "视频生成供应增加了新的模型选择，实际成本和一致性仍需在业务素材中验证。",
+      "watch": "观察模型权重开放时间、实际视频价格和第三方生成质量评测。",
+      "summaryEn": "Sand.ai announced MAGI-2 on November 24, describing a video generation model with 480 billion total and about 28 billion active parameters.",
+      "changeEn": "The flagship scales model capacity and training data beyond the earlier MAGI-2 Preview and adds targeted post-training.",
+      "whyEn": "The release adds a video generation option; costs and consistency still need testing on production material.",
+      "watchEn": "Watch the release of model weights, actual video pricing, and independent generation evaluations.",
+      "verification": "官方一手",
+      "source": "Sand.ai",
+      "sources": [
+        "Sand.ai"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Sand.ai",
+          "url": "https://sand.ai/blog/magi-2",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-24T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-26T04:36:02.809Z",
+      "category": "模型",
+      "region": "中国",
+      "impact": "关注",
+      "score": 87,
+      "url": "https://sand.ai/blog/magi-2",
+      "tags": [
+        "Sand.ai",
+        "MAGI-2",
+        "视频生成"
+      ],
+      "rank": 26
     },
     {
       "id": 3248149539,
@@ -786,12 +1026,51 @@
         "东南亚",
         "出海"
       ],
-      "rank": 21,
+      "rank": 27,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从单一模型披露扩展为模型、区域云容量、人才项目和行业伙伴同步推进。",
       "watch": "观察 Qwen4-Max 的 API 可用范围、第三方评测复现和海外企业实际采用情况。",
       "verification": "官方一手"
+    },
+    {
+      "id": 3906363758,
+      "title": "Cloudflare 上线面向智能体的网站搜索入口",
+      "titleEn": "Introducing Search for Agents",
+      "summary": "Cloudflare 11月25日推出 Search for Agents，可为网站自动创建索引并在网站域名提供可发现的搜索接口。",
+      "change": "站点所有者可通过控制台开关配置搜索，而不必手动完成整套索引和接口集成。",
+      "why": "网站可向 Agent 提供结构化搜索入口，但索引范围和请求限额影响实际可用性。",
+      "watch": "观察免费套餐限额、索引更新延迟以及站点对抓取范围的控制。",
+      "summaryEn": "Cloudflare introduced Search for Agents on November 25, automatically indexing a website and exposing discoverable search endpoints on its domain.",
+      "changeEn": "Site owners can enable the indexing and search setup through a dashboard toggle instead of configuring each integration manually.",
+      "whyEn": "Websites gain a search endpoint for agents, with indexing coverage and request limits affecting practical use.",
+      "watchEn": "Watch free-tier limits, indexing latency, and controls over which pages are crawled.",
+      "verification": "官方一手",
+      "source": "Cloudflare",
+      "sources": [
+        "Cloudflare"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Cloudflare",
+          "url": "https://blog.cloudflare.com/search-for-agents/",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-25T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-26T04:36:02.809Z",
+      "category": "产品",
+      "region": "全球",
+      "impact": "关注",
+      "score": 86,
+      "url": "https://blog.cloudflare.com/search-for-agents/",
+      "tags": [
+        "Cloudflare",
+        "Agent",
+        "搜索"
+      ],
+      "rank": 28
     },
     {
       "id": 3906363728,
@@ -827,7 +1106,7 @@
         "Agent Framework",
         "可观测性"
       ],
-      "rank": 22
+      "rank": 29
     },
     {
       "id": 2331097513,
@@ -858,12 +1137,51 @@
         "推理",
         "高可用"
       ],
-      "rank": 23,
+      "rank": 30,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从团队自建跨区域容灾逻辑转为 SageMaker 可管理的跨区域推理路由资源。",
       "watch": "观察支持区域、流式请求行为与跨区域调用成本是否适合生产级多区域架构。",
       "verification": "官方一手"
+    },
+    {
+      "id": 3906363759,
+      "title": "Vercel Workflow SDK 5.8 更换执行引擎",
+      "titleEn": "Workflow is 10x faster, again",
+      "summary": "Vercel 11月25日发布 Workflow SDK 5.8，称新执行引擎降低步骤间开销，适用于持久化 Agent 流程。",
+      "change": "新启动的工作流默认使用新版引擎，先前启动的运行仍保留旧版。",
+      "why": "长流程与并行任务的调度开销可能降低，但应结合任务负载验证成本和延迟。",
+      "watch": "观察真实工作流的延迟、重试幂等性和升级兼容情况。",
+      "summaryEn": "On November 25, Vercel released Workflow SDK 5.8 with a new execution engine that it says reduces step overhead for durable agent workflows.",
+      "changeEn": "New workflow runs use the new engine while runs started on earlier versions remain on their original version.",
+      "whyEn": "Scheduling overhead may fall for long and parallel workflows, but teams should measure their own latency and cost.",
+      "watchEn": "Watch production latency, retry idempotency, and upgrade compatibility.",
+      "verification": "官方一手",
+      "source": "Vercel",
+      "sources": [
+        "Vercel"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Vercel",
+          "url": "https://vercel.com/changelog/workflows-speculative-execution",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-25T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-26T04:36:02.809Z",
+      "category": "AI Coding",
+      "region": "全球",
+      "impact": "关注",
+      "score": 85,
+      "url": "https://vercel.com/changelog/workflows-speculative-execution",
+      "tags": [
+        "Vercel",
+        "Agent",
+        "Workflow"
+      ],
+      "rank": 31
     },
     {
       "id": 3906363735,
@@ -899,7 +1217,7 @@
         "音频理解",
         "Agent"
       ],
-      "rank": 24
+      "rank": 32
     },
     {
       "id": 3906363717,
@@ -935,7 +1253,46 @@
         "Computer Use",
         "Mac"
       ],
-      "rank": 25
+      "rank": 33
+    },
+    {
+      "id": 3906363760,
+      "title": "小鹏公布跨汽车与机器人场景的 WorldGPT",
+      "titleEn": "XPENG UNVEILS WORLDGPT, A SINGLE AI MODEL THAT LEARNS ACROSS CARS, ROBOTS AND DRONES",
+      "summary": "小鹏11月24日公布 WorldGPT，称模型覆盖汽车、船只、无人机及不同机器人本体的物理世界学习。",
+      "change": "公司将多种机器的预测和动作规划纳入同一世界模型体系。",
+      "why": "共享模型为跨设备迁移提供研究方向，实际部署效果仍需具体场景验证。",
+      "watch": "观察跨本体实机测试、模型开放情况和安全边界的公开证据。",
+      "summaryEn": "XPENG announced WorldGPT on November 24, saying the model learns across cars, boats, drones, and several robot embodiments.",
+      "changeEn": "The company brings prediction and action planning across different machines into one world-model approach.",
+      "whyEn": "A shared model offers a direction for transferring capabilities across devices, subject to validation in specific deployments.",
+      "watchEn": "Watch real-world cross-embodiment tests, model availability, and published safety evidence.",
+      "verification": "官方一手",
+      "source": "XPENG",
+      "sources": [
+        "XPENG"
+      ],
+      "sourceLinks": [
+        {
+          "name": "XPENG",
+          "url": "https://www.xpeng.com/pressroom/news/01a20bcf44b3a1e838d68a02a2110153",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-24T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-26T04:36:02.809Z",
+      "category": "本地AI",
+      "region": "中国",
+      "impact": "关注",
+      "score": 84,
+      "url": "https://www.xpeng.com/pressroom/news/01a20bcf44b3a1e838d68a02a2110153",
+      "tags": [
+        "小鹏",
+        "WorldGPT",
+        "具身智能"
+      ],
+      "rank": 34
     },
     {
       "id": 3906363729,
@@ -971,7 +1328,7 @@
         "Unsloth",
         "端侧AI"
       ],
-      "rank": 26
+      "rank": 35
     },
     {
       "id": 3906363723,
@@ -1007,7 +1364,7 @@
         "智能文档",
         "可追溯AI"
       ],
-      "rank": 27
+      "rank": 36
     },
     {
       "id": 1875041669,
@@ -1038,12 +1395,51 @@
         "推理优化",
         "GPU"
       ],
-      "rank": 28,
+      "rank": 37,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从人工巡检端点配置转为自动发现延迟漂移、闲置 GPU 与优化缺口。",
       "watch": "观察该能力在真实生产端点中的误报率，以及是否带来可量化的推理成本下降。",
       "verification": "官方一手"
+    },
+    {
+      "id": 3906363761,
+      "title": "NVIDIA 介绍 Cosmos 3 Nano 低显存运行方案",
+      "titleEn": "How to Run NVIDIA Cosmos 3 on Local AI Devices Using Hugging Face Diffusers",
+      "summary": "NVIDIA 11月24日介绍通过系统内存卸载权重，在低至12GB 显存的 GPU 上运行 Cosmos 3 Nano 的方法。",
+      "change": "模型权重按需从系统内存传至 GPU，以较高内存和传输开销换取较低显存占用。",
+      "why": "较小显存设备可以尝试世界模型，但该方案并非交互式延迟且对系统内存有要求。",
+      "watch": "观察不同硬件上的生成时间、内存占用和多种输入模式的兼容性。",
+      "summaryEn": "NVIDIA described a method on November 24 to run Cosmos 3 Nano on GPUs with as little as 12 GB of VRAM by offloading weights to system memory.",
+      "changeEn": "Weights move from system memory to the GPU as needed, trading lower VRAM requirements for memory and transfer overhead.",
+      "whyEn": "Smaller GPUs can be used to experiment with the world model, though the approach is not interactive and requires adequate system memory.",
+      "watchEn": "Watch generation time, host-memory use, and input-mode compatibility across hardware.",
+      "verification": "官方一手",
+      "source": "NVIDIA",
+      "sources": [
+        "NVIDIA"
+      ],
+      "sourceLinks": [
+        {
+          "name": "NVIDIA",
+          "url": "https://developer.nvidia.com/blog/how-to-run-nvidia-cosmos-3-on-local-ai-devices-using-hugging-face-diffusers/",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-24T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-26T04:36:02.809Z",
+      "category": "算力",
+      "region": "全球",
+      "impact": "关注",
+      "score": 83,
+      "url": "https://developer.nvidia.com/blog/how-to-run-nvidia-cosmos-3-on-local-ai-devices-using-hugging-face-diffusers/",
+      "tags": [
+        "NVIDIA",
+        "Cosmos",
+        "本地推理"
+      ],
+      "rank": 38
     },
     {
       "id": 3906363751,
@@ -1079,7 +1475,7 @@
         "Codex",
         "会话恢复"
       ],
-      "rank": 29,
+      "rank": 39,
       "summaryEn": "OpenAI released Agents SDK v1.0.0-alpha.2 with resumable conversations and pending approvals across workers for Responses and Codex workflows.",
       "changeEn": "The SDK moves from short-lived agent runs toward persisted, recoverable execution state, including recovery of supported native Codex command and edit approvals.",
       "whyEn": "For production agent systems, recovery paths, approval continuity, tool filtering, and trace redaction are practical controls for reliability and governance, not just developer convenience.",
@@ -1119,7 +1515,7 @@
         "可观测性",
         "Agent安全"
       ],
-      "rank": 30
+      "rank": 40
     },
     {
       "id": 3906363724,
@@ -1155,7 +1551,7 @@
         "HyperPod",
         "推理路由"
       ],
-      "rank": 31
+      "rank": 41
     },
     {
       "id": 3906363718,
@@ -1191,7 +1587,46 @@
         "可观测性",
         "治理"
       ],
-      "rank": 32
+      "rank": 42
+    },
+    {
+      "id": 3906363762,
+      "title": "Anthropic 发布 Agent 沙箱越界评估 Siren",
+      "titleEn": "Measuring and mitigating agent sandbox escape with Siren",
+      "summary": "Anthropic 11月24日介绍 Siren 评估，在刻意削弱的沙箱中研究 Agent 越界后的行为与缓解方式。",
+      "change": "评估从检查是否越界延伸到观察越界之后的具体行为和提示干预。",
+      "why": "Agent 部署者需要将沙箱隔离和越界监测作为工程控制，而非只依靠模型遵循指令。",
+      "watch": "观察独立复现、真实沙箱配置下的结果以及针对性缓解措施。",
+      "summaryEn": "On November 24, Anthropic described Siren, an evaluation that examines agent behavior after escape from deliberately weakened sandboxes.",
+      "changeEn": "The evaluation examines what agents do after crossing a boundary as well as interventions in the prompt.",
+      "whyEn": "Agent operators need sandbox isolation and monitoring as engineering controls alongside model instructions.",
+      "watchEn": "Watch independent replication, results under realistic sandbox configurations, and targeted mitigations.",
+      "verification": "官方一手",
+      "source": "Anthropic Safeguards",
+      "sources": [
+        "Anthropic Safeguards"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Anthropic Safeguards",
+          "url": "https://safeguards.anthropic.com/2026/siren/",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-24T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-26T04:36:02.809Z",
+      "category": "安全",
+      "region": "全球",
+      "impact": "关注",
+      "score": 82,
+      "url": "https://safeguards.anthropic.com/2026/siren/",
+      "tags": [
+        "Anthropic",
+        "Agent安全",
+        "沙箱"
+      ],
+      "rank": 43
     },
     {
       "id": 3906363736,
@@ -1227,7 +1662,7 @@
         "本地模型",
         "MoE"
       ],
-      "rank": 33
+      "rank": 44
     },
     {
       "id": 3906363721,
@@ -1263,7 +1698,46 @@
         "药物化学",
         "评测"
       ],
-      "rank": 34
+      "rank": 45
+    },
+    {
+      "id": 3906363763,
+      "title": "OpenAI 研究通用模型参与蛋白质设计",
+      "titleEn": "GPT-6 models demonstrate intrinsic protein-design capabilities",
+      "summary": "OpenAI 11月24日公布蛋白质设计研究；公司称与 Onava 的实验测试在五个靶点观察到设计蛋白结合证据。",
+      "change": "研究测试通用模型使用推理和代码设计蛋白，并结合实验室测试验证部分候选。",
+      "why": "通用模型可能为科研提供灵活的设计工具，但实验结果不代表药物已经获批或投入使用。",
+      "watch": "观察论文同行评审、独立实验复现和在不同蛋白任务上的适用边界。",
+      "summaryEn": "OpenAI published protein-design research on November 24, reporting binding evidence across five targets in laboratory tests with Onava.",
+      "changeEn": "The work tests general-purpose model reasoning and code for protein design alongside laboratory validation of selected candidates.",
+      "whyEn": "General models may offer researchers flexible design tools, but the results do not establish an approved or deployed drug.",
+      "watchEn": "Watch peer review, independent laboratory replication, and performance across other protein-design tasks.",
+      "verification": "官方一手",
+      "source": "OpenAI",
+      "sources": [
+        "OpenAI"
+      ],
+      "sourceLinks": [
+        {
+          "name": "OpenAI",
+          "url": "https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities/",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-24T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-26T04:36:02.809Z",
+      "category": "研究",
+      "region": "全球",
+      "impact": "关注",
+      "score": 81,
+      "url": "https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities/",
+      "tags": [
+        "OpenAI",
+        "蛋白质设计",
+        "科研"
+      ],
+      "rank": 46
     },
     {
       "id": 3906363731,
@@ -1299,7 +1773,7 @@
         "API",
         "模型供给"
       ],
-      "rank": 35
+      "rank": 47
     },
     {
       "id": 1080720566,
@@ -1330,12 +1804,51 @@
         "GPU",
         "可观测性"
       ],
-      "rank": 36,
+      "rank": 48,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从多工具拼接排障转为集群级 GPU、网络与训练任务的联合基础设施诊断。",
       "watch": "观察可支持的集群规模、异常告警准确性和对平均故障定位时间的改善。",
       "verification": "官方一手"
+    },
+    {
+      "id": 3906363764,
+      "title": "OceanBase 发布 OceanLake 数据平台并宣布开源核心引擎",
+      "titleEn": "OceanBase introduces OceanLake and open-sources its core engine",
+      "summary": "IT之家报道，OceanBase 11月24日在北京发布湖库一体 AI 数据平台 OceanLake，并宣布开源其核心引擎。",
+      "change": "OceanBase 将数据库与数据湖能力整合到面向 AI 和 Agent 场景的平台方案。",
+      "why": "企业评估 Agent 数据底座时可比较其多模态数据访问、部署方式与运维成本。",
+      "watch": "观察开源仓库代码、许可证、部署文档及真实企业工作负载表现。",
+      "summaryEn": "IT Home reported that OceanBase introduced the OceanLake AI data platform in Beijing on November 24 and announced the open-sourcing of its core engine.",
+      "changeEn": "The platform combines database and data-lake capabilities for AI and agent workloads.",
+      "whyEn": "Organizations evaluating agent data infrastructure can compare multimodal access, deployment options, and operations costs.",
+      "watchEn": "Watch the source repository, license, deployment documentation, and performance on enterprise workloads.",
+      "verification": "单一来源",
+      "source": "IT之家",
+      "sources": [
+        "IT之家"
+      ],
+      "sourceLinks": [
+        {
+          "name": "IT之家",
+          "url": "https://www.ithome.com/1/031/365.htm",
+          "tier": 2
+        }
+      ],
+      "publishedAt": "2026-11-24T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-26T04:36:02.809Z",
+      "category": "本地AI",
+      "region": "中国",
+      "impact": "关注",
+      "score": 80,
+      "url": "https://www.ithome.com/1/031/365.htm",
+      "tags": [
+        "OceanBase",
+        "Agent",
+        "数据库"
+      ],
+      "rank": 49
     },
     {
       "id": 3906363750,
@@ -1369,7 +1882,7 @@
         "AWS",
         "AI Coding"
       ],
-      "rank": 37
+      "rank": 50
     },
     {
       "id": 3906363737,
@@ -1405,7 +1918,7 @@
         "Trace",
         "企业部署"
       ],
-      "rank": 38
+      "rank": 51
     },
     {
       "id": 3906363732,
@@ -1441,7 +1954,46 @@
         "Agent状态",
         "开源"
       ],
-      "rank": 39
+      "rank": 52
+    },
+    {
+      "id": 3906363765,
+      "title": "Anthropic 分享 Messages API 迁移至 Rust 的工程实践",
+      "titleEn": "Migrating our Messages API to Rust",
+      "summary": "Anthropic 11月25日公开 Messages API 从 Python 向 Rust 迁移的工程经验，称公共流量已于9月切换。",
+      "change": "公司披露使用 Agent 和验证工具协助迁移，实际流量切换发生在研究文章发表之前。",
+      "why": "该案例提供 Agent 辅助大型代码迁移的工程方法，验证流程仍是可靠性的关键。",
+      "watch": "观察公开方法在其他代码库中的适用性及性能收益能否独立复现。",
+      "summaryEn": "On November 25, Anthropic described migrating its Messages API from Python to Rust, saying public traffic moved to the Rust path in September.",
+      "changeEn": "The company disclosed how agents and verification tools assisted the migration; the traffic switch preceded publication.",
+      "whyEn": "The case offers an engineering approach for agent-assisted code migration, with verification remaining central to reliability.",
+      "watchEn": "Watch whether the method transfers to other codebases and whether performance gains can be independently reproduced.",
+      "verification": "官方一手",
+      "source": "Anthropic Engineering",
+      "sources": [
+        "Anthropic Engineering"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Anthropic Engineering",
+          "url": "https://www.anthropic.com/research/migrating-api-to-rust",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-25T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-26T04:36:02.809Z",
+      "category": "AI Coding",
+      "region": "全球",
+      "impact": "关注",
+      "score": 79,
+      "url": "https://www.anthropic.com/research/migrating-api-to-rust",
+      "tags": [
+        "Anthropic",
+        "Rust",
+        "工程实践"
+      ],
+      "rank": 53
     },
     {
       "id": 3906363744,
@@ -1475,7 +2027,7 @@
         "GitHub",
         "AI Coding"
       ],
-      "rank": 40
+      "rank": 54
     },
     {
       "id": 3906363738,
@@ -1511,7 +2063,7 @@
         "RoboTrack",
         "开源评测"
       ],
-      "rank": 41
+      "rank": 55
     },
     {
       "id": 1098711981,
@@ -1542,12 +2094,90 @@
         "语音Agent",
         "SageMaker"
       ],
-      "rank": 42,
+      "rank": 56,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从供应商托管的对话模型扩展到可在客户 AWS 账户内部署的 JumpStart 选项。",
       "watch": "观察支持语言、端到端延迟、商业定价以及受监管客户的规模化采用。",
       "verification": "官方一手"
+    },
+    {
+      "id": 3906363766,
+      "title": "Vercel 允许 Agent 通过 MCP 管理 AI Gateway",
+      "titleEn": "Agents can now manage AI Gateway through Vercel MCP",
+      "summary": "Vercel 11月24日宣布 Agent 可通过 Vercel MCP 管理 AI Gateway 的虚拟模型、路由规则和预算。",
+      "change": "网关配置新增可通过 MCP 调用的管理入口，同时仍受团队权限约束。",
+      "why": "团队可把模型路由与预算配置纳入 Agent 工作流，但需要控制写入权限并审计变更。",
+      "watch": "观察细粒度审批、配置误操作回滚及团队权限隔离能力。",
+      "summaryEn": "Vercel announced on November 24 that agents can manage AI Gateway virtual models, routing rules, and budgets through Vercel MCP.",
+      "changeEn": "Gateway configuration gains an MCP management interface that remains subject to team permissions.",
+      "whyEn": "Teams can include model routing and budgets in agent workflows while controlling write access and auditing changes.",
+      "watchEn": "Watch fine-grained approvals, recovery from configuration errors, and team permission isolation.",
+      "verification": "官方一手",
+      "source": "Vercel",
+      "sources": [
+        "Vercel"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Vercel",
+          "url": "https://vercel.com/changelog/agents-can-now-manage-ai-gateway-through-vercel-mcp",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-24T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-26T04:36:02.809Z",
+      "category": "产品",
+      "region": "全球",
+      "impact": "关注",
+      "score": 78,
+      "url": "https://vercel.com/changelog/agents-can-now-manage-ai-gateway-through-vercel-mcp",
+      "tags": [
+        "Vercel",
+        "MCP",
+        "AI Gateway"
+      ],
+      "rank": 57
+    },
+    {
+      "id": 3906363767,
+      "title": "小鹏升级 X-World 1.6，扩展驾驶场景仿真",
+      "titleEn": "XPENG UPGRADES X-WORLD 1.6 TO TURN REAL ROADS INTO REPEATABLE AI DRIVING TESTS",
+      "summary": "小鹏11月23日介绍 X-World 1.6 升级，利用虚拟城市重建真实道路场景以测试驾驶模型。",
+      "change": "相较 X-World 1.0，新版加入可重复的场景测试并由公司报告仿真精度改进。",
+      "why": "可重复仿真有助于评估边缘驾驶场景，但不能替代真实道路的安全验证。",
+      "watch": "观察仿真结果与实车表现的差距，以及测试场景和评估方法是否公开。",
+      "summaryEn": "XPENG described its X-World 1.6 upgrade on November 23, using virtual-city reconstruction of real roads to test driving models.",
+      "changeEn": "Compared with X-World 1.0, the release emphasizes repeatable scenario tests and reports simulation accuracy improvements.",
+      "whyEn": "Repeatable simulation can help evaluate edge cases, but it does not replace real-world road safety validation.",
+      "watchEn": "Watch the gap between simulation and vehicle results and whether scenarios and evaluation methods are published.",
+      "verification": "官方一手",
+      "source": "XPENG",
+      "sources": [
+        "XPENG"
+      ],
+      "sourceLinks": [
+        {
+          "name": "XPENG",
+          "url": "https://www.xpeng.com/pressroom/news/01a207a6036ba1e838d68a02a2110139",
+          "tier": 1
+        }
+      ],
+      "publishedAt": "2026-11-23T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-26T04:36:02.809Z",
+      "category": "研究",
+      "region": "中国",
+      "impact": "关注",
+      "score": 77,
+      "url": "https://www.xpeng.com/pressroom/news/01a207a6036ba1e838d68a02a2110139",
+      "tags": [
+        "小鹏",
+        "世界模型",
+        "仿真"
+      ],
+      "rank": 58
     },
     {
       "id": 3906363749,
@@ -1581,7 +2211,7 @@
         "TechNode",
         "研究"
       ],
-      "rank": 43
+      "rank": 59
     },
     {
       "id": 3906363733,
@@ -1617,7 +2247,7 @@
         "Cursor",
         "开源"
       ],
-      "rank": 44
+      "rank": 60
     },
     {
       "id": 2236239695,
@@ -1648,7 +2278,7 @@
         "VPC",
         "AI Agent"
       ],
-      "rank": 45,
+      "rank": 61,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从原型数据库需要重建迁移变为可保留数据与 endpoint 并迁入私有 VPC。",
@@ -1684,7 +2314,7 @@
         "推理",
         "Serverless"
       ],
-      "rank": 46,
+      "rank": 62,
       "firstSeenAt": "2026-11-20T00:18:26.000Z",
       "publishedPrecision": "date",
       "change": "从最长十五分钟的按需事件函数执行窗口扩展至三十分钟。",
