@@ -1,78 +1,44 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-26T23:50:53.250Z",
-  "contentUpdatedAt": "2026-11-26T23:50:53.250Z",
+  "generatedAt": "2026-11-27T23:50:57.806Z",
+  "contentUpdatedAt": "2026-11-27T23:50:57.806Z",
   "status": {
     "state": "fresh",
-    "lastSuccessfulAt": "2026-11-26T23:50:53.250Z"
+    "lastSuccessfulAt": "2026-11-27T23:50:57.806Z"
   },
   "mode": "GPT 联网研究 · 7天滚动数据 · 非RSS",
   "stats": {
     "rawSignals": 30,
-    "events": 72,
-    "chinaRatio": 22,
-    "highImpact": 17
+    "events": 66,
+    "chinaRatio": 29,
+    "highImpact": 13
   },
   "sourceHealth": {
-    "attempted": 23,
-    "healthy": 16,
+    "attempted": 31,
+    "healthy": 22,
     "officialHealthy": 13,
     "failed": [
-      "Perplexity 文章原始地区链接无法访问",
-      "Hugging Face Bharat 模型页面无法访问",
-      "Reuters 芯片出口报道页面无法访问",
-      "Reuters 另一篇芯片出口报道页面无法访问",
-      "GlobalStartups 融资报道页面无法访问",
-      "Hugging Face NVIDIA Nemotron Parse 页面无法访问",
-      "Hugging Face ggml AMD 基准页面无法访问"
+      "新浪财经 Hy3D 3.6 报道：访问受限",
+      "Kioxia 官方新闻页：访问受限",
+      "中关村在线 Hy3D 3.6 报道：访问受限",
+      "Yahoo Finance Kioxia 公告：HTTP 429",
+      "凤凰网 Hy3D 3.6 报道：访问受限",
+      "ToolSift 新闻页：访问受限",
+      "eYssen 新闻页：访问受限",
+      "LetsDataScience Kioxia 页面：访问受限",
+      "zglg.work Hy3D 页面：访问受限"
     ]
   },
   "brief": {
-    "title": "语音模型、Agent 评测与可中断算力进入实践阶段",
+    "title": "模型部署、Agent 评测与推理工程持续演进",
     "bullets": [
-      "DeepL 发布语音翻译新模型，腾讯补充多语言开源模型选择；实际效果仍需独立评测。",
-      "开发工具从生成代码扩展到任务评估和可组合运行环境，团队需要关注权限和基准质量。",
-      "可中断 GPU 与数据库内嵌入模型提供新的成本和部署选项，生产环境仍需核算可用性。",
-      "工业设备诊断与机器人评测工具继续推进，商业和实验结果仍待现场验证。"
+      "国内团队开放翻译、交互及图像模型，并发布可复查的推测解码训练材料。",
+      "NVIDIA 和 ggml 更新文档解析与硬件基准资源，部署决策仍需对应实际负载测试。",
+      "GitHub 调整企业代码审查默认计费；开发团队需要提前核对预算与策略。",
+      "多 Agent 训练教程强调同等预算对照，避免把更多调用误判为协作收益。"
     ]
   },
   "items": [
-    {
-      "id": 3906363719,
-      "title": "Anthropic 完成 IPO 并引入 260 亿美元同步私募",
-      "titleEn": "Anthropic announces closing of initial public offering, including full exercise of underwriters’ option to purchase additional shares, and closing of concurrent private placement",
-      "summary": "Anthropic 宣布完成首次公开募股：1,127,000,000 股 A 类普通股按每股 83 美元发行；公司称自身获得约 916 亿美元毛收入，并与 AMD、Broadcom、Google、Micron、Microsoft、NVIDIA 和 TSMC 完成约 260 亿美元的同步私募。",
-      "change": "从拟上市和定价阶段进入已交易、资金到位的公开公司阶段，并同步引入云与芯片产业链战略投资者。",
-      "why": "这笔融资把前沿模型公司与其算力、云和芯片供应链的资本关系进一步绑定；公开市场也将能更直接跟踪其研发投入、商业化和基础设施承诺。",
-      "watch": "观察募资资金的实际投向、战略投资者合作是否转化为供给或产品优先权，以及上市后的定期披露如何呈现收入与算力投入。",
-      "verification": "官方一手",
-      "source": "Anthropic",
-      "sources": [
-        "Anthropic"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Anthropic",
-          "url": "https://www.anthropic.com/news/ipo-close",
-          "tier": 1
-        }
-      ],
-      "publishedAt": "2026-11-20T00:00:00.000Z",
-      "publishedPrecision": "date",
-      "firstSeenAt": "2026-11-20T23:47:11.511Z",
-      "category": "资本",
-      "region": "全球",
-      "impact": "突发",
-      "score": 98,
-      "url": "https://www.anthropic.com/news/ipo-close",
-      "tags": [
-        "Anthropic",
-        "IPO",
-        "AI资本",
-        "算力生态"
-      ],
-      "rank": 1
-    },
     {
       "id": 3906363739,
       "title": "Anthropic 推出 Claude Ship，覆盖 PR 审查、修复与策略审批",
@@ -105,7 +71,7 @@
         "Claude",
         "AI Coding"
       ],
-      "rank": 2
+      "rank": 1
     },
     {
       "id": 3906363741,
@@ -139,7 +105,7 @@
         "Amazon",
         "资本"
       ],
-      "rank": 3
+      "rank": 2
     },
     {
       "id": 3906363726,
@@ -181,6 +147,50 @@
         "开源权重",
         "MoE"
       ],
+      "rank": 3
+    },
+    {
+      "id": 3906363778,
+      "title": "腾讯开源 DFly2 草稿模型及训练代码",
+      "titleEn": "Tencent open-sources DFly2 speculative decoding models",
+      "summary": "腾讯混元于 11 月 26 日开放 DFly2 的训练代码、技术报告和多个适配模型的草稿权重。",
+      "change": "DFly2 从此前的训练支持扩展到完整代码与多种模型的草稿权重。",
+      "why": "推理团队可评估投机解码对长上下文服务的收益；厂商的加速数字仍需按硬件复测。",
+      "watch": "观察不同负载下的吞吐、接收率和部署框架兼容性。",
+      "source": "Tencent",
+      "sources": [
+        "Tencent",
+        "IT之家"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Tencent",
+          "url": "https://github.com/Tencent/AngelSpec",
+          "tier": 1
+        },
+        {
+          "name": "IT之家",
+          "url": "https://m.ithome.com/html/1032929.htm",
+          "tier": 2
+        }
+      ],
+      "url": "https://github.com/Tencent/AngelSpec",
+      "publishedAt": "2026-11-26T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-27T23:50:40.747Z",
+      "category": "本地AI",
+      "region": "中国",
+      "impact": "关注",
+      "score": 93,
+      "tags": [
+        "腾讯",
+        "推理优化"
+      ],
+      "verification": "多源核验",
+      "summaryEn": "Tencent released DFly2 training code, a technical report, and draft weights for several models on November 26.",
+      "changeEn": "The project expanded from training support to full code and draft weights for additional target models.",
+      "whyEn": "Inference teams can evaluate speculative decoding for long contexts; reported speedups depend on hardware and workload.",
+      "watchEn": "Watch throughput, acceptance rates, and compatibility across serving frameworks.",
       "rank": 4
     },
     {
@@ -372,40 +382,42 @@
       "rank": 9
     },
     {
-      "id": 3636787553,
-      "title": "OpenAI 展示 Codex 驱动的性能 Agent 工厂",
-      "titleEn": "How OpenAI’s Performance Factory keeps ChatGPT fast",
-      "summary": "OpenAI 披露其在云端运行的 Performance Factory：性能告警触发后，Codex 完成排查、提出修复和验证恢复，工程师审核关键决策与合并。",
-      "why": "它提供了生产级 Agent 运营范式：状态机、跨会话任务记录、独立复核与人工审批共同构成可靠闭环。",
-      "source": "OpenAI",
+      "id": 3906363779,
+      "title": "蚂蚁开源 Ling-3.2-air 多模态模型",
+      "titleEn": "Ant releases Ling-3.2-air multimodal model",
+      "summary": "据 AI.info 11 月 23 日报道，蚂蚁 inclusionAI 发布 Ling-3.2-air 开放权重多模态模型，支持文本、图像和视频输入。",
+      "change": "新模型沿用前代多模态架构，提供可下载的模型权重与部署方案。",
+      "why": "开放权重让企业可评估自建多模态工作流，但部署资源和许可仍需核对。",
+      "watch": "观察第三方任务评测、显存要求和实际推理成本。",
+      "source": "AI.info",
       "sources": [
-        "OpenAI"
+        "AI.info"
       ],
       "sourceLinks": [
         {
-          "name": "OpenAI",
-          "url": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast/",
-          "tier": 1
+          "name": "AI.info",
+          "url": "https://ai.info/news/inclusionai-ling-3-2-air-open-weights",
+          "tier": 2
         }
       ],
-      "publishedAt": "2026-11-19T00:00:00.000Z",
-      "category": "AI Coding",
-      "region": "全球",
-      "impact": "关注",
-      "score": 92,
-      "url": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast/",
-      "tags": [
-        "OpenAI",
-        "Codex",
-        "Agent Workflow",
-        "SRE"
-      ],
-      "rank": 10,
-      "firstSeenAt": "2026-11-20T00:18:26.000Z",
+      "url": "https://ai.info/news/inclusionai-ling-3-2-air-open-weights",
+      "publishedAt": "2026-11-23T00:00:00.000Z",
       "publishedPrecision": "date",
-      "change": "从单次编码辅助转为状态化、可派发、带独立复核的持久 Agent 运维流程。",
-      "watch": "观察该流程在更多故障场景中的自治边界，以及工程师审批对修复质量的实际影响。",
-      "verification": "官方一手"
+      "firstSeenAt": "2026-11-27T23:50:40.747Z",
+      "category": "本地AI",
+      "region": "中国",
+      "impact": "关注",
+      "score": 91,
+      "tags": [
+        "蚂蚁",
+        "多模态"
+      ],
+      "verification": "单一来源",
+      "summaryEn": "AI.info reported on November 23 that Ant's inclusionAI released Ling-3.2-air, an open-weight multimodal model accepting text, images, and video.",
+      "changeEn": "The model builds on the earlier multimodal architecture and provides downloadable weights and deployment guidance.",
+      "whyEn": "Open weights enable teams to assess self-hosted multimodal workflows, subject to licensing and hardware constraints.",
+      "watchEn": "Watch independent task evaluations, memory requirements, and actual inference cost.",
+      "rank": 10
     },
     {
       "id": 3906363769,
@@ -519,40 +531,86 @@
       "rank": 13
     },
     {
-      "id": 3906363715,
-      "firstSeenAt": "2026-11-20T02:20:51.000Z",
-      "publishedPrecision": "date",
-      "verification": "官方一手",
-      "title": "Google 为 Gemini API 加入按需工具检索",
-      "titleEn": "Introducing Tool Retrieval in the Gemini API",
-      "summary": "Google 在 Gemini Interactions API 预览推出 Tool Retrieval：Agent 可仅在需要时加载函数参数 schema，而不是在每次请求中附带完整工具库。",
-      "change": "从把全部工具 schema 预先塞入提示词，改为由模型按任务需要检索并加载具体工具定义。",
-      "why": "大型企业 Agent 往往连接数十到数百个工具；按需加载可减少输入 token、延迟与工具选择干扰，同时保留可审计的调用步骤。",
-      "watch": "观察该预览功能在复杂 MCP 工具服务器上的稳定性、实际 token 节省，以及是否扩展至更多模型与区域。",
-      "source": "Google",
+      "id": 3906363780,
+      "title": "蚂蚁开放 Ming-Image-0.2-Design 设计图像模型",
+      "titleEn": "Ant opens Ming-Image-0.2-Design for visual design",
+      "summary": "蚂蚁 inclusionAI 开放 Ming-Image-0.2-Design 权重；模型卡列出电商图片、界面草稿及空间效果图用途。",
+      "change": "相较 0.1 设计模型，新版权重面向复杂构图、光照和文字渲染作出改进。",
+      "why": "设计团队可测试本地生成工作流，但文字准确性和硬件成本决定其实际可用范围。",
+      "watch": "观察独立设计评测、文字可编辑性与模型部署成本。",
+      "source": "inclusionAI",
       "sources": [
-        "Google"
+        "inclusionAI",
+        "AI.info"
       ],
       "sourceLinks": [
         {
-          "name": "Google",
-          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/",
+          "name": "inclusionAI",
+          "url": "https://huggingface.co/inclusionAI/Ming-Image-0.2-Design",
+          "tier": 1
+        },
+        {
+          "name": "AI.info",
+          "url": "https://ai.info/news/inclusionai-ming-image-02-design-open-source",
+          "tier": 2
+        }
+      ],
+      "url": "https://huggingface.co/inclusionAI/Ming-Image-0.2-Design",
+      "publishedAt": "2026-11-26T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-27T23:50:40.747Z",
+      "category": "产品",
+      "region": "中国",
+      "impact": "关注",
+      "score": 90,
+      "tags": [
+        "蚂蚁",
+        "图像生成"
+      ],
+      "verification": "多源核验",
+      "summaryEn": "Ant's inclusionAI released Ming-Image-0.2-Design weights for visual design, including product images, interface drafts, and spatial renderings.",
+      "changeEn": "The release targets improvements in composition, lighting, and text rendering over the earlier design model.",
+      "whyEn": "Design teams can test a self-hosted workflow, while text accuracy and hardware cost constrain practical use.",
+      "watchEn": "Watch independent design evaluations, text editability, and deployment costs.",
+      "rank": 14
+    },
+    {
+      "id": 3906363782,
+      "title": "NVIDIA 公开 Nemotron Parse 训练数据与微调方案",
+      "titleEn": "NVIDIA releases datasets and tuning recipe for Nemotron Parse",
+      "summary": "NVIDIA 于 11 月 26 日发布 Nemotron 3.5 Parse 使用的合成图表、表格和多语言文档数据及微调方案。",
+      "change": "已有文档解析模型新增可下载训练数据、微调流程和推理加速组件。",
+      "why": "企业可以用更接近自身文档的样本评估解析适配，降低对通用文档结果的依赖。",
+      "watch": "观察复杂表格与中文文档的准确率、部署吞吐和复现结果。",
+      "source": "NVIDIA",
+      "sources": [
+        "NVIDIA"
+      ],
+      "sourceLinks": [
+        {
+          "name": "NVIDIA",
+          "url": "https://huggingface.co/blog/nvidia/building-on-nemotron-35-parse-open-data-fine-tunin",
           "tier": 1
         }
       ],
-      "publishedAt": "2026-11-19T00:00:00.000Z",
-      "category": "AI Coding",
+      "url": "https://huggingface.co/blog/nvidia/building-on-nemotron-35-parse-open-data-fine-tunin",
+      "publishedAt": "2026-11-26T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-27T23:50:40.747Z",
+      "category": "算力",
       "region": "全球",
-      "impact": "高影响",
-      "score": 91,
-      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/",
+      "impact": "关注",
+      "score": 90,
       "tags": [
-        "Google",
-        "Gemini API",
-        "Agent",
-        "Tool Retrieval"
+        "NVIDIA",
+        "文档解析"
       ],
-      "rank": 14
+      "verification": "官方一手",
+      "summaryEn": "NVIDIA published synthetic chart, table, and multilingual document datasets with a fine-tuning recipe for Nemotron 3.5 Parse on November 26.",
+      "changeEn": "The existing document parser gains downloadable training data, adaptation guidance, and an inference acceleration component.",
+      "whyEn": "Enterprises can evaluate adaptation on their own document types rather than relying only on generic results.",
+      "watchEn": "Watch accuracy on complex tables and Chinese documents, serving throughput, and reproducibility.",
+      "rank": 15
     },
     {
       "id": 3906363768,
@@ -590,7 +648,7 @@
       "changeEn": "The updated model is enabled for supported languages across meetings, conversations, and the voice API.",
       "whyEn": "Speech translation affects multilingual workflows, although latency improvements require independent testing.",
       "watchEn": "Watch for additional languages and real-world latency and translation error rates.",
-      "rank": 15
+      "rank": 16
     },
     {
       "id": 3906363755,
@@ -635,7 +693,7 @@
         "ERNIE",
         "开放权重"
       ],
-      "rank": 16
+      "rank": 17
     },
     {
       "id": 3906363743,
@@ -669,7 +727,7 @@
         "AMD",
         "算力"
       ],
-      "rank": 17
+      "rank": 18
     },
     {
       "id": 3906363725,
@@ -711,7 +769,7 @@
         "困惑度",
         "治理"
       ],
-      "rank": 18
+      "rank": 19
     },
     {
       "id": 3906363770,
@@ -749,7 +807,7 @@
       "changeEn": "The npm library provides a shared way to test an API, skills, and documentation across agent configurations.",
       "whyEn": "Platform teams can use task-level evaluations to find where agents struggle with their interfaces.",
       "watchEn": "Watch how well the evaluations predict real development outcomes and whether judge bias affects scores.",
-      "rank": 19
+      "rank": 20
     },
     {
       "id": 3906363745,
@@ -783,79 +841,83 @@
         "Claude",
         "安全"
       ],
-      "rank": 20
-    },
-    {
-      "id": 3906363716,
-      "firstSeenAt": "2026-11-20T02:20:51.000Z",
-      "publishedPrecision": "date",
-      "verification": "官方一手",
-      "title": "Google 将 Genie 4 世界模型开放至 Gemini API",
-      "titleEn": "Genie 4 is now available on the Gemini API",
-      "summary": "Google 宣布 Genie 4 已通过 Gemini API 的 Interactions API 与 Google AI Studio 向开发者开放，可从文字或参考图生成带原生音频的连续 720p、24fps 交互世界。",
-      "change": "从面向订阅用户的 Project Genie 体验，扩展为开发者可调用的 API 与 AI Studio 能力。",
-      "why": "世界模型从演示产品进入 API 后，游戏原型、空间设计可视化和机器人/Agent 训练可开始评估真实的调用成本与工程集成路径。",
-      "watch": "观察官方定价、并发与地区可用性，以及第三方对长时一致性、物理交互和安全水印效果的验证。",
-      "source": "Google",
-      "sources": [
-        "Google"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Google",
-          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/genie-4-in-gemini-api/",
-          "tier": 1
-        }
-      ],
-      "publishedAt": "2026-11-19T00:00:00.000Z",
-      "category": "模型",
-      "region": "全球",
-      "impact": "高影响",
-      "score": 89,
-      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/genie-4-in-gemini-api/",
-      "tags": [
-        "Google",
-        "Genie 4",
-        "世界模型",
-        "Gemini API"
-      ],
       "rank": 21
     },
     {
-      "id": 2177847865,
-      "title": "NVIDIA 与 Microsoft 扩展云到边缘的 AI 栈",
-      "titleEn": "NVIDIA and Microsoft Expand Accelerated Computing From Azure to Windows PCs",
-      "summary": "NVIDIA 宣布与 Microsoft 扩展协作，覆盖 Azure 上的 Vera Rubin 系统、Microsoft Foundry 的模型定制，以及 Azure Local、工业与 Windows PC 端部署。",
-      "why": "企业 AI 的竞争正从单一模型转向云、边缘、终端与数据治理的全栈交付，对工业部署架构更直接。",
-      "source": "NVIDIA",
+      "id": 3906363781,
+      "title": "上海 AI 实验室开放 Sage-Interaction 交互模型",
+      "titleEn": "Shanghai AI Laboratory releases Sage-Interaction",
+      "summary": "上海 AI 实验室项目于 11 月 23 日开放 Sage-Interaction 9B 模型权重和实时语音演示。",
+      "change": "模型将持续音视频交互与后台异步任务委派组合在同一系统中。",
+      "why": "实时对话期间处理较长任务，为语音助手和现场交互提供了可测试的工程方案。",
+      "watch": "观察真实中断场景的响应延迟、任务正确率与部署资源。",
+      "source": "Shanghai AI Laboratory",
       "sources": [
-        "NVIDIA"
+        "Shanghai AI Laboratory"
       ],
       "sourceLinks": [
         {
-          "name": "NVIDIA",
-          "url": "https://blogs.nvidia.com/blog/microsoft-ignite-accelerated-computing-azure-windows-pcs/",
+          "name": "Shanghai AI Laboratory",
+          "url": "https://github.com/InternLM/Sage-Interaction",
           "tier": 1
         }
       ],
-      "publishedAt": "2026-11-19T00:00:00.000Z",
-      "category": "算力",
+      "url": "https://github.com/InternLM/Sage-Interaction",
+      "publishedAt": "2026-11-23T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-27T23:50:40.747Z",
+      "category": "本地AI",
+      "region": "中国",
+      "impact": "关注",
+      "score": 88,
+      "tags": [
+        "上海AI实验室",
+        "语音Agent"
+      ],
+      "verification": "官方一手",
+      "summaryEn": "Shanghai AI Laboratory released Sage-Interaction 9B weights and a real-time voice demonstration on November 23.",
+      "changeEn": "The system combines continuous audio-visual interaction with asynchronous task delegation.",
+      "whyEn": "Background task execution during conversation offers a practical design to test in interactive assistants.",
+      "watchEn": "Watch response latency during interruptions, task accuracy, and deployment resources.",
+      "rank": 22
+    },
+    {
+      "id": 3906363787,
+      "title": "GitHub 将调整 Copilot 代码审查的默认计费方",
+      "titleEn": "GitHub changes default Copilot code review billing",
+      "summary": "GitHub 于 11 月 25 日宣布，未设置计费偏好的部分企业组织将从 12 月 30 日起由仓库所属组织承担 Copilot 代码审查费用。",
+      "change": "符合条件且未设置偏好的组织将从成员额度默认切换为组织计费，已有选择保持不变。",
+      "why": "频繁自动审查 PR 的团队需要提前检查费用归属、组织预算和策略设置。",
+      "watch": "观察管理员是否选择成员计费，以及 AI Credits 使用量变化。",
+      "source": "GitHub",
+      "sources": [
+        "GitHub"
+      ],
+      "sourceLinks": [
+        {
+          "name": "GitHub",
+          "url": "https://github.blog/changelog/2026-11-25-copilot-code-review-billing-will-default-to-the-organization/",
+          "tier": 1
+        }
+      ],
+      "url": "https://github.blog/changelog/2026-11-25-copilot-code-review-billing-will-default-to-the-organization/",
+      "publishedAt": "2026-11-25T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-27T23:50:40.747Z",
+      "category": "AI Coding",
       "region": "全球",
       "impact": "关注",
-      "score": 89,
-      "url": "https://blogs.nvidia.com/blog/microsoft-ignite-accelerated-computing-azure-windows-pcs/",
+      "score": 88,
       "tags": [
-        "NVIDIA",
-        "Microsoft",
-        "Azure",
-        "边缘AI"
+        "GitHub",
+        "Copilot"
       ],
-      "rank": 22,
-      "firstSeenAt": "2026-11-20T00:18:26.000Z",
-      "publishedPrecision": "date",
-      "change": "从云侧加速计算扩展到 Azure Local、工业边缘与 Windows PC 的统一部署栈。",
-      "watch": "观察可用区域、具体硬件配置与企业端成本，及工业场景的实际落地案例。",
-      "verification": "官方一手"
+      "verification": "官方一手",
+      "summaryEn": "GitHub announced on November 25 that eligible organizations without a saved billing choice will default to organization billing for Copilot code reviews from December 30.",
+      "changeEn": "The default moves from member entitlement to organization billing for affected accounts, while existing explicit choices remain in place.",
+      "whyEn": "Teams running frequent pull-request reviews should check billing ownership, budgets, and organization policies.",
+      "watchEn": "Watch administrator billing choices and changes in AI Credits consumption.",
+      "rank": 23
     },
     {
       "id": 3906363756,
@@ -894,7 +956,7 @@
         "SenseNova",
         "多模态"
       ],
-      "rank": 23
+      "rank": 24
     },
     {
       "id": 3906363746,
@@ -928,7 +990,7 @@
         "Google",
         "安全"
       ],
-      "rank": 24
+      "rank": 25
     },
     {
       "id": 3906363727,
@@ -964,43 +1026,45 @@
         "工作树",
         "企业协作"
       ],
-      "rank": 25
+      "rank": 26
     },
     {
-      "id": 3906363720,
-      "title": "Microsoft Copilot 上线 GPT‑6.2 Sol 与 Astra",
-      "titleEn": "Available today: OpenAI’s GPT-6.2 Sol and GPT-6.2 Astra in Microsoft Copilot",
-      "summary": "Microsoft 宣布 GPT‑6.2 Sol 在全球逐步进入符合条件的 Copilot Chat、Cowork、Studio 及 Excel、PowerPoint、Word；GPT‑6.2 Astra 面向全球 Cowork 和 Studio，并向 Frontier 用户逐步扩展至部分其他 Copilot 体验。",
-      "change": "从单一工作流中的模型选择，扩展为按任务复杂度、产品入口和组织权限分层部署 Sol 与 Astra。",
-      "why": "Microsoft 把最新模型能力嵌入办公和企业 Agent 入口，影响的不只是聊天质量，还包括知识工作自动化的采购、权限治理与生产落地节奏。",
-      "watch": "观察各地区与许可层级的实际开放范围、Work IQ 权限边界，以及企业用户在长任务中对速度、成本和可靠性的反馈。",
-      "verification": "官方一手",
-      "source": "Microsoft",
+      "id": 3906363786,
+      "title": "OpenAI API 提供面向医疗问题的模型配置",
+      "titleEn": "OpenAI API adds healthcare model configurations",
+      "summary": "OpenAI 于 11 月 24 日宣布，Responses API 组织可使用针对医疗问题配置的模型，联网时可检索专用医疗来源索引。",
+      "change": "开发者获得面向医疗问题的专用模型配置，无需拥有 ChatGPT for Healthcare 工作区。",
+      "why": "医疗应用团队可评估引用与证据检索能力，输出仍需专业人员复核。",
+      "watch": "观察适用地区、隐私要求、引用准确率和临床验证结果。",
+      "source": "OpenAI",
       "sources": [
-        "Microsoft"
+        "OpenAI"
       ],
       "sourceLinks": [
         {
-          "name": "Microsoft",
-          "url": "https://techcommunity.microsoft.com/blog/microsoft-copilot-blog/available-today-openais-gpt-6-2-sol-and-gpt-6-2-astra-in-microsoft-copilot/4574229",
+          "name": "OpenAI",
+          "url": "https://help.openai.com/en/articles/9624314-model-release-notes",
           "tier": 1
         }
       ],
-      "publishedAt": "2026-11-20T00:00:00.000Z",
+      "url": "https://help.openai.com/en/articles/9624314-model-release-notes",
+      "publishedAt": "2026-11-24T00:00:00.000Z",
       "publishedPrecision": "date",
-      "firstSeenAt": "2026-11-20T23:47:11.511Z",
+      "firstSeenAt": "2026-11-27T23:50:40.747Z",
       "category": "产品",
       "region": "全球",
-      "impact": "高影响",
-      "score": 88,
-      "url": "https://techcommunity.microsoft.com/blog/microsoft-copilot-blog/available-today-openais-gpt-6-2-sol-and-gpt-6-2-astra-in-microsoft-copilot/4574229",
+      "impact": "关注",
+      "score": 87,
       "tags": [
-        "Microsoft",
-        "Copilot",
         "OpenAI",
-        "GPT-6.2"
+        "医疗AI"
       ],
-      "rank": 26
+      "verification": "官方一手",
+      "summaryEn": "OpenAI announced healthcare model configurations for API organizations on November 24, with a dedicated medical source index when web search is enabled.",
+      "changeEn": "Developers can access the configurations through the Responses API without a ChatGPT for Healthcare workspace.",
+      "whyEn": "Healthcare application teams can assess evidence retrieval and citations while retaining professional review.",
+      "watchEn": "Watch regional availability, privacy requirements, citation accuracy, and clinical validation.",
+      "rank": 27
     },
     {
       "id": 3906363771,
@@ -1038,7 +1102,7 @@
       "changeEn": "Pax exposes coding, MCP, and observability as plugins, while the Harness supports custom agents.",
       "whyEn": "Composable capabilities and workspace interfaces give teams more options when building agent workflows.",
       "watchEn": "Watch plugin security configuration, environment compatibility, and the stability of the final API.",
-      "rank": 27
+      "rank": 28
     },
     {
       "id": 3906363757,
@@ -1077,7 +1141,7 @@
         "MAGI-2",
         "视频生成"
       ],
-      "rank": 28
+      "rank": 29
     },
     {
       "id": 3906363747,
@@ -1111,7 +1175,7 @@
         "Strands",
         "开源"
       ],
-      "rank": 29
+      "rank": 30
     },
     {
       "id": 3906363722,
@@ -1147,7 +1211,45 @@
         "蒸馏防护",
         "红队测试"
       ],
-      "rank": 30
+      "rank": 31
+    },
+    {
+      "id": 3906363784,
+      "title": "Hugging Face 发布多 Agent 协作训练实验教程",
+      "titleEn": "Hugging Face shares a multi-agent training walkthrough",
+      "summary": "Hugging Face 于 11 月 26 日介绍四个 Agent 共用小模型进行信息交换的训练实验，并提供复现教程。",
+      "change": "教程展示共享奖励训练与可检查任务，区分协作收益和增加调用次数的效果。",
+      "why": "团队可以用可控基线检验多 Agent 通信和 token 成本，而不必假设协作一定更好。",
+      "watch": "观察相同预算下对单 Agent 任务的比较，以及复杂任务上的复现。",
+      "source": "Hugging Face",
+      "sources": [
+        "Hugging Face"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Hugging Face",
+          "url": "https://huggingface.co/blog/training-swarms",
+          "tier": 1
+        }
+      ],
+      "url": "https://huggingface.co/blog/training-swarms",
+      "publishedAt": "2026-11-26T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-27T23:50:40.747Z",
+      "category": "研究",
+      "region": "全球",
+      "impact": "关注",
+      "score": 86,
+      "tags": [
+        "Hugging Face",
+        "多Agent"
+      ],
+      "verification": "官方一手",
+      "summaryEn": "Hugging Face published a reproducible walkthrough on November 26 for four agents sharing a small model and exchanging information.",
+      "changeEn": "The example uses shared rewards and a verifiable task while distinguishing collaboration from simply adding attempts.",
+      "whyEn": "Teams can test agent communication and token costs against controlled baselines rather than assuming cooperation helps.",
+      "watchEn": "Watch equal-budget comparisons against single agents and replication on more complex tasks.",
+      "rank": 32
     },
     {
       "id": 3906363773,
@@ -1185,7 +1287,7 @@
       "changeEn": "The capacity is priced at half the on-demand rate and includes a five-minute drain window before reclamation.",
       "whyEn": "Interruptible experiments and batch work may cost less, depending on interruption and recovery overhead.",
       "watchEn": "Watch interruption frequency, recovery time, and capacity availability by region.",
-      "rank": 31
+      "rank": 33
     },
     {
       "id": 3906363758,
@@ -1224,49 +1326,45 @@
         "Agent",
         "搜索"
       ],
-      "rank": 32
+      "rank": 34
     },
     {
-      "id": 3248149539,
-      "title": "阿里云发布 Qwen4-Max 并推进东南亚生态",
-      "titleEn": "Alibaba Cloud Unveils New AI Initiatives at Hong Kong Summit to Advance the City’s AI Ecosystem",
-      "summary": "阿里云在香港与马来西亚活动中发布 Qwen4-Max；官方称其具备原生视觉和百万 token 上下文，并宣布当地人才、行业合作与云基础设施扩张。",
-      "why": "同一模型发布与区域云、伙伴和行业应用绑定，说明中国模型出海的可持续性取决于交付生态，而非单一榜单成绩。",
-      "source": "Alibaba Cloud",
+      "id": 3906363783,
+      "title": "llama.cpp 发布 AMD 硬件推理基准看板",
+      "titleEn": "llama.cpp launches AMD inference benchmark dashboard",
+      "summary": "ggml 团队于 11 月 26 日发布 llama.cpp 在 AMD Ryzen 与 Radeon 硬件上的公开基准看板。",
+      "change": "开发者可按模型、量化方式和构建版本查看提示处理与生成性能。",
+      "why": "可复查的硬件数据有助于比较本地模型部署方案，但不能替代目标负载测试。",
+      "watch": "观察更多硬件与长上下文结果，以及不同量化方式的质量损失。",
+      "source": "ggml-org",
       "sources": [
-        "Alibaba Cloud Hong Kong",
-        "Alibaba Cloud Malaysia"
+        "ggml-org"
       ],
       "sourceLinks": [
         {
-          "name": "Alibaba Cloud Hong Kong",
-          "url": "https://www.alibabacloud.com/blog/alibaba-cloud-unveils-new-ai-initiatives-at-hong-kong-summit-to-advance-the-city%E2%80%99s-ai-ecosystem_603792",
-          "tier": 1
-        },
-        {
-          "name": "Alibaba Cloud Malaysia",
-          "url": "https://www.alibabacloud.com/blog/alibaba-cloud-advances-ai-adoption-in-malaysia-with-nationwide-youth-contest-and-industry-collaborations_603793",
+          "name": "ggml-org",
+          "url": "https://huggingface.co/blog/ggml-org/llamacpp-amd-bench",
           "tier": 1
         }
       ],
-      "publishedAt": "2026-11-19T00:00:00.000Z",
-      "category": "本地AI",
-      "region": "中国",
-      "impact": "关注",
-      "score": 86,
-      "url": "https://www.alibabacloud.com/blog/alibaba-cloud-unveils-new-ai-initiatives-at-hong-kong-summit-to-advance-the-city%E2%80%99s-ai-ecosystem_603792",
-      "tags": [
-        "阿里云",
-        "Qwen4-Max",
-        "东南亚",
-        "出海"
-      ],
-      "rank": 33,
-      "firstSeenAt": "2026-11-20T00:18:26.000Z",
+      "url": "https://huggingface.co/blog/ggml-org/llamacpp-amd-bench",
+      "publishedAt": "2026-11-26T00:00:00.000Z",
       "publishedPrecision": "date",
-      "change": "从单一模型披露扩展为模型、区域云容量、人才项目和行业伙伴同步推进。",
-      "watch": "观察 Qwen4-Max 的 API 可用范围、第三方评测复现和海外企业实际采用情况。",
-      "verification": "官方一手"
+      "firstSeenAt": "2026-11-27T23:50:40.747Z",
+      "category": "算力",
+      "region": "全球",
+      "impact": "关注",
+      "score": 85,
+      "tags": [
+        "AMD",
+        "llama.cpp"
+      ],
+      "verification": "官方一手",
+      "summaryEn": "The ggml team released a public llama.cpp benchmark dashboard for AMD Ryzen and Radeon hardware on November 26.",
+      "changeEn": "The dashboard compares prompt processing and generation across model builds and quantization formats.",
+      "whyEn": "Inspectable hardware measurements help teams compare local inference setups but do not replace workload-specific tests.",
+      "watchEn": "Watch additional hardware coverage, long-context results, and quality losses from quantization.",
+      "rank": 35
     },
     {
       "id": 3906363772,
@@ -1304,7 +1402,7 @@
       "changeEn": "Installed artifacts open in their own windows and request permission to interact with the computer.",
       "whyEn": "The feature could make generated tools easier to use repeatedly, subject to access controls and usage costs.",
       "watchEn": "Watch enterprise controls, connector permissions, and adoption of installed apps.",
-      "rank": 34
+      "rank": 36
     },
     {
       "id": 3906363776,
@@ -1348,7 +1446,7 @@
       "changeEn": "The company said the financing closed earlier in the year and outlined an expansion beyond oil and gas.",
       "whyEn": "Deployment value depends on integrating physics-informed diagnostics with plant data and maintenance workflows.",
       "watchEn": "Watch actual power-generation deployments, equipment coverage, and independent validation of diagnoses.",
-      "rank": 35
+      "rank": 37
     },
     {
       "id": 3906363759,
@@ -1387,7 +1485,7 @@
         "Agent",
         "Workflow"
       ],
-      "rank": 36
+      "rank": 38
     },
     {
       "id": 3906363728,
@@ -1423,43 +1521,7 @@
         "Agent Framework",
         "可观测性"
       ],
-      "rank": 37
-    },
-    {
-      "id": 2331097513,
-      "title": "SageMaker 推出跨区域推理路由",
-      "titleEn": "Keep inference running through regional capacity shortfalls with cross-Region inference routing in Amazon SageMaker AI",
-      "summary": "AWS 发布 SageMaker 跨区域推理路由：一个调用入口可在多个区域或账户的既有 endpoint 与 inference component 间路由，并在本地容量不足时转移新请求。",
-      "why": "生产推理的可用性不再完全由单一区域 GPU 供给决定；这对高可用模型服务和灾备设计是直接的平台能力提升。",
-      "source": "AWS",
-      "sources": [
-        "AWS"
-      ],
-      "sourceLinks": [
-        {
-          "name": "AWS",
-          "url": "https://aws.amazon.com/blogs/machine-learning/keep-inference-running-through-regional-capacity-shortfalls-with-cross-region-inference-routing-in-amazon-sagemaker-ai/",
-          "tier": 1
-        }
-      ],
-      "publishedAt": "2026-11-19T00:00:00.000Z",
-      "category": "算力",
-      "region": "全球",
-      "impact": "关注",
-      "score": 85,
-      "url": "https://aws.amazon.com/blogs/machine-learning/keep-inference-running-through-regional-capacity-shortfalls-with-cross-region-inference-routing-in-amazon-sagemaker-ai/",
-      "tags": [
-        "AWS",
-        "SageMaker",
-        "推理",
-        "高可用"
-      ],
-      "rank": 38,
-      "firstSeenAt": "2026-11-20T00:18:26.000Z",
-      "publishedPrecision": "date",
-      "change": "从团队自建跨区域容灾逻辑转为 SageMaker 可管理的跨区域推理路由资源。",
-      "watch": "观察支持区域、流式请求行为与跨区域调用成本是否适合生产级多区域架构。",
-      "verification": "官方一手"
+      "rank": 39
     },
     {
       "id": 3906363774,
@@ -1497,7 +1559,7 @@
       "changeEn": "The previously previewed model is now generally available through AI.EMBED and AI.SIMILARITY.",
       "whyEn": "Data teams can generate embeddings in their query workflow without separately orchestrating a model service.",
       "watchEn": "Watch multilingual retrieval quality and the total slot consumption and query cost.",
-      "rank": 39
+      "rank": 40
     },
     {
       "id": 3906363775,
@@ -1535,7 +1597,7 @@
       "changeEn": "The update adds evaluation tooling and reproduction steps to a model released earlier.",
       "whyEn": "Embodied AI teams can inspect the evaluation workflow and reproduce experiments with fewer setup unknowns.",
       "watchEn": "Watch independent reproduction and the effort required to adapt to different robot platforms.",
-      "rank": 40
+      "rank": 41
     },
     {
       "id": 3906363760,
@@ -1574,7 +1636,7 @@
         "WorldGPT",
         "具身智能"
       ],
-      "rank": 41
+      "rank": 42
     },
     {
       "id": 3906363735,
@@ -1609,42 +1671,6 @@
         "实时语音",
         "音频理解",
         "Agent"
-      ],
-      "rank": 42
-    },
-    {
-      "id": 3906363717,
-      "firstSeenAt": "2026-11-20T02:20:51.000Z",
-      "publishedPrecision": "date",
-      "verification": "官方一手",
-      "title": "Gemini App for Mac 上线计算机操作能力",
-      "titleEn": "Let Gemini tackle repetitive chores on your Mac",
-      "summary": "Google 在 Mac 版 Gemini App 推出 computer use：用户可描述跨本地文件、桌面应用和网页的多步任务，系统在隔离窗口中执行并提供实时预览与操作审批。",
-      "change": "从对话式建议升级为可在 Mac 本地应用与网页之间点击、输入和填写表单的计算机操作工作流。",
-      "why": "消费者级 computer use 的竞争开始落到权限、隔离执行和人工确认等交互设计；这些也是企业 Agent 进入端侧流程的关键安全边界。",
-      "watch": "观察首批地区和订阅层级的可用范围、失败恢复机制，以及对敏感文件和浏览器操作的权限控制细节。",
-      "source": "Google",
-      "sources": [
-        "Google"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Google",
-          "url": "https://blog.google/innovation-and-ai/products/gemini-app/computer-use-mac/",
-          "tier": 1
-        }
-      ],
-      "publishedAt": "2026-11-19T00:00:00.000Z",
-      "category": "产品",
-      "region": "全球",
-      "impact": "关注",
-      "score": 84,
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/computer-use-mac/",
-      "tags": [
-        "Google",
-        "Gemini",
-        "Computer Use",
-        "Mac"
       ],
       "rank": 43
     },
@@ -1760,42 +1786,6 @@
       "rank": 46
     },
     {
-      "id": 1875041669,
-      "title": "SageMaker 自动发现推理延迟与闲置 GPU",
-      "titleEn": "Amazon SageMaker AI now detects latency drift, idle GPUs, and missed optimizations on your inference endpoints",
-      "summary": "AWS 宣布 SageMaker 对符合条件的 vLLM GPU 推理 endpoint 默认监测延迟漂移、闲置容量和配置缺口，并把发现导入 Studio 的基准测试流程；生产端点不会被自动修改。",
-      "why": "把运行后优化从人工巡检变为“观测—通知—基准—决策”的闭环，适合需要控制成本和稳定性的企业推理服务。",
-      "source": "AWS",
-      "sources": [
-        "AWS"
-      ],
-      "sourceLinks": [
-        {
-          "name": "AWS",
-          "url": "https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-ai-now-detects-latency-drift-idle-gpus-and-missed-optimizations-on-your-inference-endpoints/",
-          "tier": 1
-        }
-      ],
-      "publishedAt": "2026-11-19T00:00:00.000Z",
-      "category": "产品",
-      "region": "全球",
-      "impact": "关注",
-      "score": 83,
-      "url": "https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-ai-now-detects-latency-drift-idle-gpus-and-missed-optimizations-on-your-inference-endpoints/",
-      "tags": [
-        "AWS",
-        "SageMaker",
-        "推理优化",
-        "GPU"
-      ],
-      "rank": 47,
-      "firstSeenAt": "2026-11-20T00:18:26.000Z",
-      "publishedPrecision": "date",
-      "change": "从人工巡检端点配置转为自动发现延迟漂移、闲置 GPU 与优化缺口。",
-      "watch": "观察该能力在真实生产端点中的误报率，以及是否带来可量化的推理成本下降。",
-      "verification": "官方一手"
-    },
-    {
       "id": 3906363777,
       "title": "PrismML 推出 5.9 GB 的 Bonsai 2.5 量化模型",
       "titleEn": "PrismML releases Ternary Bonsai 2.5 27B",
@@ -1831,7 +1821,7 @@
       "changeEn": "The release keeps the earlier footprint and claims improvements in coding and multi-turn tool use.",
       "whyEn": "The smaller footprint supports evaluation for local deployment, while claimed gains need independent testing.",
       "watchEn": "Watch latency across hardware, task completion rates, and accuracy loss from quantization.",
-      "rank": 48
+      "rank": 47
     },
     {
       "id": 3906363762,
@@ -1870,7 +1860,7 @@
         "Agent安全",
         "沙箱"
       ],
-      "rank": 49
+      "rank": 48
     },
     {
       "id": 3906363751,
@@ -1906,7 +1896,7 @@
         "Codex",
         "会话恢复"
       ],
-      "rank": 50,
+      "rank": 49,
       "summaryEn": "OpenAI released Agents SDK v1.0.0-alpha.2 with resumable conversations and pending approvals across workers for Responses and Codex workflows.",
       "changeEn": "The SDK moves from short-lived agent runs toward persisted, recoverable execution state, including recovery of supported native Codex command and edit approvals.",
       "whyEn": "For production agent systems, recovery paths, approval continuity, tool filtering, and trace redaction are practical controls for reliability and governance, not just developer convenience.",
@@ -1946,7 +1936,7 @@
         "可观测性",
         "Agent安全"
       ],
-      "rank": 51
+      "rank": 50
     },
     {
       "id": 3906363724,
@@ -1982,43 +1972,7 @@
         "HyperPod",
         "推理路由"
       ],
-      "rank": 52
-    },
-    {
-      "id": 3906363718,
-      "firstSeenAt": "2026-11-20T02:20:51.000Z",
-      "publishedPrecision": "date",
-      "verification": "官方一手",
-      "title": "Microsoft 将 Agent 权限与可观测性列为 AI 安全重点",
-      "titleEn": "Security fundamentals to enable the frontier",
-      "summary": "Microsoft 在安全文章中提出，企业应把 AI Agent 视为内部风险主体，围绕最小权限、可观测性、补丁速度和人工保留关键决策来构建防御，并援引其此前披露的 AI 辅助攻击活动。",
-      "change": "从把生成式 AI 风险主要视为模型层问题，转向把 Agent 身份、资源权限、动作范围与监控纳入企业安全治理。",
-      "why": "当 Agent 获得云资源、代码库和业务系统权限后，安全控制点不再只在模型输入输出，而在身份、授权、审计与人工接管机制。",
-      "watch": "观察 Microsoft Agent 365 等治理产品的实际功能边界，以及企业如何把 Agent 资产盘点和最小权限纳入现有安全运营。",
-      "source": "Microsoft",
-      "sources": [
-        "Microsoft"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Microsoft",
-          "url": "https://blogs.microsoft.com/on-the-issues/2026/11/19/security-fundamentals-to-enable-the-frontier/",
-          "tier": 1
-        }
-      ],
-      "publishedAt": "2026-11-19T00:00:00.000Z",
-      "category": "安全",
-      "region": "全球",
-      "impact": "关注",
-      "score": 82,
-      "url": "https://blogs.microsoft.com/on-the-issues/2026/11/19/security-fundamentals-to-enable-the-frontier/",
-      "tags": [
-        "Microsoft",
-        "Agent Security",
-        "可观测性",
-        "治理"
-      ],
-      "rank": 53
+      "rank": 51
     },
     {
       "id": 3906363763,
@@ -2057,7 +2011,7 @@
         "蛋白质设计",
         "科研"
       ],
-      "rank": 54
+      "rank": 52
     },
     {
       "id": 3906363736,
@@ -2093,43 +2047,7 @@
         "本地模型",
         "MoE"
       ],
-      "rank": 55
-    },
-    {
-      "id": 3906363721,
-      "title": "OpenAI 发布药物化学推理基准 MedChemBench",
-      "titleEn": "Can AI help scientists identify promising drug candidates?",
-      "summary": "OpenAI 发布 MedChemBench，基于 117 篇论文与专利整理出 99 道药物化学问题和 761 个分子结构，用于评估模型在化学证据检索、结构推理和候选判断上的能力；其报告称 GPT‑6.2 Astra 在 xhigh 设置下获得 84.5% 的可得分分数。",
-      "change": "从以通用科学问答展示模型能力，转向用可追溯文献、分子结构和多步判断构成的公开药物化学评测任务。",
-      "why": "它为科研团队比较模型在真实专业推理中的边界提供了更具体的测试框架，但 OpenAI 也明确说明该基准不能证明模型已经具备现实药物发现能力。",
-      "watch": "观察是否发布可复现实验材料、独立团队能否验证结果，以及模型在未见化学空间、工具调用和专家审阅下的表现。",
-      "verification": "官方一手",
-      "source": "OpenAI",
-      "sources": [
-        "OpenAI"
-      ],
-      "sourceLinks": [
-        {
-          "name": "OpenAI",
-          "url": "https://openai.com/index/introducing-medchembench/",
-          "tier": 1
-        }
-      ],
-      "publishedAt": "2026-11-20T00:00:00.000Z",
-      "publishedPrecision": "date",
-      "firstSeenAt": "2026-11-20T23:47:11.511Z",
-      "category": "研究",
-      "region": "全球",
-      "impact": "关注",
-      "score": 81,
-      "url": "https://openai.com/index/introducing-medchembench/",
-      "tags": [
-        "OpenAI",
-        "MedChemBench",
-        "药物化学",
-        "评测"
-      ],
-      "rank": 56
+      "rank": 53
     },
     {
       "id": 3906363764,
@@ -2168,7 +2086,7 @@
         "Agent",
         "数据库"
       ],
-      "rank": 57
+      "rank": 54
     },
     {
       "id": 3906363731,
@@ -2204,43 +2122,45 @@
         "API",
         "模型供给"
       ],
-      "rank": 58
+      "rank": 55
     },
     {
-      "id": 1080720566,
-      "title": "SageMaker HyperPod 增强训练基础设施可观测性",
-      "titleEn": "Introducing enhanced infrastructure observability in Amazon SageMaker HyperPod",
-      "summary": "AWS 为 SageMaker HyperPod 发布增强可观测性，可在 EKS 与 Slurm 训练中识别异常 GPU、ECC/XID 错误、网络吞吐下降与过热等问题。",
-      "why": "大规模训练的浪费常来自定位故障而非发现故障；更细粒度的遥测能减少昂贵集群的无效 GPU 小时。",
-      "source": "AWS",
+      "id": 3906363785,
+      "title": "XEBO.ai 获 1050 万美元 A 轮投资协议",
+      "titleEn": "XEBO.ai signs 10.5 million dollar Series A investment agreement",
+      "summary": "Emirates Growth Fund 于 11 月 26 日宣布签约，拟向客户体验 AI 公司 XEBO.ai 的 A 轮投资 1050 万美元。",
+      "change": "拟议投资将支持产品开发、海湾地区扩张及计划中的美国市场进入。",
+      "why": "交易显示企业客户体验工具仍吸引资金，但签约不代表市场拓展目标已经实现。",
+      "watch": "观察投资交割、客户部署和美国市场进入进度。",
+      "source": "Emirates Growth Fund",
       "sources": [
-        "AWS"
+        "Emirates Growth Fund"
       ],
       "sourceLinks": [
         {
-          "name": "AWS",
-          "url": "https://aws.amazon.com/blogs/machine-learning/introducing-enhanced-observability-in-amazon-sagemaker-hyperpod-to-diagnose-gpu-training-issues/",
+          "name": "Emirates Growth Fund",
+          "url": "https://www.egf.gov.ae/en/news/emirates-growth-fund-invests-$10.5-million-in-uae-built-ai-company-xebo.ai",
           "tier": 1
         }
       ],
-      "publishedAt": "2026-11-19T00:00:00.000Z",
-      "category": "算力",
+      "url": "https://www.egf.gov.ae/en/news/emirates-growth-fund-invests-$10.5-million-in-uae-built-ai-company-xebo.ai",
+      "publishedAt": "2026-11-26T00:00:00.000Z",
+      "publishedPrecision": "date",
+      "firstSeenAt": "2026-11-27T23:50:40.747Z",
+      "category": "资本",
       "region": "全球",
       "impact": "关注",
-      "score": 80,
-      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-enhanced-observability-in-amazon-sagemaker-hyperpod-to-diagnose-gpu-training-issues/",
+      "score": 79,
       "tags": [
-        "AWS",
-        "HyperPod",
-        "GPU",
-        "可观测性"
+        "XEBO.ai",
+        "企业AI"
       ],
-      "rank": 59,
-      "firstSeenAt": "2026-11-20T00:18:26.000Z",
-      "publishedPrecision": "date",
-      "change": "从多工具拼接排障转为集群级 GPU、网络与训练任务的联合基础设施诊断。",
-      "watch": "观察可支持的集群规模、异常告警准确性和对平均故障定位时间的改善。",
-      "verification": "官方一手"
+      "verification": "官方一手",
+      "summaryEn": "Emirates Growth Fund announced an agreement on November 26 to invest 10.5 million dollars in XEBO.ai's Series A.",
+      "changeEn": "The proposed investment supports product development, Gulf expansion, and planned entry into the US market.",
+      "whyEn": "The agreement signals funding interest in customer-experience AI but does not establish that expansion goals have been met.",
+      "watchEn": "Watch closing of the investment, customer deployments, and progress toward US market entry.",
+      "rank": 56
     },
     {
       "id": 3906363765,
@@ -2279,7 +2199,7 @@
         "Rust",
         "工程实践"
       ],
-      "rank": 60
+      "rank": 57
     },
     {
       "id": 3906363750,
@@ -2313,7 +2233,7 @@
         "AWS",
         "AI Coding"
       ],
-      "rank": 61
+      "rank": 58
     },
     {
       "id": 3906363737,
@@ -2349,7 +2269,7 @@
         "Trace",
         "企业部署"
       ],
-      "rank": 62
+      "rank": 59
     },
     {
       "id": 3906363732,
@@ -2385,7 +2305,7 @@
         "Agent状态",
         "开源"
       ],
-      "rank": 63
+      "rank": 60
     },
     {
       "id": 3906363766,
@@ -2424,7 +2344,7 @@
         "MCP",
         "AI Gateway"
       ],
-      "rank": 64
+      "rank": 61
     },
     {
       "id": 3906363744,
@@ -2458,7 +2378,7 @@
         "GitHub",
         "AI Coding"
       ],
-      "rank": 65
+      "rank": 62
     },
     {
       "id": 3906363738,
@@ -2494,43 +2414,7 @@
         "RoboTrack",
         "开源评测"
       ],
-      "rank": 66
-    },
-    {
-      "id": 1098711981,
-      "title": "AWS 将实时语音推理模型引入 JumpStart",
-      "titleEn": "PolyAI Dialog-RSN-1 is now on Amazon SageMaker JumpStart",
-      "summary": "PolyAI Dialog-RSN-1 已可通过 AWS Marketplace 和 SageMaker JumpStart 部署，面向能听取实时通话、推理并响应的对话 Agent；推理运行在客户自身 AWS 环境。",
-      "why": "实时语音 Agent 的关键差异从模型演示转向企业可部署性、VPC 边界与 IAM 管理，这降低了进入客服等受监管场景的门槛。",
-      "source": "AWS",
-      "sources": [
-        "AWS"
-      ],
-      "sourceLinks": [
-        {
-          "name": "AWS",
-          "url": "https://aws.amazon.com/blogs/machine-learning/polyai-dialog-rsn-1-is-now-on-amazon-sagemaker-jumpstart/",
-          "tier": 1
-        }
-      ],
-      "publishedAt": "2026-11-19T00:00:00.000Z",
-      "category": "产品",
-      "region": "全球",
-      "impact": "关注",
-      "score": 78,
-      "url": "https://aws.amazon.com/blogs/machine-learning/polyai-dialog-rsn-1-is-now-on-amazon-sagemaker-jumpstart/",
-      "tags": [
-        "AWS",
-        "PolyAI",
-        "语音Agent",
-        "SageMaker"
-      ],
-      "rank": 67,
-      "firstSeenAt": "2026-11-20T00:18:26.000Z",
-      "publishedPrecision": "date",
-      "change": "从供应商托管的对话模型扩展到可在客户 AWS 账户内部署的 JumpStart 选项。",
-      "watch": "观察支持语言、端到端延迟、商业定价以及受监管客户的规模化采用。",
-      "verification": "官方一手"
+      "rank": 63
     },
     {
       "id": 3906363767,
@@ -2569,7 +2453,7 @@
         "世界模型",
         "仿真"
       ],
-      "rank": 68
+      "rank": 64
     },
     {
       "id": 3906363749,
@@ -2603,7 +2487,7 @@
         "TechNode",
         "研究"
       ],
-      "rank": 69
+      "rank": 65
     },
     {
       "id": 3906363733,
@@ -2639,79 +2523,7 @@
         "Cursor",
         "开源"
       ],
-      "rank": 70
-    },
-    {
-      "id": 2236239695,
-      "title": "Aurora 支持将 Agent 原型数据库迁入 VPC",
-      "titleEn": "From instant Aurora PostgreSQL databases to production-ready in your VPC",
-      "summary": "AWS 为 Aurora PostgreSQL express configuration 增加 VPC 网络能力，可通过一次修改把现有集群迁入 VPC，同时保留数据与 endpoint。",
-      "why": "允许 AI coding 或 Agent 原型使用的数据库更平滑地进入私有网络与合规环境，减少从 PoC 到生产的迁移摩擦。",
-      "source": "AWS",
-      "sources": [
-        "AWS"
-      ],
-      "sourceLinks": [
-        {
-          "name": "AWS",
-          "url": "https://aws.amazon.com/blogs/database/from-instant-aurora-postgresql-databases-to-production-ready-in-your-vpc/",
-          "tier": 1
-        }
-      ],
-      "publishedAt": "2026-11-19T00:00:00.000Z",
-      "category": "产品",
-      "region": "全球",
-      "impact": "关注",
-      "score": 74,
-      "url": "https://aws.amazon.com/blogs/database/from-instant-aurora-postgresql-databases-to-production-ready-in-your-vpc/",
-      "tags": [
-        "AWS",
-        "Aurora",
-        "VPC",
-        "AI Agent"
-      ],
-      "rank": 71,
-      "firstSeenAt": "2026-11-20T00:18:26.000Z",
-      "publishedPrecision": "date",
-      "change": "从原型数据库需要重建迁移变为可保留数据与 endpoint 并迁入私有 VPC。",
-      "watch": "观察地区覆盖、迁移失败回滚机制及 Agent 工作负载在私网环境中的权限配置。",
-      "verification": "官方一手"
-    },
-    {
-      "id": 3906363714,
-      "title": "AWS Lambda 将按需事件函数最长运行时间增至 30 分钟",
-      "titleEn": "Announcing 30-minute timeout for on-demand AWS Lambda Event Functions",
-      "summary": "AWS 把按需 Lambda Event Functions 的最长运行时间从 15 分钟增至 30 分钟，并明确覆盖 AI 推理等工作负载。",
-      "why": "更长的无服务器执行窗口可承载较长的推理与编排步骤，但会同时提高并发、重试和连接管理要求。",
-      "source": "AWS",
-      "sources": [
-        "AWS"
-      ],
-      "sourceLinks": [
-        {
-          "name": "AWS",
-          "url": "https://aws.amazon.com/blogs/compute/announcing-30-minute-timeout-for-on-demand-aws-lambda-event-functions/",
-          "tier": 1
-        }
-      ],
-      "publishedAt": "2026-11-19T00:00:00.000Z",
-      "category": "产品",
-      "region": "全球",
-      "impact": "关注",
-      "score": 72,
-      "url": "https://aws.amazon.com/blogs/compute/announcing-30-minute-timeout-for-on-demand-aws-lambda-event-functions/",
-      "tags": [
-        "AWS",
-        "Lambda",
-        "推理",
-        "Serverless"
-      ],
-      "rank": 72,
-      "firstSeenAt": "2026-11-20T00:18:26.000Z",
-      "publishedPrecision": "date",
-      "change": "从最长十五分钟的按需事件函数执行窗口扩展至三十分钟。",
-      "watch": "观察较长推理任务下的并发、重试、成本和外部连接超时策略是否需要同步调整。",
-      "verification": "官方一手"
+      "rank": 66
     }
   ]
 }
